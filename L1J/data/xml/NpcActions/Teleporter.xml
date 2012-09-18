@@ -1,0 +1,2868 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<NpcActionList>
+	<!--显示金额对照对话档内容，因此不能更动顺序。-->
+<!--L1J-TW-->
+<!--隐藏之谷-->
+	<!--卡连 / 沉默洞穴-->
+	<Action Name="teleport dark island-in" NpcId="71013">
+		<Teleport X="32857" Y="32896" Map="304" Heading="5" Price="0"/>
+	</Action>
+	<!--幻术士 艾希雅 / 希培利亚村庄-->
+	<Action Name="teleport illusionist island-in" NpcId="81258">
+		<Teleport X="32792" Y="32863" Map="1000" Heading="5" Price="0"/>
+	</Action>
+	<!--龙骑士 费艾娜 / 贝希摩斯村庄-->
+	<Action Name="teleport dragonknight island-in" NpcId="81259">
+		<Teleport X="32811" Y="32873" Map="1001" Heading="5" Price="0"/>
+	</Action>
+	<!--小柯 / 隐藏之谷地监-->
+	<Action Name="teleport dungeon-in" NpcId="50006">
+		<Teleport X="32871" Y="32866" Map="86" Heading="5" Price="0"/>
+	</Action>
+	<!--伊尔卓斯 / 说话之岛-->
+	<Action Name="teleport talking island-in" NpcId="50003">
+		<Teleport X="32593" Y="32922" Map="0" Heading="5" Price="0"/>
+	</Action>
+
+<!--隐藏之谷地监-->
+	<!--史盖 / 隐藏之谷-->
+	<Action Name="teleport dungeon-out" NpcId="50002">
+		<Teleport X="32682" Y="32874" Map="2005" Heading="5" Price="0"/>
+	</Action>
+
+<!--说话之岛-->
+	<!--卢卡斯 / 古鲁丁村庄-->
+	<Action Name="teleport island-gludin" NpcId="50015">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="1500" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="teleisland2" NpcId="50015">
+		<Data Value="1500" />
+	</ShowHtml>
+
+<!--古鲁丁村庄-->
+	<!--史提夫 / 肯特村庄-->
+	<Action Name="teleport gludin-kent" NpcId="50024">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--史提夫 / 风木村庄-->
+	<Action Name="teleport gludin-woods" NpcId="50024">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--史提夫 / 妖魔森林-->
+	<Action Name="teleport gludin-willow" NpcId="50024">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--史提夫 / 奇岩村庄-->
+	<Action Name="teleport gludin-giran" NpcId="50024">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--史提夫 / 银骑士村庄-->
+	<Action Name="teleport gludin-silver" NpcId="50024">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--史提夫 / 海音村庄-->
+	<Action Name="teleport gludin-heine" NpcId="50024">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--史提夫 / 威顿村庄-->
+	<Action Name="teleport gludin-werldern" NpcId="50024">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--史提夫 / 贝希摩斯村庄-->
+	<Action Name="teleport gludin-behemoth" NpcId="50024">
+		<Teleport X="32779" Y="32887" Map="1001" Heading="5" Price="180" />
+	</Action>
+	<!--史提夫 / 希培利亚村庄-->
+	<Action Name="teleport gludin-silveria" NpcId="50024">
+		<Teleport X="32841" Y="32856" Map="1000" Heading="2" Price="240" />
+	</Action>
+	<!--史提夫 / 欧瑞村庄-->
+	<Action Name="teleport gludin-oren" NpcId="50024">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--史提夫 / 亚丁城镇-->
+	<Action Name="teleport gludin-aden" NpcId="50024">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--史提夫 / 正义神殿-->
+	<Action Name="teleport gludin-lowful" NpcId="50024">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="200" />
+	</Action>
+	<!--史提夫 / 邪恶神殿-->
+	<Action Name="teleport gludin-chaos" NpcId="50024">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="200" />
+	</Action>
+	<!--史提夫 / 肯特葡萄园-->
+	<Action Name="teleport gludin-grape" NpcId="50024">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--史提夫 / 说话之岛村庄-->
+	<Action Name="teleport gludin-island" NpcId="50024">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="500" />
+	</Action>
+	<!--史提夫 / 狄亚得要塞-->
+	<Action Name="teleport gludin-diad" NpcId="50024">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="6800" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telegludin2" NpcId="50024">
+		<Data Value="50" /><!--肯特村庄-->
+		<Data Value="50" /><!--风木村庄-->
+		<Data Value="50" /><!--妖魔森林-->
+		<Data Value="120" /><!--奇岩村庄-->
+		<Data Value="120" /><!--银骑士村庄-->
+		<Data Value="180" /><!--海音村庄-->
+		<Data Value="180" /><!--威顿村庄-->
+		<Data Value="180" /><!--贝希摩斯村庄-->
+		<Data Value="240" /><!--希培利亚村庄-->
+		<Data Value="240" /><!--欧瑞村庄-->
+		<Data Value="240" /><!--亚丁城镇-->
+		<Data Value="200" /><!--正义神殿-->
+		<Data Value="200" /><!--邪恶神殿-->
+		<Data Value="300" /><!--肯特葡萄园-->
+		<Data Value="500" /><!--说话之岛村庄-->
+		<Data Value="6800" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--史提夫 / 古鲁丁地监-->
+	<Action Name="teleport gludin-gludun" NpcId="50024">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="110" />
+	</Action>
+	<!--史提夫 / 沙漠绿洲-->
+	<Action Name="teleport gludin-oasis" NpcId="50024">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--史提夫 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport gludin-under" NpcId="50024">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--史提夫 / 芒草原-->
+	<Action Name="teleport gludin-reed" NpcId="50024">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--史提夫 / 奇岩地监-->
+	<Action Name="teleport gludin-girdun" NpcId="50024">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--史提夫 / 骑士洞穴-->
+	<Action Name="teleport gludin-train" NpcId="50024">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--史提夫 / 镜子森林-->
+	<Action Name="teleport gludin-mirr" NpcId="50024">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="484" />
+	</Action>
+	<!--史提夫 / 龙之谷吊桥-->
+	<Action Name="teleport gludin-dragon" NpcId="50024">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--史提夫 / 海音地监-->
+	<Action Name="teleport gludin-eva" NpcId="50024">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="484" />
+	</Action>
+	<!--史提夫 / 吉普赛村-->
+	<Action Name="teleport gludin-gypsy" NpcId="50024">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="605" />
+	</Action>
+	<!--史提夫 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport gludin-ice" NpcId="50024">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="605" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="telegludin3" NpcId="50024">
+		<Data Value="110" /><!--古鲁丁地监-->
+		<Data Value="242" /><!--沙漠绿洲-->
+		<Data Value="242" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="242" /><!--芒草园-->
+		<Data Value="363" /><!--奇岩地监-->
+		<Data Value="363" /><!--骑士洞穴-->
+		<Data Value="484" /><!--镜子森林-->
+		<Data Value="363" /><!--龙之谷吊桥-->
+		<Data Value="484" /><!--海音地监-->
+		<Data Value="605" /><!--吉普赛村-->
+	</ShowHtml>
+
+	<!--商店村传送师 / 古鲁丁商店村-->
+	<Action Name="teleport gludio-gludin-trade-zone" NpcId="50027">
+		<Teleport X="32779" Y="32848" Map="340" Heading="5" Price="0" />
+	</Action>
+
+<!--古鲁丁商店村-->
+	<!--商店村传送师 / 奇岩商店村-->
+	<Action Name="teleport gludintz-girantz" NpcId="50026">
+		<Teleport X="32702" Y="32842" Map="350" Heading="5" Price="550" />
+	</Action>
+	<!--商店村传送师 / 欧瑞商店村-->
+	<Action Name="teleport gludintz-orentz" NpcId="50026">
+		<Teleport X="32733" Y="32792" Map="360" Heading="5" Price="700" />
+	</Action>
+	<!--商店村传送师 / 银骑士商店村-->
+	<Action Name="teleport gludintz-silvertz" NpcId="50026">
+		<Teleport X="32733" Y="32792" Map="370" Heading="5" Price="810" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telegltz2" NpcId="50026">
+		<Data Value="550" /><!--奇岩商店村-->
+		<Data Value="700" /><!--欧瑞商店村-->
+		<Data Value="810" /><!--银骑士商店村-->
+	</ShowHtml>
+
+	<!--商店村警卫 / 古鲁丁村庄-->
+	<Action Name="teleport gludin-trade-zone-gludio" NpcId="50025">
+		<Teleport X="32619" Y="32795" Map="4" Heading="5" Price="0" />
+	</Action>
+
+<!--钓鱼池-->
+	<!--钓鱼小童波尔 / 古鲁丁村庄-->
+	<Action Name="teleport fishing-out" NpcId="80083">
+		<Teleport X="32608" Y="32772" Map="4" Heading="4" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="fk_out_0" NpcId="80083">
+		<Data Value="0" />
+	</ShowHtml>
+
+<!--食尸地-->	
+	<!--堕落的灵魂 / 往邪念地监-->
+	<Action Name="teleport evil-dungeon" NpcId="71095">
+		<Teleport X="32608" Y="32772" Map="4" Heading="4" Price="0" />
+	</Action>
+	
+
+<!--肯特村庄-->
+	<!--史坦利 / 古鲁丁村庄-->
+	<Action Name="teleport kent-gludin" NpcId="50020">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--史坦利 / 奇岩村庄-->
+	<Action Name="teleport kent-giran" NpcId="50020">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--史坦利 / 银骑士村庄-->
+	<Action Name="teleport kent-silver" NpcId="50020">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--史坦利 / 风木村庄-->
+	<Action Name="teleport kent-woods" NpcId="50020">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--史坦利 / 妖魔森林-->
+	<Action Name="teleport kent-willow" NpcId="50020">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--史坦利 / 海音村庄-->
+	<Action Name="teleport kent-heine" NpcId="50020">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--史坦利 / 威顿村庄-->
+	<Action Name="teleport kent-werldern" NpcId="50020">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--史坦利 / 欧瑞村庄-->
+	<Action Name="teleport kent-oren" NpcId="50020">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--史坦利 / 亚丁城镇-->
+	<Action Name="teleport kent-aden" NpcId="50020">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--史坦利 / 正义神殿-->
+	<Action Name="teleport kent-lowful" NpcId="50020">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="200" />
+	</Action>
+	<!--史坦利 / 邪恶神殿-->
+	<Action Name="teleport kent-chaos" NpcId="50020">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="200" />
+	</Action>
+	<!--史坦利 / 肯特葡萄园-->
+	<Action Name="teleport kent-grape" NpcId="50020">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--史坦利 / 说话之岛村庄-->
+	<Action Name="teleport kent-island" NpcId="50020">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="600" />
+	</Action>
+	<!--史坦利 / 狄亚得要塞-->
+	<Action Name="teleport kent-diad" NpcId="50020">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="7100" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telekent2" NpcId="50020">
+		<Data Value="50" /><!--古鲁丁村庄-->
+		<Data Value="50" /><!--奇岩村庄-->
+		<Data Value="50" /><!--银骑士村庄-->
+		<Data Value="120" /><!--风木村庄-->
+		<Data Value="120" /><!--妖魔森林-->
+		<Data Value="120" /><!--海音村庄-->
+		<Data Value="120" /><!--威顿村庄-->
+		<Data Value="180" /><!--欧瑞村庄-->
+		<Data Value="180" /><!--亚丁城镇-->
+		<Data Value="200" /><!--正义神殿-->
+		<Data Value="200" /><!--邪恶神殿-->
+		<Data Value="300" /><!--肯特葡萄园-->
+		<Data Value="600" /><!--说话之岛村庄-->
+		<Data Value="7100" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--史坦利 / 古鲁丁地监-->
+	<Action Name="teleport kent-gludun" NpcId="50020">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="100" />
+	</Action>
+	<!--史坦利 / 奇岩地监-->
+	<Action Name="teleport kent-girdun" NpcId="50020">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--史坦利 / 骑士洞穴-->
+	<Action Name="teleport kent-train" NpcId="50020">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--史坦利 / 镜子森林-->
+	<Action Name="teleport kent-mirr" NpcId="50020">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--史坦利 / 龙之谷吊桥-->
+	<Action Name="teleport kent-dragon" NpcId="50020">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--史坦利 / 芒草原-->
+	<Action Name="teleport kent-reed" NpcId="50020">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--史坦利 / 沙漠绿洲-->
+	<Action Name="teleport kent-oasis" NpcId="50020">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="230" />
+	</Action>
+	<!--史坦利 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport kent-under" NpcId="50020">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--史坦利 / 海音地监-->
+	<Action Name="teleport kent-eva" NpcId="50020">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--史坦利 / 吉普赛村-->
+	<Action Name="teleport kent-gypsy" NpcId="50020">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--史坦利 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport kent-ice" NpcId="50020">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="telekent3" NpcId="50020">
+		<Data Value="100" /><!--古鲁丁地监-->
+		<Data Value="220" /><!--奇岩地监-->
+		<Data Value="220" /><!--骑士洞穴-->
+		<Data Value="220" /><!--镜子森林-->
+		<Data Value="220" /><!--龙之谷吊桥-->
+		<Data Value="220" /><!--芒草园-->
+		<Data Value="230" /><!--沙漠绿洲-->
+		<Data Value="330" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="330" /><!--海音地监-->
+		<Data Value="440" /><!--吉普赛村-->
+	</ShowHtml>
+
+<!--肯特城-->
+	<!--王宫门口守门人 / 肯特村庄-->
+	<Action Name="teleport kentc-village" NpcId="50021">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 古鲁丁地监4楼-->
+	<Action Name="teleport kentc-gludun" NpcId="50021">
+		<Teleport X="32764" Y="32774" Map="10" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 奇岩地监2楼-->
+	<Action Name="teleport kentc-girdun" NpcId="50021">
+		<Teleport X="32809" Y="32793" Map="54" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="teleckent2" NpcId="50021">
+		<Data Value="0" /><!--肯特村庄-->
+		<Data Value="0" /><!--古鲁丁地监4楼-->
+		<Data Value="0" /><!--奇岩地监2楼-->
+	</ShowHtml>
+
+	<!--奥贝勒 / 肯特城地监1楼-->
+	<Action Name="teleport kentcd" NpcId="50023">
+		<Teleport X="32721" Y="33087" Map="240" Heading="5" Price="10000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="kentober2" NpcId="50023">
+		<Data Value="10000" />
+	</ShowHtml>
+
+<!--风木村庄-->
+	<!--特莱 / 古鲁丁村庄-->
+	<Action Name="teleport woods-gludin" NpcId="50054">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--特莱 / 银骑士村庄-->
+	<Action Name="teleport woods-silver" NpcId="50054">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--特莱 / 肯特村庄-->
+	<Action Name="teleport woods-kent" NpcId="50054">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--特莱 / 妖魔森林-->
+	<Action Name="teleport woods-willow" NpcId="50054">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--特莱 / 海音村庄-->
+	<Action Name="teleport woods-heine" NpcId="50054">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--特莱 / 奇岩村庄-->
+	<Action Name="teleport woods-giran" NpcId="50054">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--特莱 / 亚丁城镇-->
+	<Action Name="teleport woods-aden" NpcId="50054">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--特莱 / 威顿村庄-->
+	<Action Name="teleport woods-werldern" NpcId="50054">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--特莱 / 欧瑞村庄-->
+	<Action Name="teleport woods-oren" NpcId="50054">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--特莱 / 正义神殿-->
+	<Action Name="teleport woods-lowful" NpcId="50054">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="200" />
+	</Action>
+	<!--特莱 / 邪恶神殿-->
+	<Action Name="teleport woods-chaos" NpcId="50054">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="200" />
+	</Action>
+	<!--特莱 / 肯特葡萄园-->
+	<Action Name="teleport woods-grape" NpcId="50054">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--特莱 / 说话之岛村庄-->
+	<Action Name="teleport woods-island" NpcId="50054">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="500" />
+	</Action>
+	<!--特莱 / 狄亚得要塞-->
+	<Action Name="teleport woods-diad" NpcId="50054">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="6500" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telewoods2" NpcId="50054">
+		<Data Value="50" /><!--古鲁丁村庄-->
+		<Data Value="50" /><!--银骑士村庄-->
+		<Data Value="120" /><!--肯特村庄-->
+		<Data Value="240" /><!--妖魔森林-->
+		<Data Value="120" /><!--海音村庄-->
+		<Data Value="180" /><!--奇岩村庄-->
+		<Data Value="180" /><!--亚丁城镇-->
+		<Data Value="240" /><!--威顿村庄-->
+		<Data Value="300" /><!--欧瑞村庄-->
+		<Data Value="200" /><!--正义神殿-->
+		<Data Value="200" /><!--邪恶神殿-->
+		<Data Value="300" /><!--肯特葡萄园-->
+		<Data Value="500" /><!--说话之岛村庄-->
+		<Data Value="6500" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--特莱 / 沙漠绿洲-->
+	<Action Name="teleport woods-oasis" NpcId="50054">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="100" />
+	</Action>
+	<!--特莱 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport woods-under" NpcId="50054">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="100" />
+	</Action>
+	<!--特莱 / 古鲁丁地监-->
+	<Action Name="teleport woods-gludun" NpcId="50054">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--特莱 / 骑士洞穴-->
+	<Action Name="teleport woods-train" NpcId="50054">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--特莱 / 奇岩地监-->
+	<Action Name="teleport woods-girdun" NpcId="50054">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--特莱 / 龙之谷吊桥-->
+	<Action Name="teleport woods-dragon" NpcId="50054">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--特莱 / 芒草原-->
+	<Action Name="teleport woods-reed" NpcId="50054">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--特莱 / 海音地监-->
+	<Action Name="teleport woods-eva" NpcId="50054">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--特莱 / 镜子森林-->
+	<Action Name="teleport woods-mirr" NpcId="50054">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--特莱 / 吉普赛村-->
+	<Action Name="teleport woods-gypsy" NpcId="50054">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--特莱 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport woods-ice" NpcId="50054">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="telewoods3" NpcId="50054">
+		<Data Value="100" /><!--沙漠绿洲-->
+		<Data Value="100" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="220" /><!--古鲁丁地监-->
+		<Data Value="220" /><!--骑士洞穴-->
+		<Data Value="242" /><!--奇岩地监-->
+		<Data Value="330" /><!--龙之谷吊桥-->
+		<Data Value="330" /><!--芒草园-->
+		<Data Value="330" /><!--海音地监-->
+		<Data Value="440" /><!--镜子森林-->
+		<Data Value="550" /><!--吉普赛村-->
+	</ShowHtml>
+
+<!--风木城-->
+	<!--王宫门口守门人 / 风木村庄-->
+	<Action Name="teleport woodsc-village" NpcId="50052">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 修练地监3楼-->
+	<Action Name="teleport woodsc-windun" NpcId="50052">
+		<Teleport X="32805" Y="32811" Map="27" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 绿洲-->
+	<Action Name="teleport woodsc-oasis" NpcId="50052">
+		<Teleport X="32863" Y="33252" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 银骑士村庄-->
+	<Action Name="teleport woodsc-sknight" NpcId="50052">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telecwoods2" NpcId="50052">
+		<Data Value="0" /><!--风木村庄-->
+		<Data Value="0" /><!--修练地监3楼-->
+		<Data Value="0" /><!--绿洲-->
+		<Data Value="0" /><!--银骑士村庄-->
+	</ShowHtml>
+
+<!--风木沙漠-->
+	<!--次元之门 / 欲望洞穴-->
+	<Action Name="a" NpcId="80058" LevelMin="45">
+		<Teleport X="32757" Y="32794" Map="600" Heading="5" Price="0" />
+	</Action>
+	<!--次元之门 / 原生魔族抛弃之地-->
+	<Action Name="b" NpcId="80058" LevelMin="45" LevelMax="51">
+		<Teleport X="32834" Y="32790" Map="778" Heading="5" Price="0" />
+	</Action>
+
+<!--燃柳村庄-->
+	<!--杜发 / 隐藏港口-->
+	<Action Name="teleport orctown-hiddendock" NpcId="50064">
+		<Teleport X="32738" Y="32857" Map="445" Heading="5" Price="100" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="duvall3" NpcId="50064">
+		<Data Value="100" /><!--隐藏港口-->
+	</ShowHtml>
+
+<!--燃柳村居民-->
+	<Action Name="teleport firefieldtown" NpcId="50017,50022,50030,50053,50057">
+		<Teleport X="32745" Y="32445" Map="4" Heading="5" Price="168" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telefire3" NpcId="50017,50022,50030,50053,50057">
+		<Data Value="168" />
+	</ShowHtml>
+
+<!--燃柳桥-->
+	<!--丹尼尔 / 妖魔森林-->
+	<Action Name="teleport orcfortress-gludio" NpcId="50085">
+		<Teleport X="32654" Y="32544" Map="4" Heading="5" Price="15" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="teleorcbdg2" NpcId="50085">
+		<Data Value="15" />
+	</ShowHtml>
+
+	<!--保罗 / 对岸-->
+	<Action Name="teleport gludio-orcfortress" NpcId="50080">
+		<Teleport X="32657" Y="32520" Map="4" Heading="5" Price="15" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="teleorcbdg1" NpcId="50080">
+		<Data Value="15" />
+	</ShowHtml>
+
+<!--妖魔城-->
+	<!--要塞门口守门人 / 燃柳村-->
+	<Action Name="teleport orc-village" NpcId="50063">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--要塞门口守门人 / 眠龙洞穴3楼-->
+	<Action Name="teleport orc-elvendun" NpcId="50063">
+		<Teleport X="32760" Y="32761" Map="21" Heading="5" Price="0" />
+	</Action>
+	<!--要塞门口守门人 / 龙之谷-->
+	<Action Name="teleport orc-dragonvalley" NpcId="50063">
+		<Teleport X="33432" Y="32546" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telecorc2" NpcId="50063">
+		<Data Value="0" /><!--燃柳村-->
+		<Data Value="0" /><!--眠龙洞穴3楼-->
+		<Data Value="0" /><!--龙之谷-->
+	</ShowHtml>
+
+	<!--芙邬都达玛拉 / 污浊之地-->
+	<Action Name="teleport orcfcd" NpcId="71039">
+		<Teleport X="32982" Y="32808" Map="244" Heading="5" Price="10000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="orcfbuwoo2" NpcId="71039">
+		<Data Value="10000" />
+	</ShowHtml>
+
+<!--污浊之地-->
+	<!--巴伍都达玛拉 / 燃柳村庄-->
+	<Action Name="1" NpcId="71045">
+		<Teleport X="32750" Y="32435" Map="4" Heading="5" Price="0" />
+	</Action>
+
+<!--银骑士村庄-->
+	<!--麦特 / 肯特村庄-->
+	<Action Name="teleport silver-kent" NpcId="50056">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="55" />
+	</Action>
+	<!--麦特 / 风木村庄-->
+	<Action Name="teleport silver-woods" NpcId="50056">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="55" />
+	</Action>
+	<!--麦特 / 海音村庄-->
+	<Action Name="teleport silver-heine" NpcId="50056">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="55" />
+	</Action>
+	<!--麦特 / 古鲁丁村庄-->
+	<Action Name="teleport silver-gludin" NpcId="50056">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="132" />
+	</Action>
+	<!--麦特 / 奇岩村庄-->
+	<Action Name="teleport silver-giran" NpcId="50056">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="132" />
+	</Action>
+	<!--麦特 / 亚丁城镇-->
+	<Action Name="teleport silver-aden" NpcId="50056">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="132" />
+	</Action>
+	<!--麦特 / 燃柳村庄-->
+	<Action Name="teleport silver-willow" NpcId="50056">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="198" />
+	</Action>
+	<!--麦特 / 威顿村庄-->
+	<Action Name="teleport silver-werldern" NpcId="50056">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="198" />
+	</Action>
+	<!--麦特 / 贝希摩斯村庄-->
+	<Action Name="teleport silver-behemoth" NpcId="50056">
+		<Teleport X="32779" Y="32887" Map="1001" Heading="5" Price="198" />
+	</Action>
+	<!--麦特 / 希培利亚村庄-->
+	<Action Name="teleport silver-silveria" NpcId="50056">
+		<Teleport X="32841" Y="32856" Map="1000" Heading="2" Price="246" />
+	</Action>
+	<!--麦特 / 欧瑞村庄-->
+	<Action Name="teleport silver-oren" NpcId="50056">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="246" />
+	</Action>
+	<!--麦特 / 正义神殿-->
+	<Action Name="teleport silver-lowful" NpcId="50056">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--麦特 / 邪恶神殿-->
+	<Action Name="teleport silver-chaos" NpcId="50056">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--麦特 / 肯特葡萄园-->
+	<Action Name="teleport silver-grape" NpcId="50056">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--麦特 / 说话之岛-->
+	<Action Name="teleport silver-island" NpcId="50056">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="770" />
+	</Action>
+	<!--麦特 / 狄亚得要塞-->
+	<Action Name="teleport silver-diad" NpcId="50056">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="7480" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telesilver2" NpcId="50056">
+		<Data Value="55" /><!--肯特村庄-->
+		<Data Value="55" /><!--风木村庄-->
+		<Data Value="55" /><!--海音村庄-->
+		<Data Value="132" /><!--古鲁丁村庄-->
+		<Data Value="132" /><!--奇岩村庄-->
+		<Data Value="132" /><!--亚丁城镇-->
+		<Data Value="198" /><!--燃柳村庄-->
+		<Data Value="198" /><!--威顿村庄-->
+		<Data Value="198" /><!--贝希摩斯村庄-->
+		<Data Value="246" /><!--希培利亚村庄-->
+		<Data Value="246" /><!--欧瑞村庄-->
+		<Data Value="330" /><!--正义神殿-->
+		<Data Value="330" /><!--邪恶神殿-->
+		<Data Value="330" /><!--肯特葡萄园-->
+		<Data Value="770" /><!--说话之岛-->
+		<Data Value="7480" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--麦特 / 骑士洞穴-->
+	<Action Name="teleport silver-train" NpcId="50056">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="110" />
+	</Action>
+	<!--麦特 / 沙漠绿洲-->
+	<Action Name="teleport silver-oasis" NpcId="50056">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="110" />
+	</Action>
+	<!--麦特 / 古鲁丁地监-->
+	<Action Name="teleport silver-gludun" NpcId="50056">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--麦特 / 奇岩地监-->
+	<Action Name="teleport silver-girdun" NpcId="50056">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--麦特 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport silver-under" NpcId="50056">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--麦特 / 海音地监-->
+	<Action Name="teleport silver-eva" NpcId="50056">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="242" />
+	</Action>
+	<!--麦特 / 镜子森林-->
+	<Action Name="teleport silver-mirr" NpcId="50056">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--麦特 / 龙之谷吊桥-->
+	<Action Name="teleport silver-dragon" NpcId="50056">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--麦特 / 芒草原-->
+	<Action Name="teleport silver-reed" NpcId="50056">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--麦特 / 吉普赛村-->
+	<Action Name="teleport silver-gypsy" NpcId="50056">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--麦特 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport silver-ice" NpcId="50056">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="363" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="telesilver3" NpcId="50056">
+		<Data Value="110" /><!--骑士洞穴-->
+		<Data Value="110" /><!--沙漠绿洲-->
+		<Data Value="242" /><!--古鲁丁地监-->
+		<Data Value="242" /><!--奇岩地监-->
+		<Data Value="242" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="242" /><!--海音地监-->
+		<Data Value="363" /><!--镜子森林-->
+		<Data Value="363" /><!--龙之谷吊桥-->
+		<Data Value="363" /><!--芒草园-->
+		<Data Value="363" /><!--吉普赛村-->
+	</ShowHtml>
+
+	<!--商店村传送师 / 银骑士商店村-->
+	<Action Name="teleport silver-silver-trade-zone" NpcId="50060">
+		<Teleport X="32733" Y="32792" Map="370" Heading="5" Price="0" />
+	</Action>
+
+<!--银骑士商店村-->
+	<!--商店村传送师 / 古鲁丁商店村-->
+	<Action Name="teleport silvertz-gludintz" NpcId="50059">
+		<Teleport X="32779" Y="32848" Map="340" Heading="5" Price="580" />
+	</Action>
+	<!--商店村传送师 / 奇岩商店村-->
+	<Action Name="teleport silvertz-girantz" NpcId="50059">
+		<Teleport X="32702" Y="32842" Map="350" Heading="5" Price="680" />
+	</Action>
+	<!--商店村传送师 / 欧瑞商店村-->
+	<Action Name="teleport silvertz-orentz" NpcId="50059">
+		<Teleport X="32733" Y="32792" Map="360" Heading="5" Price="680" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telesktz2" NpcId="50059">
+		<Data Value="580" /><!--古鲁丁商店村-->
+		<Data Value="680" /><!--奇岩商店村-->
+		<Data Value="680" /><!--欧瑞商店村-->
+	</ShowHtml>
+
+	<!--商店村警卫 / 银骑士村庄-->
+	<Action Name="teleport silver-trade-zone-silver" NpcId="50058">
+		<Teleport X="33083" Y="33387" Map="4" Heading="5" Price="0" />
+	</Action>
+
+<!--海音村庄-->
+	<!--里欧 / 奇岩村庄-->
+	<Action Name="teleport heine-giran" NpcId="50066">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--里欧 / 银骑士村庄-->
+	<Action Name="teleport heine-silver" NpcId="50066">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--里欧 / 亚丁城镇-->
+	<Action Name="teleport heine-aden" NpcId="50066">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--里欧 / 肯特村庄-->
+	<Action Name="teleport heine-kent" NpcId="50066">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--里欧 / 风木村庄-->
+	<Action Name="teleport heine-woods" NpcId="50066">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--里欧 / 威顿村庄-->
+	<Action Name="teleport heine-werldern" NpcId="50066">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--里欧 / 欧瑞村庄-->
+	<Action Name="teleport heine-oren" NpcId="50066">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--里欧 / 古鲁丁村庄-->
+	<Action Name="teleport heine-gludin" NpcId="50066">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--里欧 / 妖魔森林-->
+	<Action Name="teleport heine-willow" NpcId="50066">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--里欧 / 肯特葡萄园-->
+	<Action Name="teleport heine-grape" NpcId="50066">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--里欧 / 正义神殿-->
+	<Action Name="teleport heine-lowful" NpcId="50066">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="400" />
+	</Action>
+	<!--里欧 / 邪恶神殿-->
+	<Action Name="teleport heine-chaos" NpcId="50066">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="400" />
+	</Action>
+	<!--里欧 / 说话之岛村庄-->
+	<Action Name="teleport heine-island" NpcId="50066">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="800" />
+	</Action>
+	<!--里欧 / 狄亚得要塞-->
+	<Action Name="teleport heine-diad" NpcId="50066">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="7100" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="teleheine2" NpcId="50066">
+		<Data Value="50" /><!--奇岩村庄-->
+		<Data Value="50" /><!--银骑士村庄-->
+		<Data Value="50" /><!--亚丁城镇-->
+		<Data Value="120" /><!--肯特村庄-->
+		<Data Value="120" /><!--风木村庄-->
+		<Data Value="120" /><!--威顿村庄-->
+		<Data Value="180" /><!--欧瑞村庄-->
+		<Data Value="180" /><!--古鲁丁村庄-->
+		<Data Value="240" /><!--妖魔森林-->
+		<Data Value="300" /><!--肯特葡萄园-->
+		<Data Value="400" /><!--正义神殿-->
+		<Data Value="400" /><!--邪恶神殿-->
+		<Data Value="800" /><!--说话之岛村庄-->
+		<Data Value="7100" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--里欧 / 镜子森林-->
+	<Action Name="teleport heine-mirr" NpcId="50066">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="100" />
+	</Action>
+	<!--里欧 / 海音地监-->
+	<Action Name="teleport heine-eva" NpcId="50066">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="100" />
+	</Action>
+	<!--里欧 / 奇岩地监-->
+	<Action Name="teleport heine-girdun" NpcId="50066">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--里欧 / 沙漠绿洲-->
+	<Action Name="teleport heine-oasis" NpcId="50066">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--里欧 / 骑士洞穴-->
+	<Action Name="teleport heine-train" NpcId="50066">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--里欧 / 吉普赛村-->
+	<Action Name="teleport heine-gypsy" NpcId="50066">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--里欧 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport heine-under" NpcId="50066">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--里欧 / 龙之谷吊桥-->
+	<Action Name="teleport heine-dragon" NpcId="50066">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--里欧 / 古鲁丁地监-->
+	<Action Name="teleport heine-gludun" NpcId="50066">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--里欧 / 芒草原-->
+	<Action Name="teleport heine-reed" NpcId="50066">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--里欧 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport heine-ice" NpcId="50066">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="teleheine3" NpcId="50066">
+		<Data Value="100" /><!--镜子森林-->
+		<Data Value="100" /><!--海音地监-->
+		<Data Value="220" /><!--奇岩地监-->
+		<Data Value="220" /><!--沙漠绿洲-->
+		<Data Value="220" /><!--骑士洞穴-->
+		<Data Value="220" /><!--吉普赛村-->
+		<Data Value="330" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="330" /><!--龙之谷吊桥-->
+		<Data Value="440" /><!--古鲁丁地监-->
+		<Data Value="550" /><!--芒草园-->
+	</ShowHtml>
+
+<!--海音城-->
+	<!--王宫门口守门人 / 海音村庄-->
+	<Action Name="teleport heinec-village" NpcId="50067">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 水之遗迹入口-->
+	<Action Name="teleport heinec-evadun" NpcId="50067">
+		<Teleport X="32694" Y="32828" Map="61" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 海音港口-->
+	<Action Name="teleport heinec-forgotten" NpcId="50067">
+		<Teleport X="33427" Y="33481" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telecheine2" NpcId="50067">
+		<Data Value="0" /><!--芒草园-->
+		<Data Value="0" /><!--水之遗迹入口-->
+		<Data Value="0" /><!--海音港口-->
+	</ShowHtml>
+
+	<!--阿弥树 / 封闭的海音地监-->
+	<Action Name="teleport heine-Cdungeon" NpcId="71080">
+		<Teleport X="32746" Y="32860" Map="252" Heading="6" Price="10000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="amisoo2" NpcId="71080">
+		<Data Value="10000" />
+	</ShowHtml>
+
+<!--奇岩村庄-->
+	<!--尔玛 / 肯特村庄-->
+	<Action Name="teleport giran-kent" NpcId="50036">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="52" />
+	</Action>
+	<!--尔玛 / 海音村庄-->
+	<Action Name="teleport giran-heine" NpcId="50036">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="52" />
+	</Action>
+	<!--尔玛 / 威顿村庄-->
+	<Action Name="teleport giran-werldern" NpcId="50036">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="52" />
+	</Action>
+	<!--尔玛 / 银骑士村庄-->
+	<Action Name="teleport giran-silver" NpcId="50036">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="126" />
+	</Action>
+	<!--尔玛 / 古鲁丁村庄-->
+	<Action Name="teleport giran-gludin" NpcId="50036">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="126" />
+	</Action>
+	<!--尔玛 / 欧瑞村庄-->
+	<Action Name="teleport giran-oren" NpcId="50036">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="126" />
+	</Action>
+	<!--尔玛 / 亚丁城镇-->
+	<Action Name="teleport giran-aden" NpcId="50036">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="126" />
+	</Action>
+	<!--尔玛 / 风木村庄-->
+	<Action Name="teleport giran-woods" NpcId="50036">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="189" />
+	</Action>
+	<!--尔玛 / 妖魔森林-->
+	<Action Name="teleport giran-willow" NpcId="50036">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="189" />
+	</Action>
+	<!--尔玛 / 正义神殿-->
+	<Action Name="teleport giran-lowful" NpcId="50036">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="315" />
+	</Action>
+	<!--尔玛 / 邪恶神殿-->
+	<Action Name="teleport giran-chaos" NpcId="50036">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="315" />
+	</Action>
+	<!--尔玛 / 肯特葡萄园-->
+	<Action Name="teleport giran-grape" NpcId="50036">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="315" />
+	</Action>
+	<!--尔玛 / 说话之岛村庄-->
+	<Action Name="teleport giran-island" NpcId="50036">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="735" />
+	</Action>
+	<!--尔玛 / 狄亚得要塞-->
+	<Action Name="teleport giran-diad" NpcId="50036">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="7770" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telegiran2" NpcId="50036">
+		<Data Value="52" /><!--肯特村庄-->
+		<Data Value="52" /><!--海音村庄-->
+		<Data Value="52" /><!--威顿村庄-->
+		<Data Value="126" /><!--银骑士村庄-->
+		<Data Value="126" /><!--古鲁丁村庄-->
+		<Data Value="126" /><!--欧瑞村庄-->
+		<Data Value="126" /><!--亚丁城镇-->
+		<Data Value="189" /><!--风木村庄-->
+		<Data Value="189" /><!--妖魔森林-->
+		<Data Value="315" /><!--正义神殿-->
+		<Data Value="315" /><!--邪恶神殿-->
+		<Data Value="315" /><!--肯特葡萄园-->
+		<Data Value="735" /><!--说话之岛村庄-->
+		<Data Value="7770" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--尔玛 / 奇岩地监-->
+	<Action Name="teleport giran-girdun" NpcId="50036">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="105" />
+	</Action>
+	<!--尔玛 / 镜子森林-->
+	<Action Name="teleport giran-mirr" NpcId="50036">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="105" />
+	</Action>
+	<!--尔玛 / 龙之谷吊桥-->
+	<Action Name="teleport giran-dragon" NpcId="50036">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="105" />
+	</Action>
+	<!--尔玛 / 古鲁丁地监-->
+	<Action Name="teleport giran-gludun" NpcId="50036">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="231" />
+	</Action>
+	<!--尔玛 / 骑士洞穴-->
+	<Action Name="teleport giran-train" NpcId="50036">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="231" />
+	</Action>
+	<!--尔玛 / 海音地监-->
+	<Action Name="teleport giran-eva" NpcId="50036">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="231" />
+	</Action>
+	<!--尔玛 / 吉普赛村-->
+	<Action Name="teleport giran-gypsy" NpcId="50036">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="346" />
+	</Action>
+	<!--尔玛 / 沙漠绿洲-->
+	<Action Name="teleport giran-oasis" NpcId="50036">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="346" />
+	</Action>
+	<!--尔玛 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport giran-under" NpcId="50036">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="346" />
+	</Action>
+	<!--尔玛 / 芒草原-->
+	<Action Name="teleport giran-reed" NpcId="50036">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="462" />
+	</Action>
+	<!--尔玛 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport giran-ice" NpcId="50036">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="346" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="telegiran3" NpcId="50036">
+		<Data Value="105" /><!--奇岩地监-->
+		<Data Value="105" /><!--镜子森林-->
+		<Data Value="105" /><!--龙之谷吊桥-->
+		<Data Value="231" /><!--古鲁丁地监-->
+		<Data Value="231" /><!--骑士洞穴-->
+		<Data Value="231" /><!--海音地监-->
+		<Data Value="346" /><!--吉普赛村-->
+		<Data Value="346" /><!--沙漠绿洲-->
+		<Data Value="346" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="462" /><!--芒草园-->
+	</ShowHtml>
+
+	<!--商店村传送师 / 奇岩商店村-->
+	<Action Name="teleport giran-giran-trade-zone" NpcId="50034">
+		<Teleport X="32702" Y="32842" Map="350" Heading="5" Price="0" />
+	</Action>
+
+<!--奇岩商店村-->
+	<!--商店村传送师 / 古鲁丁商店村-->
+	<Action Name="teleport girantz-gludintz" NpcId="50033">
+		<Teleport X="32779" Y="32848" Map="340" Heading="5" Price="560" />
+	</Action>
+	<!--商店村传送师 / 欧瑞商店村-->
+	<Action Name="teleport girantz-orentz" NpcId="50033">
+		<Teleport X="32733" Y="32792" Map="360" Heading="5" Price="720" />
+	</Action>
+	<!--商店村传送师 / 银骑士商店村-->
+	<Action Name="teleport girantz-silvertz" NpcId="50033">
+		<Teleport X="32733" Y="32792" Map="370" Heading="5" Price="560" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telegrtz2" NpcId="50033">
+		<Data Value="560" /><!--古鲁丁商店村-->
+		<Data Value="720" /><!--欧瑞商店村-->
+		<Data Value="560" /><!--银骑士商店村-->
+	</ShowHtml>
+
+	<!--商店村警卫 / 奇岩村庄-->
+	<Action Name="teleport giran-trade-zone-giran" NpcId="50032">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="0" />
+	</Action>
+
+<!--奇岩城-->
+	<!--王宫门口守门人 / 奇岩村庄-->
+	<Action Name="teleport giranc-village" NpcId="50035">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 奇岩地监3楼-->
+	<Action Name="teleport giranc-girandun" NpcId="50035">
+		<Teleport X="32731" Y="32728" Map="55" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 龙之谷-->
+	<Action Name="teleport giranc-dragonvalley" NpcId="50035">
+		<Teleport X="33432" Y="32546" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 食人妖精竞技场-->
+	<Action Name="teleport giranc-littlebb" NpcId="50035">
+		<Teleport X="33517" Y="32851" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telecgiran2" NpcId="50035">
+		<Data Value="0" /><!--奇岩村庄-->
+		<Data Value="0" /><!--奇岩地监3楼-->
+		<Data Value="0" /><!--龙之谷-->
+		<Data Value="0" /><!--食人妖精竞技场-->
+	</ShowHtml>
+
+	<!--退休的侍从长-曼孟/ 隐藏的地下宫殿1楼-->
+	<Action Name="teleport grtel" NpcId="81300">
+		<Teleport X="32805" Y="32793" Map="248" Heading="4" Price="10000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="gr_mammon3" NpcId="81300">
+		<Data Value="10000" />
+	</ShowHtml>
+
+<!--亚丁城镇-->
+	<!--西里乌斯 艾勒里斯 / 海音村庄-->
+	<Action Name="teleport aden-heine" NpcId="50044,50046">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 奇岩村庄-->
+	<Action Name="teleport aden-giran" NpcId="50044,50046">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 银骑士村庄-->
+	<Action Name="teleport aden-silver" NpcId="50044,50046">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 肯特村庄-->
+	<Action Name="teleport aden-kent" NpcId="50044,50046">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 风木村庄-->
+	<Action Name="teleport aden-woods" NpcId="50044,50046">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 威顿村庄-->
+	<Action Name="teleport aden-werldern" NpcId="50044,50046">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 古鲁丁村庄-->
+	<Action Name="teleport aden-gludin" NpcId="50044,50046">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 欧瑞村庄-->
+	<Action Name="teleport aden-oren" NpcId="50044,50046">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 奇宁 / 妖魔森林-->
+	<Action Name="teleport aden-willow" NpcId="50044,50046,50608">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 肯特葡萄园-->
+	<Action Name="teleport aden-grape" NpcId="50044,50046">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 奇宁 / 正义神殿-->
+	<Action Name="teleport aden-lowful" NpcId="50044,50046,50608">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 奇宁 / 邪恶神殿-->
+	<Action Name="teleport aden-chaos" NpcId="50044,50046,50608">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 奇宁 / 说话之岛村庄-->
+	<Action Name="teleport aden-island" NpcId="50044,50046,50608">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="900" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 狄亚得要塞-->
+	<Action Name="teleport aden-diad" NpcId="50044,50046">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="7400" />
+	</Action>
+	<!--显示金额 / 西里乌斯-->
+	<ShowHtml Name="teleportURL" HtmlId="sirius2" NpcId="50044">
+		<Data Value="50" /><!--海音村庄-->
+		<Data Value="120" /><!--奇岩村庄-->
+		<Data Value="120" /><!--银骑士村庄-->
+		<Data Value="150" /><!--肯特村庄-->
+		<Data Value="150" /><!--风木村庄-->
+		<Data Value="150" /><!--威顿村庄-->
+		<Data Value="240" /><!--古鲁丁村庄-->
+		<Data Value="240" /><!--欧瑞村庄-->
+		<Data Value="300" /><!--妖魔森林-->
+		<Data Value="300" /><!--肯特葡萄园-->
+		<Data Value="500" /><!--正义神殿-->
+		<Data Value="500" /><!--邪恶神殿-->
+		<Data Value="900" /><!--说话之岛村庄-->
+		<Data Value="7400" /><!--狄亚得要塞-->
+	</ShowHtml>
+	<!--显示金额 / 艾勒里斯-->
+	<ShowHtml Name="teleportURL" HtmlId="elleris2" NpcId="50046">
+		<Data Value="50" /><!--海音村庄-->
+		<Data Value="120" /><!--奇岩村庄-->
+		<Data Value="120" /><!--银骑士村庄-->
+		<Data Value="180" /><!--肯特村庄-->
+		<Data Value="180" /><!--风木村庄-->
+		<Data Value="180" /><!--威顿村庄-->
+		<Data Value="240" /><!--古鲁丁村庄-->
+		<Data Value="240" /><!--欧瑞村庄-->
+		<Data Value="300" /><!--妖魔森林-->
+		<Data Value="300" /><!--肯特葡萄园-->
+		<Data Value="500" /><!--正义神殿-->
+		<Data Value="500" /><!--邪恶神殿-->
+		<Data Value="900" /><!--说话之岛村庄-->
+		<Data Value="7400" /><!--狄亚得要塞-->
+	</ShowHtml>
+	<!--显示金额 / 奇宁-->
+	<ShowHtml Name="teleportURL" HtmlId="kinin2" NpcId="50608">
+		<Data Value="300" /><!--妖魔森林-->
+		<Data Value="500" /><!--正义神殿-->
+		<Data Value="500" /><!--邪恶神殿-->
+		<Data Value="900" /><!--说话之岛村庄-->
+	</ShowHtml>
+
+	<!--西里乌斯 艾勒里斯 / 吉普赛村-->
+	<Action Name="teleport aden-gypsy" NpcId="50044,50046">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="108" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 海音地监-->
+	<Action Name="teleport aden-eva" NpcId="50044,50046">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="237" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 镜子森林-->
+	<Action Name="teleport aden-mirr" NpcId="50044,50046">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="237" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 奇岩地监-->
+	<Action Name="teleport aden-girdun" NpcId="50044,50046">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="356" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 龙之谷吊桥-->
+	<Action Name="teleport aden-dragon" NpcId="50044,50046">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="356" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 沙漠绿洲-->
+	<Action Name="teleport aden-oasis" NpcId="50044,50046">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="475" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 骑士洞穴-->
+	<Action Name="teleport aden-train" NpcId="50044,50046">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="475" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 古鲁丁地监-->
+	<Action Name="teleport aden-gludun" NpcId="50044,50046">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="594" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport aden-under" NpcId="50044,50046">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="594" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 芒草原-->
+	<Action Name="teleport aden-reed" NpcId="50044,50046">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="594" />
+	</Action>
+	<!--西里乌斯 艾勒里斯 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport aden-ice" NpcId="50044,50046">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="237" />
+	</Action>
+	<!--显示金额 / 西里乌斯-->
+	<ShowHtml Name="teleportURLA" HtmlId="sirius3" NpcId="50044">
+		<Data Value="108" /><!--吉普赛村-->
+		<Data Value="237" /><!--海音地监-->
+		<Data Value="237" /><!--镜子森林-->
+		<Data Value="356" /><!--奇岩地监-->
+		<Data Value="356" /><!--龙之谷吊桥-->
+		<Data Value="475" /><!--沙漠绿洲-->
+		<Data Value="475" /><!--骑士洞穴-->
+		<Data Value="594" /><!--古鲁丁地监-->
+		<Data Value="594" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="594" /><!--芒草园-->
+	</ShowHtml>
+	<!--显示金额 / 艾勒里斯-->
+	<ShowHtml Name="teleportURLA" HtmlId="elleris3" NpcId="50046">
+		<Data Value="108" /><!--吉普赛村-->
+		<Data Value="237" /><!--海音地监-->
+		<Data Value="237" /><!--镜子森林-->
+		<Data Value="356" /><!--奇岩地监-->
+		<Data Value="356" /><!--龙之谷吊桥-->
+		<Data Value="475" /><!--沙漠绿洲-->
+		<Data Value="475" /><!--骑士洞穴-->
+		<Data Value="594" /><!--古鲁丁地监-->
+		<Data Value="594" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="594" /><!--芒草园-->
+	</ShowHtml>
+
+<!--亚丁城-->
+	<!--王宫门口守门人 / 亚丁城村庄-->
+	<Action Name="teleport adenc-village" NpcId="50047">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 傲慢之塔1楼-->
+	<Action Name="teleport adenc-omantower" NpcId="50047">
+		<Teleport X="32795" Y="32798" Map="101" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 吉普赛村-->
+	<Action Name="teleport adenc-gypsy" NpcId="50047">
+		<Teleport X="33979" Y="32926" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telecaden2" NpcId="50047">
+		<Data Value="0" /><!--亚丁城村庄-->
+		<Data Value="0" /><!--傲慢之塔1楼-->
+		<Data Value="0" /><!--吉普赛村-->
+	</ShowHtml>
+
+	<!--普若亚 / 亚丁地下墓穴1楼-->
+	<Action Name="teleport adencd" NpcId="81298">
+		<Teleport X="32660" Y="32800" Map="257" Heading="2" Price="10000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="adenflora2" NpcId="81298">
+		<Data Value="10000" />
+	</ShowHtml>
+
+<!--亚丁地下墓穴2楼-->
+	<!--玛雅的影子 / 亚丁城镇-->
+	<Action Name="1" NpcId="81297">
+		<Teleport X="33966" Y="33253" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--玛雅的影子 / 傲慢之塔10楼-->
+	<MakeItem Name="a" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="10" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32800" Y="32800" Map="110" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+		</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔20楼-->
+	<MakeItem Name="b" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="20" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32800" Y="32800" Map="120" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔30楼-->
+	<MakeItem Name="c" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="30" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32800" Y="32800" Map="130" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔40楼-->
+	<MakeItem Name="d" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="40" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32800" Y="32800" Map="140" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔50楼-->
+	<MakeItem Name="e" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="50" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32796" Y="32796" Map="150" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔60楼-->
+	<MakeItem Name="f" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="60" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32720" Y="32821" Map="160" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔70楼-->
+	<MakeItem Name="g" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="70" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32720" Y="32821" Map="170" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔80楼-->
+	<MakeItem Name="h" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="80" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32724" Y="32822" Map="180" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔90楼-->
+	<MakeItem Name="i" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="90" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32722" Y="32827" Map="190" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+	<!--玛雅的影子 / 傲慢之塔100楼-->
+	<MakeItem Name="j" NpcId="81297">
+		<Item Amount="0" ItemId="41158" />
+		<Material Amount="100" ItemId="41158" />
+		<Succeed>
+			<Teleport X="32731" Y="32856" Map="200" Heading="5" Price="0" />
+		</Succeed>
+		<Fail>
+			<ShowHtml HtmlId="adenshadow2" />
+		</Fail>
+	</MakeItem>
+
+<!--欧瑞村庄-->
+	<!--吉利乌斯 / 威顿村庄-->
+	<Action Name="teleport oren-werldern" NpcId="50051">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--吉利乌斯 / 奇岩村庄-->
+	<Action Name="teleport oren-giran" NpcId="50051">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--吉利乌斯 / 海音村庄-->
+	<Action Name="teleport oren-heine" NpcId="50051">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--吉利乌斯 / 肯特村庄-->
+	<Action Name="teleport oren-kent" NpcId="50051">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--吉利乌斯 / 古鲁丁村庄-->
+	<Action Name="teleport oren-gludin" NpcId="50051">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--吉利乌斯 / 银骑士村庄-->
+	<Action Name="teleport oren-silver" NpcId="50051">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--吉利乌斯 / 亚丁城镇-->
+	<Action Name="teleport oren-aden" NpcId="50051">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--吉利乌斯 / 风木村庄-->
+	<Action Name="teleport oren-woods" NpcId="50051">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--吉利乌斯 / 妖魔森林-->
+	<Action Name="teleport oren-willow" NpcId="50051">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--吉利乌斯 / 肯特葡萄园-->
+	<Action Name="teleport oren-grape" NpcId="50051">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--吉利乌斯 / 正义神殿-->
+	<Action Name="teleport oren-lowful" NpcId="50051">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--吉利乌斯 / 邪恶神殿-->
+	<Action Name="teleport oren-chaos" NpcId="50051">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--吉利乌斯 / 说话之岛村庄-->
+	<Action Name="teleport oren-island" NpcId="50051">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="900" />
+	</Action>
+	<!--吉利乌斯 / 狄亚得要塞-->
+	<Action Name="teleport oren-diad" NpcId="50051">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="8000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="kirius2" NpcId="50051">
+		<Data Value="50" /><!--威顿村庄-->
+		<Data Value="120" /><!--奇岩村庄-->
+		<Data Value="180" /><!--海音村庄-->
+		<Data Value="180" /><!--肯特村庄-->
+		<Data Value="240" /><!--古鲁丁村庄-->
+		<Data Value="240" /><!--银骑士村庄-->
+		<Data Value="240" /><!--亚丁城镇-->
+		<Data Value="300" /><!--风木村庄-->
+		<Data Value="300" /><!--妖魔森林-->
+		<Data Value="1000" /><!--肯特葡萄园-->
+		<Data Value="500" /><!--正义神殿-->
+		<Data Value="500" /><!--邪恶神殿-->
+		<Data Value="900" /><!--说话之岛村庄-->
+		<Data Value="8000" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--吉利乌斯 / 吉普赛村-->
+	<Action Name="teleport oren-gypsy" NpcId="50051">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--吉利乌斯 / 奇岩地监-->
+	<Action Name="teleport oren-girdun" NpcId="50051">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--吉利乌斯 / 镜子森林-->
+	<Action Name="teleport oren-mirr" NpcId="50051">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--吉利乌斯 / 龙之谷吊桥-->
+	<Action Name="teleport oren-dragon" NpcId="50051">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--吉利乌斯 / 骑士洞穴-->
+	<Action Name="teleport oren-train" NpcId="50051">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--吉利乌斯 / 海音地监-->
+	<Action Name="teleport oren-eva" NpcId="50051">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--吉利乌斯 / 芒草原-->
+	<Action Name="teleport oren-reed" NpcId="50051">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--吉利乌斯 / 古鲁丁地监-->
+	<Action Name="teleport oren-gludun" NpcId="50051">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--吉利乌斯 / 沙漠绿洲-->
+	<Action Name="teleport oren-oasis" NpcId="50051">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--吉利乌斯 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport oren-under" NpcId="50051">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--吉利乌斯 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport oren-ice" NpcId="50051">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="100" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="kirius3" NpcId="50051">
+		<Data Value="220" /><!--吉普赛村-->
+		<Data Value="330" /><!--奇岩地监-->
+		<Data Value="330" /><!--镜子森林-->
+		<Data Value="330" /><!--龙之谷吊桥-->
+		<Data Value="440" /><!--骑士洞穴-->
+		<Data Value="440" /><!--海音地监-->
+		<Data Value="550" /><!--芒草园-->
+		<Data Value="550" /><!--古鲁丁地监-->
+		<Data Value="550" /><!--沙漠绿洲-->
+		<Data Value="550" /><!--拉斯塔巴德地下洞穴-->
+	</ShowHtml>
+
+	<!--商店村传送师 / 欧瑞商店村-->
+	<Action Name="teleport oren-oren-trade-zone" NpcId="50050">
+		<Teleport X="32733" Y="32792" Map="360" Heading="5" Price="0" />
+	</Action>
+
+	<!--布朗德 / 水晶洞穴1楼-->
+	<Action Name="a" NpcId="70751">
+		<Teleport X="32743" Y="32833" Map="72" Heading="2" Price="0" />
+	</Action>
+
+<!--欧瑞商店村-->
+	<!--商店村传送师 / 古鲁丁商店村-->
+	<Action Name="teleport orentz-gludintz" NpcId="50049">
+		<Teleport X="32779" Y="32848" Map="340" Heading="5" Price="1150" />
+	</Action>
+	<!--商店村传送师 / 奇岩商店村-->
+	<Action Name="teleport orentz-girantz" NpcId="50049">
+		<Teleport X="32702" Y="32842" Map="350" Heading="5" Price="980" />
+	</Action>
+	<!--商店村传送师 / 银骑士商店村-->
+	<Action Name="teleport orentz-silvertz" NpcId="50049">
+		<Teleport X="32733" Y="32792" Map="370" Heading="5" Price="590" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="teleortz2" NpcId="50049">
+		<Data Value="1150" /><!--古鲁丁商店村-->
+		<Data Value="980" /><!--奇岩商店村-->
+		<Data Value="590" /><!--银骑士商店村-->
+	</ShowHtml>
+
+	<!--商店村警卫 / 欧瑞村庄-->
+	<Action Name="teleport oren-trade-zone-oren" NpcId="50048">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="0" />
+	</Action>
+
+<!--国境要塞-->
+	<!--扭曲的空间 / 暗影神殿-->
+	<Action Name="1" NpcId="80048" LevelMin="45">
+		<Teleport X="32676" Y="32960" Map="521" Heading="5" Price="0" />
+	</Action>
+	<!--扭曲的空间 / 不死魔族抛弃之地-->
+	<Action Name="3" NpcId="80048" LevelMin="45" LevelMax="51">
+		<Teleport X="32538" Y="32958" Map="777" Heading="2" Price="0" />
+	</Action>
+
+<!--威顿村庄-->
+	<!--莱思利 / 奇岩村庄-->
+	<Action Name="teleport dwarf-giran" NpcId="50039">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="51" />
+	</Action>
+	<!--莱思利 / 欧瑞村庄-->
+	<Action Name="teleport dwarf-oren" NpcId="50039">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="51" />
+	</Action>
+	<!--莱思利 / 肯特村庄-->
+	<Action Name="teleport dwarf-kent" NpcId="50039">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="123" />
+	</Action>
+	<!--莱思利 / 海音村庄-->
+	<Action Name="teleport dwarf-heine" NpcId="50039">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="123" />
+	</Action>
+	<!--莱思利 / 古鲁丁村庄-->
+	<Action Name="teleport dwarf-gludin" NpcId="50039">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="185" />
+	</Action>
+	<!--莱思利 / 银骑士村庄-->
+	<Action Name="teleport dwarf-silver" NpcId="50039">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="185" />
+	</Action>
+	<!--莱思利 / 亚丁城镇-->
+	<Action Name="teleport dwarf-aden" NpcId="50039">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="185" />
+	</Action>
+	<!--莱思利 / 风木村庄-->
+	<Action Name="teleport dwarf-woods" NpcId="50039">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="247" />
+	</Action>
+	<!--莱思利 / 妖魔森林-->
+	<Action Name="teleport dwarf-willow" NpcId="50039">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="247" />
+	</Action>
+	<!--莱思利 / 肯特葡萄园-->
+	<Action Name="teleport dwarf-grape" NpcId="50039">
+		<Teleport X="32871" Y="32805" Map="4" Heading="5" Price="306" />
+	</Action>
+	<!--莱思利 / 正义神殿-->
+	<Action Name="teleport dwarf-lowful" NpcId="50039">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="412" />
+	</Action>
+	<!--莱思利 / 邪恶神殿-->
+	<Action Name="teleport dwarf-chaos" NpcId="50039">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="412" />
+	</Action>
+	<!--莱思利 / 说话之岛村庄-->
+	<Action Name="teleport dwarf-island" NpcId="50039">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="824" />
+	</Action>
+	<!--莱思利 / 狄亚得要塞-->
+	<Action Name="teleport dwarf-diad" NpcId="50039">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="7931" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="televala2" NpcId="50039">
+		<Data Value="51" /><!--奇岩村庄-->
+		<Data Value="51" /><!--欧瑞村庄-->
+		<Data Value="123" /><!--肯特村庄-->
+		<Data Value="123" /><!--海音村庄-->
+		<Data Value="185" /><!--古鲁丁村庄-->
+		<Data Value="185" /><!--银骑士村庄-->
+		<Data Value="185" /><!--亚丁城镇-->
+		<Data Value="247" /><!--风木村庄-->
+		<Data Value="247" /><!--妖魔森林-->
+		<Data Value="306" /><!--肯特葡萄园-->
+		<Data Value="412" /><!--正义神殿-->
+		<Data Value="412" /><!--邪恶神殿-->
+		<Data Value="824" /><!--说话之岛村庄-->
+		<Data Value="7931" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--莱思利 / 龙之谷地监-->
+	<Action Name="teleport dwarf-dragon" NpcId="50039">
+		<Teleport X="33435" Y="32544" Map="4" Heading="5" Price="103" />
+	</Action>
+	<!--莱思利 / 奇岩地监-->
+	<Action Name="teleport dwarf-girdun" NpcId="50039">
+		<Teleport X="33320" Y="33060" Map="4" Heading="5" Price="226" />
+	</Action>
+	<!--莱思利 / 镜子森林-->
+	<Action Name="teleport dwarf-mirr" NpcId="50039">
+		<Teleport X="33718" Y="32928" Map="4" Heading="5" Price="226" />
+	</Action>
+	<!--莱思利 / 吉普赛村-->
+	<Action Name="teleport dwarf-gypsy" NpcId="50039">
+		<Teleport X="33977" Y="32941" Map="4" Heading="5" Price="339" />
+	</Action>
+	<!--莱思利 / 骑士洞穴-->
+	<Action Name="teleport dwarf-train" NpcId="50039">
+		<Teleport X="32983" Y="33505" Map="4" Heading="5" Price="339" />
+	</Action>
+	<!--莱思利 / 古鲁丁地监-->
+	<Action Name="teleport dwarf-gludun" NpcId="50039">
+		<Teleport X="32700" Y="32924" Map="4" Heading="5" Price="339" />
+	</Action>
+	<!--莱思利 / 沙漠绿洲-->
+	<Action Name="teleport dwarf-oasis" NpcId="50039">
+		<Teleport X="32861" Y="33253" Map="4" Heading="5" Price="339" />
+	</Action>
+	<!--莱思利 / 海音地监-->
+	<Action Name="teleport dwarf-eva" NpcId="50039">
+		<Teleport X="33623" Y="33501" Map="4" Heading="5" Price="339" />
+	</Action>
+	<!--莱思利 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport dwarf-under" NpcId="50039">
+		<Teleport X="32557" Y="33466" Map="4" Heading="5" Price="453" />
+	</Action>
+	<!--莱思利 / 芒草原-->
+	<Action Name="teleport dwarf-reed" NpcId="50039">
+		<Teleport X="32746" Y="32361" Map="4" Heading="5" Price="453" />
+	</Action>
+	<!--莱思利 / 水晶洞穴--><!--官方对话档已删除-->
+	<Action Name="teleport dwarf-ice" NpcId="50039">
+		<Teleport X="34207" Y="32251" Map="4" Heading="5" Price="339" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="televala3" NpcId="50039">
+		<Data Value="103" /><!--龙之谷吊桥-->
+		<Data Value="226" /><!--奇岩地监-->
+		<Data Value="226" /><!--镜子森林-->
+		<Data Value="339" /><!--吉普赛村-->
+		<Data Value="339" /><!--骑士洞穴-->
+		<Data Value="339" /><!--古鲁丁地监-->
+		<Data Value="339" /><!--沙漠绿洲-->
+		<Data Value="339" /><!--海音地监-->
+		<Data Value="453" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="453" /><!--芒草园-->
+	</ShowHtml>
+
+<!--侏儒城-->
+	<!--王宫门口守门人 / 威顿村庄-->
+	<Action Name="teleport dwarfc-village" NpcId="50040">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 象牙塔5楼-->
+	<Action Name="teleport dwarfc-ivorytower" NpcId="50040">
+		<Teleport X="32773" Y="32806" Map="79" Heading="5" Price="0" />
+	</Action>
+	<!--王宫门口守门人 / 欧瑞狩猎区-->
+	<Action Name="teleport dwarfc-crystal" NpcId="50040">
+		<Teleport X="34174" Y="32184" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telecdwarf2" NpcId="50040">
+		<Data Value="0" /><!--威顿村庄-->
+		<Data Value="0" /><!--象牙塔5楼-->
+		<Data Value="0" /><!--欧瑞狩猎区-->
+	</ShowHtml>
+
+	<!--普哇鲁 / 废弃的矿坑-->
+	<Action Name="teleport umine" NpcId="71078">
+		<Teleport X="32680" Y="32795" Map="255" Heading="5" Price="10000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="usender2" NpcId="71078">
+		<Data Value="10000" />
+	</ShowHtml>
+
+<!--狄亚得要塞-->
+	<!--丹尼尔 / 风木村庄-->
+	<Action Name="teleport diad-woods" NpcId="50079">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--丹尼尔 / 古鲁丁村庄-->
+	<Action Name="teleport diad-gludin" NpcId="50079">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--丹尼尔 / 银骑士村庄-->
+	<Action Name="teleport diad-silver" NpcId="50079">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--丹尼尔 / 肯特村庄-->
+	<Action Name="teleport diad-kent" NpcId="50079">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="600" />
+	</Action>
+	<!--丹尼尔 / 妖魔森林-->
+	<Action Name="teleport diad-willow" NpcId="50079">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="600" />
+	</Action>
+	<!--丹尼尔 / 海音村庄-->
+	<Action Name="teleport diad-heine" NpcId="50079">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="600" />
+	</Action>
+	<!--丹尼尔 / 奇岩村庄-->
+	<Action Name="teleport diad-giran" NpcId="50079">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="650" />
+	</Action>
+	<!--丹尼尔 / 威顿村庄-->
+	<Action Name="teleport diad-werldern" NpcId="50079">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="700" />
+	</Action>
+	<!--丹尼尔 / 欧瑞村庄-->
+	<Action Name="teleport diad-oren" NpcId="50079">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="750" />
+	</Action>
+	<!--丹尼尔 / 亚丁城镇-->
+	<Action Name="teleport diad-aden" NpcId="50079">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="750" />
+	</Action>
+	<!--丹尼尔 / 正义神殿-->
+	<Action Name="teleport diad-lowful" NpcId="50079">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--丹尼尔 / 邪恶神殿-->
+	<Action Name="teleport diad-chaos" NpcId="50079">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--丹尼尔 / 说话之岛村庄-->
+	<Action Name="teleport diad-island" NpcId="50079">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="700" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telediad2" NpcId="50079">
+		<Data Value="550" /><!--风木村庄-->
+		<Data Value="550" /><!--古鲁丁村庄-->
+		<Data Value="550" /><!--银骑士村庄-->
+		<Data Value="600" /><!--肯特村庄-->
+		<Data Value="600" /><!--妖魔森林-->
+		<Data Value="600" /><!--海音村庄-->
+		<Data Value="650" /><!--奇岩村庄-->
+		<Data Value="700" /><!--威顿村庄-->
+		<Data Value="750" /><!--欧瑞村庄-->
+		<Data Value="750" /><!--亚丁城镇-->
+		<Data Value="500" /><!--正义神殿-->
+		<Data Value="500" /><!--邪恶神殿-->
+		<Data Value="700" /><!--说话之岛村庄-->
+	</ShowHtml>
+
+	<!--丹尼尔 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport diad-occ" NpcId="50079">
+		<Teleport X="32729" Y="32855" Map="320" Heading="5" Price="700" />
+	</Action>
+	<!--丹尼尔 / 欧姆地监-->
+	<Action Name="teleport diad-oumdun" NpcId="50079">
+		<Teleport X="32805" Y="32797" Map="320" Heading="5" Price="800" />
+	</Action>
+	<!--丹尼尔 / 矿物地监-->
+	<Action Name="teleport diad-mincave" NpcId="50079">
+		<Teleport X="33004" Y="32845" Map="320" Heading="5" Price="800" />
+	</Action>
+	<!--丹尼尔 / 地下大洞穴-->
+	<Action Name="teleport diad-cavern" NpcId="50079">
+		<Teleport X="32571" Y="32676" Map="400" Heading="5" Price="1000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="telediad3" NpcId="50079">
+		<Data Value="700" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="800" /><!--欧姆地监-->
+		<Data Value="800" /><!--矿物地监-->
+		<Data Value="1000" /><!--地下大洞穴-->
+	</ShowHtml>
+
+	<!--迪雅贝斯 / 古鲁丁村庄-->
+	<Action Name="teleport diad-gludin" NpcId="50073">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="2200" />
+	</Action>
+	<!--迪雅贝斯 / 肯特村庄-->
+	<Action Name="teleport diad-kent" NpcId="50073">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="1800" />
+	</Action>
+	<!--迪雅贝斯 / 海音村庄-->
+	<Action Name="teleport diad-heine" NpcId="50073">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="2200" />
+	</Action>
+	<!--迪雅贝斯 / 奇岩村庄-->
+	<Action Name="teleport diad-giran" NpcId="50073">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="1000" />
+	</Action>
+	<!--迪雅贝斯 / 欧瑞村庄-->
+	<Action Name="teleport diad-oren" NpcId="50073">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="1200" />
+	</Action>
+	<!--迪雅贝斯 / 亚丁城镇-->
+	<Action Name="teleport diad-aden" NpcId="50073">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="1600" />
+	</Action>
+	<!--迪雅贝斯 / 正义神殿-->
+	<Action Name="teleport diad-lowful" NpcId="50073">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="2000" />
+	</Action>
+	<!--迪雅贝斯 / 邪恶神殿-->
+	<Action Name="teleport diad-chaos" NpcId="50073">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="2000" />
+	</Action>
+	<!--迪雅贝斯 / 沉默洞穴-->
+	<Action Name="teleport diad-scave" NpcId="50073">
+		<Teleport X="32922" Y="32802" Map="304" Heading="5" Price="1300" />
+	</Action>
+	<!--迪雅贝斯 / 欧姆地监-->
+	<Action Name="teleport diad-oum" NpcId="50073">
+		<Teleport X="32864" Y="32939" Map="310" Heading="5" Price="0" />
+	</Action>
+	<ShowHtml Name="teleportURL" HtmlId="telediad2" NpcId="50073">
+		<Data Value="0" />
+		<Data Value="2200" /><!--古鲁丁村庄-->
+		<Data Value="0" />
+		<Data Value="1800" /><!--肯特村庄-->
+		<Data Value="0" />
+		<Data Value="2200" /><!--海音村庄-->
+		<Data Value="1000" /><!--奇岩村庄-->
+		<Data Value="0" />
+		<Data Value="1200" /><!--欧瑞村庄-->
+		<Data Value="1600" /><!--亚丁城镇-->
+		<Data Value="2000" /><!--正义神殿-->
+		<Data Value="2000" /><!--邪恶神殿-->
+		<Data Value="0" />
+	</ShowHtml>
+
+	<!--大洞穴空间移动师 / 大洞穴抵抗军村庄-->
+	<Action Name="teleport diad-cavern" NpcId="50074">
+		<Teleport X="32570" Y="32665" Map="400" Heading="5" Price="0" />
+	</Action>
+
+	<!--要塞门口守门人 / 欧姆村庄-->
+	<Action Name="teleport diadc-village" NpcId="50075">
+		<Teleport X="32800" Y="32801" Map="310" Heading="5" Price="0" />
+	</Action>
+	<!--要塞门口守门人 / 欧姆地监-->
+	<Action Name="teleport diadc-oumdun" NpcId="50075">
+		<Teleport X="32864" Y="32939" Map="310" Heading="5" Price="0" />
+	</Action>
+	<!--要塞门口守门人 / 傲慢之塔1楼-->
+	<Action Name="teleport diadc-omantower" NpcId="50075">
+		<Teleport X="32795" Y="32798" Map="101" Heading="5" Price="0" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telecdiad2" NpcId="50075">
+		<Data Value="0" /><!--欧姆村庄-->
+		<Data Value="0" /><!--欧姆地监-->
+		<Data Value="0" /><!--傲慢之塔1楼-->
+	</ShowHtml>
+
+<!--贝希摩斯村庄-->
+	<!--蒂卡菲儿 / 威顿村庄-->
+	<Action Name="teleport behemoth-werldern" NpcId="80132">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--蒂卡菲儿 / 奇岩村庄-->
+	<Action Name="teleport behemoth-giran" NpcId="80132">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--蒂卡菲儿 / 欧瑞村庄-->
+	<Action Name="teleport behemoth-oren" NpcId="80132">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--蒂卡菲儿 / 希培利亚村庄-->
+	<Action Name="teleport behemoth-silveria" NpcId="80132">
+		<Teleport X="32841" Y="32856" Map="1000" Heading="5" Price="50" />
+	</Action>
+	<!--蒂卡菲儿 / 肯特村庄-->
+	<Action Name="teleport behemoth-kent" NpcId="80132">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--蒂卡菲儿 / 海音村庄-->
+	<Action Name="teleport behemoth-heine" NpcId="80132">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--蒂卡菲儿 / 古鲁丁村庄-->
+	<Action Name="teleport behemoth-gludin" NpcId="80132">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--蒂卡菲儿 / 银骑士村庄-->
+	<Action Name="teleport behemoth-silver" NpcId="80132">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--蒂卡菲儿 / 亚丁城镇-->
+	<Action Name="teleport behemoth-aden" NpcId="80132">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--蒂卡菲儿 / 风木村庄-->
+	<Action Name="teleport behemoth-woods" NpcId="80132">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--蒂卡菲儿 / 妖精森林-->
+	<Action Name="teleport behemoth-willow" NpcId="80132">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--蒂卡菲儿 / 正义神殿-->
+	<Action Name="teleport behemoth-lowful" NpcId="80132">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="400" />
+	</Action>
+	<!--蒂卡菲儿 / 邪恶神殿-->
+	<Action Name="teleport behemoth-chaos" NpcId="80132">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="400" />
+	</Action>
+	<!--蒂卡菲儿 / 说话之岛-->
+	<Action Name="teleport behemoth-island" NpcId="80132">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="800" />
+	</Action>
+	<!--蒂卡菲儿 / 狄亚得要塞-->
+	<Action Name="teleport behemoth-diad" NpcId="80132">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="7700" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="dekabia2" NpcId="80132">
+		<Data Value="50" /><!--威顿村庄-->
+		<Data Value="50" /><!--奇岩村庄-->
+		<Data Value="50" /><!--欧瑞村庄-->
+		<Data Value="50" /><!--希培利亚村庄-->
+		<Data Value="120" /><!--肯特村庄-->
+		<Data Value="120" /><!--海音村庄-->
+		<Data Value="180" /><!--古鲁丁村庄-->
+		<Data Value="180" /><!--银骑士村庄-->
+		<Data Value="180" /><!--亚丁城镇-->
+		<Data Value="240" /><!--风木村庄-->
+		<Data Value="240" /><!--妖精森林-->
+		<Data Value="400" /><!--正义神殿-->
+		<Data Value="400" /><!--邪恶神殿-->
+		<Data Value="800" /><!--说话之岛-->
+		<Data Value="7700" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--蒂卡菲儿 / 龙之谷吊桥-->
+	<Action Name="teleport behemoth-dragon" NpcId="80132"> 
+		<Teleport X="33434" Y="32546" Map="4" Heading="5" Price="100" />
+	</Action>
+	<!--蒂卡菲儿 / 镜子森林-->
+	<Action Name="teleport behemoth-mirr" NpcId="80132">
+		<Teleport X="33717" Y="32921" Map="4" Heading="5" Price="220" /> 
+	</Action>
+	<!--蒂卡菲儿 / 吉普赛村庄-->
+	<Action Name="teleport behemoth-gypsy" NpcId="80132">
+		<Teleport X="33969" Y="32941" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--蒂卡菲儿 / 骑士洞穴-->
+	<Action Name="teleport behemoth-train" NpcId="80132">
+		<Teleport X="32969" Y="33514" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--蒂卡菲儿 / 古鲁丁地监-->
+	<Action Name="teleport behemoth-gludun" NpcId="80132">
+		<Teleport X="32719" Y="32930" Map="4" Heading="5" Price="330" />
+	</Action> 
+	<!--蒂卡菲儿 / 沙漠绿洲-->
+	<Action Name="teleport behemoth-oasis" NpcId="80132">
+		<Teleport X="32861" Y="33255" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--蒂卡菲儿 / 海音地监-->
+	<Action Name="teleport behemoth-eva" NpcId="80132">
+		<Teleport X="33627" Y="33509" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--蒂卡菲儿 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport behemoth-under" NpcId="80132">
+		<Teleport X="32561" Y="33460" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--蒂卡菲儿 / 芒草园-->
+	<Action Name="teleport behemoth-reed" NpcId="80132">
+		<Teleport X="32740" Y="32377" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="dekabia3" NpcId="80132">
+		<Data Value="100" /><!--龙之谷吊桥-->
+		<Data Value="220" /><!--镜子森林-->
+		<Data Value="220" /><!--吉普赛村-->
+		<Data Value="330" /><!--骑士洞穴-->
+		<Data Value="330" /><!--古鲁丁地监-->
+		<Data Value="330" /><!--沙漠绿洲-->
+		<Data Value="330" /><!--海音地监-->
+		<Data Value="440" /><!--拉斯塔巴德地下洞穴-->
+		<Data Value="440" /><!--芒草园-->
+	</ShowHtml>
+
+<!--希培利亚村庄-->
+	<!--赛莉恩 / 欧瑞-->
+	<Action Name="teleport silveria-oren" NpcId="80146">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--赛莉恩 / 巴拉卡斯栖息地-->
+	<Action Name="teleport silveria-werldern" NpcId="80146">
+		<Teleport X="33709" Y="32500" Map="4" Heading="5" Price="50" />
+	</Action>
+	<!--赛莉恩 / 贝希摩斯-->
+	<Action Name="teleport silveria-behemoth" NpcId="80146">
+		<Teleport X="32779" Y="32887" Map="1001" Heading="5" Price="50" />
+	</Action>
+	<!--赛莉恩 / 奇岩-->
+	<Action Name="teleport silveria-giran" NpcId="80146">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="120" />
+	</Action>
+	<!--赛莉恩 / 海音-->
+	<Action Name="teleport silveria-heine" NpcId="80146">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--赛莉恩 / 肯特-->
+	<Action Name="teleport silveria-kent" NpcId="80146">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="180" />
+	</Action>
+	<!--赛莉恩 / 古鲁丁-->
+	<Action Name="teleport silveria-gludin" NpcId="80146">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--赛莉恩 / 银骑士村庄-->
+	<Action Name="teleport silveria-silver" NpcId="80146">
+		<Teleport X="33080" Y="33386" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--赛莉恩 / 亚丁-->
+	<Action Name="teleport silveria-aden" NpcId="80146">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="240" />
+	</Action>
+	<!--赛莉恩 / 风木-->
+	<Action Name="teleport silveria-woods" NpcId="80146">
+		<Teleport X="32640" Y="33203" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--赛莉恩 / 妖魔森林-->
+	<Action Name="teleport silveria-willow" NpcId="80146">
+		<Teleport X="32715" Y="32448" Map="4" Heading="5" Price="300" />
+	</Action>
+	<!--赛莉恩 / 正义神殿-->
+	<Action Name="teleport silveria-lowful" NpcId="80146">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--赛莉恩 / 邪恶神殿-->
+	<Action Name="teleport silveria-chaos" NpcId="80146">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="500" />
+	</Action>
+	<!--赛莉恩 / 说话之岛-->
+	<Action Name="teleport silveria-island" NpcId="80146">
+		<Teleport X="32583" Y="32924" Map="0" Heading="5" Price="900" />
+	</Action>
+	<!--赛莉恩 / 狄亚得要塞-->
+	<Action Name="teleport silveria-diad" NpcId="80146">
+		<Teleport X="32828" Y="32900" Map="320" Heading="5" Price="8000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="sharial2" NpcId="80146">
+		<Data Value="50" /><!--欧瑞-->
+		<Data Value="50" /><!--巴拉卡斯栖息地-->
+		<Data Value="50" /><!--贝希摩斯-->
+		<Data Value="120" /><!--奇岩-->
+		<Data Value="180" /><!--海音-->
+		<Data Value="180" /><!--肯特-->
+		<Data Value="240" /><!--古鲁丁-->
+		<Data Value="240" /><!--银骑士村庄-->
+		<Data Value="240" /><!--亚丁-->
+		<Data Value="300" /><!--风木-->
+		<Data Value="300" /><!--妖魔森林-->
+		<Data Value="500" /><!--正义神殿-->
+		<Data Value="500" /><!--邪恶神殿-->
+		<Data Value="900" /><!--说话之岛-->
+		<Data Value="8000" /><!--狄亚得要塞-->
+	</ShowHtml>
+
+	<!--赛莉恩 / 吉普赛村庄-->
+	<Action Name="teleport silveria-gypsy" NpcId="80146">
+		<Teleport X="33969" Y="32941" Map="4" Heading="5" Price="220" />
+	</Action>
+	<!--赛莉恩 / 镜子森林-->
+	<Action Name="teleport silveria-mirr" NpcId="80146">
+		<Teleport X="33717" Y="32921" Map="4" Heading="5" Price="330" />
+	</Action>
+	<!--赛莉恩 / 龙之谷吊桥-->
+	<Action Name="teleport silveria-dragon" NpcId="80146">
+		<Teleport X="33434" Y="32546" Map="4" Heading="5" Price="330" /> 
+	</Action>
+	<!--赛莉恩 / 骑士洞穴-->
+	<Action Name="teleport silveria-train" NpcId="80146">
+		<Teleport X="32969" Y="33514" Map="4" Heading="5" Price="440" /> 
+	</Action>
+	<!--赛莉恩 / 海音地监-->
+	<Action Name="teleport silveria-eva" NpcId="80146">
+		<Teleport X="33627" Y="33509" Map="4" Heading="5" Price="440" />
+	</Action>
+	<!--赛莉恩 / 芒草园-->
+	<Action Name="teleport silveria-reed" NpcId="80146"> 
+		<Teleport X="32740" Y="32377" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--赛莉恩 / 古鲁丁地监-->
+	<Action Name="teleport silveria-gludun" NpcId="80146">
+		<Teleport X="32719" Y="32930" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--赛莉恩 / 沙漠绿洲-->
+	<Action Name="teleport silveria-oasis" NpcId="80146">  
+		<Teleport X="32861" Y="33255" Map="4" Heading="5" Price="550" /> 
+	</Action>
+	<!--赛莉恩 / 拉斯塔巴德地下洞穴-->
+	<Action Name="teleport silveria-under" NpcId="80146"> 
+		<Teleport X="32561" Y="33460" Map="4" Heading="5" Price="550" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLA" HtmlId="sharial3" NpcId="80146">
+		<Data Value="220" /><!--吉普赛村-->
+		<Data Value="330" /><!--镜子森林-->
+		<Data Value="330" /><!--龙之谷吊桥-->
+		<Data Value="440" /><!--骑士洞穴-->
+		<Data Value="440" /><!--海音地监-->
+		<Data Value="550" /><!--芒草园-->
+		<Data Value="550" /><!--古鲁丁地监-->
+		<Data Value="550" /><!--沙漠绿洲-->
+		<Data Value="550" /><!--拉斯塔巴德地下洞穴-->
+	</ShowHtml>
+
+<!--妖精森林-->
+	<!--精灵公主 / 黑暗妖精地监-->
+	<Action Name="teleport darkmar-dungen" NpcId="70853">
+		<Teleport X="32727" Y="32799" Map="213" Heading="5" Price="0" />
+	</Action>
+	<!--精灵公主 / 黑暗妖精地监-->
+	<Action Name="teleport dark-elf-dungen" NpcId="70853">
+		<Teleport X="32727" Y="32799" Map="209" Heading="5" Price="0" />
+	</Action>
+
+<!--沉默洞穴-->
+	<!--迪亚诺斯 / 古鲁丁村庄-->
+	<Action Name="teleport scave-gludin" NpcId="50068">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="1500" />
+	</Action>
+	<!--迪亚诺斯 / 肯特村庄-->
+	<Action Name="teleport scave-kent" NpcId="50068">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="800" />
+	</Action>
+	<!--迪亚诺斯 / 奇岩村庄-->
+	<Action Name="teleport scave-giran" NpcId="50068">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="600" />
+	</Action>
+	<!--迪亚诺斯 / 亚丁城镇-->
+	<Action Name="teleport scave-aden" NpcId="50068">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="1800" />
+	</Action>
+	<!--迪亚诺斯 / 海音村庄-->
+	<Action Name="teleport scave-heine" NpcId="50068">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="1800" />
+	</Action>
+	<!--迪亚诺斯 / 欧瑞村庄-->
+	<Action Name="teleport scave-oren" NpcId="50068">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="1000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="telescave2" NpcId="50068">
+		<Data Value="1500" /><!--古鲁丁村庄-->
+		<Data Value="800" /><!--肯特村庄-->
+		<Data Value="600" /><!--奇岩村庄-->
+		<Data Value="1800" /><!--亚丁城镇-->
+		<Data Value="1800" /><!--海音村庄-->
+		<Data Value="1000" /><!--欧瑞村庄-->
+	</ShowHtml>
+
+<!--欧姆地监-->
+	<!--迪亚路哲 / 古鲁丁村庄-->
+	<Action Name="teleport oum-gludin" NpcId="50072">
+		<Teleport X="32608" Y="32734" Map="4" Heading="5" Price="2200" />
+	</Action>
+	<!--迪亚路哲 / 肯特村庄-->
+	<Action Name="teleport oum-kent" NpcId="50072">
+		<Teleport X="33050" Y="32782" Map="4" Heading="5" Price="1800" />
+	</Action>
+	<!--迪亚路哲 / 奇岩村庄-->
+	<Action Name="teleport oum-giran" NpcId="50072">
+		<Teleport X="33438" Y="32796" Map="4" Heading="5" Price="1000" />
+	</Action>
+	<!--迪亚路哲 / 亚丁城镇-->
+	<Action Name="teleport oum-aden" NpcId="50072">
+		<Teleport X="33965" Y="33253" Map="4" Heading="5" Price="1600" />
+	</Action>
+	<!--迪亚路哲 / 海音村庄-->
+	<Action Name="teleport oum-heine" NpcId="50072">
+		<Teleport X="33612" Y="33257" Map="4" Heading="5" Price="2200" />
+	</Action>
+	<!--迪亚路哲 / 欧瑞村庄-->
+	<Action Name="teleport oum-oren" NpcId="50072">
+		<Teleport X="34062" Y="32278" Map="4" Heading="5" Price="1200" />
+	</Action>
+	<!--迪亚路哲 / 沉默洞穴-->
+	<Action Name="teleport oum-scave" NpcId="50072">
+		<Teleport X="32922" Y="32802" Map="304" Heading="5" Price="1300" />
+	</Action>
+	<!--迪亚路哲 / 正义神殿-->
+	<Action Name="teleport oum-lowful" NpcId="50072">
+		<Teleport X="33118" Y="32933" Map="4" Heading="5" Price="2000" />
+	</Action>
+	<!--迪亚路哲 / 邪恶神殿-->
+	<Action Name="teleport oum-chaos" NpcId="50072">
+		<Teleport X="32885" Y="32652" Map="4" Heading="5" Price="2000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="teleoum2" NpcId="50072">
+		<Data Value="2200" /><!--古鲁丁村庄-->
+		<Data Value="1800" /><!--肯特村庄-->
+		<Data Value="1000" /><!--奇岩村庄-->
+		<Data Value="1600" /><!--亚丁城镇-->
+		<Data Value="2200" /><!--海音村庄-->
+		<Data Value="1200" /><!--欧瑞村庄-->
+		<Data Value="1300" /><!--沉默洞穴-->
+		<Data Value="2000" /><!--正义神殿-->
+		<Data Value="2000" /><!--邪恶神殿-->
+	</ShowHtml>
+
+<!--龙之谷地监3楼-->
+	<!--赛菲亚 / 赛菲亚地监-->
+	<Action Name="teleport sepia-dungen" NpcId="50031">
+		<Teleport X="32740" Y="32860" Map="302" Heading="5" Price="0" />
+	</Action>
+
+<!--吉普赛村-->
+	<!--艾德连 / 梦幻之岛-->
+	<Action Name="teleport phantasm-island" NpcId="50045">
+		<Teleport X="32635" Y="32817" Map="303" Heading="5" Price="1000" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURL" HtmlId="phantasmisle" NpcId="50045">
+		<Data Value="1000" />
+	</ShowHtml>
+
+<!--遗忘之岛-->
+	<!--洛奇 / 海音港口-->
+	<Action Name="teleport escape-forgotten-island" NpcId="50070">
+		<Teleport X="33427" Y="33481" Map="4" Heading="5" Price="7" />
+	</Action>
+
+	<!--阿西里斯 / 海音港口-->
+	<Action Name="teleport escape-forgotten-island" NpcId="50071">
+		<Teleport X="33427" Y="33481" Map="4" Heading="5" Price="1" />
+	</Action>
+
+<!--海贼岛后半部-->
+	<!--探查员助手 / 船舶之墓-->
+	<Action Name="B" NpcId="50081">
+		<Teleport X="32844" Y="32694" Map="550" Heading="5" Price="0" />
+	</Action>
+
+<!--海贼岛地监4楼-->
+	<!--精灵墓穴看守者 / 精灵墓穴-->
+	<Action Name="teleport piratedungeon-elementaltomb" NpcId="50078">
+		<MakeItem AmountInputable="False">
+			<Material Amount="1" ItemId="40417" />
+			<Item Amount="1" ItemId="40417" />
+			<Succeed>
+				<Teleport X="32924" Y="32801" Map="430" Heading="5" Price="0" />
+			</Succeed>
+			<Fail>
+			</Fail>
+		</MakeItem>
+	</Action>
+
+<!--精灵墓穴-->
+	<!--精灵墓穴看守者 / 地底湖-->
+	<Action Name="teleport elegrave-abysslake" NpcId="50076">
+		<MakeItem AmountInputable="False">
+			<Material Amount="1" ItemId="40417" />
+			<Item Amount="1" ItemId="40417" />
+			<Succeed>
+				<Teleport X="32800" Y="33051" Map="420" Heading="5" Price="0" />
+			</Succeed>
+			<Fail>
+			</Fail>
+		</MakeItem>
+	</Action>
+	<!--精灵墓穴看守者 / 海贼岛-->
+	<Action Name="teleport elegrave-drakeIsland" NpcId="50076">
+		<MakeItem AmountInputable="False">
+			<Material Amount="1" ItemId="40417" />
+			<Item Amount="1" ItemId="40417" />
+			<Succeed>
+				<Teleport X="32669" Y="32982" Map="440" Heading="5" Price="0" />
+			</Succeed>
+			<Fail>
+			</Fail>
+		</MakeItem>
+	</Action>
+
+<!--地底湖-->
+	<!--精灵墓穴看守者 / 精灵墓穴-->
+	<Action Name="teleport abysslake-elegrave" NpcId="50077">
+		<MakeItem AmountInputable="False">
+			<Material Amount="1" ItemId="40417" />
+			<Item Amount="1" ItemId="40417" />
+			<Succeed>
+				<Teleport X="32924" Y="32801" Map="430" Heading="5" Price="0" />
+			</Succeed>
+			<Fail>
+			</Fail>
+		</MakeItem>
+	</Action>
+
+<!--欲望洞穴-->
+	<!--炎魔的侍从 / 魔族神殿-->
+	<Action Name="4" NpcId="80065">
+		<Teleport X="32747" Y="32813" Map="410" Heading="5" Price="0" />
+	</Action>
+
+<!--福朗克的迷宫-->
+	<!--福朗克 / 卡蜜拉的房间-->
+	<Action Name="b" NpcId="71089">
+		<Teleport X="32735" Y="32845" Map="481" Heading="5" Price="0" />
+	</Action>
+
+<!--暗影神殿1楼-->
+	<!--火焰之影的侍从 / 魔族神殿-->
+	<Action Name="4" NpcId="80047">
+		<Teleport X="32929" Y="32995" Map="410" Heading="5" Price="0" />
+	</Action>
+	<!--火焰之影的侍从 / 暗影神殿 2楼-->
+	<Action Name="2" NpcId="80047">
+		<Teleport X="32700" Y="32896" Map="523" Heading="5" Price="0" />
+	</Action>
+	<!--火焰之影的侍从 / 暗影神殿 3楼-->
+	<Action Name="3" NpcId="80047">
+		<Teleport X="32691" Y="32894" Map="524" Heading="5" Price="0" />
+	</Action>
+
+<!--狩猎场 -->
+<!--11～25等级狩猎场 更弱的地区-->
+	<!--肯特葡萄园附近-->
+	<Action Name="teleport guide1_1_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32787" Y="32854" Map="4" Heading="5" Price="390" />
+	</Action>
+	<!--银骑士森林-->
+	<Action Name="teleport guide1_1_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33154" Y="33279" Map="4" Heading="5" Price="390" />
+	</Action>
+	<!--古鲁丁祭坛西边森林-->
+	<Action Name="teleport guide1_1_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32640" Y="32595" Map="4" Heading="5" Price="390" />
+	</Action>
+	<!--古鲁丁村庄东边森林-->
+	<Action Name="teleport guide1_1_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32663" Y="32893" Map="4" Heading="5" Price="390" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLB" HtmlId="guide_1_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="390" />
+		<Data Value="390" />
+		<Data Value="390" />
+		<Data Value="390" />
+	</ShowHtml>
+
+<!--11～25等级狩猎场-->
+	<!--风木村庄西边森林-->
+	<Action Name="teleport guide1_2_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32662" Y="33008" Map="4" Heading="5" Price="403" />
+	</Action>
+	<!--风木村庄旁沙漠外围-->
+	<Action Name="teleport guide1_2_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32673" Y="33158" Map="4" Heading="5" Price="403" />
+	</Action>
+	<!--沙漠绿州上方森林-->
+	<Action Name="teleport guide1_2_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33083" Y="33139" Map="4" Heading="5" Price="403" />
+	</Action>
+	<!--黎明森林左方延海岸-->
+	<Action Name="teleport guide1_2_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34168" Y="32821" Map="4" Heading="5" Price="403" />
+	</Action>
+	<!--说话之岛北岛附近-->
+	<Action Name="teleport guide1_2_5" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32641" Y="32839" Map="0" Heading="5" Price="923" />
+	</Action>
+	<!--说话之岛甘特洞穴前森林-->
+	<Action Name="teleport guide1_2_6" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32516" Y="32988" Map="0" Heading="5" Price="923" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLC" HtmlId="guide_1_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="403" />
+		<Data Value="403" />
+		<Data Value="403" />
+		<Data Value="403" />
+		<Data Value="403" />
+		<Data Value="403" />
+	</ShowHtml>
+
+<!--11～25等级狩猎场 更强的地区-->
+	<!--食尸地东边森林-->
+	<Action Name="teleport guide1_3_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32960" Y="33014" Map="4" Heading="5" Price="480" />
+	</Action>
+	<!--风木城堡附近海岸线-->
+	<Action Name="teleport guide1_3_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32638" Y="33460" Map="4" Heading="5" Price="480" />
+	</Action>
+	<!--奇岩村庄东南边森林-->
+	<Action Name="teleport guide1_3_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33259" Y="33013" Map="4" Heading="5" Price="480" />
+	</Action>
+	<!--海音村庄附近河边-->
+	<Action Name="teleport guide1_3_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33407" Y="33410" Map="4" Heading="5" Price="480" />
+	</Action>
+	<!--沉默洞穴村庄外围-->
+	<Action Name="teleport guide1_3_5" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32676" Y="32802" Map="304" Heading="5" Price="630" />
+	</Action>
+	<!--说话之岛南边森林-->
+	<Action Name="teleport guide1_3_6" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32414" Y="33045" Map="0" Heading="5" Price="1080" />
+	</Action>
+	<!--骑士洞穴1楼-->
+	<Action Name="teleport guide1_3_7" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32806" Y="32814" Map="25" Heading="5" Price="630" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLD" HtmlId="guide_1_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="480" />
+		<Data Value="480" />
+		<Data Value="480" />
+		<Data Value="480" />
+		<Data Value="630" />
+		<Data Value="1080" />
+		<Data Value="630" />
+	</ShowHtml>
+
+<!--26～35等级狩猎场 更弱的地区-->
+	<!--远古战场-->
+	<Action Name="teleport guide2_1_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32738" Y="32680" Map="4" Heading="5" Price="600" />
+	</Action>
+	<!--奇岩村庄北方森林-->
+	<Action Name="teleport guide2_1_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33570" Y="32582" Map="4" Heading="5" Price="600" />
+	</Action>
+	<!--骑士洞穴2楼-->
+	<Action Name="teleport guide2_1_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32803" Y="32815" Map="26" Heading="5" Price="750" />
+	</Action>
+	<!--古鲁丁地监1楼-->
+	<Action Name="teleport guide2_1_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32810" Y="32728" Map="7" Heading="5" Price="750" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLE" HtmlId="guide_2_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="600" />
+		<Data Value="600" />
+		<Data Value="750" />
+		<Data Value="750" />
+	</ShowHtml>
+
+<!--26～35等级狩猎场-->
+	<!--燃柳村庄附近芒草园-->
+	<Action Name="teleport guide2_2_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32740" Y="32377" Map="4" Heading="5" Price="533" />
+	</Action>
+	<!--吉普赛村庄附近-->
+	<Action Name="teleport guide2_2_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33913" Y="32972" Map="4" Heading="5" Price="533" />
+	</Action>
+	<!--骑士洞穴3楼-->
+	<Action Name="teleport guide2_2_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32811" Y="32812" Map="27" Heading="5" Price="793" />
+	</Action>
+	<!--拉斯塔巴德地下洞穴1楼-->
+	<Action Name="teleport guide2_2_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32761" Y="32825" Map="307" Heading="5" Price="663" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLF" HtmlId="guide_2_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="533" />
+		<Data Value="533" />
+		<Data Value="793" />
+		<Data Value="663" />
+	</ShowHtml>
+
+<!--26～35等级狩猎场 更强的地区-->
+	<!--奇岩村庄南边森林-->
+	<Action Name="teleport guide2_3_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33443" Y="33032" Map="4" Heading="5" Price="630" />
+	</Action>
+	<!--欧瑞村庄东边外郊-->
+	<Action Name="teleport guide2_3_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34223" Y="32462" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--古鲁丁地监3楼与4楼-->
+	<Action Name="teleport guide2_3_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32797" Y="32751" Map="9" Heading="5" Price="1080" />
+	</Action>
+	<!--拉斯塔巴德地下洞穴2楼-->
+	<Action Name="teleport guide2_3_5" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32750" Y="32827" Map="308" Heading="5" Price="930" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLG" HtmlId="guide_2_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="630" />
+		<Data Value="780" />
+		<Data Value="1080" />
+		<Data Value="930" />
+	</ShowHtml>
+
+<!--36～40等级狩猎场 更弱的地区-->
+	<!--欧瑞村庄国境要塞西边-->
+	<Action Name="teleport guide3_1_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34232" Y="32260" Map="4" Heading="5" Price="750" />
+	</Action>
+	<!--欧瑞村庄东边艾尔摩战场-->
+	<Action Name="teleport guide3_1_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34050" Y="32446" Map="4" Heading="5" Price="750" />
+	</Action>
+	<!--欧瑞村庄国境要塞东边-->
+	<Action Name="teleport guide3_1_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34245" Y="32355" Map="4" Heading="5" Price="750" />
+	</Action>
+	<!--骑士洞穴4楼-->
+	<Action Name="teleport guide3_1_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32794" Y="32800" Map="28" Heading="5" Price="1200" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLH" HtmlId="guide_3_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="750" />
+		<Data Value="750" />
+		<Data Value="750" />
+		<Data Value="1200" />
+	</ShowHtml>
+
+<!--36～40等级狩猎场-->
+	<!--沙漠绿洲-->
+	<Action Name="teleport guide3_2_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32813" Y="33271" Map="4" Heading="5" Price="663" />
+	</Action>
+	<!--奇岩村庄东边傲慢之塔附近-->
+	<Action Name="teleport guide3_2_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33656" Y="32954" Map="4" Heading="5" Price="663" />
+	</Action>
+	<!--欧瑞村庄墓园-->
+	<Action Name="teleport guide3_2_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34173" Y="32271" Map="4" Heading="5" Price="663" />
+	</Action>
+	<!--威顿村庄西边火龙窟-->
+	<Action Name="teleport guide3_2_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33742" Y="32396" Map="4" Heading="5" Price="663" />
+	</Action>
+	<!--古鲁丁地监5～7楼-->
+	<Action Name="teleport guide3_2_5" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32726" Y="32727" Map="11" Heading="5" Price="1313" />
+	</Action>
+	<!--拉斯塔巴德地下洞穴3楼-->
+	<Action Name="teleport guide3_2_6" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32754" Y="32839" Map="309" Heading="5" Price="1053" />
+	</Action>
+	<!--龙眸之塔地监1楼-->
+	<Action Name="teleport guide3_2_7" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32710" Y="32788" Map="59" Heading="5" Price="793" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLI" HtmlId="guide_3_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="663" />
+		<Data Value="663" />
+		<Data Value="663" />
+		<Data Value="663" />
+		<Data Value="1313" />
+		<Data Value="1053" />
+		<Data Value="793" />
+	</ShowHtml>
+
+<!--36～40等级狩猎场 更强的地区-->
+	<!--海音村庄东北方镜子森林-->
+	<Action Name="teleport guide3_3_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33769" Y="33318" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--奇岩村庄左上方龙之谷-->
+	<Action Name="teleport guide3_3_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33334" Y="32444" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--亚丁与奇岩之间强盗出没区域-->
+	<Action Name="teleport guide3_3_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33820" Y="32634" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--亚丁城镇北方傲慢之塔入口-->
+	<Action Name="teleport guide3_3_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34277" Y="33222" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--火龙窟中间分叉路-->
+	<Action Name="teleport guide3_3_5" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33662" Y="32339" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--海音地监(龙眸之塔)2楼-->
+	<Action Name="teleport guide3_3_7" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32747" Y="32861" Map="60" Heading="5" Price="1080" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLJ" HtmlId="guide_3_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="780" />
+		<Data Value="780" />
+		<Data Value="780" />
+		<Data Value="780" />
+		<Data Value="780" />
+		<Data Value="1080" />
+	</ShowHtml>
+
+<!--41～44等级狩猎场-->
+	<!--海音村庄东北方镜子森林-->
+	<Action Name="teleport guide4_1" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33769" Y="33318" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--奇岩村庄左上方龙之谷-->
+	<Action Name="teleport guide4_2" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33334" Y="32444" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--亚丁与奇岩之间强盗出没区域-->
+	<Action Name="teleport guide4_3" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33820" Y="32634" Map="4" Heading="5" Price="780" />
+	</Action>
+	<!--亚丁城镇北方傲慢之塔入口-->
+	<Action Name="teleport guide4_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="34279" Y="33214" Map="4" Heading="5" Price="676" />
+	</Action>
+	<!--火龙窟中间分叉路口-->
+	<Action Name="teleport guide4_5" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="33662" Y="32333" Map="4" Heading="5" Price="676" />
+	</Action>
+	<!--海音地监(龙眸之塔)2楼-->
+	<Action Name="teleport guide4_7" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Teleport X="32745" Y="32857" Map="60" Heading="5" Price="936" />
+	</Action>
+	<!--显示金额-->
+	<ShowHtml Name="teleportURLK" HtmlId="guide_4" NpcId="50020,50024,50036,50039,50044,50046,50051,50054,50056,50066,50068,50072,50073,50079">
+		<Data Value="780" />
+		<Data Value="780" />
+		<Data Value="780" />
+		<Data Value="676" />
+		<Data Value="676" />
+		<Data Value="936" />
+	</ShowHtml>
+
+<!--L1J-JP-->
+	<!-- 隐された溪谷⇒シルバーナイトタウン -->
+	<Action Name="teleport hidden-velley-for-newbie" NpcId="50004">
+		<Teleport X="33083" Y="33387" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!-- 旧歌う岛⇒话せる岛 -->
+	<Action Name="teleport talking-island-for-newbie" NpcId="50010">
+		<Teleport X="32593" Y="32922" Map="0" Heading="5" Price="0" />
+	</Action>
+	<!-- 歌う岛⇒エルフの森 -->
+	<Action Name="teleport elvenforest-in" NpcId="50001">
+		<Teleport X="33059" Y="32343" Map="4" Heading="5" Price="0" />
+	</Action>
+	<!-- 歌う岛⇒话せる岛、シルバーナイトタウン、エルフの森、沈默の洞窟 -->
+	<Action Name="teleport ti-in" NpcId="50082">
+		<Teleport X="32593" Y="32922" Map="0" Heading="5" Price="0" />
+	</Action>
+	<Action Name="teleport skt-in" NpcId="50082">
+		<Teleport X="33083" Y="33387" Map="4" Heading="5" Price="0" />
+	</Action>
+	<Action Name="teleport efores-in" NpcId="50082">
+		<Teleport X="33054" Y="32323" Map="4" Heading="5" Price="0" />
+	</Action>
+	<Action Name="teleport scave-in" NpcId="50082">
+		<Teleport X="32922" Y="32802" Map="304" Heading="5" Price="0" />
+	</Action>
+	<!-- 歌う岛へのテレポーター⇒旧 歌う岛 -->
+	<Action Name="teleport si-in" NpcId="50083">
+		<Teleport X="32778" Y="32779" Map="68" Heading="2" Price="0" />
+	</Action>
+	<!-- シルバーナイトタウン、话せる岛、エルフの森、沈默の洞窟⇒歌う岛 -->
+	<Action Name="teleport si-in" NpcId="71035">
+		<Teleport X="32834" Y="32858" Map="8011" Heading="5" Price="0" />
+	</Action>
+	<!-- 歌う岛ダンジョン⇒歌う岛北部 -->
+	<Action Name="teleport town-in" NpcId="71028">
+		<Teleport X="32786" Y="32840" Map="8012" Heading="5" Price="0" />
+	</Action>
+	<!-- 歌う岛ダンジョン⇒歌う岛 -->
+	<Action Name="teleport town-in" NpcId="71029">
+		<Teleport X="32817" Y="32796" Map="8011" Heading="5" Price="0" />
+	</Action>
+	<!-- 歌う岛⇒歌う岛ダンジョン -->
+	<Action Name="teleport dungeon-in" NpcId="71026">
+		<Teleport X="32872" Y="32871" Map="86" Heading="7" Price="0" />
+	</Action>
+	<!-- 歌う岛⇒歌う岛ダンジョン -->
+	<Action Name="teleport dungeon-in" NpcId="71027">
+		<Teleport X="32676" Y="32865" Map="85" Heading="6" Price="0" />
+	</Action>
+	<!-- ドロモンド⇒歌う岛 -->
+	<Action Name="1" NpcId="70997">
+		<Teleport X="32831" Y="32838" Map="8011" Heading="2" Price="0" />
+	</Action>
+	<!-- アレックス歌う岛⇒训练场 -->
+	<Action Name="0" NpcId="70999">
+		<Teleport X="32741" Y="32721" Map="8014" Heading="4" Price="0" />
+	</Action>
+	<!-- アレックス训练场⇒歌う岛 -->
+	<Action Name="1" NpcId="71000">
+		<Teleport X="32832" Y="32846" Map="8011" Heading="4" Price="0" />
+	</Action>
+	<!-- チコリー歌う岛⇒歌う岛北部 -->
+	<Action Name="0" NpcId="71009">
+		<Teleport X="32800" Y="32734" Map="8015" Heading="6" Price="0" />
+	</Action>
+	<!-- チコリー歌岛北部⇒歌う岛 -->
+	<Action Name="teleport town-in" NpcId="71010">
+		<Teleport X="32805" Y="32850" Map="8011" Heading="6" Price="0" />
+	</Action>
+	<!-- ブリアナ歌う岛⇒歌う岛北部 -->
+	<Action Name="0" NpcId="71011">
+		<Teleport X="32758" Y="32774" Map="8015" Heading="2" Price="0" />
+	</Action>
+	<!-- ブリアナ歌う岛北部⇒歌う岛 -->
+	<Action Name="teleport town-in" NpcId="71012">
+		<Teleport X="32870" Y="32823" Map="8011" Heading="7" Price="0" />
+	</Action>
+	<!-- 村の自警团(右)⇒歌う岛北部 -->
+	<Action Name="teleport town-out" NpcId="71014">
+		<Teleport X="32727" Y="32764" Map="8015" Heading="2" Price="0" />
+	</Action>
+	<!-- 村の自警团(上)⇒歌う岛西部 -->
+	<Action Name="teleport town-out" NpcId="71015">
+		<Teleport X="32796" Y="32866" Map="8012" Heading="7" Price="0" />
+	</Action>
+	<!-- 村の自警团(右)⇒歌う岛 -->
+	<Action Name="teleport town-in" NpcId="71017">
+		<Teleport X="32868" Y="32829" Map="8011" Heading="6" Price="0" />
+	</Action>
+	<!-- 村の自警团(上)⇒歌う岛 -->
+	<Action Name="teleport town-in" NpcId="71016">
+		<Teleport X="32834" Y="32791" Map="8011" Heading="4" Price="0" />
+	</Action>
+</NpcActionList>
