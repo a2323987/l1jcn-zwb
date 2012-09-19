@@ -1,0 +1,14 @@
+勾选移动封包不加密者,需将C_MoveChar中的下面代码删除
+if (CLIENT_LANGUAGE == 3) { // Taiwan Only
+	heading ^= 0x49;
+	locx = pc.getX();
+	locy = pc.getY();
+}
+
+或改成下面的代码
+if (heading > 8) { // Taiwan Only
+	heading ^= 0x49;
+	locx = pc.getX();
+	locy = pc.getY();
+}
+

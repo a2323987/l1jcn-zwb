@@ -1,0 +1,147 @@
+本文件修改自TGG EP6登入器释出的源码
+
+
+
+********************************** l1j\server\Config.java 修改***********************************
+*)step 0
+	Open l1j\server\Config.java
+
+*)step 1
+	;==search==
+	public static int LV99_EXP;
+	;====
+
+	;==replace
+	public static int LV99_EXP;
+	//TODO 伺服器捆绑
+	public static boolean LOGINS_TO_AUTOENTICATION;
+	public static String RSA_KEY_E;
+	public static String RSA_KEY_N;
+	//伺服器捆绑
+	;====
+
+*)step 1
+	;==search==
+		validate();
+	;====
+
+	;==replace
+		//TODO 伺服器捆绑
+		try {
+			Properties packSettings = new Properties();
+			InputStream is = new FileInputStream(new File("./config/pack.properties"));
+			packSettings.load(is);
+			is.close();
+			LOGINS_TO_AUTOENTICATION = Boolean.parseBoolean(packSettings.getProperty("Autoentication", "false"));
+			RSA_KEY_E = packSettings.getProperty("RSA_KEY_E", "0");
+			RSA_KEY_N = packSettings.getProperty("RSA_KEY_N", "0");
+		} catch (Exception e) {}
+		//伺服器捆绑
+		validate();
+	;====
+
+
+
+
+
+
+
+**************************** l1j\server\server\ClientThread.java 修改*****************************
+*)step 0
+	Open l1j\server\server\ClientThread.java
+
+*)step 1
+	;==search==
+import java.util.logging.Logger;
+	;====
+
+	;==replace
+import java.util.logging.Logger;
+import java.math.BigInteger;
+	;====
+
+*)step 2
+	;==search==
+	private Socket _csocket;
+	;====
+	
+	;==replace
+	private Socket _csocket;
+	//TODO 伺服器捆绑
+	private int _xorByte=(byte) 0xF0;
+	private long _authdata;
+	//伺服器捆绑
+	;====
+
+*)step 3
+	;==search
+		_out = new BufferedOutputStream(socket.getOutputStream());
+	;====
+	
+	;==replace
+		_out = new BufferedOutputStream(socket.getOutputStream());
+		//TODO 伺服器捆绑 
+		if(Config.LOGINS_TO_AUTOENTICATION)
+		{
+ 			int randomNumber = (int)(Math.random()*900000000)+255;
+ 			_xorByte = randomNumber%255+1;
+			_authdata = new BigInteger(Integer.toString(randomNumber)).modPow(new BigInteger(Config.RSA_KEY_E), new BigInteger(Config.RSA_KEY_N)).longValue();
+		}
+		//伺服器捆绑
+	;====
+	
+*)step 4
+	;==search
+			int hiByte = _in.read();
+			int loByte = _in.read();
+	;====
+	
+	;==replace
+			int hiByte = _in.read();
+			int loByte = _in.read();
+			
+			//TODO 伺服器捆绑 
+			if(Config.LOGINS_TO_AUTOENTICATION)
+			{
+				hiByte ^= _xorByte;
+				loByte ^= _xorByte;
+			}
+			//伺服器捆绑 
+	;====
+*)step 5
+	;==search
+			return LineageEncryption.decrypt(data, dataLength, _clkey);
+	;====
+	
+	;==replace
+			//TODO 伺服器捆绑
+			if(Config.LOGINS_TO_AUTOENTICATION)
+			{
+				for(int i =0 ; i < dataLength ; i++) {
+                    			data[i]=(byte)(data[i] ^ _xorByte);
+				}
+			}
+			//伺服器捆绑
+			return LineageEncryption.decrypt(data, dataLength, _clkey);
+	;====
+
+*)step 6
+	;==search
+			byte Bogus = (byte)(FIRST_PACKET.length + 7);
+	;====
+	
+	;==replace
+			byte Bogus = (byte)(FIRST_PACKET.length + 7);
+            		//TODO 伺服器捆绑
+			if(Config.LOGINS_TO_AUTOENTICATION)
+			{
+				_out.write((int)(_authdata & 0xff));
+				_out.write((int)(_authdata >> 8 & 0xff));
+				_out.write((int)(_authdata >> 16 & 0xff));
+				_out.write((int)(_authdata >> 24 & 0xff));
+				_out.flush();
+			}
+           		//伺服器捆绑
+			
+	;====
+

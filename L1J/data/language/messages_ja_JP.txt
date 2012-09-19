@@ -1,1 +1,0 @@
-﻿com.lineage.memoryUse=利用メモリ: 

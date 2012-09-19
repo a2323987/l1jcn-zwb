@@ -1,0 +1,33 @@
+InnoDBのSQLファイルは“l1jdb_InnoDB.sql”です。
+
+1.新规にDBを构筑される方はそのまま上记のファイルを使用してください。その后3.へ。
+
+2.これまでのDBデータを引き续き使用する方は下记参照。
+
+2-1．＜一旦dumpして修正する方法＞
+　　・全てのテーブルをdumpする。（l1jdbをそのままdumpするのが乐できます。）
+　　・エディターを使いMyISAMをInnoDBへ置换。Shift-JISで保存。
+　　・NaviCATやphpMyAdminなどのクエリより读み迂み。
+
+2-2.＜根性で手动修正する方法＞
+　　・NaviCATやphpMyAdminでテーブル表示。
+　　・テーブルタイプをInnoDBへ变更。
+
+3.MySQLのmy.cnf（my.ini）の“innodb_**”のコメントを外し设定。参考设定值は后记。
+　同じく“myisam”に关する部分をコメントアウト。
+
+MySQLを再起动。
+
+
+innodb_**　参考设定值　メモリ2GB、鲭と同时に藏は动かさないことが前提
+
+innodb_data_home_dir = /usr/local/var/
+innodb_data_file_path = ibdata1:10M:autoextend
+innodb_log_group_home_dir = /usr/local/var/
+innodb_log_arch_dir = /usr/local/var/
+innodb_buffer_pool_size = 256M　（ヒープメモリの半分位が适当）
+innodb_additional_mem_pool_size = 16M　（buffer_pool_sizeの6%くらいが适当です）
+innodb_log_file_size = 64M　（buffer_pool_sizeの25%くらいが适当です）
+innodb_log_buffer_size = 64M　（buffer_pool_sizeの25%くらいが适当です）
+innodb_flush_log_at_trx_commit = 1
+innodb_lock_wait_timeout = 50 （注：ここは鲭の接续人数で适当な值を探してください）

@@ -1,0 +1,113 @@
+【内容】GMコマンドを使うようにする
+【变更个所】charactersテーブル→AccessLevel
+【值】200
+【备考】チャット栏に“.help”と入力しヘルプが表示されれば成功。
+　　　　accountsテーブルのAccessLevelは现在(rev948)のところログイン时に人数制限にひっかかるかどうかにしか影响しない。
+　　　　0より大きくすれば人数制限にひっかからなくなる。
+
+【内容】PvP／NonPvP设定を切り替える
+【变更个所】config/altsettings.propertiesファイル→NonPvP
+【值】True:NonPvP无效（PvP可能）　False:NonPvP有效（PvP不可）
+【备考】サーバー起动时にウィンドウに设定が表示される。
+
+【内容】エルフの属性を无效にし、全エルフ魔法を习得できるようにする
+【变更个所】charactersテーブル→ElfAttr
+【值】0,1,2,4,8以外の值
+【备考】
+
+【内容】もてるアイテムの重量を变更する
+【变更个所】config/rates.propertiesファイル→Weightrate
+【值】0:常に重量ゲージ0%　1:重量ゲージデフォルト　2:重量ゲージが1/2になる　3～:重量ゲージが1/3～になる
+【备考】
+
+【内容】モンスターの追加
+【变更个所】npcテーブル、spawnlistテーブル
+【值】・npcテーブル
+　　　type→L1Monster
+　　　ranged→1なら通常攻击、2~なら2セル以上の攻击、10なら弓による攻击
+　　　agro・agrososc・agrocoi→1なら通常・变身・透明状态で攻击的
+　　　passispeed・atkspeed→步行・攻击速度（值が小さい程速い）
+　　　gfxid→sprite.pakに格纳されているグラフィック
+　　　・spawnlistテーブル
+　　　count→数
+　　　heading→向き
+　　　respawn_dilay→再出现までの时间
+
+【内容】NPCショップの追加
+【变更个所】npcテーブル、spawnlist_npcテーブル、npcactionテーブル、shop_buylistテーブル
+【值】・npcテーブル
+　　　type→L1Merchant
+　　　・spawnlist_npcテーブル
+　　　spawnlistと同样
+　　　・npcactionテーブル
+　　　action1→text.pakに格纳されているセリフ（パンドラならpandora）
+　　　・shop_buylistテーブル
+　　　order→商品の并び顺（先头は0）
+
+【内容】UBに出现するモンスターを追加・变更する
+【变更个所】spawnlist_ubテーブル
+【值】
+　　　id
+　　　　连番になるように设定する。
+
+　　　ub_id
+　　　　UBの场所。
+　　　　ギランUB:1　ウェルダンUB:2　グルーディンUB:3　SKTUB:4　TIUB:5
+　　　　现状、ギランUB:1のみ有效。
+
+　　　pattern
+　　　　出现する敌のパターン。
+　　　　本サーバーと同じく、ランダムに选択される。
+　　　　初期DBでは1～6まで设定されているが、7以降も设定できる。
+
+　　　group
+　　　　モンスターのグループ
+　　　　本サーバーと同じ1～3,BOSS(4)のグループ分け。
+　　　　pattern内には必ず、1～4のグループが设定されていないといけない。
+　　　　グループ4はBOSSだが、グループ4に复数のモンスターを设定することも出来る。
+
+　　　location
+　　　　モンスター名。
+
+　　　npc_templateid
+　　　　npcテーブルのnpcidと同じ值を设定する。
+　　　　ただし、tyepがL1Monster以外のものを设定してはいけない。
+
+　　　count
+　　　　モンスターの出现数。
+
+　　　spawn_delay
+　　　　次のモンスターが出现するまでの时间（秒）
+
+【备考】モンスターの设定数を增やしすぎて、次のUB时间になっても终了しない场合
+　　　　举动がおかしくなる可能性があるので注意が必要。
+
+【内容】アイテムディレイを追加・变更する
+【变更个所】etcitemテーブル
+【值】delay_id
+　　　　同じ值のアイテムはディレイが発生する。
+　　　　デフォルトのdelay_idは以下の通りだが、それ以外の值も设定可能。
+　　　　1：インビジビリティ クローク、バルログ ブラッディ クローク（DBでの变更不可）
+　　　　2：HP回复系ポーション
+　　　　3：魔法书
+　　　　4：テレポート スクロール
+　　　delay_time
+　　　　单位はms。
+
+【内容】两手、片手武器の设定
+【变更个所】weaponテーブル
+【值】weaponのtypeをsinglebow、singlespear、tohandblunt、tohandstaffに变更する
+【备考】片手武器は盾装备时にも装备可、两手武器は盾装备时に装备不可。
+　　　　两手弓=bow　→　片手弓=singlebow　
+　　　　两手スピアー=spear　→　片手スピアー=singlespear
+　　　　两手斧=tohandblunt　→　片手斧=blunt　　
+　　　　两手スタッフ=tohandstaff　→　片手スタッフ=staff
+
+【内容】アイテムのトレード不可设定
+【变更个所】armorテーブル、etcitemテーブル、weaponテーブル
+【值】tradeを0以外に变更する
+
+
+【内容】MOBスキルの设定
+【变更个所】mobskillテーブル
+　MobSkillテーブルの使い方.txtを参照して下さい。
