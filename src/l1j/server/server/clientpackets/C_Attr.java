@@ -49,6 +49,7 @@ import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.serverpackets.S_Resurrection;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_SkillSound;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.S_Trade;
 import l1j.server.server.templates.L1House;
 import l1j.server.server.templates.L1Npc;
@@ -463,19 +464,19 @@ public class C_Attr extends ClientBasePacket {
 				}
 				if (s.toLowerCase().equals("str".toLowerCase())) {
 					// if(l1pcinstance.get_str() < 255)
-					if (pc.getBaseStr() < 35) {
+					if (pc.getBaseStr() < Config.BONUS_DANXIANG) {
 						pc.addBaseStr((byte) 1); // 素のSTR值に+1
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 将玩家资料储存到资料库中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1属性最大值只能到35。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 																	// 请重试一次。
 					}
 				} else if (s.toLowerCase().equals("dex".toLowerCase())) {
 					// if(l1pcinstance.get_dex() < 255)
-					if (pc.getBaseDex() < 35) {
+					if (pc.getBaseDex() < Config.BONUS_DANXIANG) {
 						pc.addBaseDex((byte) 1); // 素のDEX值に+1
 						pc.resetBaseAc();
 						pc.setBonusStats(pc.getBonusStats() + 1);
@@ -483,36 +484,36 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 将玩家资料储存到资料库中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1属性最大值只能到35。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 																	// 请重试一次。
 					}
 				} else if (s.toLowerCase().equals("con".toLowerCase())) {
 					// if(l1pcinstance.get_con() < 255)
-					if (pc.getBaseCon() < 35) {
+					if (pc.getBaseCon() < Config.BONUS_DANXIANG) {
 						pc.addBaseCon((byte) 1); // 素のCON值に+1
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 将玩家资料储存到资料库中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1属性最大值只能到35。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 																	// 请重试一次。
 					}
 				} else if (s.toLowerCase().equals("int".toLowerCase())) {
 					// if(l1pcinstance.get_int() < 255)
-					if (pc.getBaseInt() < 35) {
+					if (pc.getBaseInt() < Config.BONUS_DANXIANG) {
 						pc.addBaseInt((byte) 1); // 素のINT值に+1
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 将玩家资料储存到资料库中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1属性最大值只能到35。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 																	// 请重试一次。
 					}
 				} else if (s.toLowerCase().equals("wis".toLowerCase())) {
 					// if(l1pcinstance.get_wis() < 255)
-					if (pc.getBaseWis() < 35) {
+					if (pc.getBaseWis() < Config.BONUS_DANXIANG) {
 						pc.addBaseWis((byte) 1); // 素のWIS值に+1
 						pc.resetBaseMr();
 						pc.setBonusStats(pc.getBonusStats() + 1);
@@ -520,19 +521,19 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 将玩家资料储存到资料库中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1属性最大值只能到35。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 																	// 请重试一次。
 					}
 				} else if (s.toLowerCase().equals("cha".toLowerCase())) {
 					// if(l1pcinstance.get_cha() < 255)
-					if (pc.getBaseCha() < 35) {
+					if (pc.getBaseCha() < Config.BONUS_DANXIANG) {
 						pc.addBaseCha((byte) 1); // 素のCHA值に+1
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 将玩家资料储存到资料库中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1属性最大值只能到35。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 																	// 请重试一次。
 					}
 				}

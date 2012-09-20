@@ -290,6 +290,14 @@ public final class Config {
 	public static int GDROPITEM_TIME;
 
 	/** CharSettings control */
+	
+	/**单项能力值上限 (力、敏、体、智、精、魅)*/
+	public static int BONUS_DANXIANG;
+	/**万能药上限 (总共可以喝多少瓶)*/
+	public static int BONUS_MAX;
+	/**单一能力点完 + 万能药，最后可以到达的素质*/
+	public static int BONUS_DANXIANG_MAX;
+	
 	public static int PRINCE_MAX_HP;
 
 	public static int PRINCE_MAX_MP;
@@ -888,7 +896,12 @@ public final class Config {
 					CHAR_SETTINGS_CONFIG_FILE));
 			charSettings.load(is);
 			is.close();
-
+			BONUS_DANXIANG = Integer.parseInt(charSettings.getProperty(
+					"BONUS_DANXIANG", "35"));
+			BONUS_MAX = Integer.parseInt(charSettings.getProperty(
+					"BONUS_MAX", "35"));
+			BONUS_DANXIANG_MAX = Integer.parseInt(charSettings.getProperty(
+					"BONUS_DANXIANG_MAX", "50"));			
 			PRINCE_MAX_HP = Integer.parseInt(charSettings.getProperty(
 					"PrinceMaxHP", "1000"));
 			PRINCE_MAX_MP = Integer.parseInt(charSettings.getProperty(
@@ -1415,7 +1428,13 @@ public final class Config {
 		}
 
 		// charsettings.properties
-		else if (pName.equalsIgnoreCase("PrinceMaxHP")) {
+		else if (pName.equalsIgnoreCase("BONUS_DANXIANG")) {
+			BONUS_DANXIANG  = Integer.parseInt(pValue);	
+		}else if (pName.equalsIgnoreCase("BONUS_MAX")) {
+			BONUS_MAX = Integer.parseInt(pValue);
+		}else if (pName.equalsIgnoreCase("BONUS_DANXIANG_MAX")) {
+			BONUS_DANXIANG_MAX = Integer.parseInt(pValue);
+    	}else if (pName.equalsIgnoreCase("PrinceMaxHP")) {
 			PRINCE_MAX_HP = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("PrinceMaxMP")) {
 			PRINCE_MAX_MP = Integer.parseInt(pValue);

@@ -26,6 +26,7 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_MITHRIL_POWDER
 import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_WATER;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_WATER_OF_EVA;
 import static l1j.server.server.model.skill.L1SkillId.SECRET_MEDICINE_OF_DESTRUCTION;
+import static l1j.server.server.model.skill.L1SkillId.ADVANCE_SPIRIT;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -103,6 +104,7 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_ShowPolyList;
 import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_Sound;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.S_UseAttackSkill;
 import l1j.server.server.serverpackets.S_UseMap;
 import l1j.server.server.storage.CharactersItemStorage;
@@ -528,66 +530,78 @@ public class C_ItemUSe extends ClientBasePacket {
 					// 处理新手保护系统(遭遇的守护)状态资料的变动
 					pc.checkNoviceType();
 				} else if (itemId == 40033) { // エリクサー:腕力
-					if ((pc.getBaseStr() < 35) && (pc.getElixirStats() < 5)) {
+					if ((pc.getBaseStr() < Config.BONUS_DANXIANG_MAX) && (pc.getElixirStats() < Config.BONUS_MAX)) {
 						pc.addBaseStr((byte) 1); // 素のSTR值に+1
 						pc.setElixirStats(pc.getElixirStats() + 1);
 						pc.getInventory().removeItem(l1iteminstance, 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
+						pc.sendPackets(new S_SystemMessage("当前力量为"+pc.getBaseStr()+"，    还能再喝"+(Config.BONUS_MAX-pc.getElixirStats())+"瓶万能药水"));
+						pc.broadcastPacket(new S_SkillSound(pc.getId(), 2127)); // 升级光芒
 						pc.save(); // DBにキャラクター情报を书き迂む
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG_MAX)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 					}
 				} else if (itemId == 40034) { // エリクサー:体力
-					if ((pc.getBaseCon() < 35) && (pc.getElixirStats() < 5)) {
+					if ((pc.getBaseCon() < Config.BONUS_DANXIANG_MAX) && (pc.getElixirStats() < Config.BONUS_MAX)) {
 						pc.addBaseCon((byte) 1); // 素のCON值に+1
 						pc.setElixirStats(pc.getElixirStats() + 1);
 						pc.getInventory().removeItem(l1iteminstance, 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
+						pc.sendPackets(new S_SystemMessage("当前体质为"+pc.getBaseCon()+"，    还能再喝"+(Config.BONUS_MAX-pc.getElixirStats())+"瓶万能药水"));
+						pc.broadcastPacket(new S_SkillSound(pc.getId(), 2127)); // 升级光芒
 						pc.save(); // DBにキャラクター情报を书き迂む
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG_MAX)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 					}
 				} else if (itemId == 40035) { // エリクサー:机敏
-					if ((pc.getBaseDex() < 35) && (pc.getElixirStats() < 5)) {
+					if ((pc.getBaseDex() < Config.BONUS_DANXIANG_MAX) && (pc.getElixirStats() < Config.BONUS_MAX)) {
 						pc.addBaseDex((byte) 1); // 素のDEX值に+1
 						pc.resetBaseAc();
 						pc.setElixirStats(pc.getElixirStats() + 1);
 						pc.getInventory().removeItem(l1iteminstance, 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
+						pc.sendPackets(new S_SystemMessage("当前敏捷为"+pc.getBaseDex()+"，    还能再喝"+(Config.BONUS_MAX-pc.getElixirStats())+"瓶万能药水"));
+						pc.broadcastPacket(new S_SkillSound(pc.getId(), 2127)); // 升级光芒
 						pc.save(); // DBにキャラクター情报を书き迂む
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG_MAX));  // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 					}
 				} else if (itemId == 40036) { // エリクサー:知力
-					if ((pc.getBaseInt() < 35) && (pc.getElixirStats() < 5)) {
+					if ((pc.getBaseInt() < Config.BONUS_DANXIANG_MAX) && (pc.getElixirStats() < Config.BONUS_MAX)) {
 						pc.addBaseInt((byte) 1); // 素のINT值に+1
 						pc.setElixirStats(pc.getElixirStats() + 1);
 						pc.getInventory().removeItem(l1iteminstance, 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
+						pc.sendPackets(new S_SystemMessage("当前智慧为"+pc.getBaseInt()+"，    还能再喝"+(Config.BONUS_MAX-pc.getElixirStats())+"瓶万能药水"));
+						pc.broadcastPacket(new S_SkillSound(pc.getId(), 2127)); // 升级光芒
 						pc.save(); // DBにキャラクター情报を书き迂む
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG_MAX));  // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 					}
 				} else if (itemId == 40037) { // エリクサー:精神
-					if ((pc.getBaseWis() < 35) && (pc.getElixirStats() < 5)) {
+					if ((pc.getBaseWis() < Config.BONUS_DANXIANG_MAX) && (pc.getElixirStats() < Config.BONUS_MAX)) {
 						pc.addBaseWis((byte) 1); // 素のWIS值に+1
 						pc.resetBaseMr();
 						pc.setElixirStats(pc.getElixirStats() + 1);
 						pc.getInventory().removeItem(l1iteminstance, 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
+						pc.sendPackets(new S_SystemMessage("当前精神为"+pc.getBaseWis()+"，    还能再喝"+(Config.BONUS_MAX-pc.getElixirStats())+"瓶万能药水"));
+						pc.broadcastPacket(new S_SkillSound(pc.getId(), 2127)); // 升级光芒
 						pc.save(); // DBにキャラクター情报を书き迂む
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG_MAX)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 					}
 				} else if (itemId == 40038) { // エリクサー:魅力
-					if ((pc.getBaseCha() < 35) && (pc.getElixirStats() < 5)) {
+					if ((pc.getBaseCha() < Config.BONUS_DANXIANG_MAX) && (pc.getElixirStats() < Config.BONUS_MAX)) {
 						pc.addBaseCha((byte) 1); // 素のCHA值に+1
 						pc.setElixirStats(pc.getElixirStats() + 1);
 						pc.getInventory().removeItem(l1iteminstance, 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
+						pc.sendPackets(new S_SystemMessage("当前魅力为"+pc.getBaseCha()+"，    还能再喝"+(Config.BONUS_MAX-pc.getElixirStats())+"瓶万能药水"));
+						pc.broadcastPacket(new S_SkillSound(pc.getId(), 2127)); // 升级光芒
 						pc.save(); // DBにキャラクター情报を书き迂む
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
+						pc.sendPackets(new S_SystemMessage("服务器设置最大能力值为"+Config.BONUS_DANXIANG_MAX)); // \f1一つの能力值の最大值は25です。他の能力值を选択してください。
 					}
 				}
 				// 治愈药水、浓缩体力恢复剂、象牙塔治愈药水
