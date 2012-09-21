@@ -35,6 +35,7 @@ import l1j.server.server.templates.L1RaceTicket;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.collections.Lists;
 
+
 public class L1Inventory extends L1Object {
 
 	private static final long serialVersionUID = 1L;
@@ -234,6 +235,117 @@ public class L1Inventory extends L1Object {
 			item.setRemainingTime(item.getItem().getMaxUseTime());
 		}
 		item.setBless(item.getItem().getBless());
+		// 打怪掉宝随机+1~+8
+		int enchantlvl = 0;
+		int lvrnd = Random.nextInt(1000) + 1;
+		if (item.getItem().getType2() == 2) {
+			if (item.getItem().getType() >= 8 && item.getItem().getType() <= 12) {
+				enchantlvl = Random.nextInt(5);
+			}
+			if (item.getItem().get_safeenchant() == 0) {
+				if (lvrnd <= 900) {					
+					enchantlvl = Random.nextInt(Config.Enchantlv_Max-7);
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 900 && lvrnd <= 960) {
+					enchantlvl = Config.Enchantlv_Max-6;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 960 && lvrnd <= 990) {
+					enchantlvl = Config.Enchantlv_Max-5;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 990 && lvrnd <= 996) {
+					enchantlvl = Config.Enchantlv_Max-4;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else {
+					enchantlvl = Config.Enchantlv_Max-3;
+				}
+			} else if (item.getItem().get_safeenchant() != -1) {
+				if (lvrnd <= 900) {					
+					enchantlvl = Random.nextInt(Config.Enchantlv_Max-6);
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 900 && lvrnd <= 960) {
+					enchantlvl = Config.Enchantlv_Max-5;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 960 && lvrnd <= 990) {
+					enchantlvl = Config.Enchantlv_Max-4;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 990 && lvrnd <= 996) {
+					enchantlvl = Config.Enchantlv_Max-3;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else {
+					enchantlvl = Config.Enchantlv_Max-2;
+				}
+			}
+		}
+		if (item.getItem().getType2() == 1) {
+			if (item.getItem().get_safeenchant() == 0) {
+				if (lvrnd <= 900) {					
+					enchantlvl = Random.nextInt(Config.Enchantlv_Max-5);
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 900 && lvrnd <= 960) {
+					enchantlvl = Config.Enchantlv_Max-4;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 960 && lvrnd <= 990) {
+					enchantlvl = Config.Enchantlv_Max-3;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 990 && lvrnd <= 996) {
+					enchantlvl = Config.Enchantlv_Max-2;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else {
+					enchantlvl = Config.Enchantlv_Max-1;
+				}
+			} else if (item.getItem().get_safeenchant() != -1) {
+				if (lvrnd <= 900) {					
+					enchantlvl = Random.nextInt(Config.Enchantlv_Max-4);
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 900 && lvrnd <= 960) {
+					enchantlvl = Config.Enchantlv_Max-3;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 960 && lvrnd <= 990) {
+					enchantlvl = Config.Enchantlv_Max-2;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else if (lvrnd > 990 && lvrnd <= 996) {
+					enchantlvl = Config.Enchantlv_Max-1;
+					if(enchantlvl < Config.Enchantlv_Min){
+						enchantlvl = Config.Enchantlv_Min;
+					}
+				} else {
+					enchantlvl = Config.Enchantlv_Max;
+				}
+			}
+		}
+		item.setEnchantLevel(enchantlvl);
+
+
 		// 道具天数删除系统
 		if (item.getItem().getDelete_Day() > 0) { // ● 指定天数
 			int delday = item.getItem().getDelete_Day();

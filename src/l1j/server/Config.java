@@ -484,6 +484,12 @@ public final class Config {
 	public static short Phantom_Population; // 幽灵人口固定增加人数
 	public static short Phantom_Population_Random; // 幽灵人口浮动人数
 	
+	/**最小掉落+几物品*/
+	public static int Enchantlv_Min; 
+	/**最大掉落+几物品*/
+	public static int Enchantlv_Max; 
+	
+	
 	/** 公频&买卖频道发话延迟 **/
 	public static short Chat_Delay_Time;
 
@@ -1112,6 +1118,10 @@ public final class Config {
 					"PhantomPopulationRandom", "0")); // 幽灵人口浮动人数
 			Chat_Delay_Time = Short.parseShort(otherSettings.getProperty(
 					"ChatDelayTime", "0")); // 公频&买卖频道发话延迟
+			Enchantlv_Min = Integer.parseInt(otherSettings.getProperty("Enchantlv_Min",
+					"0")); // 设定物品掉落最小加几
+			Enchantlv_Max = Integer.parseInt(otherSettings.getProperty("Enchantlv_Max",
+					"3")); // 设定物品掉落最大加几
 			
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
@@ -1632,6 +1642,10 @@ public final class Config {
 			Phantom_Population_Random = Short.valueOf(pValue); //  幽灵人口浮动人数
 		} else if (pName.equalsIgnoreCase("ChatDelayTime")) {
 			Chat_Delay_Time = Short.valueOf(pValue); //  公频&买卖频道发话延迟
+		} else if (pName.equalsIgnoreCase("Enchantlv_Min")) {
+			Enchantlv_Min = Integer.valueOf(pValue); // GASH商城NPC编号最小值
+		} else if (pName.equalsIgnoreCase("Enchantlv_Max")) {
+			Enchantlv_Max = Integer.valueOf(pValue); // GASH商城NPC编号最小值
 		}
 		// famesystem.properties
 		else if (pName.equalsIgnoreCase("FameIsActive")) {
