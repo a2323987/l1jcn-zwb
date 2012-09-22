@@ -1,0 +1,26 @@
+# 核心里面的讯息
+weapon.upgrade.message1=使用的武器透露着不凡的气息，似乎很有潜能!
+weapon.upgrade.message2=目前使用的武器经验值为：
+weapon.upgrade.message3=的
+weapon.upgrade.message4=似乎觉醒了
+
+#这里只是将一些常用的错误讯息档案做I18N
+html.enderr.name=任务：
+html.enderr.data=已结束！
+html.joinerr.name=任务：
+html.joinerr.data=已完成！
+html.levelerr.name=任务：
+html.levelerr.data=等级不足！
+html.starterr.name=任务：
+html.starterr.data=未开放！
+html.wperr1.name=武器强化师：
+html.wperr1.data1=神秘的力量尝试加在您目前使用的武器上
+html.wperr1.data2=但是没有任何事情发生。
+html.wperr1.data3=目前的武器经验为：
+html.wperr1.data4=下次升级武器经验为：
+html.wperr2.name=武器强化师：
+html.wperr2.data=您确定您拿的是武器吗？看来您的眼睛需要去检查一下了！
+html.a1_1.name=武器强化师：
+html.a1_1.data1=神秘的力量加在您的武器上
+html.a1_1.data2=闪耀的光芒后武器产生变化
+################ 以上是w系列预设的功能 ######################################

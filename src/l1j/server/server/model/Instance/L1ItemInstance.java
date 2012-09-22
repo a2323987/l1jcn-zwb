@@ -1229,7 +1229,106 @@ public class L1ItemInstance extends L1Object {
 	public void setaddSp(int i) {
 		_addSp = i;
 	}
+//	武器攻击卷轴by阿杰
+	private int _updateCount = 0;
+	
+	public int getUpdateCount() {
+        return _updateCount;
+    }
 
+    public void setUpdateCount(int i) {
+        _updateCount = i;
+    }
+
+    private int _updateDmg = 0;
+	
+	public int getUpdateDmg() {
+        return _updateDmg;
+    }
+
+    public void setUpdateDmg(int i) {
+        _updateDmg = i;
+    }
+
+    private int _updateDmgModifier = 0;
+	
+	public int getUpdateDmgModifier() {
+        return _updateDmgModifier;
+    }
+
+    public void setUpdateDmgModifier(int i) {
+        _updateDmgModifier = i;
+    }
+    private int _updateStr = 0;
+	
+	public int getUpdateStr() {
+        return _updateStr;
+    }
+
+    public void setUpdateStr(int i) {
+        _updateStr = i;
+    }
+    private int _updateDex = 0;
+	
+	public int getUpdateDex() {
+        return _updateDex;
+    }
+
+    public void setUpdateDex(int i) {
+        _updateDex = i;
+    }
+    private int _updateInt = 0;
+    
+    public int getUpdateInt() {
+        return _updateInt;
+    }
+
+    public void setUpdateInt(int i) {
+        _updateInt = i;
+    }
+
+    
+    private int _updateHitModifier = 0;
+	
+	public int getUpdateHitModifier() {
+        return _updateHitModifier;
+    }
+
+    public void setUpdateHitModifier(int i) {
+        _updateHitModifier = i;
+    }
+//  武器攻击卷轴by阿杰end
+    
+    //sosodemon add strat
+    private int _updateCon = 0;
+	
+	public int getUpdateCon() {
+        return _updateCon;
+    }
+
+    public void setUpdateCon(int i) {
+        _updateCon = i;
+    }
+    private int _updateCha = 0;
+	
+	public int getUpdateCha() {
+        return _updateCha;
+    }
+
+    public void setUpdateCha(int i) {
+        _updateCha = i;
+    }
+    private int _updateWis = 0;
+    
+    public int getUpdateWis() {
+        return _updateWis;
+    }
+
+    public void setUpdateWis(int i) {
+        _updateWis = i;
+    }
+    //sosodemon add enx
+    
 	public void setSkillArmorEnchant(L1PcInstance pc, int skillId, int skillTime) {
 		int type = getItem().getType();
 		int type2 = getItem().getType2();
