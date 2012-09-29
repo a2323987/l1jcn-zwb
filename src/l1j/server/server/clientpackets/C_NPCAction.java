@@ -118,6 +118,7 @@ import l1j.server.server.templates.L1Npc;
 import l1j.server.server.templates.L1Skills;
 import l1j.server.server.templates.L1Town;
 import l1j.server.server.utils.Random;
+import l1j.william.BossRoom;
 
 /**
  * TODO: 翻译，好多 处理收到由客户端传来NPC动作的封包
@@ -409,7 +410,11 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 			}
 		} else if (s.equalsIgnoreCase("fix")) { // 武器的修理
-
+			// 102402boss馆服务人员
+		} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 102402) {
+			if (s.equalsIgnoreCase("boosroom"))
+				htmlid = BossRoom.getInstance().enterBossRoom(pc);
+			// //boss馆服务人员end
 		} else if (s.equalsIgnoreCase("room")) { // 租房间
 			L1NpcInstance npc = (L1NpcInstance) obj;
 			int npcId = npc.getNpcTemplate().get_npcId();

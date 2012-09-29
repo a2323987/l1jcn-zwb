@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//config/altsettings.properties=UTF-8
+encoding//config/bossRoom.properties=UTF-8
+encoding//config/famesystem.properties=UTF-8
 encoding//config/fights.properties=UTF-8
 encoding//config/log.properties=UTF-8
 encoding//config/record.properties=UTF-8

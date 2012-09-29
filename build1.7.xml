@@ -132,5 +132,6 @@
 	<!-- 复制 c3p0 的设定档到 class 根目录 -->
 	<target name="copy_c3p0_config">
 		<copy todir="${class.dir}" file="${etc.dir}/c3p0-config.xml" overwrite="true" />
+		<copy todir="${class.dir}/l1j/william" file="${server.src.dir}/l1j/william/misc_zh_CN.properties" overwrite="true" />
 	</target>
 </project>

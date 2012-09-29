@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import l1j.server.Config;
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.GeneralThreadPool;
@@ -56,25 +57,25 @@ public class BossRoom {
 	public static final int STATUS_READY = 1; // 等待中
 	public static final int STATUS_PLAYING = 2; // 游戏开始
 	public static final int STATUS_CLEANING = 4; // 清洁中
-	private static final int _minPlayer = 3; // 最少玩家数
-	private static final int _maxPlayer = 20; // 最多玩家数
-	private static final int _readytime = 80 * 1000; // 等待时间 80秒 + 倒数 = 总共90秒
-	private static final int _cleartime = 5 * 60000; // 清洁时间 五分钟
-	private static final int _bossId1 = 100010; // 火焰领主
-	private static final int _bossId2 = 100020; // 冰霜君主
-	private static final int _bossId3 = 100030; // 噩梦君主
-	private static final int _bossId4 = 100040; // 蛮牛暴君
-	private static final int _bossId5 = 100050; // 噬血暴君
-	private static final int _bossId6 = 100060; // 独眼暴君
-	private static final int _bossId7 = 100070; // 不朽暴君
-	private static final int _bossId8 = 100080; // 幻影魔豹
-	private static final int _bossId9 = 100090; // 血族亲王
-	private static final int _bossId10 = 100180; // 半神强者吉尔塔斯
-	private static final int _item = 40308; // 扣除物品
-	private static final int _adena = 1000000; // 扣除金币数量
+	private static final int _minPlayer = Config.minPlayer; // 最少玩家数
+	private static final int _maxPlayer = Config.maxPlayer; // 最多玩家数
+	private static final int _readytime = Config.readytime * 1000; // 等待时间 80秒 + 倒数 = 总共90秒
+	private static final int _cleartime = Config.cleartime * 1000; // 清洁时间 五分钟
+	private static final int _bossId1 = Config.bossId1; // 火焰领主
+	private static final int _bossId2 = Config.bossId2; // 冰霜君主
+	private static final int _bossId3 = Config.bossId3; // 噩梦君主
+	private static final int _bossId4 = Config.bossId4; // 蛮牛暴君
+	private static final int _bossId5 = Config.bossId5; // 噬血暴君
+	private static final int _bossId6 = Config.bossId6; // 独眼暴君
+	private static final int _bossId7 = Config.bossId7; // 不朽暴君
+	private static final int _bossId8 = Config.bossId8; // 幻影魔豹
+	private static final int _bossId9 = Config.bossId9; // 血族亲王
+	private static final int _bossId10 = Config.bossId10; // 半神强者吉尔塔斯
+	private static final int _item = Config.bossItem; // 扣除物品
+	private static final int _adena = Config.itemCount; // 扣除金币数量
 	public String enterBossRoom(L1PcInstance pc) {
 		if (BossRoom.getInstance().getBossRoomStatus() == BossRoom.STATUS_CLEANING) {
-			pc.sendPackets(new S_SystemMessage("目前BOSS馆正在清洁中。"));
+			pc.sendPackets(new S_SystemMessage("目前BOSS馆正在清理中。"));
 			return "";
 		}
 		if (BossRoom.getInstance().getBossRoomStatus() == BossRoom.STATUS_PLAYING && !isMember(pc)) {
@@ -89,7 +90,7 @@ public class BossRoom {
 			pc.sendPackets(new S_ServerMessage(189)); // 金币不足
 			return "";
 		}
-		L1Teleport.teleport(pc, 32661, 32891, (short) 3001, pc.getHeading(), true);
+		L1Teleport.teleport(pc, 32800, 32805, (short) 3001, pc.getHeading(), true);
 		addMember(pc);
 		return "";
 	}
@@ -106,7 +107,7 @@ public class BossRoom {
 		public void run() {
 			try {
 				setBossRoomStatus(STATUS_READY);
-				sendMessage("90秒后开始游戏");
+				sendMessage((Config.readytime+10) + "秒后开始游戏");
 				Thread.sleep(_readytime);
 				sendMessage("倒数10秒");
 				Thread.sleep(5 * 1000);
@@ -200,21 +201,26 @@ public class BossRoom {
 		}
 		spawn(npcid);
 	}
+
 	private void spawn(int npcid) {
 		try {
-			L1NpcInstance npc = NpcTable.getInstance().newNpcInstance(npcid);
-			npc.setId(IdFactory.getInstance().nextId());
-			npc.setMap((short) 3001);
-			npc.setX(32690);
-			npc.setY(32895);
-			Thread.sleep(1);
-			npc.setHomeX(npc.getX());
-			npc.setHomeY(npc.getY());
-			npc.setHeading(4);
-			L1World.getInstance().storeObject(npc);
-			L1World.getInstance().addVisibleObject(npc);
-			npc.turnOnOffLight();
-			npc.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE);
+			int count = getMembersCount() / 3;
+			for (int i = 0; i < count; i++) {
+				L1NpcInstance npc = NpcTable.getInstance()
+						.newNpcInstance(npcid);
+				npc.setId(IdFactory.getInstance().nextId());
+				npc.setMap((short) 3001);
+				npc.setX(32800);
+				npc.setY(32805);
+				Thread.sleep(1);
+				npc.setHomeX(npc.getX());
+				npc.setHomeY(npc.getY());
+				npc.setHeading(4);
+				L1World.getInstance().storeObject(npc);
+				L1World.getInstance().addVisibleObject(npc);
+				npc.turnOnOffLight();
+				npc.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE);
+			}
 		} catch (Exception e) {
 		}
 	}

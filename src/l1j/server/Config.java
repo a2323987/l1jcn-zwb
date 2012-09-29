@@ -40,7 +40,42 @@ public final class Config {
 	public static int THREAD_P_TYPE_GENERAL;
 
 	public static int THREAD_P_SIZE_GENERAL;
-
+	
+	/**bossRoom control*/
+	/**最少人数*/
+	public static int minPlayer;
+	/**最多人数*/
+	public static int maxPlayer;
+	/**扣除物品*/
+	public static int bossItem;
+	/**扣除物品数量*/
+	public static int itemCount;
+	/**等待时间 80秒 + 倒数 = 总共90秒*/
+	public static int readytime;
+	/**清洁时间 五分钟*/
+	public static int cleartime;
+	/**BOSS1*/
+	public static int bossId1;
+	/**BOSS2*/
+	public static int bossId2;
+	/**BOSS3*/
+	public static int bossId3;
+	/**BOSS4*/
+	public static int bossId4;
+	/**BOSS5*/
+	public static int bossId5;
+	/**BOSS6*/
+	public static int bossId6;
+	/**BOSS7*/
+	public static int bossId7;
+	/**BOSS8*/
+	public static int bossId8;
+	/**BOSS9*/
+	public static int bossId9;
+	/**BOSS10*/
+	public static int bossId10;
+	
+	
 	/** Server control */
 	public static String GAME_SERVER_HOST_NAME;
 
@@ -582,7 +617,8 @@ public final class Config {
 	public static final String RECORD_SETTINGS_CONFIG_FILE = "./config/record.properties";
 	
 	public static final String FAME_SETTINGS_CONFIG_FILE = "./config/famesystem.properties"; // 声望系统
-
+	
+	public static final String BOSSROOM = "./config/bossRoom.properties"; // boss馆
 	/** 其他设定 */
 
 	// 吸收每个 NPC 的 MP 上限
@@ -1127,7 +1163,50 @@ public final class Config {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			throw new Error("无法读取设定档: " + OTHER_SETTINGS_CONFIG_FILE);
 		}
-
+		// bossRoom.properties
+		Properties bossRoomSettings = new Properties();
+		try {
+			InputStream is = new FileInputStream(new File(
+					BOSSROOM));
+			bossRoomSettings.load(is);
+			is.close();
+			minPlayer = Integer.parseInt(bossRoomSettings.getProperty("minPlayer",
+					"0")); 
+			maxPlayer = Integer.parseInt(bossRoomSettings.getProperty("maxPlayer",
+					"0")); 
+			bossItem = Integer.parseInt(bossRoomSettings.getProperty("bossItem",
+					"0")); 
+			itemCount = Integer.parseInt(bossRoomSettings.getProperty("itemCount",
+					"0")); 
+			readytime = Integer.parseInt(bossRoomSettings.getProperty("readytime",
+					"0")); 
+			cleartime = Integer.parseInt(bossRoomSettings.getProperty("cleartime",
+					"0")); 
+			bossId1 = Integer.parseInt(bossRoomSettings.getProperty("bossId1",
+					"0")); 
+			bossId2 = Integer.parseInt(bossRoomSettings.getProperty("bossId2",
+					"0")); 
+			bossId3 = Integer.parseInt(bossRoomSettings.getProperty("bossId3",
+					"0")); 
+			bossId4 = Integer.parseInt(bossRoomSettings.getProperty("bossId4",
+					"0")); 
+			bossId5 = Integer.parseInt(bossRoomSettings.getProperty("bossId5",
+					"0")); 
+			bossId6 = Integer.parseInt(bossRoomSettings.getProperty("bossId6",
+					"0")); 
+			bossId7 = Integer.parseInt(bossRoomSettings.getProperty("bossId7",
+					"0")); 
+			bossId8 = Integer.parseInt(bossRoomSettings.getProperty("bossId8",
+					"0")); 
+			bossId9 = Integer.parseInt(bossRoomSettings.getProperty("bossId9",
+					"0")); 
+			bossId10 = Integer.parseInt(bossRoomSettings.getProperty("bossId10",
+					"0")); 
+			
+		} catch (Exception e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			throw new Error("无法读取设定档: " + BOSSROOM);
+		}
 		// einhasad.properties
 		Properties einhasadSettings = new Properties();
 		try {
@@ -1673,6 +1752,41 @@ public final class Config {
 		} else if (pName.equalsIgnoreCase("FameLV11Point")) {
 			FAME_LV11_POINT = Short.valueOf(pValue);
 		}
+		//bossRoom.properties
+	    else if (pName.equalsIgnoreCase("minPlayer")) {
+	    	minPlayer = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("maxPlayer")) {
+     		maxPlayer = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossItem")) {
+     		bossItem = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("itemCount")) {
+     		itemCount = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("readytime")) {
+     		readytime = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("cleartime")) {
+     		cleartime = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId1")) {
+     		bossId1 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId2")) {
+     		bossId2 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId3")) {
+     		bossId3 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId4")) {
+     		bossId4 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId5")) {
+     		bossId5 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId6")) {
+     		bossId6 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId7")) {
+     		bossId7 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId8")) {
+     		bossId8 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId9")) {
+     		bossId9 = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId10")) {
+     		bossId10 = Integer.valueOf(pValue); 
+     	}
+		
 		// record.properties
 		else if (pName.equalsIgnoreCase("LoggingWeaponEnchant")) {
 			LOGGING_WEAPON_ENCHANT = Byte.parseByte(pValue);

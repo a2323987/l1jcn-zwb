@@ -1353,8 +1353,20 @@ public class L1SkillUse {
 					} else {
 						if (_target instanceof L1PcInstance) {
 							L1PcInstance targetPc = (L1PcInstance) _target;
-							targetPc.sendPackets(new S_SkillSound(targetid, 4434));
-							targetPc.broadcastPacket(new S_SkillSound(targetid, 4434));
+							if(pc.getLevel()<targetPc.getLevel()){
+								return;
+							}else if(pc.getLevel() == targetPc.getLevel()){
+								int random = Random.nextInt(10);
+								if(random<5){
+									return;
+								}else {
+									targetPc.sendPackets(new S_SkillSound(targetid, 4434));
+									targetPc.broadcastPacket(new S_SkillSound(targetid, 4434));
+								}
+							}else if(pc.getLevel() > targetPc.getLevel()){
+								targetPc.sendPackets(new S_SkillSound(targetid, 4434));
+								targetPc.broadcastPacket(new S_SkillSound(targetid, 4434));
+							}							
 						} else if (_target instanceof L1NpcInstance) {
 							_target.broadcastPacket(new S_SkillSound(targetid, 4434));
 						}
