@@ -15,6 +15,7 @@
 package l1j.server.server.clientpackets;
 
 import l1j.server.server.ClientThread;
+import l1j.server.server.datatables.BossSpawnTable;
 import l1j.server.server.datatables.PetItemTable;
 import l1j.server.server.datatables.PetTable;
 import l1j.server.server.datatables.PetTypeTable;
@@ -30,11 +31,13 @@ import l1j.server.server.model.Instance.L1PetInstance;
 import l1j.server.server.model.Instance.L1SummonInstance;
 import l1j.server.server.serverpackets.S_ItemName;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Npc;
 import l1j.server.server.templates.L1Pet;
 import l1j.server.server.templates.L1PetItem;
 import l1j.server.server.templates.L1PetType;
 import l1j.server.server.utils.Random;
+import l1j.william.SystemMessage;
 
 /**
  * 处理收到由客户端传来给道具的封包
@@ -116,14 +119,27 @@ public class C_GiveItem extends ClientBasePacket {
 
 		L1PetType petType = PetTypeTable.getInstance().get(
 				target.getNpcTemplate().get_npcId());
-		if ((petType == null) || target.isDead()) {
+		if (target.isDead()) {
 			return;
 		}
-
+		if ((petType == null)) {
+			if (item.getItemId() == 40057) {// 所有其它怪物都可以用眼肉抓
+				if (target.getLevel() <= 30) {
+					tamePet(pc, target);
+				} else {
+					pc.sendPackets(new S_SystemMessage("我这么高等级，抓我要有运气喔"));
+					Random r = new Random();
+					int p = r.nextInt(target.getCurrentHp());
+					if (p < 100) {
+						tamePet(pc, target);
+					}
+				}
+			}
+		}
 		// 捕抓宠物
 		if (item.getItemId() == petType.getItemIdForTaming()) {
 			tamePet(pc, target);
-		}
+		} 
 		// 进化宠物
 		else if (item.getItemId() == petType.getEvolvItemId()) {
 			evolvePet(pc, target, item.getItemId());
@@ -140,6 +156,7 @@ public class C_GiveItem extends ClientBasePacket {
 				usePetWeaponArmor(target, item);
 			}
 		}
+
 
 	}
 
