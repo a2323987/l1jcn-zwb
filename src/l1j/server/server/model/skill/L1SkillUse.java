@@ -1993,20 +1993,26 @@ public class L1SkillUse {
 						break;
 					// 冲击之晕
 					case SHOCK_STUN:
-						int[] stunTimeArray =
-						{ 500, 1000, 1500, 2000, 2500, 3000 };
+						int[] stunTimeArray = { 500, 1000, 1500, 2000, 2500, 3000 };
 						int rnd = Random.nextInt(stunTimeArray.length);
 						_shockStunDuration = stunTimeArray[rnd];
-						if ((cha instanceof L1PcInstance) && cha.hasSkillEffect(SHOCK_STUN)) {
-							_shockStunDuration += cha.getSkillEffectTimeSec(SHOCK_STUN) * 1000;
+						if ((cha instanceof L1PcInstance)
+								&& cha.hasSkillEffect(SHOCK_STUN)) {
+							_shockStunDuration += cha
+									.getSkillEffectTimeSec(SHOCK_STUN) * 1000;
 						}
-
-						L1EffectSpawn.getInstance().spawnEffect(81162, _shockStunDuration, cha.getX(), cha.getY(), cha.getMapId());
+						L1EffectSpawn.getInstance().spawnEffect(81162,
+								_shockStunDuration, cha.getX(), cha.getY(),
+								cha.getMapId());
 						if (cha instanceof L1PcInstance) {
 							L1PcInstance pc = (L1PcInstance) cha;
-							pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN, true));
-						}
-						else if ((cha instanceof L1MonsterInstance) || (cha instanceof L1SummonInstance) || (cha instanceof L1PetInstance)) {
+							if (_user.getLevel() >= pc.getLevel()) {
+								pc.sendPackets(new S_Paralysis(
+										S_Paralysis.TYPE_STUN, true));
+							}
+						} else if ((cha instanceof L1MonsterInstance)
+								|| (cha instanceof L1SummonInstance)
+								|| (cha instanceof L1PetInstance)) {
 							L1NpcInstance npc = (L1NpcInstance) cha;
 							npc.setParalyzed(true);
 							npc.setParalysisTime(_shockStunDuration);
