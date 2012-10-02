@@ -32,14 +32,17 @@ public class L1ShopItem {
 	private final int _deleteDay; // 道具天数删除系统(指定天数)
 
 	private final Timestamp _deleteDate; // 道具天数删除系统(指定日期)
-
-	public L1ShopItem(int itemId, int price, int packCount, int deleteDay, Timestamp deleteDate) { // 道具天数删除系统
+	
+	private final int _EnchantLevel; //商店出售+几物品
+	
+	public L1ShopItem(int itemId, int price, int packCount, int deleteDay, Timestamp deleteDate,int EnchantLevel) { // 道具天数删除系统
 		_itemId = itemId;
 		_item = ItemTable.getInstance().getTemplate(itemId);
 		_price = price;
 		_packCount = packCount;
 		_deleteDay = deleteDay; // 道具天数删除系统(指定天数)
 		_deleteDate = deleteDate; // 道具天数删除系统(指定日期)
+		_EnchantLevel = EnchantLevel;//商店出售+几物品
 	}
 
 	public int getItemId() {
@@ -67,7 +70,10 @@ public class L1ShopItem {
 	public Timestamp getDeleteDate() {
 		return _deleteDate;
 	}
-
+	//商店出售+几物品
+	public int getEnchantLevel() {
+		return this._EnchantLevel;
+	}
 	// 食人妖精赛跑用
 	public void setName(int num) {
 		int trueNum = L1BugBearRace.getInstance().getRunner(num).getNpcId() - 91350 + 1;

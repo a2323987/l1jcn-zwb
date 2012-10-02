@@ -86,9 +86,13 @@ public class S_ShopSellList extends ServerBasePacket {
 			writeD(i);
 			writeH(shopItem.getItem().getGfxId());
 			writeD(price);
-
+			//商店出售+几物品
+			String nameString = "";	
+			if (shopItem.getEnchantLevel() > 1 ) {// +1物品
+				nameString = ("+" + shopItem.getEnchantLevel() + " ");
+			}
 			if (shopItem.getPackCount() > 1) {
-				writeS(item.getName() + " (" + shopItem.getPackCount() + ")" + s1 + s2);// 道具天数删除系统
+				writeS(nameString + item.getName() + " (" + shopItem.getPackCount() + ")" + s1 + s2);// 道具天数删除系统
 			} else {
 				if (item.getItemId() == 40309) {// 食人妖精RaceTicket
 					String[] temp = item.getName().split(" ");
@@ -97,7 +101,7 @@ public class S_ShopSellList extends ServerBasePacket {
 					writeS(buf + " $"
 							+ (1212 + Integer.parseInt(temp[temp.length - 1])));
 				} else {
-					writeS(item.getName() + s1 + s2);// 道具天数删除系统
+					writeS(nameString + item.getName() + s1 + s2);// 道具天数删除系统
 				}
 			}
 

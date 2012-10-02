@@ -335,6 +335,7 @@ public class L1Shop {
 		for (L1ShopBuyOrder order : orderList.getList()) {
 			int itemId = order.getItem().getItemId();
 			int amount = order.getCount();
+			int EnchantLevel= order.getItem().getEnchantLevel();//商店装备+几系统
 			L1ItemInstance item = ItemTable.getInstance().createItem(itemId);
 			// 道具天数删除系统
 			int deleteDay = order.getDeleteDay(); // 道具天数删除系统(指定天数)
@@ -374,6 +375,7 @@ public class L1Shop {
 			}
 			item.setCount(amount);
 			item.setIdentified(true);
+			item.setEnchantLevel(EnchantLevel);//商店+几系统
 			inv.storeItem(item);
 			if ((_npcId == 70068) || (_npcId == 70020) || (_npcId == 70056)) { //add 70056
 				item.setIdentified(false);

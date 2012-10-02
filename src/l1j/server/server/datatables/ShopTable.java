@@ -85,21 +85,23 @@ public class ShopTable {
 			int packCount = rs.getInt("pack_count");
 			int gashPrice = rs.getInt("gash_price"); // GASH币商城[提供:liumy]
 			int deleteDay = rs.getInt("delete_day"); // 道具天数删除系统(指定天数)
+			int EnchantLevel = rs.getInt("EnchantLevel");  //物品等级
 			Timestamp deleteDate = rs.getTimestamp("delete_date"); // 道具天数删除系统(指定日期)
 			packCount = packCount == 0 ? 1 : packCount;
 			if (0 <= sellingPrice && 0 >= gashPrice) { // GASH币商城[提供:liumy]
-				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,
-						packCount, deleteDay, deleteDate); // 道具天数删除系统
+				//L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate); // 道具天数删除系统
+				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
 				sellingList.add(item);
 			}
 			if (0 <= purchasingPrice && 0 >= gashPrice) { // GASH币商城[提供:liumy]
-				L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,
-						packCount, deleteDay, deleteDate); // 道具天数删除系统
+				//L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate); // 道具天数删除系统
+				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
 				purchasingList.add(item);
 			}
 			// GASH币商城[提供:liumy]
 			if (0 <= gashPrice && 0 >= sellingPrice && 0 >= purchasingPrice) {
-				L1ShopItem item = new L1ShopItem(itemId, gashPrice, packCount, deleteDay, deleteDate); // 道具天数删除系统
+				//L1ShopItem item = new L1ShopItem(itemId, gashPrice, packCount, deleteDay, deleteDate); // 道具天数删除系统
+				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
 				sellingList.add(item);
 			}
 			// end
