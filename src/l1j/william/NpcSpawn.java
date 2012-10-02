@@ -214,6 +214,8 @@ public class NpcSpawn{
 	        		 (((Integer) aTempData.get(5)).intValue()== 1 && (player.getClassId() == 48 || player.getClassId() == 61)) ||
 	        		 (((Integer) aTempData.get(6)).intValue()== 1 && (player.getClassId() == 37 || player.getClassId() == 138)) ||
 	        		 (((Integer) aTempData.get(7)).intValue()== 1 && (player.getClassId() == 734 || player.getClassId() == 1186)) ||
+	        		 (((Integer) aTempData.get(28)).intValue()== 1 && (player.getClassId() == 6658 || player.getClassId() == 6661)) ||
+	        		 (((Integer) aTempData.get(29)).intValue()== 1 && (player.getClassId() == 6671 || player.getClassId() == 6650)) ||
 	        		 (((Integer) aTempData.get(8)).intValue()== 1 && (player.getClassId() == 2786 || player.getClassId() == 2796)))){//判断可以对话的职业
 				  player.sendPackets(new S_NPCTalkReturn(oid,(String)aTempData.get(16),(String[])aTempData.get(21)));
 				  return true;
@@ -266,6 +268,8 @@ public class NpcSpawn{
 	    	  aReturn.add(25, new Integer(rset.getInt("heading")));
 	    	  aReturn.add(26, new Integer(rset.getInt("map")));
 	    	  aReturn.add(27, new Integer(rset.getInt("count")));
+	    	  aReturn.add(28, new Integer(rset.getInt("UseDragonKnight")));
+	    	  aReturn.add(29, new Integer(rset.getInt("UseIllusionist")));
 	    	  aData9.add(aReturn);
             }
           if(con!=null && !con.isClosed())

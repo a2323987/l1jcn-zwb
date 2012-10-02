@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,8 +37,9 @@ public class NpcTable {
 
 	private static NpcTable _instance;
 
-	private final Map<Integer, L1Npc> _npcs = Maps.newMap();
-
+	//private final Map<Integer, L1Npc> _npcs = Maps.newMap();
+	private final HashMap<Integer, L1Npc> _npcs; // sosodemon add william 
+	
 	private final Map<String, Constructor<?>> _constructorCache = Maps.newMap();
 
 	private static final Map<String, Integer> _familyTypes = NpcTable.buildFamily();
@@ -54,6 +56,14 @@ public class NpcTable {
 	}
 
 	private NpcTable() {
+//		sosodemon add william 
+		_npcs = new HashMap<Integer, L1Npc>();
+		try{
+			l1j.william.NpcSpawn.forNpcTable(_npcs);
+		}catch(Exception ex){ 
+			ex.printStackTrace();
+		}
+//		sosodemon add william 
 		loadNpcData();
 		_initialized = true;
 	}

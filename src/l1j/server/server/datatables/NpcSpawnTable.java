@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +52,11 @@ public class NpcSpawnTable {
 	}
 
 	private NpcSpawnTable() {
+//		sosodemon add william 
+		int[] iGetReturn = l1j.william.NpcSpawn.forNpcSpawnTable(_spawntable);
+		if (iGetReturn[1] > _highestId)
+		_highestId = iGetReturn[1];
+//		sosodemon add william end
 		fillNpcSpawnTable();
 	}
 

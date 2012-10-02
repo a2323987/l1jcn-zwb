@@ -1,17 +1,22 @@
-/**
- *                            License
- * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS  
- * CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). 
- * THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW.  
- * ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR  
- * COPYRIGHT LAW IS PROHIBITED.
- * 
- * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND  
- * AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE  
- * MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED 
- * HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
- * 
+/*
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ * 02111-1307, USA.
+ *
+ * http://www.gnu.org/copyleft/gpl.html
  */
+
 package l1j.william;
 
 import java.sql.Connection;
@@ -33,7 +38,7 @@ public class SystemMessage {
 	private static SystemMessage _instance;
 
 	private final HashMap<Integer, L1WilliamSystemMessage> _itemIdIndex
-	= new HashMap<Integer, L1WilliamSystemMessage>();
+			= new HashMap<Integer, L1WilliamSystemMessage>();
 
 	public static SystemMessage getInstance() {
 		if (_instance == null) {
@@ -70,7 +75,7 @@ public class SystemMessage {
 		while (rs.next()) {
 			int Id = rs.getInt("id");
 			String Message = rs.getString("message");
-
+			
 			L1WilliamSystemMessage System_Message = new L1WilliamSystemMessage(Id, Message);
 			_itemIdIndex.put(Id, System_Message);
 		}

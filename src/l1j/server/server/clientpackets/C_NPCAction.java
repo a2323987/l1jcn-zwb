@@ -28,6 +28,7 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_CURSE_YAHEE;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_HASTE;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.logging.Level;
@@ -128,7 +129,6 @@ public class C_NPCAction extends ClientBasePacket {
 	private static final String C_NPC_ACTION = "[C] C_NPCAction";
 
 	private static Logger _log = Logger.getLogger(C_NPCAction.class.getName());
-
 	public C_NPCAction(byte abyte0[], ClientThread client) throws Exception {
 		super(abyte0);
 		
@@ -241,7 +241,28 @@ public class C_NPCAction extends ClientBasePacket {
 		/*
 		 * 个别处理行动
 		 */
-		if (s.equalsIgnoreCase("buy")) {
+//		sosodemon add william
+		if( l1j.william.NpcQuest.forNpcQuest(s, pc, ((L1NpcInstance) obj), ((L1NpcInstance) obj).getNpcTemplate().get_npcId(), objid)) {
+			return;
+		}
+		
+		ArrayList aReturn = l1j.william.misc.forRequestNPCAction(s, pc);
+
+        if( 1==((Integer)aReturn.get(0)).intValue() ) {
+          if( aReturn.get(1)!=null  )
+            htmlid = (String) aReturn.get(1);
+          if( aReturn.get(2)!=null  )
+              htmldata = (String[]) aReturn.get(2);
+          if( aReturn.get(3)!=null  )
+            materials = (int[])aReturn.get(3);
+          if( aReturn.get(4)!=null  )
+            counts = (int[])aReturn.get(4);
+          if( aReturn.get(5)!=null  )
+            createitem = (int[])aReturn.get(5);
+          if( aReturn.get(6)!=null  )
+            createcount = (int[])aReturn.get(6);
+//		sosodemon add william end
+		} else if (s.equalsIgnoreCase("buy")) {
 			L1NpcInstance npc = (L1NpcInstance) obj;
 			// sell 应该指给 NPC 检查
 			if (isNpcSellOnly(npc)) {

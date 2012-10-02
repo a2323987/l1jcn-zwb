@@ -88,7 +88,13 @@ public class L1MerchantInstance extends L1NpcInstance {
 		L1Quest quest = player.getQuest();
 		String htmlid = null;
 		String[] htmldata = null;
-
+//		add william sosodemon
+		if( l1j.william.NpcSpawn.forFirstTimeTalking(player, npcid , objid) )
+			return;
+		if( l1j.william.NpcAction.forNpcAction(player, npcid , objid))
+			return;
+//		add william sosodemon end
+		
 		if (getNpcTemplate().getChangeHead()) {
 			setHeading(targetDirection(player.getX(), player.getY()));
 			broadcastPacket(new S_ChangeHeading(this));
