@@ -120,7 +120,7 @@ public class AutoLearnSkill {
 			con = L1DatabaseFactory.getInstance().getConnection();
 			Statement stat = con.createStatement();
 			ResultSet rset = stat
-					.executeQuery("SELECT * FROM william_autoaddskill");
+					.executeQuery("SELECT * FROM william_auto_add_skill");
 			ArrayList<Object> aReturn = null;
 			if (rset != null)
 				while (rset.next()) {
