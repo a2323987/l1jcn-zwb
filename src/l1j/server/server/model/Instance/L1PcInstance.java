@@ -133,6 +133,7 @@ import l1j.server.server.templates.L1PrivateShopSellList;
 import l1j.server.server.utils.CalcStat;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.collections.Lists;
+import l1j.william.L1WilliamSystemMessage;
 
 // Referenced classes of package l1j.server.server.model:
 // L1Character, L1DropTable, L1Object, L1ItemInstance,
@@ -2620,7 +2621,7 @@ public class L1PcInstance extends L1Character {
 
 		// 根据等级判断地图限制
 		if ((getMapId() == 2005 || getMapId() == 86)) { // 新手村
-			if (getLevel() >= 13) { // 等级大于13
+			if (getLevel() >= Integer.valueOf(L1WilliamSystemMessage.ShowMessage(1136)).intValue()) { // 等级大于13
 				if (getQuest().get_step(L1Quest.QUEST_TUTOR) != 255) {
 					getQuest().set_step(L1Quest.QUEST_TUTOR, 255);
 				}
