@@ -42,6 +42,7 @@ import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_UseAttackSkill;
 import l1j.server.server.templates.L1Skills;
 import l1j.server.server.utils.Random;
+import l1j.william.L1WilliamSystemMessage;
 
 // Referenced classes of package l1j.server.server.model:
 // L1PcInstance
@@ -134,10 +135,28 @@ public class L1WeaponSkill {
 			int weaponId) {
 		L1WeaponSkill weaponSkill = WeaponSkillTable.getInstance().getTemplate(
 				weaponId);
-		if ((pc == null) || (cha == null) || (weaponSkill == null)) {
+		
+		if ((pc == null) || (cha == null) ) {
 			return 0;
 		}
-
+		if (weaponSkill == null) {//武器超过一定等级 附加魔法加成
+			if (pc.getWeapon().getEnchantLevel() >= Integer.valueOf(
+					L1WilliamSystemMessage.ShowMessage(1137)).intValue()) {
+				weaponSkill = WeaponSkillTable.getInstance().getTemplate(
+						Integer.valueOf(
+								L1WilliamSystemMessage.ShowMessage(1138))
+								.intValue());
+			} else if (pc.getWeapon().getEnchantLevel() >= Integer.valueOf(
+					L1WilliamSystemMessage.ShowMessage(1139)).intValue()
+					&& pc.getWeapon().getEnchantLevel() < Integer.valueOf(
+							L1WilliamSystemMessage.ShowMessage(1137))
+							.intValue()) {
+				weaponSkill = WeaponSkillTable.getInstance().getTemplate(
+						Integer.valueOf(
+								L1WilliamSystemMessage.ShowMessage(1140))
+								.intValue());
+			}
+		}
 		int chance = Random.nextInt(100) + 1;
 		if (weaponSkill.getProbability() < chance) {
 			return 0;
