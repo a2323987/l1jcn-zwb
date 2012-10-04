@@ -2625,7 +2625,8 @@ public class L1PcInstance extends L1Character {
 				if (getQuest().get_step(L1Quest.QUEST_TUTOR) != 255) {
 					getQuest().set_step(L1Quest.QUEST_TUTOR, 255);
 				}
-				L1Teleport.teleport(this, 33084, 33391, (short) 4, 5, true);// 银骑士村
+				//L1Teleport.teleport(this, 33084, 33391, (short) 4, 5, true);// 银骑士村
+				L1Teleport.teleport(this, 32579, 32930, (short) 0, 31, true);// 说话之岛村
 			}
 		} else if (getLevel() >= 52) { // 指定レベル
 			if (getMapId() == 777) { // 见舍てられた者たちの地(影の神殿)
