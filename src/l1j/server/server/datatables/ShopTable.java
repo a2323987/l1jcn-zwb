@@ -95,13 +95,13 @@ public class ShopTable {
 			}
 			if (0 <= purchasingPrice && 0 >= gashPrice) { // GASH币商城[提供:liumy]
 				//L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate); // 道具天数删除系统
-				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
+				L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
 				purchasingList.add(item);
 			}
 			// GASH币商城[提供:liumy]
 			if (0 <= gashPrice && 0 >= sellingPrice && 0 >= purchasingPrice) {
 				//L1ShopItem item = new L1ShopItem(itemId, gashPrice, packCount, deleteDay, deleteDate); // 道具天数删除系统
-				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
+				L1ShopItem item = new L1ShopItem(itemId, gashPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
 				sellingList.add(item);
 			}
 			// end
