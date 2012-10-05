@@ -217,7 +217,15 @@ public class L1PcInstance extends L1Character {
 
 		return _originalMpr;
 	}
+	// sosodemon add 声望系统 BY.SosoDEmoN
+	private int _fameLevel = 0; 
+	public int getFameLevel() {
+		return _fameLevel;
+	}
 
+	public void setFameLevel(int i) {
+		_fameLevel = i;
+	}
 	public void startHpRegeneration() {
 		final int INTERVAL = 1000;
 

@@ -413,6 +413,7 @@ public class C_ItemUSe extends ClientBasePacket {
 						.getMinLevel();
 				int item_maxlvl = ((L1EtcItem) l1iteminstance.getItem())
 						.getMaxLevel();
+				int fameLV = l1iteminstance.getItem().getCheckFameLevel();
 				if ((item_minlvl != 0) && (item_minlvl > pc.getLevel())
 						&& !pc.isGm()) {
 					pc.sendPackets(new S_ServerMessage(318, String
@@ -424,7 +425,13 @@ public class C_ItemUSe extends ClientBasePacket {
 							item_maxlvl)); // 等级%d以下才能使用此道具。
 					return;
 				}
-
+				
+//				sosodemon add 物品声望控制
+				else if (fameLV > pc.getFameLevel()) {
+					pc.sendPackets(new S_SystemMessage("您的声望值不足。 需要声望：【"+ fameLV +"】"));					
+					return;
+				}
+				
 				if (((itemId == 40576) && !pc.isElf()) // 魂の结晶の破片（白）
 						|| ((itemId == 40577) && !pc.isWizard()) // 魂の结晶の破片（黑）
 						|| ((itemId == 40578) && !pc.isKnight())) { // 魂の结晶の破片（赤）
@@ -3295,12 +3302,16 @@ public class C_ItemUSe extends ClientBasePacket {
 				// 种别：武器
 				int min = l1iteminstance.getItem().getMinLevel();
 				int max = l1iteminstance.getItem().getMaxLevel();
+				int fameLV = l1iteminstance.getItem().getCheckFameLevel();
 				if ((min != 0) && (min > pc.getLevel())) {
 					// 等级 %0以上才可使用此道具。
 					pc.sendPackets(new S_ServerMessage(318, String.valueOf(min)));
 				} else if ((max != 0) && (max < pc.getLevel())) {
 					pc.sendPackets(new S_PacketBox(S_PacketBox.MSG_LEVEL_OVER,
 							max)); // 等级%d以下才能使用此道具。
+				//sosodemon add 武器声望控制
+				} else if (fameLV > pc.getFameLevel()) {
+					pc.sendPackets(new S_SystemMessage("您的声望值不足。 需要声望：【"+ fameLV +"】"));					
 				} else {
 					if ((pc.isCrown() && l1iteminstance.getItem().isUseRoyal())
 							|| (pc.isKnight() && l1iteminstance.getItem()
@@ -3339,6 +3350,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							.getMinLevel();
 					int max = ((L1Armor) l1iteminstance.getItem())
 							.getMaxLevel();
+					int fameLV = l1iteminstance.getItem().getCheckFameLevel();
 					if ((min != 0) && (min > pc.getLevel())) {
 						// 等级 %0以上才可使用此道具。
 						pc.sendPackets(new S_ServerMessage(318, String
@@ -3346,6 +3358,9 @@ public class C_ItemUSe extends ClientBasePacket {
 					} else if ((max != 0) && (max < pc.getLevel())) {
 						pc.sendPackets(new S_PacketBox(
 								S_PacketBox.MSG_LEVEL_OVER, max)); // 等级%d以下才能使用此道具。
+//					sosodemon add 防具声望控制
+					} else if (fameLV > pc.getFameLevel()) {
+							pc.sendPackets(new S_SystemMessage("您的声望值不足。 需要声望：【"+ fameLV +"】"));
 					} else {
 						UseArmor(pc, l1iteminstance);
 					}

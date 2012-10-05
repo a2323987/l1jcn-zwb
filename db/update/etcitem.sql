@@ -1,0 +1,1 @@
+﻿alter table etcitem add CheckFameLV int(10) NOT NULL DEFAULT '0';

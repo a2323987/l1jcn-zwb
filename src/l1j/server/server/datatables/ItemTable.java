@@ -284,7 +284,7 @@ public class ItemTable {
 				item.setToBeSavedAtOnce((rs.getInt("save_at_once") == 1) ? true : false);
 				item.setDelete_Day(rs.getInt("delete_day")); // 道具天数删除系统(指定天数)
 				item.setDelete_Date(rs.getTimestamp("delete_date")); // 道具天数删除系统(指定日期)
-
+				item.setCheckFameLevel(rs.getInt("CheckFameLV")); // sosodemon add 物品声望值控制
 				result.put(new Integer(item.getItemId()), item);
 			}
 		}
@@ -369,7 +369,7 @@ public class ItemTable {
 				weapon.setMaxUseTime(rs.getInt("max_use_time"));
 				weapon.setDelete_Day(rs.getInt("delete_day")); // 道具天数删除系统(指定天数)
 				weapon.setDelete_Date(rs.getTimestamp("delete_date")); // 道具天数删除系统(指定日期)
-
+				weapon.setCheckFameLevel(rs.getInt("CheckFameLV")); // sosodemon add 武器声望值控制
 				result.put(new Integer(weapon.getItemId()), weapon);
 			}
 		}
@@ -467,7 +467,7 @@ public class ItemTable {
 				armor.setGrade(rs.getInt("grade"));
 				armor.setDelete_Day(rs.getInt("delete_day")); // 道具天数删除系统(指定天数)
 				armor.setDelete_Date(rs.getTimestamp("delete_date")); // 道具天数删除系统(指定日期)
-
+				armor.setCheckFameLevel(rs.getInt("CheckFameLV")); // sosodemon add 防具声望值控制
 				result.put(new Integer(armor.getItemId()), armor);
 			}
 		}

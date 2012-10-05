@@ -1,0 +1,1 @@
+﻿alter table weapon add CheckFameLV int(10) NOT NULL DEFAULT '0';

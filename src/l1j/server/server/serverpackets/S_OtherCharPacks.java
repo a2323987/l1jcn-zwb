@@ -48,8 +48,8 @@ public class S_OtherCharPacks extends ServerBasePacket {
 		int status = STATUS_PC;
 		
 		// sosodemon add 声望系统 BY.SosoDEmoN
-		String FameName = "";
-		if (pc.getFamePoint() >= 0 && pc.getFamePoint() < Config.FAME_LV1_POINT) {
+		String FameName = "[声望LV0]";
+		if (pc.getFamePoint() > 0 && pc.getFamePoint() < Config.FAME_LV1_POINT) {
 			FameName = L1WilliamSystemMessage.ShowMessage(100); //Lv1 0~9
 		} else if (pc.getFamePoint() >= Config.FAME_LV1_POINT && pc.getFamePoint() < Config.FAME_LV2_POINT) {
 			FameName = L1WilliamSystemMessage.ShowMessage(101); //Lv2 10~29

@@ -742,5 +742,14 @@ public abstract class L1Item implements Cloneable, Serializable {
 	public int getGrade() {
 		return 0;
 	}
+//	sosodemon add 声望控制 BY SosoDEmoN
+	private int _checkfamenameLevel; 
 
+	public int getCheckFameLevel() {
+		return _checkfamenameLevel;
+	}
+
+	public void setCheckFameLevel(int i) {
+		_checkfamenameLevel = i;
+	}
 }

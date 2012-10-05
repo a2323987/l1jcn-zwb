@@ -3,3 +3,21 @@ INSERT INTO `william_system_message` VALUES ('1137', '15', '武器等级超过15
 INSERT INTO `william_system_message` VALUES ('1139', '10', '武器等级超过10');
 INSERT INTO `william_system_message` VALUES ('1138', '121', '附加魔法武器ID 需要在weapon_skill中能找到的武器');
 INSERT INTO `william_system_message` VALUES ('1140', '58', '附加魔法武器ID 需要在weapon_skill中能找到的武器');
+
+INSERT INTO `william_system_message` VALUES ('100', '\\f:[声望LV1]', '声望LV1');
+INSERT INTO `william_system_message` VALUES ('101', '\\fU[声望LV2]', '声望LV2');
+INSERT INTO `william_system_message` VALUES ('102', '\\fA[声望LV3]', '声望LV3');
+INSERT INTO `william_system_message` VALUES ('103', '\\fI[声望LV4]', '声望LV4');
+INSERT INTO `william_system_message` VALUES ('104', '\\fN[声望LV5]', '声望LV5');
+INSERT INTO `william_system_message` VALUES ('105', '\\fB[声望LV6]', '声望LV6');
+INSERT INTO `william_system_message` VALUES ('106', '\\fY[声望LV7]', '声望LV7');
+INSERT INTO `william_system_message` VALUES ('107', '\\f9[声望LV8]', '声望LV8');
+INSERT INTO `william_system_message` VALUES ('108', '\\fW[声望LV9]', '声望LV9');
+INSERT INTO `william_system_message` VALUES ('109', '\\f7[声望LV10]', '声望LV10');
+INSERT INTO `william_system_message` VALUES ('110', '\\f;[声望LV11]', '声望LV11');
+INSERT INTO `william_system_message` VALUES ('111', '\\fH[声望LV12]', '声望LV12');
+INSERT INTO `william_system_message` VALUES ('112', '您的声望值增加1点', '声望道具');
+INSERT INTO `william_system_message` VALUES ('113', '您的声望值增加5点', '声望道具');
+INSERT INTO `william_system_message` VALUES ('114', '您的声望值增加10点', '声望道具');
+INSERT INTO `william_system_message` VALUES ('115', '您的声望值已到了极限', '声望道具');
+INSERT INTO `william_system_message` VALUES ('116', '您不适合使用这种声望道具', '声望道具');
