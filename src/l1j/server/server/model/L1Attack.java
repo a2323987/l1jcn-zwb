@@ -14,6 +14,7 @@
  */
 package l1j.server.server.model;
 
+import l1j.plugin.ShowMeaagae;
 import l1j.server.Config;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.WarTimeController;
@@ -1106,6 +1107,11 @@ public class L1Attack {
 		if (dmg <= 0) {
 			_isHit = false;
 			_drainHp = 0; // ダメージ无しの场合は吸收による回复はしない
+		}
+		
+		if(dmg >= _targetPc.getCurrentHp()){//PK获胜全体公告。
+			ShowMeaagae showMeaagae = new ShowMeaagae();
+			showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】Ｐ贏了玩家【").append(_targetPc.getName()).append("】").toString());
 		}
 
 		return (int) dmg;
