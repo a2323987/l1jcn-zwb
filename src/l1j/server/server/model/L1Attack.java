@@ -1007,6 +1007,11 @@ public class L1Attack {
 			_isHit = false;
 			_drainHp = 0; // ダメージ无しの场合は吸收による回复はしない
 		}
+		
+		if(dmg >= _targetPc.getCurrentHp()){//PK获胜全体公告。
+			ShowMeaagae showMeaagae = new ShowMeaagae();
+			showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】Ｐ贏了玩家【").append(_targetPc.getName()).append("】").toString());
+		}
 
 		return (int) dmg;
 	}
@@ -1109,10 +1114,6 @@ public class L1Attack {
 			_drainHp = 0; // ダメージ无しの场合は吸收による回复はしない
 		}
 		
-		if(dmg >= _targetPc.getCurrentHp()){//PK获胜全体公告。
-			ShowMeaagae showMeaagae = new ShowMeaagae();
-			showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】Ｐ贏了玩家【").append(_targetPc.getName()).append("】").toString());
-		}
 
 		return (int) dmg;
 	}
