@@ -155,6 +155,8 @@ public class L1WeaponSkill {
 						Integer.valueOf(
 								L1WilliamSystemMessage.ShowMessage(1140))
 								.intValue());
+			}else {
+				return 0;
 			}
 		}
 		int chance = Random.nextInt(100) + 1;
