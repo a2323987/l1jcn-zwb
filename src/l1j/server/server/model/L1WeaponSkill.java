@@ -136,7 +136,7 @@ public class L1WeaponSkill {
 		L1WeaponSkill weaponSkill = WeaponSkillTable.getInstance().getTemplate(
 				weaponId);
 		
-		if ((pc == null) || (cha == null) ) {
+		if ((pc == null) || (cha == null) ||  pc.getWeapon() == null) {
 			return 0;
 		}
 		if (weaponSkill == null) {//武器超过一定等级 附加魔法加成
