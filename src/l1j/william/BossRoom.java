@@ -90,7 +90,7 @@ public class BossRoom {
 			pc.sendPackets(new S_ServerMessage(189)); // 金币不足
 			return "";
 		}
-		L1Teleport.teleport(pc, 32800, 32805, (short) 3001, pc.getHeading(), true);
+		L1Teleport.teleport(pc, 32700, 32895, (short) 801, pc.getHeading(), true);
 		addMember(pc);
 		return "";
 	}
@@ -176,7 +176,7 @@ public class BossRoom {
 		clearColosseum();
 	}
 	private void clearColosseum() {
-		for (Object obj : L1World.getInstance().getVisibleObjects(3001).values()) {
+		for (Object obj : L1World.getInstance().getVisibleObjects(801).values()) {
 			if (obj instanceof L1MonsterInstance) {
 				L1MonsterInstance mob = (L1MonsterInstance) obj;
 				if (!mob.isDead()) {
@@ -204,14 +204,17 @@ public class BossRoom {
 
 	private void spawn(int npcid) {
 		try {
-			int count = getMembersCount() / 3;
+			int count =1;
+			if(getMembersCount()>5){//六个人以上刷每三个人一只怪
+			count = getMembersCount() / 3;
+			}
 			for (int i = 0; i < count; i++) {
 				L1NpcInstance npc = NpcTable.getInstance()
 						.newNpcInstance(npcid);
 				npc.setId(IdFactory.getInstance().nextId());
-				npc.setMap((short) 3001);
-				npc.setX(32800);
-				npc.setY(32805);
+				npc.setMap((short) 801);
+				npc.setX(32700);
+				npc.setY(32895);
 				Thread.sleep(1);
 				npc.setHomeX(npc.getX());
 				npc.setHomeY(npc.getY());
@@ -247,7 +250,7 @@ public class BossRoom {
 	}
 	private void sendMessage(String msg) {
 		for (L1PcInstance pc : getMembersArray()) {
-			if (pc.getMapId() == 3001) {
+			if (pc.getMapId() == 801) {
 				pc.sendPackets(new S_BlueMessage(166, "\\f3" + msg)); // 夜小空 创意广播
 			}
 		}
