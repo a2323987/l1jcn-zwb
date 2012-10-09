@@ -175,7 +175,10 @@ public class L1ItemId {
 
 	/** 象牙塔妙药 */
 	public static final int POTION_OF_WONDER_DRUG = 49315;
-
+	
+	/** 元宝 */
+	public static final int YUANBAO = 60000;
+	
 	/** 金币 */
 	public static final int ADENA = 40308;
 }

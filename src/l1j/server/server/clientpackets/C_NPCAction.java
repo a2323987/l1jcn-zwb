@@ -4421,7 +4421,9 @@ public class C_NPCAction extends ClientBasePacket {
 				break;
 			}
 			if (s.equalsIgnoreCase("a") || s.equalsIgnoreCase("b")){
-				if(pc.getInventory().consumeItem(L1ItemId.ADENA,3000)){
+				if(pc.getInventory().consumeItem(L1ItemId.YUANBAO,Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(127)).intValue())){
+					pc.setCurrentHp(pc.getMaxHp());
+					pc.setCurrentMp(pc.getMaxMp());
 					L1SkillUse l1skilluse = new L1SkillUse();
 					for (int i = 0; i < skills.length; i++) {
 						l1skilluse.handleCommands(pc, 

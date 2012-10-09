@@ -32,3 +32,5 @@ INSERT INTO `william_system_message` VALUES ('123', '60000', '血盟PK大赛奖�
 INSERT INTO `william_system_message` VALUES ('124', '100', '血盟PK大赛奖励物品2数量');
 INSERT INTO `william_system_message` VALUES ('125', '80', '等待时间 80秒 + 倒数 = 总共90秒');
 INSERT INTO `william_system_message` VALUES ('126', '300', '血盟PK大赛重启时间');
+
+INSERT INTO `william_system_message` VALUES ('127', '1', '魔法商人一次魔法消耗元宝数');
