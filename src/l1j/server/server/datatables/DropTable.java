@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -106,10 +107,27 @@ public class DropTable {
 	public void setDrop(L1NpcInstance npc, L1Inventory inventory) {
 		// ドロップリストの取得
 		int mobId = npc.getNpcTemplate().get_npcId();
-		List<L1Drop> dropList = _droplists.get(mobId);
-		if (dropList == null) {
+		List<L1Drop>  mobList = _droplists.get(mobId);
+		List<L1Drop> allList = _droplists.get(40000);
+		//添加通用掉落物品怪物id为40000
+		List<L1Drop> dropList = new ArrayList<L1Drop>();
+		if (mobList == null && allList == null) {
 			return;
 		}
+		if (mobList != null) {
+			for (L1Drop drop : mobList) {
+				dropList.add(drop);
+			}
+		}
+		if (allList != null) {
+			for (L1Drop drop : allList) {
+				dropList.add(drop);
+			}
+		}
+		//掉落通用物品
+/*		if (dropList == null) {
+			return;
+		}*/
 
 		// レート取得
 		double droprate = Config.RATE_DROP_ITEMS;
