@@ -97,8 +97,23 @@ public class L1War {
 		}
 	}
 
+	class SimWarTimerPVP implements Runnable {
+		public void run() {
+			for (int loop = 0; loop < 20; loop++) {
+				try {
+					Thread.sleep(60000L);
+				} catch (Exception exception) {
+					break;
+				}
+				if (_isWarTimerDelete)
+					return;
+			}
+			CeaseWar(_param1, _param2);
+			delete();
+		}
+	}
 	public void handleCommands(int war_type, String attack_clan_name, String defence_clan_name) {
-		// war_type - 1:攻城战 2:模拟战
+		// war_type - 1:攻城战 2:模拟战 3:小型盟战
 		// attack_clan_name - 布告したクラン名
 		// defence_clan_name - 布告されたクラン名（攻城战时は、城主クラン）
 
@@ -127,7 +142,12 @@ public class L1War {
 		else if (war_type == 2) { // 模拟战
 			SimWarTimer sim_war_timer = new SimWarTimer();
 			GeneralThreadPool.getInstance().execute(sim_war_timer); // タイマー开始
-		}
+		} else if(war_type == 3)
+	        {
+	            SimWarTimerPVP sim_war_timerPVP = new SimWarTimerPVP();
+	            GeneralThreadPool.getInstance().execute(sim_war_timerPVP);
+	        }
+
 		L1World.getInstance().addWar(this); // 战争リストに追加
 	}
 

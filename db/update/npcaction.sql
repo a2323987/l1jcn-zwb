@@ -1,0 +1,1 @@
+INSERT INTO `npcaction` VALUES ('102403', 'clanWar', 'clanWar', '', '');

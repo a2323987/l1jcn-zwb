@@ -21,3 +21,14 @@ INSERT INTO `william_system_message` VALUES ('113', '您的声望值增加5点',
 INSERT INTO `william_system_message` VALUES ('114', '您的声望值增加10点', '声望道具');
 INSERT INTO `william_system_message` VALUES ('115', '您的声望值已到了极限', '声望道具');
 INSERT INTO `william_system_message` VALUES ('116', '您不适合使用这种声望道具', '声望道具');
+
+INSERT INTO `william_system_message` VALUES ('117', '60000', '血盟PK大赛王子进入物品');
+INSERT INTO `william_system_message` VALUES ('118', '100', '血盟PK大赛王子进入物品数量');
+INSERT INTO `william_system_message` VALUES ('119', '60000', '血盟PK大赛成员进入物品');
+INSERT INTO `william_system_message` VALUES ('120', '10', '血盟PK大赛成员进入物品数量');
+INSERT INTO `william_system_message` VALUES ('121', '60000', '血盟PK大赛奖励物品1');
+INSERT INTO `william_system_message` VALUES ('122', '100', '血盟PK大赛奖励物品1数量');
+INSERT INTO `william_system_message` VALUES ('123', '60000', '血盟PK大赛奖励物品2');
+INSERT INTO `william_system_message` VALUES ('124', '100', '血盟PK大赛奖励物品2数量');
+INSERT INTO `william_system_message` VALUES ('125', '80', '等待时间 80秒 + 倒数 = 总共90秒');
+INSERT INTO `william_system_message` VALUES ('126', '300', '血盟PK大赛重启时间');

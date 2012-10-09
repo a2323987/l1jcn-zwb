@@ -34,6 +34,7 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import l1j.plugin.ZhuduiPK;
 import l1j.server.Config;
 import l1j.server.server.ClientThread;
 import l1j.server.server.HomeTownTimeController;
@@ -436,6 +437,11 @@ public class C_NPCAction extends ClientBasePacket {
 			if (s.equalsIgnoreCase("boosroom"))
 				htmlid = BossRoom.getInstance().enterBossRoom(pc);
 			// //boss馆服务人员end
+			// 血盟PK
+		} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 102403) {
+			if (s.equalsIgnoreCase("clanWar"))
+				htmlid = ZhuduiPK.getInstance().enterZhuduiPK(pc);
+			//血盟PK
 		} else if (s.equalsIgnoreCase("room")) { // 租房间
 			L1NpcInstance npc = (L1NpcInstance) obj;
 			int npcId = npc.getNpcTemplate().get_npcId();
