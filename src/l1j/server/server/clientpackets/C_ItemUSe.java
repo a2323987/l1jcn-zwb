@@ -2984,7 +2984,7 @@ public class C_ItemUSe extends ClientBasePacket {
 					pc.getInventory().removeItem(l1iteminstance, 1);
 					pc.save();
 					// end
-				} else if (itemId == 60011) { // 声望[1]
+				} else if (itemId == 60011) { // 声望[1]					
 					if(pc.getFamePoint() >= Config.FAME_LV11_POINT){
 						pc.sendPackets(new S_ServerMessage(166, L1WilliamSystemMessage.ShowMessage(115)));
 						return;
@@ -2992,11 +2992,12 @@ public class C_ItemUSe extends ClientBasePacket {
 					if(pc.getFamePoint()+ 1 > Config.FAME_LV11_POINT){
 						pc.sendPackets(new S_ServerMessage(166, L1WilliamSystemMessage.ShowMessage(116)));
 						return;
-					}
+					}					
 					pc.sendPackets(new S_ServerMessage(166, L1WilliamSystemMessage.ShowMessage(112)));
 					pc.setFamePoint((short) (pc.getFamePoint() + 1));
 					pc.getInventory().removeItem(l1iteminstance, 1);
 					pc.save();
+					pc.sendPackets(new S_SystemMessage("当前的声望值为"+pc.getFamePoint()));
 				} else if (itemId == 60012) { // 声望[5]
 					if(pc.getFamePoint() >= Config.FAME_LV11_POINT){
 						pc.sendPackets(new S_ServerMessage(166, L1WilliamSystemMessage.ShowMessage(115)));
@@ -3010,6 +3011,7 @@ public class C_ItemUSe extends ClientBasePacket {
 					pc.setFamePoint((short) (pc.getFamePoint() + 5));
 					pc.getInventory().removeItem(l1iteminstance, 1);
 					pc.save();
+					pc.sendPackets(new S_SystemMessage("当前的声望值为"+pc.getFamePoint()));
 				} else if (itemId == 60013) { // 声望[10]
 					if(pc.getFamePoint() >= Config.FAME_LV11_POINT){
 						pc.sendPackets(new S_ServerMessage(166, L1WilliamSystemMessage.ShowMessage(115)));
@@ -3023,6 +3025,7 @@ public class C_ItemUSe extends ClientBasePacket {
 					pc.setFamePoint((short) (pc.getFamePoint() + 10));
 					pc.getInventory().removeItem(l1iteminstance, 1);
 					pc.save();
+					pc.sendPackets(new S_SystemMessage("当前的声望值为"+pc.getFamePoint()));
 				} else if (itemId == 60014) { // 物品过滤器
 					FilterItem.useFilterItem(pc, l1iteminstance1, l1iteminstance);
 				} else if (itemId == 60015) { // 物品过滤清单

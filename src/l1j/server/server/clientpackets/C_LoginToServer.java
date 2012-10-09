@@ -95,6 +95,7 @@ import l1j.server.server.serverpackets.S_SkillIconEinhasad; // 殷海萨的祝�
 import l1j.server.server.serverpackets.S_SkillIconGFX;
 import l1j.server.server.serverpackets.S_SkillIconThirdSpeed;
 import l1j.server.server.serverpackets.S_SummonPack;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.S_War;
 import l1j.server.server.serverpackets.S_Weather;
 import l1j.server.server.serverpackets.S_bonusstats;
@@ -415,6 +416,8 @@ public class C_LoginToServer extends ClientBasePacket {
 					}
 				}
 		}
+		//上线通知声望值
+		pc.sendPackets(new S_SystemMessage("当前的声望值为"+pc.getFamePoint()));
 		// end
 	}
 
