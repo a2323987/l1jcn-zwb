@@ -668,4 +668,17 @@ public class L1Npc extends L1Object implements Cloneable {
 	public void setCantResurrect(boolean isCantResurrect) {
 		_isCantResurrect = isCantResurrect;
 	}
+
+	// 怪死变身机率
+	private int _TransChance;
+
+	public int getTransChance() {
+		return _TransChance;
+	}
+
+	public void setTransChance(int TransChance) {
+		_TransChance = TransChance;
+	}
+	// 怪死变身机率
+
 }

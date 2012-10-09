@@ -130,6 +130,9 @@ public class NpcTable {
 				npc.set_agro(rs.getBoolean("agro"));
 				npc.set_agrososc(rs.getBoolean("agrososc"));
 				npc.set_agrocoi(rs.getBoolean("agrocoi"));
+				// 怪死变身机率
+				npc.setTransChance(rs.getInt("TransChance"));
+				// 怪死变身机率
 				Integer family = _familyTypes.get(rs.getString("family"));
 				if (family == null) {
 					npc.set_family(0);

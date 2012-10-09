@@ -65,6 +65,8 @@ public class L1MonsterInstance extends L1NpcInstance {
 	private boolean _storeDroped; // ドロップアイテムの读迂が完了したか
 
 	private boolean isDoppel;
+	
+	private static Random _random = new Random();
 
 	// アイテム使用处理
 	@Override
@@ -404,6 +406,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 			int newHp = getCurrentHp() - damage;
 			if ((newHp <= 0) && !isDead()) {
 				int transformId = getNpcTemplate().getTransformId();
+				int chance = getNpcTemplate().getTransChance();
 				// 变身しないモンスター
 				if (transformId == -1) {
 					if (getPortalNumber() != -1) {
@@ -439,10 +442,30 @@ public class L1MonsterInstance extends L1NpcInstance {
 									.get_npcId() == 97045)) {
 						doNextDragonStep(attacker, getNpcTemplate().get_npcId());
 					}
-				} else { // 变身するモンスター
+/*				} else { // 变身するモンスター
 							// distributeExpDropKarma(attacker);
 					transform(transformId);
+				}*/
+				// 怪死变身机率
 				}
+				if (transformId != -1 && chance >= 100) {
+					chance = 101;
+				}
+				if (chance >= 1) {
+					Random random = new Random();
+					int rnd = random.nextInt(100) + 1;
+					if (transformId != -1 && rnd <= chance) {
+						transform(transformId);
+					} else {
+						setCurrentHpDirect(0);
+						setDead(true);
+						setStatus(ActionCodes.ACTION_Die);
+						openDoorWhenNpcDied(this);
+						Death death = new Death(attacker);
+						GeneralThreadPool.getInstance().execute(death);
+					}
+				}
+				// 怪死变身机率
 			}
 			if (newHp > 0) {
 				setCurrentHp(newHp);
