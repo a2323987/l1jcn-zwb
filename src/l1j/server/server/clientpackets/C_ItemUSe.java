@@ -413,7 +413,7 @@ public class C_ItemUSe extends ClientBasePacket {
 						.getMinLevel();
 				int item_maxlvl = ((L1EtcItem) l1iteminstance.getItem())
 						.getMaxLevel();
-				int fameLV = l1iteminstance.getItem().getCheckFameLevel();
+				int fameLV = ((L1EtcItem)l1iteminstance.getItem()).getCheckFameLevel();
 				if ((item_minlvl != 0) && (item_minlvl > pc.getLevel())
 						&& !pc.isGm()) {
 					pc.sendPackets(new S_ServerMessage(318, String
@@ -427,8 +427,8 @@ public class C_ItemUSe extends ClientBasePacket {
 				}
 				
 //				sosodemon add 物品声望控制
-				else if (fameLV > pc.getFameLevel()) {
-					pc.sendPackets(new S_SystemMessage("您的声望值不足。 需要声望：【"+ fameLV +"】"));					
+				else if (fameLV > pc.getFamePoint()) {
+					pc.sendPackets(new S_SystemMessage("您当前的声望为"+pc.getFamePoint()+"点。 需要声望：【"+ fameLV +"】点"));					
 					return;
 				}
 				
