@@ -123,15 +123,18 @@ public class C_GiveItem extends ClientBasePacket {
 			return;
 		}
 		if ((petType == null)) {
-			if (item.getItemId() == 40057) {// 所有其它怪物都可以用眼肉抓
-				if (target.getLevel() <= 30) {
-					tamePet(pc, target);
-				} else {
-					pc.sendPackets(new S_SystemMessage("我这么高等级，抓我要有运气喔"));
-					Random r = new Random();
-					int p = r.nextInt(target.getCurrentHp());
-					if (p < 100) {
-						tamePet(pc, target);
+			if (l1j.william.L1WilliamSystemMessage.ShowMessage(128).equals(
+					"true")) {
+				if (item.getItemId() == 40057) {// 所有其它怪物都可以用眼肉抓
+					if (target.getLevel() > Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(129)).intValue()) {
+						pc.sendPackets(new S_SystemMessage("我等级太高了，你不行！"));
+					} else {
+						pc.sendPackets(new S_SystemMessage("抓我要有运气喔,加油！"));
+						Random r = new Random();
+						int p = r.nextInt(target.getCurrentHp());
+						if (p < 100) {
+							tamePet(pc, target);
+						}
 					}
 				}
 			}

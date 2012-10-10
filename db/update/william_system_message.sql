@@ -34,3 +34,6 @@ INSERT INTO `william_system_message` VALUES ('125', '80', '等待时间 80秒 + 
 INSERT INTO `william_system_message` VALUES ('126', '300', '血盟PK大赛重启时间');
 
 INSERT INTO `william_system_message` VALUES ('127', '1', '魔法商人一次魔法消耗元宝数');
+
+INSERT INTO `william_system_message` VALUES ('128', 'true', '所有宠物抓取，true 为开启');
+INSERT INTO `william_system_message` VALUES ('129', '50', '可以抓宠物最高等级');
