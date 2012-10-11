@@ -14,20 +14,13 @@
  */
 package l1j.plugin.codeShop;
 
-import java.sql.SQLException;
-import java.util.Random;
-
 import l1j.server.server.datatables.ItemTable;
 import l1j.server.server.model.L1Inventory;
-import l1j.server.server.model.L1World;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_NPCTalkReturn;
-import l1j.server.server.serverpackets.S_ServerMessage;
-import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Item;
-import l1j.kinlinlo.L1Blend;
-import l1j.kinlinlo.BlendTable;
+import l1j.server.server.utils.LogRecorder;
 
 public class CodeShop {
 
@@ -105,6 +98,7 @@ public class CodeShop {
 		if (codeShop != null) {
 			if (codeShop.get_is_used() != 1) {
 				giveItem(pc, code,codeShop);
+				LogRecorder.writeCodeShopLog(pc, code);
 				return true;
 			}
 		}

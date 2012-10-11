@@ -212,4 +212,30 @@ public class LogRecorder {
 			System.out.println("以下是错误讯息: " + e.getMessage());
 		}
 	}
+	/**
+	 * 兑换物品纪录
+	 * @param player
+	 */
+	public static void writeCodeShopLog(L1PcInstance player, String code) {
+		try {
+			File DropLog = new File("log\\CodeShopLog.log");
+			if (DropLog.createNewFile()) {
+				out = new BufferedWriter(new FileWriter("log\\CodeShopLog.log",
+						false));
+				out.write("※以下是玩家[兑换物品]的所有纪录※" + "\r\n");
+				out.close();
+			}
+			out = new BufferedWriter(new FileWriter("log\\CodeShopLog.log", true));
+			out.write("\r\n");// 每次填写资料都控一行
+			out.write("来自帐号: " + player.getAccountName() 
+					+ "来自ip: " + player.getNetConnection().getIp()
+					+ ",来自玩家: "+ player.getName() 
+					+ ",〈时间〉" + TimeInform.getNowTime(3, 0)
+					+ ",兑换的序列号: " + code
+					+ "\r\n");
+			out.close();
+		} catch (IOException e) {
+			System.out.println("以下是错误讯息: " + e.getMessage());
+		}
+	}
 }
