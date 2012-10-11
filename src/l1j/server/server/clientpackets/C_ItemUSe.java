@@ -2626,6 +2626,46 @@ public class C_ItemUSe extends ClientBasePacket {
 					pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "fourth_p"));
 				} else if (itemId == 49288) { // 普洛凯尔的第五次指令书
 					pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "fifth_p"));
+				} else if (itemId == 60017) { // 查看服务器设置之类的信息
+					String msg0 = "";
+					String msg1 = "";
+					String msg2 = "";
+					String msg3 = "";
+					String msg4 = "";
+					String msg5 = "";
+					String msg6 = "";
+					String msg7 = "";
+					String msg8 = "";
+					String msg9 = "";
+					String msg10 = "";
+					String msg11 = "";
+					String msg12 = "";
+					String msg13 = "";
+					String msg14 = "";
+					String msg15 = "";
+					String msg16 = "";
+					
+					msg0 = Config.RATE_XP + "";
+					msg1 = Config.RATE_XP_PET + "";
+					msg2 = Config.PET_MAX_LV + "";
+					msg3 = Config.RATE_KARMA + "";
+					msg4 = Config.RATE_DROP_ADENA + "";
+					msg5 = Config.RATE_DROP_ITEMS + "";
+					msg6 = Config.ENCHANT_CHANCE_WEAPON + "";
+					msg7 = Config.ENCHANT_CHANCE_ARMOR + "";
+					msg8 = Config.Enchantlv_Max + "";
+					msg9 = Config.ATTR_ENCHANT_CHANCE + "";
+					msg10 = Config.MAGIC_STONE_TYPE + "";
+					msg11 = Config.MAGIC_STONE_LEVEL + "";
+					msg12 = Config.BONUS_DANXIANG + "";
+					msg13 = Config.BONUS_DANXIANG_MAX + "";
+					msg14 = Config.BONUS_MAX + "";
+					msg15 = (Config.BONUS_MAX - pc.getBonusStats()) + "";
+					msg16 = pc.getFamePoint() + "";
+					
+					String msg[] = { msg0, msg1, msg2, msg3, msg4, msg5, msg6,
+							msg7, msg8, msg9 , msg10, msg11, msg12, msg13, msg14, msg15, msg16};					
+					pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "config",msg));
 				} else if (itemId == 41208) { // 微弱的灵魂
 					if (((pc.getX() >= 32844) && (pc.getX() <= 32845))
 							&& ((pc.getY() >= 32693) && (pc.getY() <= 32694))
