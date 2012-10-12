@@ -258,4 +258,25 @@ public class L1ArmorSets {
 		_sp = i;
 	}
 
+	// 套装效果
+	private int _effect_id;
+
+	public int getEffectId() {
+		return _effect_id;
+	}
+
+	public void setEffectId(int i) {
+		_effect_id = i;
+	}
+
+	private int _interval;
+
+	public int getInterval() {
+		return _interval;
+	}
+
+	public void setInterval(int i) {
+		_interval = i;
+	}
+	// 套装效果 end
 }

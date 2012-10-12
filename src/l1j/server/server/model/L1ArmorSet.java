@@ -58,10 +58,14 @@ public abstract class L1ArmorSet {
 				if (armorSets.getPolyId() != -1) {
 					impl.addEffect(new PolymorphEffect(armorSets.getPolyId()));
 				}
-				impl.addEffect(new AcHpMpBonusEffect(armorSets.getAc(),
+				/*impl.addEffect(new AcHpMpBonusEffect(armorSets.getAc(),
 						armorSets.getHp(), armorSets.getMp(), armorSets
 								.getHpr(), armorSets.getMpr(), armorSets
-								.getMr()));
+								.getMr()));*/
+                impl.addEffect(new AcHpMpBonusEffect(armorSets.getAc(),
+                        armorSets.getHp(), armorSets.getMp(), armorSets
+                                        .getHpr(), armorSets.getMpr(), armorSets
+                                        .getMr(),armorSets.getEffectId(),armorSets.getInterval())); // 套装效果
 				impl.addEffect(new StatBonusEffect(armorSets.getStr(),
 						armorSets.getDex(), armorSets.getCon(), armorSets
 								.getWis(), armorSets.getCha(), armorSets
@@ -189,8 +193,11 @@ class AcHpMpBonusEffect implements L1ArmorSetEffect {
 	private final int _regenMp;
 
 	private final int _addMr;
-
-	public AcHpMpBonusEffect(int ac, int addHp, int addMp, int regenHp,
+	
+	private final int _addEffectId; // 套装效果
+	private final int _addInterval;
+	
+/*	public AcHpMpBonusEffect(int ac, int addHp, int addMp, int regenHp,
 			int regenMp, int addMr) {
 		_ac = ac;
 		_addHp = addHp;
@@ -198,8 +205,17 @@ class AcHpMpBonusEffect implements L1ArmorSetEffect {
 		_regenHp = regenHp;
 		_regenMp = regenMp;
 		_addMr = addMr;
+	}*/
+	public AcHpMpBonusEffect(int ac, int addHp, int addMp, int regenHp, int regenMp, int addMr, int addEffectId, int addInterval) { // 套装效果
+		_ac = ac;
+		_addHp = addHp;
+		_addMp = addMp;
+		_regenHp = regenHp;
+		_regenMp = regenMp;
+		_addMr = addMr;
+		_addEffectId = addEffectId; // 套装效果
+		_addInterval = addInterval;
 	}
-
 	@Override
 	public void giveEffect(L1PcInstance pc) {
 		pc.addAc(_ac);
@@ -208,6 +224,9 @@ class AcHpMpBonusEffect implements L1ArmorSetEffect {
 		pc.addHpr(_regenHp);
 		pc.addMpr(_regenMp);
 		pc.addMr(_addMr);
+		if (_addEffectId != 0) { // 套装效果
+			pc.startSustainEffect(pc, _addEffectId, _addInterval);
+		}
 	}
 
 	@Override
@@ -218,6 +237,9 @@ class AcHpMpBonusEffect implements L1ArmorSetEffect {
 		pc.addHpr(-_regenHp);
 		pc.addMpr(-_regenMp);
 		pc.addMr(-_addMr);
+		if (_addEffectId != 0) { // 套装效果
+			pc.stopSustainEffect();
+		}
 	}
 }
 

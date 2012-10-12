@@ -4967,4 +4967,18 @@ public class L1PcInstance extends L1Character {
 		filterList.clear();
 	}
 	// end
+    // 套装效果
+	private l1j.william.SustainEffect SustainEffect; // 记得先 import
+											// l1j.william.SustainEffect;
+
+	public void startSustainEffect(L1PcInstance pc, int effect_id, int Interval) {
+		final int _Interval = Interval; // 间隔时间
+		SustainEffect = new l1j.william.SustainEffect(pc, effect_id);
+		_regenTimer.scheduleAtFixedRate(SustainEffect, _Interval, _Interval);
+	}
+
+	public void stopSustainEffect() {
+		SustainEffect.cancel();
+		SustainEffect = null;
+	}
 }

@@ -93,7 +93,8 @@ public class ArmorSetTable {
 			as.setDefenseWind(rs.getInt("defense_wind"));
 			as.setDefenseFire(rs.getInt("defense_fire"));
 			as.setDefenseEarth(rs.getInt("defense_earth"));
-
+            as.setEffectId(rs.getInt("effect_id")); // 套裝效果
+            as.setInterval(rs.getInt("interval"));
 			_armorSetList.add(as);
 		}
 	}
