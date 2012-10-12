@@ -1323,6 +1323,9 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	public void deleteMe() {
+		// 修正穿人
+		getMap().setPassable(getX(), getY(), true);
+		// END
 		_destroyed = true;
 		if (getInventory() != null) {
 			getInventory().clearItems();
@@ -1519,8 +1522,12 @@ public class L1NpcInstance extends L1Character {
 			setX(nnx);
 			setY(nny);
 
-			getMap().setPassable(getLocation(), false);
-
+			//getMap().setPassable(getLocation(), false);
+			// 修正穿人
+			if (!(this instanceof L1DollInstance)) {
+				getMap().setPassable(getLocation(), false);
+			}
+			// END
 			broadcastPacket(new S_MoveCharPacket(this));
 
 			// movement_distanceマス以上离れたらホームポイントへテレポート

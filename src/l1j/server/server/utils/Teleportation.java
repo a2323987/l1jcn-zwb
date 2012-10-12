@@ -75,6 +75,9 @@ public class Teleportation {
 		}
 
 		L1World.getInstance().moveVisibleObject(pc, mapId);
+		// 修正穿人
+		pc.getMap().setPassable(pc.getX(), pc.getY(), true);
+		// END
 		pc.setLocation(x, y, mapId);
 		pc.setHeading(head);
 		pc.sendPackets(new S_MapID(pc.getMapId(), pc.getMap().isUnderwater()));

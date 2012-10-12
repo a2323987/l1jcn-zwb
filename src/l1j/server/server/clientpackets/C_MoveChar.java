@@ -22,6 +22,7 @@ import l1j.server.server.ClientThread;
 import l1j.server.server.model.AcceleratorChecker;
 import l1j.server.server.model.Dungeon;
 import l1j.server.server.model.DungeonRandom;
+import l1j.server.server.model.L1Teleport;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.trap.L1WorldTraps;
 import l1j.server.server.serverpackets.S_MoveCharPacket;
@@ -97,6 +98,13 @@ public class C_MoveChar extends ClientBasePacket {
 		if (DungeonRandom.getInstance().dg(locx, locy, pc.getMap().getId(), pc)) { // 取得随机传送地点
 			return;
 		}
+		// 修正穿人
+		if ((pc.getMap().getOriginalTile(locx, locy) & 0x01) == 0x01 || (pc.getMap().getOriginalTile(locx, locy) & 0x02) == 0x02) {
+			if (!pc.getMap().isPassable(locx, locy)) {
+				L1Teleport.teleport(pc, pc.getX(), pc.getY(), (short) pc.getMapId(), pc.getHeading(), false);
+				return;
+			}
+		}// 修正穿人
 
 		pc.getLocation().set(locx, locy);
 		pc.setHeading(heading);

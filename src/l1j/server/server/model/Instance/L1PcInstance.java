@@ -884,6 +884,9 @@ public class L1PcInstance extends L1Character {
 	}
 
 	public void logout() {
+		// 修正穿人
+		getMap().setPassable(getX(), getY(), true);
+		// END
 		L1World world = L1World.getInstance();
 		if (getClanid() != 0) // クラン所属
 		{

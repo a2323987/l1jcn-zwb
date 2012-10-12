@@ -510,6 +510,9 @@ public class L1Spawn extends L1GameTimeAdapter {
 			if (getGroupId() != 0) {
 				L1MobGroupSpawn.getInstance().doSpawn(mob, getGroupId(), isRespawnScreen(), _initSpawn);
 			}
+			//修正穿人
+			mob.getMap().setPassable(mob.getX(), mob.getY(), false);
+			//END
 			mob.turnOnOffLight();
 			mob.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE); // チャット开始
 		}
