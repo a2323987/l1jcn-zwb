@@ -69,7 +69,8 @@ public class L1Awake {
 				pc.sendPackets(new S_OwnCharStatus2(pc));
 			}
 			pc.setAwakeSkillId(skillId);
-			doPoly(pc);
+			//doPoly(pc);
+			doPoly(pc,skillId); // 变更 3.52C龙骑士觉醒状态外型调整 by 0968026609
 			pc.startMpReductionByAwake();
 		}
 	}
@@ -109,8 +110,19 @@ public class L1Awake {
 	}
 
 	// 变身
-	public static void doPoly(L1PcInstance pc) {
-		int polyId = 6894;
+	// 变更 3.52C龙骑士觉醒状态外型调整 by 0968026609
+	//public static void doPoly(L1PcInstance pc) {
+	public static void doPoly(L1PcInstance pc, int skillId) {
+		//int polyId = 6894;
+		int polyId = pc.getClassId();
+		if (skillId == AWAKEN_ANTHARAS) {//TODO 觉醒：安塔瑞斯
+			polyId = 9362;
+		} else if (skillId == AWAKEN_FAFURION) {//TODO 觉醒：法力昂
+			polyId = 9364;
+		} else if (skillId == AWAKEN_VALAKAS) {//TODO 觉醒：巴拉卡斯
+			polyId = 9363;
+		}
+		// end
 		if (pc.hasSkillEffect(SHAPE_CHANGE)) {
 			pc.killSkillEffectTimer(SHAPE_CHANGE);
 		}

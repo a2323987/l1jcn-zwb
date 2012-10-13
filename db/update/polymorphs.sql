@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
@@ -268,7 +268,7 @@ INSERT INTO `polymorphs` VALUES ('6281', 'neo gold assassin', '黄金刺客', '6
 INSERT INTO `polymorphs` VALUES ('6282', 'neo platinum assassin', '白影', '6282', '70', '751', '4095', '1', '7');
 INSERT INTO `polymorphs` VALUES ('6284', 'Haunted House jack o lantern', '南瓜怪\r\n', '6284', '1', '0', '0', '0', '7');
 INSERT INTO `polymorphs` VALUES ('6400', 'Halloween jack o lantern', '南瓜稻草人\r\n', '6400', '1', '2047', '4095', '1', '7');
-INSERT INTO `polymorphs` VALUES ('6894', 'awake', '龙骑士技能 - 觉醒\r\n', '6894', '1', '751', '4095', '1', '7');
+
 INSERT INTO `polymorphs` VALUES ('7332', 'spearm 52', '狂暴将军', '7332', '52', '1080', '4095', '1', '7');
 INSERT INTO `polymorphs` VALUES ('7338', 'spearm 55', '狂暴将军', '7338', '55', '1080', '4095', '1', '7');
 INSERT INTO `polymorphs` VALUES ('7339', 'spearm 60', '狂暴将军', '7339', '60', '1080', '4095', '1', '7');
@@ -335,3 +335,6 @@ INSERT INTO `polymorphs` VALUES ('367', 'poly platinum mage morph', '光圈白�
 INSERT INTO `polymorphs` VALUES ('369', 'poly platinum assassin morph', '光圈白金刺客', '369', '100', '751', '4095', '1', '7');
 INSERT INTO `polymorphs` VALUES ('371', 'poly platinum scouter morph', '光圈白金巡守', '371', '100', '256', '4095', '1', '7');
 INSERT INTO `polymorphs` VALUES ('363', 'poly god knight morph', '光圈荒神死亡骑士', '363', '100', '751', '4095', '1', '7');
+INSERT INTO `polymorphs` VALUES ('9362', '觉醒：安塔瑞斯', '9362', '1', '1054', '4095', '1', '7');
+INSERT INTO `polymorphs` VALUES ('9363', '觉醒：巴拉卡斯', '9363', '1', '1054', '4095', '1', '7');
+INSERT INTO `polymorphs` VALUES ('9364', '觉醒：法力昂', '9364', '1', '1054', '4095', '1', '7');
