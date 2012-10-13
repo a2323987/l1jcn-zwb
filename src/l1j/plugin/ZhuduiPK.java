@@ -69,9 +69,9 @@ public class ZhuduiPK {
 	private static final int _adenaOne = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(120)).intValue(); // 血盟成员进入扣除金币数量
 	
 	private static final int _itemWin1 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(121)).intValue(); // 胜利奖励物品1
-	private static final int _adenaWin1 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(122)).intValue(); // 胜利奖励物品1数量
+	private static final int _countWin1 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(122)).intValue(); // 胜利奖励物品1数量
 	private static final int _itemWin2 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(123)).intValue(); // 胜利奖励物品2
-	private static final int _adenaWin2 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(124)).intValue(); // 胜利奖励物品2数量
+	private static final int _countWin2 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(124)).intValue(); // 胜利奖励物品2数量
 	
 	public String enterZhuduiPK(L1PcInstance pc) {
 		if (ZhuduiPK.getInstance().getZhuduiPKStatus() == ZhuduiPK.STATUS_CLEANING) {
@@ -175,20 +175,22 @@ public class ZhuduiPK {
 					starWar();
 					while (true) {
 						if(_members.get(0).isDead() || _members.get(0).getMapId() != 802){//第一个血盟失败
-							_members.get(1).getInventory().storeItem(_itemWin1,_adenaWin1);
-							_members.get(1).getInventory().storeItem(_itemWin2,_adenaWin2);
+							_members.get(1).getInventory().storeItem(_itemWin1,_countWin1);
+							_members.get(1).getInventory().storeItem(_itemWin2,_countWin2);
 							ShowMeaagae showMeaagae = new ShowMeaagae();
 							showMeaagae.broadcastToAll("血盟"+_members.get(1).getClanname()+"打赢了血盟"+_members.get(0).getClanname());
 							break;
 						}else if( _members.get(1).isDead() ||_members.get(1).getMapId() != 802){
-							_members.get(0).getInventory().storeItem(_itemWin1,_adenaWin1);
-							_members.get(0).getInventory().storeItem(_itemWin2,_adenaWin2);
+							_members.get(0).getInventory().storeItem(_itemWin1,_countWin1);
+							_members.get(0).getInventory().storeItem(_itemWin2,_countWin2);
 							ShowMeaagae showMeaagae = new ShowMeaagae();
 							showMeaagae.broadcastToAll("血盟"+_members.get(0).getClanname()+"打赢了血盟"+_members.get(1).getClanname());
 							break;
 						}
 						Thread.sleep(1000);
 					}
+					sendMessage("竞技场10秒后结束!");
+					Thread.sleep(10000);
 					endZhuduiPK();
 				}
 				Thread.sleep(_cleartime);

@@ -16,6 +16,7 @@ package l1j.server.server.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +25,8 @@ import java.util.TimeZone;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.sun.xml.internal.bind.v2.runtime.output.Pcdata;
 
 import l1j.server.Config;
 import l1j.server.server.ActionCodes;
@@ -35,10 +38,12 @@ import l1j.server.server.model.Instance.L1MonsterInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.identity.L1ItemId;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Item;
 import l1j.server.server.utils.IntRange;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.collections.Lists;
+import l1j.william.SystemMessage;
 
 // Referenced classes of package l1j.server.server.model:
 // L1UltimateBattle
@@ -104,9 +109,17 @@ public class L1UltimateBattle {
 
 	private SortedSet<Integer> _ubTimes = new TreeSet<Integer>();
 
+	//private HashMap<Integer, HashMap<String, Integer>> _ub_supplies = new HashMap<Integer, HashMap<String,Integer>>();
+	private List<HashMap<String, Integer>> _ub_supplies = Lists.newList();
+	
 	private static final Logger _log = Logger.getLogger(L1UltimateBattle.class.getName());
 
 	private final List<L1PcInstance> _members = Lists.newList();
+	
+	private static final int _itemWin1 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(130)).intValue(); // 胜利奖励物品1
+	private static final int _countWin1 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(131)).intValue(); // 胜利奖励物品1数量
+	private static final int _itemWin2 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(132)).intValue(); // 胜利奖励物品2
+	private static final int _countWin2 = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(133)).intValue(); // 胜利奖励物品2数量
 
 	/**
 	 * ラウンド开始时のメッセージを送信する。
@@ -116,10 +129,8 @@ public class L1UltimateBattle {
 	 */
 	private void sendRoundMessage(int curRound) {
 		// XXX - このIDは间违っている
-		final int MSGID_ROUND_TABLE[] =
-		{ 893, 894, 895, 896 };
-
-		sendMessage(MSGID_ROUND_TABLE[curRound - 1], "");
+		String msg = "即将开启第" + curRound + "阶段，请大家耐心等待几分钟！";
+		sendMessage(msg);
 	}
 
 	/**
@@ -129,30 +140,15 @@ public class L1UltimateBattle {
 	 *            现在のラウンド
 	 */
 	private void spawnSupplies(int curRound) {
-		if (curRound == 1) {
-			spawnGroundItem(L1ItemId.ADENA, 1000, 60);
-			spawnGroundItem(L1ItemId.POTION_OF_CURE_POISON, 3, 20);
-			spawnGroundItem(L1ItemId.POTION_OF_EXTRA_HEALING, 5, 20);
-			spawnGroundItem(L1ItemId.POTION_OF_GREATER_HEALING, 3, 20);
-			spawnGroundItem(40317, 1, 5); // 砥石
-			spawnGroundItem(40079, 1, 20); // 归还スク
-		}
-		else if (curRound == 2) {
-			spawnGroundItem(L1ItemId.ADENA, 5000, 50);
-			spawnGroundItem(L1ItemId.POTION_OF_CURE_POISON, 5, 20);
-			spawnGroundItem(L1ItemId.POTION_OF_EXTRA_HEALING, 10, 20);
-			spawnGroundItem(L1ItemId.POTION_OF_GREATER_HEALING, 5, 20);
-			spawnGroundItem(40317, 1, 7); // 砥石
-			spawnGroundItem(40093, 1, 10); // ブランクスク(Lv4)
-			spawnGroundItem(40079, 1, 5); // 归还スク
-		}
-		else if (curRound == 3) {
-			spawnGroundItem(L1ItemId.ADENA, 10000, 30);
-			spawnGroundItem(L1ItemId.POTION_OF_CURE_POISON, 7, 20);
-			spawnGroundItem(L1ItemId.POTION_OF_EXTRA_HEALING, 20, 20);
-			spawnGroundItem(L1ItemId.POTION_OF_GREATER_HEALING, 10, 20);
-			spawnGroundItem(40317, 1, 10); // 砥石
-			spawnGroundItem(40094, 1, 10); // ブランクスク(Lv5)
+		int size = _ub_supplies.size();
+		for (int i = 0; i < size; i++) {
+			HashMap<String, Integer> ub_supplies = _ub_supplies.get(i);
+			if(ub_supplies.get("ub_round")==curRound){
+				int ub_item_id = ub_supplies.get("ub_item_id");
+				int ub_item_stackcont = ub_supplies.get("ub_item_stackcont");
+				int ub_item_cont = ub_supplies.get("ub_item_cont");				
+				spawnGroundItem(ub_item_id, ub_item_stackcont, ub_item_cont);
+			}
 		}
 	}
 
@@ -165,7 +161,7 @@ public class L1UltimateBattle {
 			if (element.getMapId() != _mapId) {
 				removeMember(element);
 			}
-		}
+		}		
 	}
 
 	/**
@@ -179,6 +175,12 @@ public class L1UltimateBattle {
 	private void sendMessage(int type, String msg) {
 		for (L1PcInstance pc : getMembersArray()) {
 			pc.sendPackets(new S_ServerMessage(type, msg));
+		}
+	}
+	
+	private void sendMessage(String msg) {
+		for (L1PcInstance pc : getMembersArray()) {
+			pc.sendPackets(new S_SystemMessage(msg));
 		}
 	}
 
@@ -288,7 +290,7 @@ public class L1UltimateBattle {
 			sendMessage(MSGID_COUNT, "1"); // 1秒前
 
 			Thread.sleep(1000);
-			sendMessage(MSGID_START, "アルティメット バトル"); // スタート
+			sendMessage(MSGID_START, "竞技场战斗开始"); // スタート
 			removeRetiredMembers();
 		}
 
@@ -301,7 +303,7 @@ public class L1UltimateBattle {
 		 */
 		private void waitForNextRound(int curRound) throws InterruptedException {
 			final int WAIT_TIME_TABLE[] =
-			{ 6, 6, 2, 18 };
+			{ 6, 6, 12, 18, 18};
 
 			int wait = WAIT_TIME_TABLE[curRound - 1];
 			for (int i = 0; i < wait; i++) {
@@ -320,7 +322,7 @@ public class L1UltimateBattle {
 				setActive(true);
 				countDown();
 				setNowUb(true);
-				for (int round = 1; round <= 4; round++) {
+				for (int round = 1; round <= 5; round++) {
 					sendRoundMessage(round);
 
 					L1UbPattern pattern = UBSpawnTable.getInstance().getPattern(_ubId, _pattern);
@@ -331,7 +333,6 @@ public class L1UltimateBattle {
 						if (getMembersCount() > 0) {
 							spawn.spawnAll();
 						}
-
 						Thread.sleep(spawn.getSpawnDelay() * 1000);
 						// removeRetiredMembers();
 					}
@@ -342,27 +343,51 @@ public class L1UltimateBattle {
 
 					waitForNextRound(round);
 				}
-
+				L1World.getInstance().broadcastServerMessage("无限大战10秒后结束。");
+				final int MSGID_COUNT = 637;
+				sendMessage(MSGID_COUNT, "10"); // 10秒前
+				Thread.sleep(5000);
+				sendMessage(MSGID_COUNT, "5"); // 5秒前
+				Thread.sleep(1000);
+				sendMessage(MSGID_COUNT, "4"); // 4秒前
+				Thread.sleep(1000);
+				sendMessage(MSGID_COUNT, "3"); // 3秒前
+				Thread.sleep(1000);
+				sendMessage(MSGID_COUNT, "2"); // 2秒前
+				Thread.sleep(1000);
+				sendMessage(MSGID_COUNT, "1"); // 1秒前
+				
 				for (L1PcInstance pc : getMembersArray()) // コロシアム内に居るPCを外へ出す
 				{
 					int rndx = Random.nextInt(4);
 					int rndy = Random.nextInt(4);
-					int locx = 33503 + rndx;
-					int locy = 32764 + rndy;
-					short mapid = 4;
+					int locx = 32581 + rndx;
+					int locy = 32929 + rndy;
+					short mapid = 0;
 					L1Teleport.teleport(pc, locx, locy, mapid, 5, true);
+					giveReward(pc);
 					removeMember(pc);
 				}
 				clearColosseum();
 				setActive(false);
-				setNowUb(false);
+				setNowUb(false);				
 			}
 			catch (Exception e) {
 				_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			}
 		}
 	}
-
+	/**
+	 * 获取无限大战奖励
+	 */
+	private void giveReward(L1PcInstance pc){
+		pc.getInventory().storeItem(_itemWin1,_countWin1);
+		pc.getInventory().storeItem(_itemWin2,_countWin2);
+		//奖励队员
+		L1World.getInstance().broadcastServerMessage("恭喜参加无限大战竞技场的队员获得胜利，特此奖励队员，请查看背包。");
+		//无限大赛讯息end
+	}
+	
 	/**
 	 * アルティメットバトルを开始する。
 	 * 
@@ -728,5 +753,9 @@ public class L1UltimateBattle {
 		_ubInfo = new String[]
 		{ nextUbTime, classes, sex, loLevel, hiLevel, teleport, res, pot, hpr, mpr, summon, summon2 };
 		return _ubInfo;
+	}
+
+	public void add_ub_supplies(HashMap<String,Integer> ub_supplies){
+		this._ub_supplies.add(ub_supplies);
 	}
 }

@@ -19,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -127,6 +128,30 @@ public class UBTable {
 			_log.warning("ub_times couldnt be initialized:" + e);
 		}
 		finally {
+			SQLUtil.close(rs);
+			SQLUtil.close(pstm);
+		}
+		_log.config("UBリスト " + _ub.size() + "件ロード");
+		
+		// ub_supplies load
+		try {
+			pstm = con.prepareStatement("SELECT * FROM ub_supplies");
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				L1UltimateBattle ub = getUb(rs.getInt("ub_id"));
+				if (ub != null) {
+					HashMap<String, Integer> ub_supplies = new HashMap<String, Integer>();
+					ub_supplies.put("ub_round",rs.getInt("ub_round"));
+					ub_supplies.put("ub_item_id", rs.getInt("ub_item_id"));
+					ub_supplies.put("ub_item_stackcont", rs.getInt("ub_item_stackcont"));
+					ub_supplies.put("ub_item_cont", rs.getInt("ub_item_cont"));
+					
+					ub.add_ub_supplies(ub_supplies);
+				}
+			}
+		} catch (SQLException e) {
+			_log.warning("ub_supplies couldnt be initialized:" + e);
+		} finally {
 			SQLUtil.close(rs, pstm, con);
 		}
 		_log.config("UBリスト " + _ub.size() + "件ロード");

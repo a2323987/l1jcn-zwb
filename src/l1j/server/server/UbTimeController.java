@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import l1j.server.server.datatables.UBTable;
 import l1j.server.server.model.L1UltimateBattle;
+import l1j.server.server.model.L1World;
 
 public class UbTimeController implements Runnable {
 	private static Logger _log = Logger.getLogger(UbTimeController.class
@@ -48,6 +49,9 @@ public class UbTimeController implements Runnable {
 		for (L1UltimateBattle ub : UBTable.getInstance().getAllUb()) {
 			if (ub.checkUbTime() && !ub.isActive()) {
 				ub.start(); // 无限大战开始
+				//竞技场５分钟后比赛将开始，想参赛者请现在入场。
+				L1World.getInstance().broadcastServerMessage("[活动公告]无限大战竞技场3分钟后开始请速度登场。");
+				// 无限大赛讯息end
 			}
 		}
 	}

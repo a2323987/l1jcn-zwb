@@ -37,3 +37,8 @@ INSERT INTO `william_system_message` VALUES ('127', '1', '魔法商人一次魔�
 
 INSERT INTO `william_system_message` VALUES ('128', 'true', '所有宠物抓取，true 为开启');
 INSERT INTO `william_system_message` VALUES ('129', '50', '可以抓宠物最高等级');
+
+INSERT INTO `william_system_message` VALUES ('130', '60000', '竞技场PK大赛奖励物品1');
+INSERT INTO `william_system_message` VALUES ('131', '10', '竞技场PK大赛奖励物品1数量');
+INSERT INTO `william_system_message` VALUES ('132', '60012', '竞技场PK大赛奖励物品2');
+INSERT INTO `william_system_message` VALUES ('133', '1', '竞技场PK大赛奖励物品2数量');
