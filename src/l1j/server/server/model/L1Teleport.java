@@ -20,6 +20,7 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.map.L1Map;
 import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_Teleport;
+import l1j.server.server.utils.Random;
 import l1j.server.server.utils.Teleportation;
 
 public class L1Teleport {
@@ -77,9 +78,12 @@ public class L1Teleport {
 			}
 			catch (Exception e) {}
 		}
-
-		pc.setTeleportX(x);
-		pc.setTeleportY(y);
+		int rndx = Random.nextInt(4);
+		int rndy = Random.nextInt(4);
+		int locx = x + rndx;
+		int locy = y + rndy;//传送会在一定范围内
+		pc.setTeleportX(locx);
+		pc.setTeleportY(locy);
 		pc.setTeleportMapId(mapId);
 		pc.setTeleportHeading(head);
 		if (Config.SEND_PACKET_BEFORE_TELEPORT) {
