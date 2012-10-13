@@ -45,7 +45,7 @@ import static l1j.server.server.Opcodes.C_OPCODE_CLIENTVERSION;
 import static l1j.server.server.Opcodes.C_OPCODE_COMMONCLICK;
 import static l1j.server.server.Opcodes.C_OPCODE_CREATECLAN;
 import static l1j.server.server.Opcodes.C_OPCODE_CREATEPARTY;
-import static l1j.server.server.Opcodes.C_OPCODE_DELBUDDY;
+import static l1j.server.server.Opcodes.C_OPCODE_DELETEBUDDY;
 import static l1j.server.server.Opcodes.C_OPCODE_DELETECHAR;
 import static l1j.server.server.Opcodes.C_OPCODE_DELETEINVENTORYITEM;
 import static l1j.server.server.Opcodes.C_OPCODE_DEPOSIT;
@@ -441,7 +441,7 @@ public class PacketHandler {
 				new C_BanParty(abyte0, _client);
 				break;
 
-			case C_OPCODE_DELBUDDY:
+			case C_OPCODE_DELETEBUDDY:
 				new C_DelBuddy(abyte0, _client);
 				break;
 

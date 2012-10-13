@@ -39,7 +39,7 @@ public class S_WhoCharinfo extends ServerBasePacket {
 			lawfulness = "(正义使者)";
 		}
 
-		writeC(Opcodes.S_OPCODE_SYSMSG);
+		writeC(Opcodes.S_OPCODE_GLOBALCHAT);
 		writeC(0x08);
 
 		String title = "";
