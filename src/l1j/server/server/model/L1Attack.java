@@ -1008,8 +1008,14 @@ public class L1Attack {
 			_drainHp = 0; // ダメージ无しの场合は吸收による回复はしない
 		}
 		
-		if(dmg >= _targetPc.getCurrentHp()){//PK获胜全体公告。
+		if(dmg >= _targetPc.getCurrentHp()){//PK获胜全体公告。//玩家扣除声望
 			ShowMeaagae showMeaagae = new ShowMeaagae();
+			int point = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(134)).intValue();
+			if(_targetPc.getFamePoint()>point){
+				int rnd = Random.nextInt(point);
+				_targetPc.setFameLevel(_targetPc.getFamePoint()-rnd);
+				showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_targetPc.getName()).append("】在决斗中丢失了"+rnd+"点声望").toString());
+			}
 			showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】Ｐ贏了玩家【").append(_targetPc.getName()).append("】").toString());
 		}
 
@@ -1219,7 +1225,18 @@ public class L1Attack {
 		}
 
 		addNpcPoisonAttack(_npc, _targetPc);
-
+		
+		if(dmg >= _targetPc.getCurrentHp()){//被怪杀死全体公告。//玩家扣除声望
+			ShowMeaagae showMeaagae = new ShowMeaagae();
+			int point = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(135)).intValue();
+			if(_targetPc.getFamePoint()>point){
+				int rnd = Random.nextInt(point);
+				_targetPc.setFameLevel(_targetPc.getFamePoint()-rnd);
+				showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_targetPc.getName()).append("】被怪物杀死丢失了"+rnd+"点声望").toString());
+			}
+			showMeaagae.broadcastToAll((new StringBuilder()).append("怪兽【").append(_npc.getName()).append("】杀死了玩家【").append(_targetPc.getName()).append("】").toString());		
+		}
+		
 		return (int) dmg;
 	}
 
