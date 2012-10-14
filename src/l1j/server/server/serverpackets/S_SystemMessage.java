@@ -29,10 +29,10 @@ public class S_SystemMessage extends ServerBasePacket {
 	 * 
 	 * @param msg
 	 *            - 表示する文字列
-	 */
+	 */ 
 	public S_SystemMessage(String msg) {
 		_msg = msg;
-		writeC(Opcodes.S_OPCODE_NPCSHOUT);
+		writeC(Opcodes.S_OPCODE_GLOBALCHAT);
 		writeC(0x09);
 		writeS(msg);
 	}
