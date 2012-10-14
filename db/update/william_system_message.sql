@@ -48,3 +48,5 @@ INSERT INTO `william_system_message` VALUES ('135', '5', '被怪杀死随机掉0
 INSERT INTO `william_system_message` VALUES ('136', '41402', '无限大战勋章奖励');
 INSERT INTO `william_system_message` VALUES ('137', 'true', '套装魔法特效是否开启自己可看');
 INSERT INTO `william_system_message` VALUES ('138', 'true', '套装魔法特效是否开启全部玩家可看，需开启自己可看');
+
+INSERT INTO `william_system_message` VALUES ('139', '20', '木头人最高等级');
