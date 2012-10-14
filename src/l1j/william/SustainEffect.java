@@ -18,17 +18,23 @@ public class SustainEffect extends TimerTask {
                 effect_id = effect;
         }
 
-        @Override
-        public void run() {
-                try {
-                        if (Active_pc.isDead()) {
-                                return;
-                        }
-                        Active_pc.sendPackets(new S_SkillSound(Active_pc.getId(), effect_id));
-                        Active_pc.broadcastPacket(new S_SkillSound(Active_pc.getId(), effect_id)); // 是否加入，请自行考量
-                       // Active_pc.broadcastPacketExceptTargetSight(new S_SkillSound(Active_pc.getId(), effect_id),Active_pc); // 是否加入，请自行考量
-                } catch (Throwable e) {
-                        _log.log(Level.WARNING, e.getLocalizedMessage(), e);
-                }
-        }
+	@Override
+	public void run() {
+		try {
+			if (Active_pc.isDead()) {
+				return;
+			}
+			if (l1j.william.L1WilliamSystemMessage.ShowMessage(135).equals("true")) {
+				Active_pc.sendPackets(new S_SkillSound(Active_pc.getId(), effect_id));
+				if (l1j.william.L1WilliamSystemMessage.ShowMessage(136).equals("true")) {
+					Active_pc.broadcastPacket(new S_SkillSound(Active_pc.getId(), effect_id)); // 是否加入，请自行考量
+				}
+			}
+			// Active_pc.broadcastPacketExceptTargetSight(new
+			// S_SkillSound(Active_pc.getId(), effect_id),Active_pc); //
+			// 是否加入，请自行考量
+		} catch (Throwable e) {
+			_log.log(Level.WARNING, e.getLocalizedMessage(), e);
+		}
+	}
 }
