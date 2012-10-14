@@ -65,7 +65,7 @@ public class L1ScarecrowInstance extends L1NpcInstance {
 					L1PcInstance pc = (L1PcInstance) attacker;
 					pc.setPetTarget(this);
 
-					if (pc.getLevel() < 5) {
+					if (pc.getLevel() < Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(139)).intValue()) {
 						List<L1Character> targetList = Lists.newList();
 						targetList.add(pc);
 						List<Integer> hateList = Lists.newList();
