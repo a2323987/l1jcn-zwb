@@ -24,9 +24,9 @@ public class SustainEffect extends TimerTask {
 			if (Active_pc.isDead()) {
 				return;
 			}
-			if (l1j.william.L1WilliamSystemMessage.ShowMessage(135).equals("true")) {
+			if (l1j.william.L1WilliamSystemMessage.ShowMessage(137).equals("true")) {
 				Active_pc.sendPackets(new S_SkillSound(Active_pc.getId(), effect_id));
-				if (l1j.william.L1WilliamSystemMessage.ShowMessage(136).equals("true")) {
+				if (l1j.william.L1WilliamSystemMessage.ShowMessage(138).equals("true")) {
 					Active_pc.broadcastPacket(new S_SkillSound(Active_pc.getId(), effect_id)); // 是否加入，请自行考量
 				}
 			}

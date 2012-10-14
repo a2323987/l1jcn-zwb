@@ -42,3 +42,9 @@ INSERT INTO `william_system_message` VALUES ('130', '60000', '竞技场PK大赛�
 INSERT INTO `william_system_message` VALUES ('131', '10', '竞技场PK大赛奖励物品1数量');
 INSERT INTO `william_system_message` VALUES ('132', '60012', '竞技场PK大赛奖励物品2');
 INSERT INTO `william_system_message` VALUES ('133', '1', '竞技场PK大赛奖励物品2数量');
+
+INSERT INTO `william_system_message` VALUES ('134', '5', '被人杀死随机掉0-5点声望');
+INSERT INTO `william_system_message` VALUES ('135', '5', '被怪杀死随机掉0-5点声望');
+INSERT INTO `william_system_message` VALUES ('136', '41402', '无限大战勋章奖励');
+INSERT INTO `william_system_message` VALUES ('137', 'true', '套装魔法特效是否开启自己可看');
+INSERT INTO `william_system_message` VALUES ('138', 'true', '套装魔法特效是否开启全部玩家可看，需开启自己可看');
