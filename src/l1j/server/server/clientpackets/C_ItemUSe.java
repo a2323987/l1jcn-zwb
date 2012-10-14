@@ -28,6 +28,9 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_WATER_OF_EVA;
 import static l1j.server.server.model.skill.L1SkillId.SECRET_MEDICINE_OF_DESTRUCTION;
 import static l1j.server.server.model.skill.L1SkillId.ADVANCE_SPIRIT;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,6 +39,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l1j.server.Config;
+import l1j.server.L1DatabaseFactory;
 import l1j.server.server.Account;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.ClientThread;
@@ -2250,6 +2254,25 @@ public class C_ItemUSe extends ClientBasePacket {
 					}
 					pc.sendPackets(new S_ServerMessage(76, l1iteminstance
 							.getItem().getIdentifiedNameId()));
+				} else if (itemId == 60020) // 卡点自救
+				{
+					Connection con = null;
+					PreparedStatement pstm = null;
+					try {
+						con = L1DatabaseFactory.getInstance().getConnection();
+						pstm = con.prepareStatement("UPDATE characters SET LocX=32580,LocY=32931,MapID=0 WHERE account_name=?");
+						// 主要以下就让使用者去连资料库update
+						// 目前是设定在潘朵拉附近
+						// 下面是设定account_name,因为必须设定只更改同帐号的
+						pstm.setString(1, pc.getAccountName());
+						pstm.execute();
+						pstm.close();
+						con.close();
+						// l1pcinstance.getInventory().removeItem(l1iteminstance,
+						// 1);
+					} catch (Exception exception) {
+					}
+					pc.sendPackets(new S_SystemMessage("此账号内的所有角色已安全移到说话之岛的村庄，请重新登录！"));
 				} else if (itemId == 40070) { // 进化果实
 					pc.sendPackets(new S_ServerMessage(76, l1iteminstance
 							.getLogName()));
