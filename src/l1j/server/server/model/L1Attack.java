@@ -1013,7 +1013,13 @@ public class L1Attack {
 			int point = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(134)).intValue();
 			if(_targetPc.getFamePoint()>point){
 				int rnd = Random.nextInt(point);
-				_targetPc.setFameLevel(_targetPc.getFamePoint()-rnd);
+				_targetPc.setFamePoint((short)(_targetPc.getFamePoint()-rnd));
+				try {
+					_targetPc.save();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_targetPc.getName()).append("】在决斗中丢失了"+rnd+"点声望").toString());
 			}
 			showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】Ｐ贏了玩家【").append(_targetPc.getName()).append("】").toString());
@@ -1231,7 +1237,13 @@ public class L1Attack {
 			int point = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(135)).intValue();
 			if(_targetPc.getFamePoint()>point){
 				int rnd = Random.nextInt(point);
-				_targetPc.setFameLevel(_targetPc.getFamePoint()-rnd);
+				_targetPc.setFamePoint((short)(_targetPc.getFamePoint()-rnd));
+				try {
+					_targetPc.save();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_targetPc.getName()).append("】被怪物杀死丢失了"+rnd+"点声望").toString());
 			}
 			showMeaagae.broadcastToAll((new StringBuilder()).append("怪兽【").append(_npc.getName()).append("】杀死了玩家【").append(_targetPc.getName()).append("】").toString());		
