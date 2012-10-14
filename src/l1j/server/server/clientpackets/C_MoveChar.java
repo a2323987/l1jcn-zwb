@@ -101,7 +101,7 @@ public class C_MoveChar extends ClientBasePacket {
 		// 修正穿人
 		if ((pc.getMap().getOriginalTile(locx, locy) & 0x01) == 0x01 || (pc.getMap().getOriginalTile(locx, locy) & 0x02) == 0x02) {
 			if (!pc.getMap().isPassable(locx, locy)) {
-				L1Teleport.teleport(pc, pc.getX(), pc.getY(), (short) pc.getMapId(), pc.getHeading(), false);
+				L1Teleport.teleportPc(pc, pc.getX(), pc.getY(), (short) pc.getMapId(), pc.getHeading(), false,0);
 				return;
 			}
 		}// 修正穿人

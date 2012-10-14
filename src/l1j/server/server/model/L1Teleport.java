@@ -93,7 +93,39 @@ public class L1Teleport {
 			Teleportation.actionTeleportation(pc);
 		}
 	}
+	public static void teleportPc(L1PcInstance pc, int x, int y, short mapId, int head, boolean effectable, int skillType) {
 
+		//pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_TELEPORT_UNLOCK, false));
+
+		// エフェクトの表示
+		if (effectable && ((skillType >= 0) && (skillType <= EFFECT_SPR.length))) {
+			S_SkillSound packet = new S_SkillSound(pc.getId(), EFFECT_SPR[skillType]);
+			pc.sendPackets(packet);
+			pc.broadcastPacket(packet);
+
+			// テレポート以外のsprはキャラが消えないので见た目上送っておきたいが
+			// 移动中だった场合クラ落ちすることがある
+			// if (skillType != TELEPORT) {
+			// pc.sendPackets(new S_DeleteNewObject(pc));
+			// pc.broadcastPacket(new S_DeleteObjectFromScreen(pc));
+			// }
+
+			try {
+				Thread.sleep((int) (EFFECT_TIME[skillType] * 0.7));
+			}
+			catch (Exception e) {}
+		}
+		pc.setTeleportX(x);
+		pc.setTeleportY(y);
+		pc.setTeleportMapId(mapId);
+		pc.setTeleportHeading(head);
+		if (Config.SEND_PACKET_BEFORE_TELEPORT) {
+			pc.sendPackets(new S_Teleport(pc));
+		}
+		else {
+			Teleportation.actionTeleportation(pc);
+		}
+	}
 	/*
 	 * targetキャラクターのdistanceで指定したマス分前にテレポートする。指定されたマスがマップでない场合何もしない。
 	 */
