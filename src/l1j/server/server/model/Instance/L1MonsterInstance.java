@@ -682,10 +682,9 @@ public class L1MonsterInstance extends L1NpcInstance {
 			if (ub != null) {
 				for (L1PcInstance pc : ub.getMembersArray()) {
 					if ((pc != null) && !pc.isDead() && !pc.isGhost()) {
-						L1ItemInstance item = pc.getInventory().storeItem(
-								41402, getUbSealCount());
-						pc.sendPackets(new S_ServerMessage(403, item
-								.getLogName())); // %0を手に入れました。
+						int rewardItem = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(117)).intValue();
+						L1ItemInstance item = pc.getInventory().storeItem(rewardItem, getUbSealCount());
+						pc.sendPackets(new S_ServerMessage(403, "获得☆"+item.getName()+"☆"+getUbSealCount()+"个")); // %0を手に入れました。
 					}
 				}
 			}
