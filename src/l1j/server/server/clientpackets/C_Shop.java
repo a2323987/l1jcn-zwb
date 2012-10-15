@@ -50,7 +50,7 @@ public class C_Shop extends ClientBasePacket {
 
 		int mapId = pc.getMapId();
 		if ((mapId != 340) && (mapId != 350) && (mapId != 360)
-				&& (mapId != 370)) {
+				&& (mapId != 370)&&(mapId != 0)) {
 			pc.sendPackets(new S_ServerMessage(876)); // この场所では个人商店を开けません。
 			return;
 		}
