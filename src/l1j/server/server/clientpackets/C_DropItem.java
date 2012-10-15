@@ -24,6 +24,7 @@ import l1j.server.server.model.Instance.L1NpcInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.Instance.L1PetInstance;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.utils.LogRecorder;
 
 /**
@@ -48,7 +49,10 @@ public class C_DropItem extends ClientBasePacket {
 		if (count > 0x77359400 || count < 0) { // 确保数量不会溢位
 			count = 0;
 		}
-		
+		if(!pc.isGm()){
+			  pc.sendPackets(new S_SystemMessage("天堂里面禁止随地丢垃圾！")); 
+			  return;
+			  }
 		if (pc.isGhost()) {
 			return;
 		} else if (pc.getMapId() >= 16384 && pc.getMapId() <= 25088) { // 旅馆内判断
