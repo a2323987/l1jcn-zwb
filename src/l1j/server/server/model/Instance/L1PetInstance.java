@@ -39,6 +39,7 @@ import l1j.server.server.serverpackets.S_PetCtrlMenu;
 import l1j.server.server.serverpackets.S_PetMenuPacket;
 import l1j.server.server.serverpackets.S_PetPack;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SkillHaste;
 import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_SummonPack;
 import l1j.server.server.templates.L1Npc;
@@ -143,7 +144,8 @@ public class L1PetInstance extends L1NpcInstance {
 				l1pet.get_exp()));
 		setLawful(l1pet.get_lawful());
 		setTempLawful(l1pet.get_lawful());
-		set_food(l1pet.get_food());
+		//set_food(l1pet.get_food());
+		set_food(100);//宠物领出饱食度100.
 		// 执行饱食度计时器
 		startFoodTimer(this);
 
@@ -161,6 +163,14 @@ public class L1PetInstance extends L1NpcInstance {
 		for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(this)) {
 			onPerceive(pc);
 		}
+		
+//		TODO 宠物领出后获得加速术1800秒  by 阿杰
+		broadcastPacket(new S_SkillSound(getId(), 3104));
+		broadcastPacket(new S_SkillHaste(getId(), 1, 0));
+		setMoveSpeed(1);
+		setSkillEffect(43, 1800000);
+		//宠物领出后获得加速术1800秒  end
+		
 		master.addPet(this);
 	}
 

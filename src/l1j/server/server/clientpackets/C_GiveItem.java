@@ -131,8 +131,8 @@ public class C_GiveItem extends ClientBasePacket {
 					} else {
 						pc.sendPackets(new S_SystemMessage("抓我要有运气喔,加油！"));
 						Random r = new Random();
-						int p = r.nextInt(target.getCurrentHp());
-						if (p < 100) {
+						int p = r.nextInt(target.getMaxHp());
+						if (p < 50) {
 							tamePet(pc, target);
 						}
 					}
