@@ -159,7 +159,7 @@ public class BossRoom {
 			for (L1PcInstance pc : getMembersArray()) {
 				pc.getInventory().storeItem(_item, _adena);
 				pc.sendPackets(new S_SystemMessage("BOSS馆退还通行材料(" + _adena + ")。"));
-				L1Teleport.teleport(pc, 32709, 32831, (short) 350, pc.getHeading(), true);
+				L1Teleport.teleport(pc, 32581, 32929, (short) 0, pc.getHeading(), true);
 			}
 			clearMembers();
 			return false;
@@ -170,7 +170,7 @@ public class BossRoom {
 		setBossRoomStatus(STATUS_CLEANING);
 		sendMessage("BOSS馆游戏结束，请下次再来");
 		for (L1PcInstance pc : getMembersArray()) {
-			L1Teleport.teleport(pc, 32709, 32831, (short) 350, pc.getHeading(), true);
+			L1Teleport.teleport(pc, 32581, 32929, (short) 0, pc.getHeading(), true);
 		}
 		clearMembers();
 		clearColosseum();

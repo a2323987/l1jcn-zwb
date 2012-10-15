@@ -38,6 +38,7 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import l1j.plugin.Treasure;
 import l1j.server.Config;
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.Account;
@@ -2273,6 +2274,8 @@ public class C_ItemUSe extends ClientBasePacket {
 					} catch (Exception exception) {
 					}
 					pc.sendPackets(new S_SystemMessage("此账号内的所有角色已安全移到说话之岛的村庄，请重新登录！"));
+				} else if (itemId == 60021) { // 限时活动地图
+					Treasure.getInstance().enterTreasure(pc);				
 				} else if (itemId == 40070) { // 进化果实
 					pc.sendPackets(new S_ServerMessage(76, l1iteminstance
 							.getLogName()));
