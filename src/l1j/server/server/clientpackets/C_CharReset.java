@@ -182,7 +182,7 @@ public class C_CharReset extends ClientBasePacket {
 				_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			}
 		}
-		L1Teleport.teleport(pc, 32628, 32772, (short) 4, 4, false);
+		L1Teleport.teleport(pc, 32581, 32931, (short) 0, 4, false);
 	}
 
 	private void initCharStatus(L1PcInstance pc, int hp, int mp, int str, int intel, int wis, int dex, int con, int cha) {
