@@ -62,6 +62,7 @@ public class C_Who extends ClientBasePacket {
 				}
 				S_WhoAmount s_whoamount = new S_WhoAmount(amount);
 				pc.sendPackets(s_whoamount);
+				pc.sendPackets(new S_SystemMessage("当前在线玩家数"+amount+"个"));
 				// 是否开放线上查询伺服器配置资讯
 				if (Config.OL_ENQUIRE_RATES) {
 					pc.sendPackets(new S_SystemMessage("\\fV＊＊㊣＊＊◎《 伺服器配置资讯 》◎＊＊㊣＊＊\n" +
@@ -95,8 +96,9 @@ public class C_Who extends ClientBasePacket {
 							pc.sendPackets(new S_PacketBox(
 									S_PacketBox.CALL_SOMETHING));
 						} else {
-							pc.sendPackets(new S_SystemMessage("\\fV＊＊㊣＊＊◎《 线上角色资料  》◎＊＊㊣＊＊"));
+							pc.sendPackets(new S_SystemMessage("\\fV＊㊣＊＊◎《 线上角色资料  》◎＊＊㊣＊"));
 							pc.sendPackets(new S_SystemMessage(buf.toString()));
+							
 						}
 					}
 				}
