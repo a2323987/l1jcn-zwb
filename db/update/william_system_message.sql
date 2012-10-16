@@ -50,3 +50,5 @@ INSERT INTO `william_system_message` VALUES ('137', 'true', '套装魔法特效�
 INSERT INTO `william_system_message` VALUES ('138', 'true', '套装魔法特效是否开启全部玩家可看，需开启自己可看');
 
 INSERT INTO `william_system_message` VALUES ('139', '20', '木头人最高等级');
+
+INSERT INTO `william_system_message` VALUES ('140', 'true', '是否开启只在说话岛才能获取在线物品');

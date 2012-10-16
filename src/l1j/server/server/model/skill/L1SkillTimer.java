@@ -639,16 +639,15 @@ class L1SkillStop {
 					L1ItemInstance item = ItemTable.getInstance().createItem(
 							Config.O_L_A_T_Item);
 					item.setCount(1);
-					if (item != null) {
-						if (pc.getInventory().checkAddItem(item, 1) == L1Inventory.OK) {
-							pc.getInventory().storeItem(item);
-						} else { // 持てない场合は地面に落とす 处理のキャンセルはしない（不正防止）
-							L1World.getInstance()
-							.getInventory(pc.getX(), pc.getY(),
-									pc.getMapId()).storeItem(item);
+					if (pc.getMapId() == 0 || !l1j.william.L1WilliamSystemMessage.ShowMessage(1).equals("true")) {
+						if (item != null) {
+							if (pc.getInventory().checkAddItem(item, 1) == L1Inventory.OK) {
+								pc.getInventory().storeItem(item);
+							} else { // 持てない场合は地面に落とす 处理のキャンセルはしない（不正防止）
+								L1World.getInstance().getInventory(pc.getX(), pc.getY(), pc.getMapId()).storeItem(item);
+							}
+							pc.sendPackets(new S_ServerMessage(403, item.getLogName())); // %0を手に入
 						}
-						pc.sendPackets(new S_ServerMessage(403, item
-								.getLogName())); // %0を手に入
 					}
 				}
 				cha.setSkillEffect(L1SkillId.LOGIN_TIME_GET_ITEM,
