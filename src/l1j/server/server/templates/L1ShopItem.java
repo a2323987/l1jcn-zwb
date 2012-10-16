@@ -35,7 +35,11 @@ public class L1ShopItem {
 	
 	private final int _EnchantLevel; //商店出售+几物品
 	
-	public L1ShopItem(int itemId, int price, int packCount, int deleteDay, Timestamp deleteDate,int EnchantLevel) { // 道具天数删除系统
+	private int _selling_count; 
+
+	private final int _selling_max; //商店最多出售多少件
+	
+	public L1ShopItem(int itemId, int price, int packCount, int deleteDay, Timestamp deleteDate,int EnchantLevel,int selling_count,int selling_max) { // 道具天数删除系统
 		_itemId = itemId;
 		_item = ItemTable.getInstance().getTemplate(itemId);
 		_price = price;
@@ -43,6 +47,8 @@ public class L1ShopItem {
 		_deleteDay = deleteDay; // 道具天数删除系统(指定天数)
 		_deleteDate = deleteDate; // 道具天数删除系统(指定日期)
 		_EnchantLevel = EnchantLevel;//商店出售+几物品
+		_selling_count = selling_count; //商店已经出售了多少件
+		_selling_max = selling_max; //商店最多出售多少件
 	}
 
 	public int getItemId() {
@@ -74,6 +80,18 @@ public class L1ShopItem {
 	public int getEnchantLevel() {
 		return this._EnchantLevel;
 	}
+	//商店已经出售了多少件
+		public int get_selling_count() {
+			return _selling_count;
+		}
+
+		public void set_selling_count(int _selling_count) {
+			this._selling_count = _selling_count;
+		}
+
+		public int get_selling_max() {
+			return _selling_max;
+		}
 	// 食人妖精赛跑用
 	public void setName(int num) {
 		int trueNum = L1BugBearRace.getInstance().getRunner(num).getNpcId() - 91350 + 1;

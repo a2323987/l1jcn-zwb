@@ -86,22 +86,24 @@ public class ShopTable {
 			int gashPrice = rs.getInt("gash_price"); // GASH币商城[提供:liumy]
 			int deleteDay = rs.getInt("delete_day"); // 道具天数删除系统(指定天数)
 			int EnchantLevel = rs.getInt("EnchantLevel");  //物品等级
+			int selling_count = rs.getInt("selling_count");  //物品等级
+			int selling_max = rs.getInt("selling_max");  //物品等级
 			Timestamp deleteDate = rs.getTimestamp("delete_date"); // 道具天数删除系统(指定日期)
 			packCount = packCount == 0 ? 1 : packCount;
 			if (0 <= sellingPrice && 0 >= gashPrice) { // GASH币商城[提供:liumy]
 				//L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate); // 道具天数删除系统
-				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
+				L1ShopItem item = new L1ShopItem(itemId, sellingPrice,packCount, deleteDay, deleteDate,EnchantLevel,selling_count,selling_max); // 道具等级+几系统
 				sellingList.add(item);
 			}
 			if (0 <= purchasingPrice && 0 >= gashPrice) { // GASH币商城[提供:liumy]
 				//L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate); // 道具天数删除系统
-				L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
+				L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate,EnchantLevel,selling_count,selling_max); // 道具等级+几系统
 				purchasingList.add(item);
 			}
 			// GASH币商城[提供:liumy]
 			if (0 <= gashPrice && 0 >= sellingPrice && 0 >= purchasingPrice) {
 				//L1ShopItem item = new L1ShopItem(itemId, gashPrice, packCount, deleteDay, deleteDate); // 道具天数删除系统
-				L1ShopItem item = new L1ShopItem(itemId, gashPrice,packCount, deleteDay, deleteDate,EnchantLevel); // 道具等级+几系统
+				L1ShopItem item = new L1ShopItem(itemId, gashPrice,packCount, deleteDay, deleteDate,EnchantLevel,selling_count,selling_max); // 道具等级+几系统
 				sellingList.add(item);
 			}
 			// end
@@ -138,5 +140,50 @@ public class ShopTable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public int getSelling_count(int npcId,int itemId){
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		int selling_count = 0;
+		try {
+			con = L1DatabaseFactory.getInstance().getConnection();
+			pstm = con.prepareStatement("SELECT * FROM shop WHERE npc_id=? and item_id=?");
+				pstm.setInt(1, npcId);
+				pstm.setInt(2, itemId);
+				rs = pstm.executeQuery();
+				while(rs.next())
+				{
+				selling_count = rs.getInt("selling_count");
+				}
+				rs.close();
+		}
+		catch (SQLException e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		}
+		finally {
+			SQLUtil.close(rs, pstm, con);
+		}
+		return selling_count;
+	}
+	
+	public void setSelling_count(int npcId,int itemId,int selling_count){
+		Connection con = null;
+		PreparedStatement pstm = null;
+		try {
+			con = L1DatabaseFactory.getInstance().getConnection();
+				pstm = con.prepareStatement("Update shop set selling_count=? WHERE npc_id=? and item_id=?");
+				pstm.setInt(1, selling_count);
+				pstm.setInt(2, npcId);
+				pstm.setInt(3, itemId);
+				pstm.execute();
+		}
+		catch (SQLException e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		}
+		finally {
+			SQLUtil.close(null, pstm, con);
+		}
 	}
 }

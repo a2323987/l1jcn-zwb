@@ -20,6 +20,7 @@ import java.sql.Timestamp; // 道具天数删除系统
 import l1j.server.Config;
 import l1j.server.server.datatables.CastleTable;
 import l1j.server.server.datatables.ItemTable;
+import l1j.server.server.datatables.ShopTable;
 import l1j.server.server.datatables.TownTable;
 import l1j.server.server.model.L1CastleLocation;
 import l1j.server.server.model.L1PcInventory;
@@ -31,6 +32,7 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.game.L1BugBearRace;
 import l1j.server.server.model.identity.L1ItemId;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_ShopSellList;
 import l1j.server.server.templates.L1Castle;
 import l1j.server.server.templates.L1Item;
 import l1j.server.server.templates.L1ShopItem;
@@ -335,67 +337,68 @@ public class L1Shop {
 		for (L1ShopBuyOrder order : orderList.getList()) {
 			int itemId = order.getItem().getItemId();
 			int amount = order.getCount();
-			int EnchantLevel= order.getItem().getEnchantLevel();//商店装备+几系统
-			L1ItemInstance item = ItemTable.getInstance().createItem(itemId);
-			// 道具天数删除系统
-			int deleteDay = order.getDeleteDay(); // 道具天数删除系统(指定天数)
-			Timestamp deleteDate = order.getDeleteDate(); // 道具天数删除系统(指定日期)
-			// 道具天数删除系统
-			if (deleteDay > 0) { // ● 指定天数
-				Timestamp delDay = new Timestamp(
-						System.currentTimeMillis()
-								+ (86400000 * deleteDay));
-				item.setDeleteDate(delDay);
-			} else if (deleteDate != null) { // ● 指定日期
-				item.setDeleteDate(deleteDate);
-			}
-			if (item.getDeleteDate() != null) {
-				pc.sendPackets(new S_ServerMessage(166, item.getName() + " (" + amount + ") 使用期限:" + item.getDeleteDate()));
-			}
-			// end
-			if (item.getItemId() == 40309) {// Race Tickets
-				item.setItem(order.getItem().getItem());
-				L1BugBearRace.getInstance().setAllBet(
-						L1BugBearRace.getInstance().getAllBet()
-								+ (amount * order.getItem().getPrice()));
-				String[] runNum = item.getItem().getIdentifiedNameId()
-						.split("-");
-				int trueNum = 0;
-				for (int i = 0; i < 5; i++) {
-					if (L1BugBearRace.getInstance().getRunner(i).getNpcId() - 91350 == (Integer
-							.parseInt(runNum[runNum.length - 1]) - 1)) {
-						trueNum = i;
-						break;
+			int EnchantLevel = order.getItem().getEnchantLevel();// 商店装备+几系统
+			int npcId = getNpcId();
+			int selling_count = ShopTable.getInstance().getSelling_count(npcId, itemId);// 商店已经出售了多少件物品
+				L1ItemInstance item = ItemTable.getInstance().createItem(itemId);
+				// 道具天数删除系统
+				int deleteDay = order.getDeleteDay(); // 道具天数删除系统(指定天数)
+				Timestamp deleteDate = order.getDeleteDate(); // 道具天数删除系统(指定日期)
+				// 道具天数删除系统
+				if (deleteDay > 0) { // ● 指定天数
+					Timestamp delDay = new Timestamp(System.currentTimeMillis() + (86400000 * deleteDay));
+					item.setDeleteDate(delDay);
+				} else if (deleteDate != null) { // ● 指定日期
+					item.setDeleteDate(deleteDate);
+				}
+				if (item.getDeleteDate() != null) {
+					pc.sendPackets(new S_ServerMessage(166, item.getName() + " (" + amount + ") 使用期限:" + item.getDeleteDate()));
+				}
+				// end
+				if (item.getItemId() == 40309) {// Race Tickets
+					item.setItem(order.getItem().getItem());
+					L1BugBearRace.getInstance().setAllBet(L1BugBearRace.getInstance().getAllBet() + (amount * order.getItem().getPrice()));
+					String[] runNum = item.getItem().getIdentifiedNameId().split("-");
+					int trueNum = 0;
+					for (int i = 0; i < 5; i++) {
+						if (L1BugBearRace.getInstance().getRunner(i).getNpcId() - 91350 == (Integer.parseInt(runNum[runNum.length - 1]) - 1)) {
+							trueNum = i;
+							break;
+						}
+					}
+					L1BugBearRace.getInstance().setBetCount(trueNum, L1BugBearRace.getInstance().getBetCount(trueNum) + amount);
+				}
+				item.setCount(amount);
+				item.setIdentified(true);
+				item.setEnchantLevel(EnchantLevel);// 商店+几系统
+				if(order.getItem().get_selling_max() !=0){//商店贩卖数量限制。
+					int count = selling_count +amount;
+					ShopTable.getInstance().setSelling_count(npcId, itemId,count);
+					ShopTable.getInstance();
+				}
+				inv.storeItem(item);
+				// 贩卖清单
+								
+				if ((_npcId == 70068) || (_npcId == 70020) || (_npcId == 70056)) { // add
+																					// 70056
+					item.setIdentified(false);
+					int chance = Random.nextInt(100) + 1;
+					if (chance <= 15) {
+						item.setEnchantLevel(-2);
+					} else if ((chance >= 16) && (chance <= 30)) {
+						item.setEnchantLevel(-1);
+					} else if ((chance >= 31) && (chance <= 70)) {
+						item.setEnchantLevel(0);
+					} else if ((chance >= 71) && (chance <= 87)) {
+						item.setEnchantLevel(Random.nextInt(2) + 1);
+					} else if ((chance >= 88) && (chance <= 97)) {
+						item.setEnchantLevel(Random.nextInt(3) + 3);
+					} else if ((chance >= 98) && (chance <= 99)) {
+						item.setEnchantLevel(6);
+					} else if (chance == 100) {
+						item.setEnchantLevel(7);
 					}
 				}
-				L1BugBearRace.getInstance().setBetCount(
-						trueNum,
-						L1BugBearRace.getInstance().getBetCount(trueNum)
-								+ amount);
-			}
-			item.setCount(amount);
-			item.setIdentified(true);
-			item.setEnchantLevel(EnchantLevel);//商店+几系统
-			inv.storeItem(item);
-			if ((_npcId == 70068) || (_npcId == 70020) || (_npcId == 70056)) { //add 70056
-				item.setIdentified(false);
-				int chance = Random.nextInt(100) + 1;
-				if (chance <= 15) {
-					item.setEnchantLevel(-2);
-				} else if ((chance >= 16) && (chance <= 30)) {
-					item.setEnchantLevel(-1);
-				} else if ((chance >= 31) && (chance <= 70)) {
-					item.setEnchantLevel(0);
-				} else if ((chance >= 71) && (chance <= 87)) {
-					item.setEnchantLevel(Random.nextInt(2) + 1);
-				} else if ((chance >= 88) && (chance <= 97)) {
-					item.setEnchantLevel(Random.nextInt(3) + 3);
-				} else if ((chance >= 98) && (chance <= 99)) {
-					item.setEnchantLevel(6);
-				} else if (chance == 100) {
-					item.setEnchantLevel(7);
-				}
-			}
 		}
 	}
 

@@ -88,8 +88,12 @@ public class S_ShopSellList extends ServerBasePacket {
 			writeD(price);
 			//商店出售+几物品
 			String nameString = "";	
+			int count = ShopTable.getInstance().getSelling_count(npcId, item.getItemId());
+			if(shopItem.get_selling_max() != 0){
+				nameString = ("(" + count + "/"+shopItem.get_selling_max()+")");				
+			}
 			if (shopItem.getEnchantLevel() > 1 ) {// +1物品
-				nameString = ("+" + shopItem.getEnchantLevel() + " ");
+				nameString += ("+" + shopItem.getEnchantLevel() + " ");
 			}
 			if (shopItem.getPackCount() > 1) {
 				writeS(nameString + item.getName() + " (" + shopItem.getPackCount() + ")" + s1 + s2);// 道具天数删除系统
