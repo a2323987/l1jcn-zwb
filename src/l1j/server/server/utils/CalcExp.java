@@ -451,8 +451,12 @@ public class CalcExp {
 
 		int gap = pet.getLevel() - levelBefore;
 		for (int i = 1; i <= gap; i++) {
-			IntRange hpUpRange = pet.getPetType().getHpUpRange();
-			IntRange mpUpRange = pet.getPetType().getMpUpRange();
+			IntRange hpUpRange = new IntRange(5, 10);
+			IntRange mpUpRange = new IntRange(5, 10);
+			if (pet.getPetType() != null) {
+				hpUpRange = pet.getPetType().getHpUpRange();
+				mpUpRange = pet.getPetType().getMpUpRange();
+			}
 			pet.addMaxHp(hpUpRange.randomValue());
 			pet.addMaxMp(mpUpRange.randomValue());
 		}

@@ -5036,51 +5036,47 @@ public class C_NPCAction extends ClientBasePacket {
 		} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 81277) { // 隐匿的巨龙谷入口
 			int level = pc.getLevel();// 角色等级
 			char s1 = s.charAt(0);
-			if (s.equalsIgnoreCase("0")) {
-				if (level >= 30 && level <= 51) {
-					L1Teleport
-							.teleport(pc, 32820, 32904, (short) 1002, 5, true); // 前往侏儒部落
+			if (pc.getInventory().checkItem(60011, 300)) { // 检查身上声望1是否足够
+				pc.getInventory().consumeItem(60011, 300);
+				if (s.equalsIgnoreCase("0")) {
+					if (level >= 52 && level < 65) {
+						L1Teleport.teleport(pc, 32820, 32904, (short) 1002, 5, true); // 前往侏儒部落
+						htmlid = "";
+					} else {
+						htmlid = "dsecret3";
+					}
+				} else if (level >= 65) {
+					switch (s1) {
+					case '1':
+						L1Teleport.teleport(pc, 32904, 32627, (short) 1002, 5, true); // 前往造化之地(地)
+						break;
+					case '2':
+						L1Teleport.teleport(pc, 32793, 32593, (short) 1002, 5, true); // 前往造化之地(火)
+						break;
+					case '3':
+						L1Teleport.teleport(pc, 32874, 32785, (short) 1002, 5, true); // 前往造化之地(水)
+						break;
+					case '4':
+						L1Teleport.teleport(pc, 32993, 32716, (short) 1002, 4, true); // 前往造化之地(风)
+						break;
+					case '5':
+						L1Teleport.teleport(pc, 32698, 32664, (short) 1002, 6, true); // 前往龙之墓(北边)
+						break;
+					case '6':
+						L1Teleport.teleport(pc, 32710, 32759, (short) 1002, 6, true); // 前往龙之墓(南边)
+						break;
+					case '7':
+						L1Teleport.teleport(pc, 32986, 32630, (short) 1002, 4, true); // 前往苍空之谷
+						break;
+					}
 					htmlid = "";
 				} else {
 					htmlid = "dsecret3";
 				}
-			} else if (level >= 52) {
-				switch (s1) {
-				case '1':
-					L1Teleport
-							.teleport(pc, 32904, 32627, (short) 1002, 5, true); // 前往造化之地(地)
-					break;
-				case '2':
-					L1Teleport
-							.teleport(pc, 32793, 32593, (short) 1002, 5, true); // 前往造化之地(火)
-					break;
-				case '3':
-					L1Teleport
-							.teleport(pc, 32874, 32785, (short) 1002, 5, true); // 前往造化之地(水)
-					break;
-				case '4':
-					L1Teleport
-							.teleport(pc, 32993, 32716, (short) 1002, 4, true); // 前往造化之地(风)
-					break;
-				case '5':
-					L1Teleport
-							.teleport(pc, 32698, 32664, (short) 1002, 6, true); // 前往龙之墓(北边)
-					break;
-				case '6':
-					L1Teleport
-							.teleport(pc, 32710, 32759, (short) 1002, 6, true); // 前往龙之墓(南边)
-					break;
-				case '7':
-					L1Teleport
-							.teleport(pc, 32986, 32630, (short) 1002, 4, true); // 前往苍空之谷
-					break;
-				}
-				htmlid = "";
-			} else {
-				htmlid = "dsecret3";
+			}else {
+				pc.sendPackets(new S_SystemMessage("带够300个声望1再来找我吧！"));
 			}
 		}
-
 		// else System.out.println("C_NpcAction: " + s);
 		if ((htmlid != null) && htmlid.equalsIgnoreCase("colos2")) {
 			htmldata = makeUbInfoStrings(((L1NpcInstance) obj).getNpcTemplate()
