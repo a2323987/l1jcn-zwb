@@ -98,6 +98,11 @@ public abstract class L1Item implements Cloneable, Serializable {
 	 *         0:arrow, 1:wand, 2:light, 3:gem, 4:totem, 5:firecracker,
 	 *         6:potion, 7:food, 8:scroll, 9:questitem, 10:spellbook,
 	 *         11:petitem, 12:other, 13:material, 14:event, 15:sting
+	 *         ("treasure_box", new Integer(16));、
+	 *         "magic_doll", new Integer(17));
+	 *         ("TeleportScroll", new Integer(18)); // 道具传送卷轴(符)
+	 *         ("ItemBlend", new Integer(19)); // 道具融合系统
+	 *         ("furniture", new Integer(20)); // 家具
 	 *         </p>
 	 *         <p>
 	 *         [weapon]<br>
