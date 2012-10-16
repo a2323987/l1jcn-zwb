@@ -21,6 +21,9 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.xml.internal.bind.v2.runtime.output.Pcdata;
+
+import l1j.plugin.ShowMessage;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.IdFactory;
 import l1j.server.server.datatables.NpcTable;
@@ -267,6 +270,7 @@ public class L1DragonSlayer {
 			if (_num >= 6 && _num <= 11) {
 				msg = new int[] { 1657, 1658, 1659, 1662, 1663, 1664, 1666, 1667, 1669};
 			}
+			ShowMessage showMessage = new ShowMessage();
 			switch (_status) {
 				// 阶段一
 				case STATUS_DRAGONSLAYER_READY_1RD:
@@ -372,17 +376,20 @@ public class L1DragonSlayer {
 					break;
 				case STATUS_DRAGONSLAYER_END_2:
 					setDragonSlayerStatus(_num, STATUS_DRAGONSLAYER_END_3);
-					sendMessage(_num, 1582, null); // 侏儒的呼唤：威顿村庄出现了通往隐匿的巨龙谷入口。
+					//sendMessage(_num, 1582, null); // 侏儒的呼唤：威顿村庄出现了通往隐匿的巨龙谷入口。
+					showMessage.broadcastToAll("说话之岛出现了通往隐匿的巨龙谷入口。");
 					if (checkHiddenDragonValleyStstus() == STATUS_READY_SPAWN) { // 开启隐匿的巨龙谷入口
 						setHiddenDragonValleyStstus(STATUS_SPAWN);
-						spawn(81277, -1, 33726, 32506, (short) 4, 0, 86400000); // 24小时
+						//spawn(81277, -1, 33726, 32506, (short) 4, 0, 86400000); // 24小时
+						spawn(81277, -1, 32578, 32937, (short) 0, 0, 10800000); // 3小时 说话之岛
 					}
 					DragonSlayerTimer timer_10rd = new DragonSlayerTimer(_num, STATUS_DRAGONSLAYER_END_3, 5000);
 					timer_10rd.begin();
 					break;
 				case STATUS_DRAGONSLAYER_END_3:
 					setDragonSlayerStatus(_num, STATUS_DRAGONSLAYER_END_4);
-					sendMessage(_num, 1583, null); // 侏儒的呼唤：威顿村庄通往隐匿的巨龙谷入口已经开启了。
+					//sendMessage(_num, 1583, null); // 侏儒的呼唤：威顿村庄通往隐匿的巨龙谷入口已经开启了。
+					showMessage.broadcastToAll("说话之岛出现了通往隐匿的巨龙谷入口。");
 					DragonSlayerTimer timer_11rd = new DragonSlayerTimer(_num, STATUS_DRAGONSLAYER_END_4, 5000);
 					timer_11rd.begin();
 					break;
@@ -450,7 +457,9 @@ public class L1DragonSlayer {
 					} else {
 						// 传送至威顿村
 						pc.setPortalNumber(-1);
-						L1Teleport.teleport(pc, 33710, 32521, (short) 4, pc.getHeading(), true);
+						//L1Teleport.teleport(pc, 33710, 32521, (short) 4, pc.getHeading(), true);
+						//传送至说话之岛
+						L1Teleport.teleport(pc, 32579, 32932, (short) 0, pc.getHeading(), true);
 					}
 				}
 			}

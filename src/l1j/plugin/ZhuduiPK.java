@@ -177,13 +177,13 @@ public class ZhuduiPK {
 						if(_members.get(0).isDead() || _members.get(0).getMapId() != 802){//第一个血盟失败
 							_members.get(1).getInventory().storeItem(_itemWin1,_countWin1);
 							_members.get(1).getInventory().storeItem(_itemWin2,_countWin2);
-							ShowMeaagae showMeaagae = new ShowMeaagae();
+							ShowMessage showMeaagae = new ShowMessage();
 							showMeaagae.broadcastToAll("血盟"+_members.get(1).getClanname()+"打赢了血盟"+_members.get(0).getClanname());
 							break;
 						}else if( _members.get(1).isDead() ||_members.get(1).getMapId() != 802){
 							_members.get(0).getInventory().storeItem(_itemWin1,_countWin1);
 							_members.get(0).getInventory().storeItem(_itemWin2,_countWin2);
-							ShowMeaagae showMeaagae = new ShowMeaagae();
+							ShowMessage showMeaagae = new ShowMessage();
 							showMeaagae.broadcastToAll("血盟"+_members.get(0).getClanname()+"打赢了血盟"+_members.get(1).getClanname());
 							break;
 						}

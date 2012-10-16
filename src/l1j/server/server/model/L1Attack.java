@@ -14,7 +14,7 @@
  */
 package l1j.server.server.model;
 
-import l1j.plugin.ShowMeaagae;
+import l1j.plugin.ShowMessage;
 import l1j.server.Config;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.WarTimeController;
@@ -1009,7 +1009,7 @@ public class L1Attack {
 		}
 		
 		if(dmg >= _targetPc.getCurrentHp()){//PK获胜全体公告。//玩家扣除声望
-			ShowMeaagae showMeaagae = new ShowMeaagae();
+			ShowMessage showMeaagae = new ShowMessage();
 			int point = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(134)).intValue();
 			if(_targetPc.getFamePoint()>point){
 				int rnd = Random.nextInt(point);
@@ -1233,7 +1233,7 @@ public class L1Attack {
 		addNpcPoisonAttack(_npc, _targetPc);
 		
 		if(dmg >= _targetPc.getCurrentHp()){//被怪杀死全体公告。//玩家扣除声望
-			ShowMeaagae showMeaagae = new ShowMeaagae();
+			ShowMessage showMeaagae = new ShowMessage();
 			int point = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(135)).intValue();
 			if(_targetPc.getFamePoint()>point){
 				int rnd = Random.nextInt(point);
