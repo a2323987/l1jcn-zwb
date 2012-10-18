@@ -2255,6 +2255,7 @@ public class C_ItemUSe extends ClientBasePacket {
 					}
 					pc.sendPackets(new S_ServerMessage(76, l1iteminstance
 							.getItem().getIdentifiedNameId()));
+			//todo 
 				} else if (itemId == 60020) // 卡点自救
 				{
 					Connection con = null;
@@ -2997,6 +2998,22 @@ public class C_ItemUSe extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(79));
 					}
 				// TODO 自订道具区
+					//add　自杀药水　by k007008
+				} else if (itemId == 61000)//于DB内自行设定此药水编号及相关设定
+					{
+					if(pc.getLevel() >= 52) {
+					            pc.setExp(0);
+					            pc.setLevel(1);					            
+					                      
+					            pc.sendPackets(new S_SkillSound(pcObjid, 3944));
+					            pc.broadcastPacket(new S_SkillSound(pcObjid, 3944));
+					            pc.sendPackets(new S_OwnCharStatus(pc));
+					            pc.getInventory().removeItem(l1iteminstance, 1);
+					            pc.sendPackets(new S_ServerMessage(822));
+					            pc.save();
+					          } else {
+					            pc.sendPackets(new S_SystemMessage("你还不够资格哦!!"));
+					            }
 				} else if (itemId == 60003) { // 性别转换香水
 					int newClassId = pc.getClassId();
 					pc.getInventory().takeoffEquip(945);// 用来脱掉全身装备
