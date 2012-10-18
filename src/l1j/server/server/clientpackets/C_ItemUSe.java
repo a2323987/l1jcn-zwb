@@ -3003,8 +3003,13 @@ public class C_ItemUSe extends ClientBasePacket {
 					{
 					if(pc.getLevel() >= 52) {
 					            pc.setExp(0);
-					            pc.setLevel(1);					            
-					                      
+					            pc.setLevel(1);	
+					            pc.addBaseMaxHp((short) -32767);
+								pc.addBaseMaxMp((short) -32767);
+
+								pc.addBaseMaxHp((short) 10);
+								pc.addBaseMaxMp((short) 10);
+					            
 					            pc.sendPackets(new S_SkillSound(pcObjid, 3944));
 					            pc.broadcastPacket(new S_SkillSound(pcObjid, 3944));
 					            pc.sendPackets(new S_OwnCharStatus(pc));

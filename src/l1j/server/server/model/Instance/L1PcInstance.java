@@ -1524,6 +1524,10 @@ public class L1PcInstance extends L1Character {
 				// アライメント32000以上で0%、以降-1000每に0.4%
 				// アライメントが0未满の场合は-1000每に0.8%
 				// アライメント-32000以下で最高51.2%のDROP率
+				//防爆卷轴使用
+				if(_inventory.consumeItem(61001, 1)){
+					sendPackets(new S_SystemMessage("由于受到防爆装备的保护，未受到红名爆装备的惩罚!!"));
+				}else{
 				int lostRate = (int) (((getLawful() + 32768D) / 1000D - 65D) * 4D);
 				if (lostRate < 0) {
 					lostRate *= -1;
@@ -1549,7 +1553,7 @@ public class L1PcInstance extends L1Character {
 					}
 				}
 			}
-
+			}
 			boolean castle_ret = castleWarResult(); // 攻城战
 			if (castle_ret == true) { // 攻城战中で旗内なら赤ネームペナルティなし
 				return;
