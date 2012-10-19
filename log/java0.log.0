@@ -1,12 +1,6 @@
-九月 19, 2012 10:51:03 下午 l1j.server.Config load
-信息: 正在载入游戏伺服器相关设定...
-九月 19, 2012 10:51:04 下午 l1j.server.server.IdFactory <init>
-信息: 目前对象使用回收ID: 36516
-九月 19, 2012 10:54:16 下午 l1j.server.server.clientpackets.C_LoginToServer <init>
-信息: 角色登入到伺服器中: char=雷奇曼 account=zwb2005 host=127.0.0.1
-九月 19, 2012 10:54:30 下午 l1j.server.server.GMCommands executeDatabaseCommand
-信息: 雷奇曼使用 .adena 99999999的指令。
-九月 19, 2012 10:58:36 下午 l1j.server.server.GMCommands executeDatabaseCommand
-信息: 雷奇曼使用 .allbuff 雷奇曼的指令。
-九月 19, 2012 10:58:52 下午 l1j.server.server.GMCommands executeDatabaseCommand
-信息: 雷奇曼使用 .狂暴 雷奇曼的指令。
+十月 18, 2012 6:59:29 下午 l1j.server.Config load
+INFO: 正在载入游戏伺服器相关设定...
+十月 18, 2012 6:59:31 下午 l1j.server.server.IdFactory <init>
+INFO: 目前对象使用回收ID: 36516
+十月 18, 2012 7:00:20 下午 l1j.server.server.clientpackets.C_LoginToServer <init>
+INFO: 角色登入到伺服器中: char=雷奇曼 account=zwb2005 host=127.0.0.1

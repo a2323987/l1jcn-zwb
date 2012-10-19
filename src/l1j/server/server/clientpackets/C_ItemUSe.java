@@ -38,6 +38,7 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import l1j.plugin.ShowMessage;
 import l1j.plugin.Treasure;
 import l1j.server.Config;
 import l1j.server.L1DatabaseFactory;
@@ -123,6 +124,7 @@ import l1j.server.server.templates.L1Skills;
 import l1j.server.server.types.Point;
 import l1j.server.server.utils.L1SpawnUtil;
 import l1j.server.server.utils.Random;
+import l1j.william.L1WilliamItemSummon;
 import l1j.william.L1WilliamTeleportScroll; // DB道具传送卷轴(符) by 丫杰
 import l1j.kinlinlo.L1Blend; // 道具融合系统 by 狼人香
 import l1j.william.L1WilliamSystemMessage; // sosodemon add 声望系统 BY.SosoDEmoN
@@ -2998,27 +3000,42 @@ public class C_ItemUSe extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(79));
 					}
 				// TODO 自订道具区
-					//add　自杀药水　by k007008
-				} else if (itemId == 61000)//于DB内自行设定此药水编号及相关设定
-					{
-					if(pc.getLevel() >= 52) {
-					            pc.setExp(0);
-					            pc.setLevel(1);	
-					            pc.addBaseMaxHp((short) -32767);
-								pc.addBaseMaxMp((short) -32767);
-
-								pc.addBaseMaxHp((short) 10);
-								pc.addBaseMaxMp((short) 10);
-					            
-					            pc.sendPackets(new S_SkillSound(pcObjid, 3944));
-					            pc.broadcastPacket(new S_SkillSound(pcObjid, 3944));
-					            pc.sendPackets(new S_OwnCharStatus(pc));
-					            pc.getInventory().removeItem(l1iteminstance, 1);
-					            pc.sendPackets(new S_ServerMessage(822));
-					            pc.save();
-					          } else {
-					            pc.sendPackets(new S_SystemMessage("你还不够资格哦!!"));
-					            }
+					// SosoDEmoN add william 传送卷轴DB化、召唤道具、魔法道具 start
+				} else if (itemId == L1WilliamItemSummon.checkItemId(itemId)) {
+					L1WilliamItemSummon.getItemSummon(pc, l1iteminstance, itemId);
+					// SosoDEmoN add william 传送卷轴DB化、召唤道具、魔法道具 end
+					// add　自杀药水　by k007008
+				} else if (itemId == 61000)// 于DB内自行设定此药水编号及相关设定
+				{
+					if (pc.getLevel() >= 65) {
+						pc.setExp(0);
+						pc.setLevel(1L);
+						pc.addBaseMaxHp((short) (-32767));
+						pc.addBaseMaxMp((short) (-32767));
+					
+						pc.addBaseMaxHp((short)(9)); 
+						pc.addBaseMaxMp((short)(10)); 
+						
+						pc.resetBaseAc();
+						pc.resetBaseMr();
+						pc.resetBaseHitup();
+						pc.resetBaseDmgup();
+						pc.sendPackets(new S_SkillSound(pcObjid, 3944));
+						pc.broadcastPacket(new S_SkillSound(pcObjid, 3944));
+						pc.sendPackets(new S_OwnCharStatus(pc));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+						pc.sendPackets(new S_ServerMessage(822, ""));
+						pc.save();
+						// 增加全伺服器广播 BY psnnwe参照旧版本修改start
+						l1j.plugin.ShowMessage showMessage = new ShowMessage();
+						showMessage.broadcastToAll("\\fX◎玩家【" + (pc.getName() + "】喝下自杀药水了!◎").toString());
+						// 增加全伺服器广播 BY psnnwe参照旧版本修改end (psnnwe提供)
+					} else {
+						pc.sendPackets(new S_SystemMessage("你还不够资格哦!!"));
+					}
+					pc.getInventory().removeItem(l1iteminstance, 1);
+					// TODO 自杀药水 psnnwe参照旧版本修改end else if (itemId ==
+					// L1ItemId.B_POTION_OF_HEALING) {
 				} else if (itemId == 60003) { // 性别转换香水
 					int newClassId = pc.getClassId();
 					pc.getInventory().takeoffEquip(945);// 用来脱掉全身装备
