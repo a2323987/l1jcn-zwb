@@ -129,6 +129,7 @@ public class C_LoginToServer extends ClientBasePacket {
 
 		if (client.getActiveChar() != null) {
 			_log.info("同一个角色重复登入，强制切断 " + client.getHostname() + ") 的连结");
+			client.kick();
 			client.close();
 			return;
 		}
@@ -137,12 +138,14 @@ public class C_LoginToServer extends ClientBasePacket {
 		Account account = Account.load(pc.getAccountName());
 		if (account.isOnlineStatus()) {
 			_log.info("同一个帐号双重角色登入，强制切断 " + client.getHostname() + ") 的连结");
+			client.kick();
 			client.close();
 			return;
 		}
 		if ((pc == null) || !login.equals(pc.getAccountName())) {
 			_log.info("无效的角色名称: char=" + charName + " account=" + login
 					+ " host=" + client.getHostname());
+			client.kick();
 			client.close();
 			return;
 		}

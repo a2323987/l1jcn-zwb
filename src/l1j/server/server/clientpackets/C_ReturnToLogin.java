@@ -33,6 +33,7 @@ public class C_ReturnToLogin extends ClientBasePacket {
 		super(decrypt);
 		String account = client.getAccountName();
 		_log.finest((new StringBuilder()).append("account : ").append(account).toString());
+		client.kick();
 		LoginController.getInstance().logout(client);
 	}
 
