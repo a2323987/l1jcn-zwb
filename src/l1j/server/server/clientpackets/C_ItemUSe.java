@@ -35,6 +35,10 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -117,6 +121,7 @@ import l1j.server.server.serverpackets.S_UseMap;
 import l1j.server.server.storage.CharactersItemStorage;
 import l1j.server.server.templates.L1Armor;
 import l1j.server.server.templates.L1BookMark;
+import l1j.server.server.templates.L1CharName;
 import l1j.server.server.templates.L1EtcItem;
 import l1j.server.server.templates.L1Item;
 import l1j.server.server.templates.L1Npc;
@@ -125,6 +130,7 @@ import l1j.server.server.templates.L1Skills;
 import l1j.server.server.types.Point;
 import l1j.server.server.utils.L1SpawnUtil;
 import l1j.server.server.utils.Random;
+import l1j.server.server.utils.collections.Maps;
 import l1j.william.ItemMagic;
 import l1j.william.L1WilliamItemMagic;
 import l1j.william.L1WilliamItemSummon;
@@ -2263,23 +2269,45 @@ public class C_ItemUSe extends ClientBasePacket {
 			//todo 
 				} else if (itemId == 60020) // 卡点自救
 				{
+					int level = 0;
+					String name = null;
 					Connection con = null;
 					PreparedStatement pstm = null;
+					ResultSet rs = null;
+					Map<String, Integer> _charNameList = new HashMap<String, Integer>();
 					try {
 						con = L1DatabaseFactory.getInstance().getConnection();
-						pstm = con.prepareStatement("UPDATE characters SET LocX=32580,LocY=32931,MapID=0 WHERE account_name=?");
+						pstm = con.prepareStatement("SELECT * FROM characters WHERE account_name = ?");
+						pstm.setString(1, pc.getAccountName());
+						rs = pstm.executeQuery();
+						while (rs.next()) {
+							level = rs.getInt("HighLevel");
+							name = rs.getString("char_name");
+							_charNameList.put(name, level);
+						}
+						rs.close();
+						
+						for (Map.Entry<String, Integer> entry : _charNameList.entrySet()) {
+							if (entry.getValue() >= Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(1136)).intValue()) {
+								pstm = con.prepareStatement("UPDATE characters SET LocX=32580,LocY=32931,MapID=0 WHERE char_name=?");
+								pstm.setString(1, entry.getKey());
+								pstm.execute();
+							}else {
+								pstm = con.prepareStatement("UPDATE characters SET LocX=32682,LocY=32874,MapID=2005 WHERE char_name=?");
+								pstm.setString(1, entry.getKey());
+								pstm.execute();
+							}
+						}
 						// 主要以下就让使用者去连资料库update
 						// 目前是设定在潘朵拉附近
-						// 下面是设定account_name,因为必须设定只更改同帐号的
-						pstm.setString(1, pc.getAccountName());
-						pstm.execute();
+						// 下面是设定account_name,因为必须设定只更改同帐号的						
 						pstm.close();
 						con.close();
 						// l1pcinstance.getInventory().removeItem(l1iteminstance,
 						// 1);
 					} catch (Exception exception) {
 					}
-					pc.sendPackets(new S_SystemMessage("此账号内的所有角色已安全移到说话之岛的村庄，请重新登录！"));
+					pc.sendPackets(new S_SystemMessage("此账号内的所有角色已移到安全的村庄，请重新登录！"));
 				} else if (itemId == 60021) { // 限时活动地图
 					Treasure.getInstance().enterTreasure(pc);				
 				} else if (itemId == 40070) { // 进化果实
