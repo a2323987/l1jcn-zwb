@@ -260,6 +260,8 @@ public class L1SkillId {
 	public static final int FREEZING_BLIZZARD = 80;
 
 	// none = 81 - 86
+	/** 究极起死回生术 */
+	public static final int DISINTEGRATE_TURN_UNDEAD = 81;//
 	/*
 	 * Knight skills
 	 */

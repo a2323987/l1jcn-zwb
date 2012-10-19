@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.sound.midi.SysexMessage;
+
 import l1j.server.server.ActionCodes;
 import l1j.server.server.datatables.PolyTable;
 import l1j.server.server.datatables.SkillsTable;
@@ -78,6 +80,7 @@ import l1j.server.server.serverpackets.S_SkillIconWindShackle;
 import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_Sound;
 import l1j.server.server.serverpackets.S_Strup;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.S_TrueTarget;
 import l1j.server.server.serverpackets.S_UseAttackSkill;
 import l1j.server.server.templates.L1BookMark;
@@ -2038,11 +2041,24 @@ public class L1SkillUse {
 						}
 						break;
 					// 起死回生术
-					case TURN_UNDEAD:
+				case TURN_UNDEAD:
 						if (undeadType == 1 || undeadType == 3){
 							dmg = cha.getCurrentHp();
 						}
 						break;
+						//究极起死回生
+				case DISINTEGRATE_TURN_UNDEAD:
+					if (!_target.isDead()) {
+						int random = Random.nextInt(_target.getCurrentHp());
+						if(_player.getWis()+_player.getInt()+100 > random){//智力+精神
+						dmg = _target.getCurrentHp();// 伤害为目前血量,4龙大决也是这样判断的
+						_player.sendPackets(new S_SkillSound(_target.getId(), 754));// 起死回生动画
+						_player.broadcastPacket(new S_SkillSound(_target.getId(), 754));
+						}else {
+							_player.sendPackets(new S_SystemMessage("诅咒失败，请尽量提升您的智力！"));
+						}
+					}
+					break;
 					// 魔力夺取
 					case MANA_DRAIN:
 						int chance = Random.nextInt(10) + 5;

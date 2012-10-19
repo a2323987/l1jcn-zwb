@@ -14,6 +14,7 @@
  */
 package l1j.server.server.clientpackets;
 
+import static l1j.server.server.model.skill.L1SkillId.ABSOLUTE_BARRIER;
 import static l1j.server.server.model.skill.L1SkillId.AWAKEN_ANTHARAS;
 import static l1j.server.server.model.skill.L1SkillId.AWAKEN_FAFURION;
 import static l1j.server.server.model.skill.L1SkillId.AWAKEN_VALAKAS;
@@ -124,6 +125,8 @@ import l1j.server.server.templates.L1Skills;
 import l1j.server.server.types.Point;
 import l1j.server.server.utils.L1SpawnUtil;
 import l1j.server.server.utils.Random;
+import l1j.william.ItemMagic;
+import l1j.william.L1WilliamItemMagic;
 import l1j.william.L1WilliamItemSummon;
 import l1j.william.L1WilliamTeleportScroll; // DB道具传送卷轴(符) by 丫杰
 import l1j.kinlinlo.L1Blend; // 道具融合系统 by 狼人香
@@ -3001,6 +3004,96 @@ public class C_ItemUSe extends ClientBasePacket {
 					}
 				// TODO 自订道具区
 					// SosoDEmoN add william 传送卷轴DB化、召唤道具、魔法道具 start
+				} else if (itemId == L1WilliamItemMagic.checkItemId(itemId)) {
+					L1WilliamItemMagic Item_Magic = ItemMagic.getInstance().getTemplate(itemId);
+					if (Item_Magic.getCheckClass() != 0) { // 职业判断
+						byte class_id = (byte) 0;
+						String msg = "";
+						if (pc.isCrown()) { // 王族
+							class_id = 1;
+						} else if (pc.isKnight()) { // 骑士
+							class_id = 2;
+						} else if (pc.isWizard()) { // 法师
+							class_id = 3;
+						} else if (pc.isElf()) { // 妖精
+							class_id = 4;
+						} else if (pc.isDarkelf()) { // 黑妖
+							class_id = 5;
+						} else if (pc.isDragonKnight()) { // sosodemon add 龙骑士
+							class_id = 6;
+						} else if (pc.isIllusionist()) { // sosodemon add 幻术师
+							class_id = 7;
+						}
+						switch (Item_Magic.getCheckClass()) {
+						case 1:
+							msg = "王族";
+							break;
+						case 2:
+							msg = "骑士";
+							break;
+						case 3:
+							msg = "法师";
+							break;
+						case 4:
+							msg = "妖精";
+							break;
+						case 5:
+							msg = "黑暗妖精";
+							break;
+						case 6:
+							msg = "龙骑士";
+							break;
+						case 7:
+							msg = "幻术师";
+							break;
+						}
+						if (Item_Magic.getCheckClass() != class_id) { // 职业不符
+							pc.sendPackets(new S_ServerMessage(166, L1WilliamSystemMessage.ShowMessage(1097), msg, L1WilliamSystemMessage.ShowMessage(1114)));
+							return;
+						}
+					}
+					if (Item_Magic.getCheckItem() != 0) { // 携带物品判断
+						if (!pc.getInventory().checkItem(Item_Magic.getCheckItem())) {
+							L1Item temp = ItemTable.getInstance().getTemplate(Item_Magic.getCheckItem());
+							pc.sendPackets(new S_ServerMessage(166, L1WilliamSystemMessage.ShowMessage(1113), " (" + temp.getName() + ") ", L1WilliamSystemMessage.ShowMessage(1114)));
+							return;
+						}
+					}
+					if (spellsc_objid == pc.getId() && l1iteminstance.getItem().getUseType() != 30) { // spell_buff
+						pc.sendPackets(new S_ServerMessage(281)); // \f1魔法が无佅になりました。
+						return;
+					}
+					if (spellsc_objid == 0 && l1iteminstance.getItem().getUseType() != 0 && l1iteminstance.getItem().getUseType() != 26 && l1iteminstance.getItem().getUseType() != 27) {
+						return;
+						// ターゲットがいない场合にhandleCommandsを送るとぬるぽになるためここでreturn
+						// handleCommandsのほうで判＆理すべき部分かもしれない
+					}
+					cancelAbsoluteBarrier(pc);
+					L1SkillUse l1skilluse = new L1SkillUse();
+					if (Item_Magic.getRemoveItem() == 0) { // 删除道具判断
+						switch (Item_Magic.getSkillId()) {
+						case 12:
+						case 21:
+						case 107:
+							l1skilluse.handleCommands(client.getActiveChar(), Item_Magic.getSkillId(), l, 0, 0, null, 0, L1SkillUse.TYPE_NORMAL);
+							break;
+						default:
+							l1skilluse.handleCommands(client.getActiveChar(), Item_Magic.getSkillId(), spellsc_objid, spellsc_x, spellsc_y, null, 0, L1SkillUse.TYPE_NORMAL);
+							break;
+						}
+					} else {
+						switch (Item_Magic.getSkillId()) {
+						case 12:
+						case 21:
+						case 107:
+							l1skilluse.handleCommands(client.getActiveChar(), Item_Magic.getSkillId(), l, 0, 0, null, 0, L1SkillUse.TYPE_SPELLSC);
+							break;
+						default:
+							l1skilluse.handleCommands(client.getActiveChar(), Item_Magic.getSkillId(), spellsc_objid, spellsc_x, spellsc_y, null, 0, L1SkillUse.TYPE_SPELLSC);
+							break;
+						}
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					}
 				} else if (itemId == L1WilliamItemSummon.checkItemId(itemId)) {
 					L1WilliamItemSummon.getItemSummon(pc, l1iteminstance, itemId);
 					// SosoDEmoN add william 传送卷轴DB化、召唤道具、魔法道具 end
@@ -5304,7 +5397,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 		return 0;
 	}
-
+	
+	private void cancelAbsoluteBarrier(L1PcInstance pc) { // アブソルート バリアの解除
+		if (pc.hasSkillEffect(ABSOLUTE_BARRIER)) {
+			pc.killSkillEffectTimer(ABSOLUTE_BARRIER);
+			pc.startHpRegeneration();
+			pc.startMpRegeneration();
+			pc.startMpRegenerationByDoll();
+		}
+	}
 	private void polyAction(L1PcInstance attacker, L1Character cha) {
 		boolean isSameClan = false;
 		if (cha instanceof L1PcInstance) {

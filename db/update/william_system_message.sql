@@ -53,9 +53,3 @@ INSERT INTO `william_system_message` VALUES ('139', '20', '木头人最高等级
 
 INSERT INTO `william_system_message` VALUES ('140', 'true', '是否开启只在说话岛才能获取在线物品');
 
-
-INSERT INTO `william_system_message` VALUES ('1097', '职业必须是', '召唤道具用');
-INSERT INTO `william_system_message` VALUES ('1114', '才能使用此道具', '召唤道具用');
-INSERT INTO `william_system_message` VALUES ('1098', '魅力最低需求', '召唤道具用');
-INSERT INTO `william_system_message` VALUES ('1113', '必须有', '召唤道具用');
-INSERT INTO `william_system_message` VALUES ('1115', '以上', '召唤道具用');
