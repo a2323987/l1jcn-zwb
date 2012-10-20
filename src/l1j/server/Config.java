@@ -75,6 +75,44 @@ public final class Config {
 	/**BOSS10*/
 	public static int bossId10;
 	
+	/**tdTower control*/
+	/**最少人数*/
+	public static int minPlayerTD;
+	/**最多人数*/
+	public static int maxPlayerTD;
+	/**扣除物品*/
+	public static int bossItemTD;
+	/**扣除物品数量*/
+	public static int itemCountTD;
+	/**奖励物品*/
+	public static int bossItemTDReward;
+	/**奖励物品数量*/
+	public static int itemCountTDReward;
+	/**等待时间 80秒 + 倒数 = 总共90秒*/
+	public static int readytimeTD;
+	/**清洁时间 五分钟*/
+	public static int cleartimeTD;
+	/**BOSS1*/
+	public static int bossId1TD;
+	/**BOSS2*/
+	public static int bossId2TD;
+	/**BOSS3*/
+	public static int bossId3TD;
+	/**BOSS4*/
+	public static int bossId4TD;
+	/**BOSS5*/
+	public static int bossId5TD;
+	/**BOSS6*/
+	public static int bossId6TD;
+	/**BOSS7*/
+	public static int bossId7TD;
+	/**BOSS8*/
+	public static int bossId8TD;
+	/**BOSS9*/
+	public static int bossId9TD;
+	/**BOSS10*/
+	public static int bossId10TD;
+	
 	
 	/** Server control */
 	public static String GAME_SERVER_HOST_NAME;
@@ -619,6 +657,8 @@ public final class Config {
 	public static final String FAME_SETTINGS_CONFIG_FILE = "./config/famesystem.properties"; // 声望系统
 	
 	public static final String BOSSROOM = "./config/bossRoom.properties"; // boss馆
+	
+	public static final String TDTOWER = "./config/tdTower.properties"; // boss馆
 	/** 其他设定 */
 
 	// 吸收每个 NPC 的 MP 上限
@@ -1207,6 +1247,34 @@ public final class Config {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			throw new Error("无法读取设定档: " + BOSSROOM);
 		}
+		// tdTower.properties
+		Properties tdTowerSettings = new Properties();
+		try {
+			InputStream is = new FileInputStream(new File(TDTOWER));
+			bossRoomSettings.load(is);
+			is.close();
+			minPlayerTD = Integer.parseInt(bossRoomSettings.getProperty("minPlayerTD", "0"));
+			maxPlayerTD = Integer.parseInt(bossRoomSettings.getProperty("maxPlayerTD", "0"));
+			bossItemTD = Integer.parseInt(bossRoomSettings.getProperty("bossItemTD", "0"));
+			itemCountTD = Integer.parseInt(bossRoomSettings.getProperty("itemCountTD", "0"));
+			bossItemTDReward = Integer.parseInt(bossRoomSettings.getProperty("bossItemTDReward", "0"));
+			itemCountTDReward = Integer.parseInt(bossRoomSettings.getProperty("itemCountTDReward", "0"));
+			readytimeTD = Integer.parseInt(bossRoomSettings.getProperty("readytimeTD", "0"));
+			cleartimeTD = Integer.parseInt(bossRoomSettings.getProperty("cleartimeTD", "0"));
+			bossId1TD = Integer.parseInt(bossRoomSettings.getProperty("bossId1TD", "0"));
+			bossId2TD = Integer.parseInt(bossRoomSettings.getProperty("bossId2TD", "0"));
+			bossId3TD = Integer.parseInt(bossRoomSettings.getProperty("bossId3TD", "0"));
+			bossId4TD = Integer.parseInt(bossRoomSettings.getProperty("bossId4TD", "0"));
+			bossId5TD = Integer.parseInt(bossRoomSettings.getProperty("bossId5TD", "0"));
+			bossId6TD = Integer.parseInt(bossRoomSettings.getProperty("bossId6TD", "0"));
+			bossId7TD = Integer.parseInt(bossRoomSettings.getProperty("bossId7TD", "0"));
+			bossId8TD = Integer.parseInt(bossRoomSettings.getProperty("bossId8TD", "0"));
+			bossId9TD = Integer.parseInt(bossRoomSettings.getProperty("bossId9TD", "0"));
+			bossId10TD = Integer.parseInt(bossRoomSettings.getProperty("bossId10TD", "0"));
+		} catch (Exception e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			throw new Error("无法读取设定档: " + TDTOWER);
+		}
 		// einhasad.properties
 		Properties einhasadSettings = new Properties();
 		try {
@@ -1786,7 +1854,44 @@ public final class Config {
      	} else if (pName.equalsIgnoreCase("bossId10")) {
      		bossId10 = Integer.valueOf(pValue); 
      	}
-		
+		//tdTower.properties
+	    else if (pName.equalsIgnoreCase("minPlayerTD")) {
+	    	minPlayerTD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("maxPlayerTD")) {
+     		maxPlayerTD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossItemTD")) {
+     		bossItemTD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("itemCountTD")) {
+     		itemCountTD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossItemTDReward")) {
+     		bossItemTDReward = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("itemCountTDReward")) {
+     		itemCountTDReward = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("readytimeTD")) {
+     		readytimeTD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("cleartimeTD")) {
+     		cleartimeTD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId1TD")) {
+     		bossId1TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId2TD")) {
+     		bossId2TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId3TD")) {
+     		bossId3TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId4TD")) {
+     		bossId4TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId5TD")) {
+     		bossId5TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId6TD")) {
+     		bossId6TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId7TD")) {
+     		bossId7TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId8TD")) {
+     		bossId8TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId9TD")) {
+     		bossId9TD = Integer.valueOf(pValue); 
+     	} else if (pName.equalsIgnoreCase("bossId10TD")) {
+     		bossId10TD = Integer.valueOf(pValue); 
+     	}
 		// record.properties
 		else if (pName.equalsIgnoreCase("LoggingWeaponEnchant")) {
 			LOGGING_WEAPON_ENCHANT = Byte.parseByte(pValue);

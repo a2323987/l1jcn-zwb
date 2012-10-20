@@ -160,7 +160,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 		// 目标搜索
 		L1PcInstance lastTarget = null;
 		L1PcInstance targetPlayer = null;
-
+		if(getMapId() == 515){//td塔防内的怪不打人。
+			_target = null;
+			return;
+		}
 		if (_target != null && _target instanceof L1PcInstance ) {
 			lastTarget = (L1PcInstance) _target;
 			tagertClear();

@@ -36,6 +36,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import l1j.plugin.tdTower.TDTower;
 import l1j.server.Config;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.GeneralThreadPool;
@@ -77,65 +78,48 @@ import l1j.server.server.utils.collections.Maps;
 
 public class L1NpcInstance extends L1Character {
 	private static final long serialVersionUID = 1L;
-
 	public static final int MOVE_SPEED = 0;
-
 	public static final int ATTACK_SPEED = 1;
-
 	public static final int MAGIC_SPEED = 2;
-
 	public static final int HIDDEN_STATUS_NONE = 0;
-
 	public static final int HIDDEN_STATUS_SINK = 1;
-
 	public static final int HIDDEN_STATUS_FLY = 2;
-
 	public static final int HIDDEN_STATUS_ICE = 3;
-
 	public static final int CHAT_TIMING_APPEARANCE = 0;
-
 	public static final int CHAT_TIMING_DEAD = 1;
-
 	public static final int CHAT_TIMING_HIDE = 2;
-
 	public static final int CHAT_TIMING_GAME_TIME = 3;
-
-	private static Logger _log = Logger
-			.getLogger(L1NpcInstance.class.getName());
-
+	private static Logger _log = Logger.getLogger(L1NpcInstance.class.getName());
 	private L1Npc _npcTemplate;
-
 	private L1Spawn _spawn;
-
 	private int _spawnNumber; // L1Spawnで管理されているナンバー
-
 	private int _petcost; // ペットになったときのコスト
-
 	public L1Inventory _inventory = new L1Inventory();
-
 	private L1MobSkillUse mobSkill;
-
 	// 对象を初めて発见したとき。（テレポート用）
 	private boolean firstFound = true;
-
 	// 经路探索范围（半径） ※上げすぎ注意！！
 	public static int courceRange = 15;
-
 	// 吸われたMP
 	private int _drainedMana = 0;
-
 	// 休憩
 	private boolean _rest = false;
-
 	// ランダム移动时の距离と方向
 	private int _randomMoveDistance = 0;
-
 	private int _randomMoveDirection = 0;
 
 	// ■■■■■■■■■■■■■ ＡＩ关连 ■■■■■■■■■■■
-
 	interface NpcAI {
 		public void start();
+	}
+	private boolean gameover;
+
+	public boolean isGameover() {
+		return gameover;
+	}
+
+	private void setGameover(boolean gameover) {
+		this.gameover = gameover;
 	}
 
 	protected void startAI() {
@@ -196,7 +180,6 @@ public class L1NpcInstance extends L1Character {
 					stop();
 					return;
 				}
-
 				// XXX 同期がとても怪しげな麻痹判定
 				if (0 < _paralysisTime) {
 					schedule(_paralysisTime);
@@ -207,7 +190,6 @@ public class L1NpcInstance extends L1Character {
 					schedule(200);
 					return;
 				}
-
 				if (!AIProcess()) { // AIを续けるべきであれば、次の实行をスケジュールし、终了
 					schedule(getSleepTime());
 					return;
@@ -219,8 +201,7 @@ public class L1NpcInstance extends L1Character {
 		}
 
 		private boolean notContinued() {
-			return _destroyed || isDead() || (getCurrentHp() <= 0)
-					|| (getHiddenStatus() != HIDDEN_STATUS_NONE);
+			return _destroyed || isDead() || (getCurrentHp() <= 0) || (getHiddenStatus() != HIDDEN_STATUS_NONE);
 		}
 	}
 
@@ -234,8 +215,7 @@ public class L1NpcInstance extends L1Character {
 		public void run() {
 			try {
 				setAiRunning(true);
-				while (!_destroyed && !isDead() && (getCurrentHp() > 0)
-						&& (getHiddenStatus() == HIDDEN_STATUS_NONE)) {
+				while (!_destroyed && !isDead() && (getCurrentHp() > 0) && (getHiddenStatus() == HIDDEN_STATUS_NONE)) {
 					/*
 					 * if (_paralysisTime > 0) { try {
 					 * Thread.sleep(_paralysisTime); } catch (Exception
@@ -249,7 +229,6 @@ public class L1NpcInstance extends L1Character {
 							setParalyzed(false);
 						}
 					}
-
 					if (AIProcess()) {
 						break;
 					}
@@ -279,17 +258,14 @@ public class L1NpcInstance extends L1Character {
 	// ＡＩの处理 (返り值はＡＩ处理を终了するかどうか)
 	private boolean AIProcess() {
 		setSleepTime(300);
-
 		checkTarget();
 		if ((_target == null) && (_master == null)) {
 			// 空っぽの场合はターゲットを探してみる
 			// （主人がいる场合は自分でターゲットを探さない）
 			searchTarget();
 		}
-
 		onDoppel(true);
 		onItemUse();
-
 		if (_target == null) {
 			// ターゲットがいない场合
 			checkTargetItem();
@@ -297,16 +273,13 @@ public class L1NpcInstance extends L1Character {
 				// アイテム拾う子の场合はアイテムを探してみる
 				searchTargetItem();
 			}
-
 			if (_targetItem == null) {
 				if (noTarget()) {
 					return true;
 				}
 			} else {
 				// onTargetItem();
-				L1Inventory groundInventory = L1World.getInstance()
-						.getInventory(_targetItem.getX(), _targetItem.getY(),
-								_targetItem.getMapId());
+				L1Inventory groundInventory = L1World.getInstance().getInventory(_targetItem.getX(), _targetItem.getY(), _targetItem.getMapId());
 				if (groundInventory.checkItem(_targetItem.getItemId())) {
 					onTargetItem();
 				} else {
@@ -323,7 +296,6 @@ public class L1NpcInstance extends L1Character {
 				return true;
 			}
 		}
-
 		return false; // ＡＩ处理续行
 	}
 
@@ -342,14 +314,9 @@ public class L1NpcInstance extends L1Character {
 
 	// 有效なターゲットか确认及び次のターゲットを设定
 	public void checkTarget() {
-		if ((_target == null)
-				|| (_target.getMapId() != getMapId())
-				|| (_target.getCurrentHp() <= 0)
-				|| _target.isDead()
-				|| (_target.isInvisble() && !getNpcTemplate().is_agrocoi() && !_hateList
-						.containsKey(_target))
-				// 目标距离超过30以上
-				|| _target.getTileLineDistance(this) > 30 ) { 
+		if ((_target == null) || (_target.getMapId() != getMapId()) || (_target.getCurrentHp() <= 0) || _target.isDead() || (_target.isInvisble() && !getNpcTemplate().is_agrocoi() && !_hateList.containsKey(_target))
+		// 目标距离超过30以上
+				|| _target.getTileLineDistance(this) > 30) {
 			if (_target != null) {
 				tagertClear();
 			}
@@ -368,7 +335,6 @@ public class L1NpcInstance extends L1Character {
 				hate += getMaxHp() / 10; // ＦＡヘイト
 				setFirstAttack(true);
 			}
-
 			_hateList.add(cha, hate);
 			_dropHateList.add(cha, hate);
 			_target = _hateList.getMaxHateCharacter();
@@ -400,8 +366,7 @@ public class L1NpcInstance extends L1Character {
 				}
 				L1MobGroupInfo mobGroupInfo = getMobGroupInfo();
 				if (mobGroupInfo != null) {
-					if ((getMobGroupId() != 0)
-							&& (getMobGroupId() == npc.getMobGroupId())) { // 同じグループ
+					if ((getMobGroupId() != 0) && (getMobGroupId() == npc.getMobGroupId())) { // 同じグループ
 						npc.setLink(targetPlayer);
 					}
 				}
@@ -415,6 +380,12 @@ public class L1NpcInstance extends L1Character {
 		_targetItemList.clear();
 		_targetItem = null;
 		L1Character target = _target; // ここから先は_targetが变わると影响出るので别领域に参照确保
+		if (getMapId() == 5065) {
+			// setActived(true);
+			setDirectionMove(4);
+			setSleepTime(500);
+			return;
+		}
 		if (getAtkspeed() == 0) { // 逃げるキャラ
 			if (getPassispeed() > 0) { // 移动できるキャラ
 				int escapeDistance = 15;
@@ -424,8 +395,7 @@ public class L1NpcInstance extends L1Character {
 				if (getLocation().getTileLineDistance(target.getLocation()) > escapeDistance) { // ターゲットから逃げるの终了
 					tagertClear();
 				} else { // ターゲットから逃げる
-					int dir = targetReverseDirection(target.getX(),
-							target.getY());
+					int dir = targetReverseDirection(target.getX(), target.getY());
 					dir = checkObject(getX(), getY(), getMapId(), dir);
 					setDirectionMove(dir);
 					setSleepTime(calcSleepTime(getPassispeed(), MOVE_SPEED));
@@ -435,11 +405,9 @@ public class L1NpcInstance extends L1Character {
 			if (isAttackPosition(target.getX(), target.getY(), getAtkRanged())) { // 攻击可能位置
 				if (mobSkill.isSkillTrigger(target)) { // トリガの条件に合うスキルがある
 					if (mobSkill.skillUse(target, true)) { // スキル使用(mobskill.sqlのTriRndに从う)
-						setSleepTime(calcSleepTime(mobSkill.getSleepTime(),
-								MAGIC_SPEED));
+						setSleepTime(calcSleepTime(mobSkill.getSleepTime(), MAGIC_SPEED));
 					} else { // スキル使用が失败したら物理攻击
-						setHeading(targetDirection(target.getX(),
-								target.getY()));
+						setHeading(targetDirection(target.getX(), target.getY()));
 						attackTarget(target);
 					}
 				} else {
@@ -448,34 +416,26 @@ public class L1NpcInstance extends L1Character {
 				}
 			} else { // 攻击不可能位置
 				if (mobSkill.skillUse(target, false)) { // スキル使用(mobskill.sqlのTriRndに从わず、発动确率は100%。ただしサモン、强制变身は常にTriRndに从う。)
-					setSleepTime(calcSleepTime(mobSkill.getSleepTime(),
-							MAGIC_SPEED));
+					setSleepTime(calcSleepTime(mobSkill.getSleepTime(), MAGIC_SPEED));
 					return;
 				}
-
 				if (getPassispeed() > 0) {
 					// 移动できるキャラ
-					int distance = getLocation().getTileDistance(
-							target.getLocation());
-					if ((firstFound == true) && getNpcTemplate().is_teleport()
-							&& (distance > 3) && (distance < 15)) {
+					int distance = getLocation().getTileDistance(target.getLocation());
+					if ((firstFound == true) && getNpcTemplate().is_teleport() && (distance > 3) && (distance < 15)) {
 						if (nearTeleport(target.getX(), target.getY()) == true) {
 							firstFound = false;
 							return;
 						}
 					}
-
-					if (getNpcTemplate().is_teleport()
-							&& (20 > Random.nextInt(100))
-							&& (getCurrentMp() >= 10) && (distance > 6)
-							&& (distance < 15)) { // テレポート移动
+					if (getNpcTemplate().is_teleport() && (20 > Random.nextInt(100)) && (getCurrentMp() >= 10) && (distance > 6) && (distance < 15)) { // テレポート移动
 						if (nearTeleport(target.getX(), target.getY()) == true) {
 							return;
 						}
 					}
 					int dir = moveDirection(target.getX(), target.getY());
 					if (dir == -1) {
-						// 假如怪物走不过去  就找附近下一个玩家攻击
+						// 假如怪物走不过去 就找附近下一个玩家攻击
 						searchTarget();
 					} else {
 						setDirectionMove(dir);
@@ -534,7 +494,6 @@ public class L1NpcInstance extends L1Character {
 				}
 			}
 		}
-
 		if (target instanceof L1NpcInstance) {
 			L1NpcInstance npc = (L1NpcInstance) target;
 			if (npc.getHiddenStatus() != HIDDEN_STATUS_NONE) { // 地中に潜っているか、飞んでいる
@@ -542,14 +501,12 @@ public class L1NpcInstance extends L1Character {
 				return;
 			}
 		}
-
 		boolean isCounterBarrier = false;
 		L1Attack attack = new L1Attack(this, target);
 		if (attack.calcHit()) {
 			if (target.hasSkillEffect(COUNTER_BARRIER)) {
 				L1Magic magic = new L1Magic(target, this);
-				boolean isProbability = magic
-						.calcProbabilityMagic(COUNTER_BARRIER);
+				boolean isProbability = magic.calcProbabilityMagic(COUNTER_BARRIER);
 				boolean isShortDistance = attack.isShortDistance();
 				if (isProbability && isShortDistance) {
 					isCounterBarrier = true;
@@ -572,7 +529,6 @@ public class L1NpcInstance extends L1Character {
 	// ターゲットアイテムを探す
 	public void searchTargetItem() {
 		List<L1GroundInventory> gInventorys = Lists.newList();
-
 		for (L1Object obj : L1World.getInstance().getVisibleObjects(this)) {
 			if ((obj != null) && (obj instanceof L1GroundInventory)) {
 				gInventorys.add((L1GroundInventory) obj);
@@ -581,7 +537,6 @@ public class L1NpcInstance extends L1Character {
 		if (gInventorys.size() == 0) {
 			return;
 		}
-
 		// 拾うアイテム(のインベントリ)をランダムで选定
 		int pickupIndex = Random.nextInt(gInventorys.size());
 		L1GroundInventory inventory = gInventorys.get(pickupIndex);
@@ -595,7 +550,6 @@ public class L1NpcInstance extends L1Character {
 
 	public void searchItemFromAir() { // 怪物飞天中，发现特定道具时解除飞天捡拾道具
 		List<L1GroundInventory> gInventorys = Lists.newList();
-
 		for (L1Object obj : L1World.getInstance().getVisibleObjects(this)) {
 			if ((obj != null) && (obj instanceof L1GroundInventory)) {
 				gInventorys.add((L1GroundInventory) obj);
@@ -604,7 +558,6 @@ public class L1NpcInstance extends L1Character {
 		if (gInventorys.isEmpty()) {
 			return;
 		}
-
 		int pickupIndex = Random.nextInt(gInventorys.size());
 		L1GroundInventory inventory = gInventorys.get(pickupIndex);
 		for (L1ItemInstance item : inventory.getItems()) {
@@ -628,7 +581,6 @@ public class L1NpcInstance extends L1Character {
 	public static void shuffle(L1Object[] arr) {
 		for (int i = arr.length - 1; i > 0; i--) {
 			int t = Random.nextInt(i);
-
 			// 选ばれた值と交换する
 			L1Object tmp = arr[i];
 			arr[i] = arr[t];
@@ -638,9 +590,7 @@ public class L1NpcInstance extends L1Character {
 
 	// 有效なターゲットアイテムか确认及び次のターゲットアイテムを设定
 	public void checkTargetItem() {
-		if ((_targetItem == null)
-				|| (_targetItem.getMapId() != getMapId())
-				|| (getLocation().getTileDistance(_targetItem.getLocation()) > 15)) {
+		if ((_targetItem == null) || (_targetItem.getMapId() != getMapId()) || (getLocation().getTileDistance(_targetItem.getLocation()) > 15)) {
 			if (!_targetItemList.isEmpty()) {
 				_targetItem = _targetItemList.get(0);
 				_targetItemList.remove(0);
@@ -669,10 +619,8 @@ public class L1NpcInstance extends L1Character {
 
 	// アイテムを拾う
 	public void pickupTargetItem(L1ItemInstance targetItem) {
-		L1Inventory groundInventory = L1World.getInstance().getInventory(
-				targetItem.getX(), targetItem.getY(), targetItem.getMapId());
-		L1ItemInstance item = groundInventory.tradeItem(targetItem,
-				targetItem.getCount(), getInventory());
+		L1Inventory groundInventory = L1World.getInstance().getInventory(targetItem.getX(), targetItem.getY(), targetItem.getMapId());
+		L1ItemInstance item = groundInventory.tradeItem(targetItem, targetItem.getCount(), getInventory());
 		turnOnOffLight();
 		onGetItem(item);
 		_targetItemList.remove(_targetItem);
@@ -682,9 +630,13 @@ public class L1NpcInstance extends L1Character {
 
 	// ターゲットがいない场合の处理 (返り值はＡＩ处理を终了するかどうか)
 	public boolean noTarget() {
-		if ((_master != null)
-				&& (_master.getMapId() == getMapId())
-				&& (getLocation().getTileLineDistance(_master.getLocation()) > 2)) { // 主人が同じマップにいて离れてる场合は追尾
+		if (getMapId() == 5065) {
+			// setActived(true);
+			setDirectionMove(4);
+			setSleepTime(500);
+			return false;
+		}
+		if ((_master != null) && (_master.getMapId() == getMapId()) && (getLocation().getTileLineDistance(_master.getLocation()) > 2)) { // 主人が同じマップにいて离れてる场合は追尾
 			int dir = moveDirection(_master.getX(), _master.getY());
 			if (dir != -1) {
 				setDirectionMove(dir);
@@ -700,26 +652,20 @@ public class L1NpcInstance extends L1Character {
 			if ((_master == null) && (getPassispeed() > 0) && !isRest()) {
 				// グループに属していないorグループに属していてリーダーの场合、ランダムに动いておく
 				L1MobGroupInfo mobGroupInfo = getMobGroupInfo();
-				if ((mobGroupInfo == null)
-						|| ((mobGroupInfo != null) && mobGroupInfo
-								.isLeader(this))) {
+				if ((mobGroupInfo == null) || ((mobGroupInfo != null) && mobGroupInfo.isLeader(this))) {
 					// 移动する予定の距离を移动し终えたら、新たに距离と方向を决める
 					// そうでないなら、移动する予定の距离をデクリメント
 					if (_randomMoveDistance == 0) {
 						_randomMoveDistance = Random.nextInt(5) + 1;
 						_randomMoveDirection = Random.nextInt(20);
 						// ホームポイントから离れすぎないように、一定の确率でホームポイントの方向に补正
-						if ((getHomeX() != 0) && (getHomeY() != 0)
-								&& (_randomMoveDirection < 8)
-								&& (Random.nextInt(3) == 0)) {
-							_randomMoveDirection = moveDirection(getHomeX(),
-									getHomeY());
+						if ((getHomeX() != 0) && (getHomeY() != 0) && (_randomMoveDirection < 8) && (Random.nextInt(3) == 0)) {
+							_randomMoveDirection = moveDirection(getHomeX(), getHomeY());
 						}
 					} else {
 						_randomMoveDistance--;
 					}
-					int dir = checkObject(getX(), getY(), getMapId(),
-							_randomMoveDirection);
+					int dir = checkObject(getX(), getY(), getMapId(), _randomMoveDirection);
 					if (dir != -1) {
 						setDirectionMove(dir);
 						setSleepTime(calcSleepTime(getPassispeed(), MOVE_SPEED));
@@ -732,8 +678,7 @@ public class L1NpcInstance extends L1Character {
 							return true;
 						} else {
 							setDirectionMove(dir);
-							setSleepTime(calcSleepTime(getPassispeed(),
-									MOVE_SPEED));
+							setSleepTime(calcSleepTime(getPassispeed(), MOVE_SPEED));
 						}
 					}
 				}
@@ -787,12 +732,10 @@ public class L1NpcInstance extends L1Character {
 
 	// アイテム精制
 	public void refineItem() {
-
 		int[] materials = null;
 		int[] counts = null;
 		int[] createitem = null;
 		int[] createcount = null;
-
 		if (_npcTemplate.get_npcId() == 45032) { // ブロッブ
 			// オリハルコンソードの刀身
 			if ((getExp() != 0) && !_inventory.checkItem(20)) {
@@ -865,8 +808,7 @@ public class L1NpcInstance extends L1Character {
 						_inventory.consumeItem(materials[i], counts[i]);
 					}
 					for (int j = 0; j < createitem.length; j++) {
-						L1ItemInstance item = _inventory.storeItem(
-								createitem[j], createcount[j]);
+						L1ItemInstance item = _inventory.storeItem(createitem[j], createcount[j]);
 						if (getNpcTemplate().get_digestitem() > 0) {
 							setDigestItem(item);
 						}
@@ -911,32 +853,20 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	private boolean _aiRunning = false; // ＡＩが实行中か
-
 	// ※ＡＩをスタートさせる时にすでに实行されてないか确认する时に使用
 	private boolean _actived = false; // ＮＰＣがアクティブか
-
 	// ※この值がfalseで_targetがいる场合、アクティブになって初行动とみなしヘイストポーション等を使わせる判定で使用
 	private boolean _firstAttack = false; // ファーストアッタクされたか
-
 	private int _sleep_time; // ＡＩを停止する时间(ms) ※行动を起こした场合に所要する时间をセット
-
 	protected L1HateList _hateList = new L1HateList();
-
 	protected L1HateList _dropHateList = new L1HateList();
-
 	// ※攻击するターゲットの判定とＰＴ时のドロップ判定で使用
 	protected List<L1ItemInstance> _targetItemList = Lists.newList(); // ダーゲットアイテム一览
-
 	protected L1Character _target = null; // 现在のターゲット
-
 	protected L1ItemInstance _targetItem = null; // 现在のターゲットアイテム
-
 	protected L1Character _master = null; // 主人orグループリーダー
-
 	private boolean _deathProcessing = false; // 死亡处理中か
-
 	// EXP、Drop分配中はターゲットリスト、ヘイトリストをクリアしない
-
 	private int _paralysisTime = 0; // Paralysis RestTime
 
 	public void setParalysisTime(int ptime) {
@@ -957,8 +887,7 @@ public class L1NpcInstance extends L1Character {
 		int hpr = getNpcTemplate().get_hpr();
 		if (!_hprRunning && (hprInterval > 0) && (hpr > 0)) {
 			_hprTimer = new HprTimer(hpr);
-			L1NpcRegenerationTimer.getInstance().scheduleAtFixedRate(_hprTimer,
-					hprInterval, hprInterval);
+			L1NpcRegenerationTimer.getInstance().scheduleAtFixedRate(_hprTimer, hprInterval, hprInterval);
 			_hprRunning = true;
 		}
 	}
@@ -976,8 +905,7 @@ public class L1NpcInstance extends L1Character {
 		int mpr = getNpcTemplate().get_mpr();
 		if (!_mprRunning && (mprInterval > 0) && (mpr > 0)) {
 			_mprTimer = new MprTimer(mpr);
-			L1NpcRegenerationTimer.getInstance().scheduleAtFixedRate(_mprTimer,
-					mprInterval, mprInterval);
+			L1NpcRegenerationTimer.getInstance().scheduleAtFixedRate(_mprTimer, mprInterval, mprInterval);
 			_mprRunning = true;
 		}
 	}
@@ -990,18 +918,15 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	// ■■■■■■■■■■■■ タイマー关连 ■■■■■■■■■■
-
 	// ＨＰ自然回复
 	private boolean _hprRunning = false;
-
 	private HprTimer _hprTimer;
 
 	class HprTimer extends TimerTask {
 		@Override
 		public void run() {
 			try {
-				if ((!_destroyed && !isDead())
-						&& ((getCurrentHp() > 0) && (getCurrentHp() < getMaxHp()))) {
+				if ((!_destroyed && !isDead()) && ((getCurrentHp() > 0) && (getCurrentHp() < getMaxHp()))) {
 					setCurrentHp(getCurrentHp() + _point);
 				} else {
 					cancel();
@@ -1024,15 +949,13 @@ public class L1NpcInstance extends L1Character {
 
 	// ＭＰ自然回复
 	private boolean _mprRunning = false;
-
 	private MprTimer _mprTimer;
 
 	class MprTimer extends TimerTask {
 		@Override
 		public void run() {
 			try {
-				if ((!_destroyed && !isDead())
-						&& ((getCurrentHp() > 0) && (getCurrentMp() < getMaxMp()))) {
+				if ((!_destroyed && !isDead()) && ((getCurrentHp() > 0) && (getCurrentMp() < getMaxMp()))) {
 					setCurrentMp(getCurrentMp() + _point);
 				} else {
 					cancel();
@@ -1055,7 +978,6 @@ public class L1NpcInstance extends L1Character {
 
 	// アイテム消化
 	private Map<Integer, Integer> _digestItems;
-
 	public boolean _digestItemRunning = false;
 
 	class DigestItemTimer implements Runnable {
@@ -1068,7 +990,6 @@ public class L1NpcInstance extends L1Character {
 				} catch (Exception exception) {
 					break;
 				}
-
 				Object[] keys = _digestItems.keySet().toArray();
 				for (Object key2 : keys) {
 					Integer key = (Integer) key2;
@@ -1078,8 +999,7 @@ public class L1NpcInstance extends L1Character {
 						_digestItems.remove(key);
 						L1ItemInstance digestItem = getInventory().getItem(key);
 						if (digestItem != null) {
-							getInventory().removeItem(digestItem,
-									digestItem.getCount());
+							getInventory().removeItem(digestItem, digestItem.getCount());
 						}
 					} else {
 						_digestItems.put(key, digestCounter);
@@ -1091,13 +1011,11 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	// ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-
 	public L1NpcInstance(L1Npc template) {
 		setStatus(0);
 		setMoveSpeed(0);
 		setDead(false);
 		setreSpawn(false);
-
 		if (template != null) {
 			setting_template(template);
 		}
@@ -1114,8 +1032,7 @@ public class L1NpcInstance extends L1Character {
 		if (template.get_randomlevel() == 0) { // ランダムLv指定なし
 			setLevel(template.get_level());
 		} else { // ランダムLv指定あり（最小值:get_level(),最大值:get_randomlevel()）
-			randomlevel = Random.nextInt(template.get_randomlevel()
-					- template.get_level() + 1);
+			randomlevel = Random.nextInt(template.get_randomlevel() - template.get_level() + 1);
 			diff = template.get_randomlevel() - template.get_level();
 			rate = randomlevel / diff;
 			randomlevel += template.get_level();
@@ -1125,8 +1042,7 @@ public class L1NpcInstance extends L1Character {
 			setMaxHp(template.get_hp());
 			setCurrentHpDirect(template.get_hp());
 		} else {
-			double randomhp = rate
-					* (template.get_randomhp() - template.get_hp());
+			double randomhp = rate * (template.get_randomhp() - template.get_hp());
 			int hp = (int) (template.get_hp() + randomhp);
 			setMaxHp(hp);
 			setCurrentHpDirect(hp);
@@ -1135,8 +1051,7 @@ public class L1NpcInstance extends L1Character {
 			setMaxMp(template.get_mp());
 			setCurrentMpDirect(template.get_mp());
 		} else {
-			double randommp = rate
-					* (template.get_randommp() - template.get_mp());
+			double randommp = rate * (template.get_randommp() - template.get_mp());
 			int mp = (int) (template.get_mp() + randommp);
 			setMaxMp(mp);
 			setCurrentMpDirect(mp);
@@ -1144,8 +1059,7 @@ public class L1NpcInstance extends L1Character {
 		if (template.get_randomac() == 0) {
 			setAc(template.get_ac());
 		} else {
-			double randomac = rate
-					* (template.get_randomac() - template.get_ac());
+			double randomac = rate * (template.get_randomac() - template.get_ac());
 			int ac = (int) (template.get_ac() + randomac);
 			setAc(ac);
 		}
@@ -1163,7 +1077,6 @@ public class L1NpcInstance extends L1Character {
 			setInt((byte) Math.min(template.get_int() + diff, 127));
 			setWis((byte) Math.min(template.get_wis() + diff, 127));
 			setMr((byte) Math.min(template.get_mr() + diff, 127));
-
 			addHitup((int) diff * 2);
 			addDmgup((int) diff * 2);
 		}
@@ -1175,7 +1088,6 @@ public class L1NpcInstance extends L1Character {
 		setStatus(L1NpcDefaultAction.getInstance().getStatus(getTempCharGfx()));
 		setPolyAtkRanged(template.get_ranged());
 		setPolyArrowGfx(template.getBowActId());
-
 		// 移动
 		if (template.get_passispeed() != 0) {
 			setPassispeed(SprTable.getInstance().getSprSpeed(getTempCharGfx(), getStatus()));
@@ -1192,7 +1104,6 @@ public class L1NpcInstance extends L1Character {
 		} else {
 			setAtkspeed(0);
 		}
-
 		if (template.get_randomexp() == 0) {
 			setExp(template.get_exp());
 		} else {
@@ -1205,8 +1116,7 @@ public class L1NpcInstance extends L1Character {
 			setLawful(template.get_lawful());
 			setTempLawful(template.get_lawful());
 		} else {
-			double randomlawful = rate
-					* (template.get_randomlawful() - template.get_lawful());
+			double randomlawful = rate * (template.get_randomlawful() - template.get_lawful());
 			int lawful = (int) (template.get_lawful() + randomlawful);
 			setLawful(lawful);
 			setTempLawful(lawful);
@@ -1222,14 +1132,12 @@ public class L1NpcInstance extends L1Character {
 		}
 		setKarma(template.getKarma());
 		setLightSize(template.getLightSize());
-
 		mobSkill = new L1MobSkillUse(this);
 	}
 
 	// 延迟时间
 	public void npcSleepTime(int i, int type) {
-		setSleepTime(calcSleepTime(SprTable.getInstance()
-				.getSprSpeed(getTempCharGfx(), i), type));
+		setSleepTime(calcSleepTime(SprTable.getInstance().getSprSpeed(getTempCharGfx(), i), type));
 	}
 
 	private int _passispeed;
@@ -1334,8 +1242,7 @@ public class L1NpcInstance extends L1Character {
 		_master = null;
 		L1World.getInstance().removeVisibleObject(this);
 		L1World.getInstance().removeObject(this);
-		List<L1PcInstance> players = L1World.getInstance().getRecognizePlayer(
-				this);
+		List<L1PcInstance> players = L1World.getInstance().getRecognizePlayer(this);
 		if (players.size() > 0) {
 			S_RemoveObject s_deleteNewObject = new S_RemoveObject(this);
 			for (L1PcInstance pc : players) {
@@ -1347,7 +1254,6 @@ public class L1NpcInstance extends L1Character {
 			}
 		}
 		removeAllKnownObjects();
-
 		// リスパウン设定
 		L1MobGroupInfo mobGroupInfo = getMobGroupInfo();
 		if (mobGroupInfo == null) {
@@ -1371,8 +1277,7 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	public void setDigestItem(L1ItemInstance item) {
-		_digestItems.put(new Integer(item.getId()), new Integer(
-				getNpcTemplate().get_digestitem()));
+		_digestItems.put(new Integer(item.getId()), new Integer(getNpcTemplate().get_digestitem()));
 		if (!_digestItemRunning) {
 			DigestItemTimer digestItemTimer = new DigestItemTimer();
 			GeneralThreadPool.getInstance().execute(digestItemTimer);
@@ -1454,98 +1359,100 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	// ■■■■■■■■■■■■■ 移动关连 ■■■■■■■■■■■
-
 	// 指定された方向に移动させる
 	public void setDirectionMove(int dir) {
+		if (getMapId() == 5065) {
+			if (getY() <= 32766 && getY() > 32765 && getX() > 32759 && getX() <= 32767) {// x-
+				dir = 6;
+			} else if (getY() < 32782 && getX() <= 32759) {// y+
+				dir = 4;
+			} else if (getY() >= 32782 && getX() < 32778) {// x+
+				dir = 2;
+			} else if (getY() > 32760 && getX() >= 32778) {// y-
+				dir = 0;
+			} else if (getY() <= 32760 && getX() > 32768) {// x-
+				dir = 6;
+			} else if (getY() >= 32748 && getX() <= 32768) {// y-
+				dir = 0;
+			}
+			// TD塔 getY() 需 > 32748 ，就是等于终点
+			if (getY() < 32748) {
+				deleteMe();
+				setGameover(false);
+				TDTower.getInstance().gameOver();
+				return;
+			}
+		}
 		if (dir >= 0) {
 			int nx = 0;
 			int ny = 0;
-
 			switch (dir) {
 			case 1:
 				nx = 1;
 				ny = -1;
 				setHeading(1);
 				break;
-
 			case 2:
 				nx = 1;
 				ny = 0;
 				setHeading(2);
 				break;
-
 			case 3:
 				nx = 1;
 				ny = 1;
 				setHeading(3);
 				break;
-
 			case 4:
 				nx = 0;
 				ny = 1;
 				setHeading(4);
 				break;
-
 			case 5:
 				nx = -1;
 				ny = 1;
 				setHeading(5);
 				break;
-
 			case 6:
 				nx = -1;
 				ny = 0;
 				setHeading(6);
 				break;
-
 			case 7:
 				nx = -1;
 				ny = -1;
 				setHeading(7);
 				break;
-
 			case 0:
 				nx = 0;
 				ny = -1;
 				setHeading(0);
 				break;
-
 			default:
 				break;
-
 			}
-
 			getMap().setPassable(getLocation(), true);
-
 			int nnx = getX() + nx;
 			int nny = getY() + ny;
 			setX(nnx);
 			setY(nny);
-
-			//getMap().setPassable(getLocation(), false);
+			// getMap().setPassable(getLocation(), false);
 			// 修正穿人
 			if (!(this instanceof L1DollInstance)) {
 				getMap().setPassable(getLocation(), false);
 			}
 			// END
 			broadcastPacket(new S_MoveCharPacket(this));
-
 			// movement_distanceマス以上离れたらホームポイントへテレポート
 			if (getMovementDistance() > 0) {
-				if ((this instanceof L1GuardInstance)
-						|| (this instanceof L1MerchantInstance)
-						|| (this instanceof L1MonsterInstance)) {
-					if (getLocation().getLineDistance(
-							new Point(getHomeX(), getHomeY())) > getMovementDistance()) {
+				if ((this instanceof L1GuardInstance) || (this instanceof L1MerchantInstance) || (this instanceof L1MonsterInstance)) {
+					if (getLocation().getLineDistance(new Point(getHomeX(), getHomeY())) > getMovementDistance()) {
 						teleport(getHomeX(), getHomeY(), getHeading());
 					}
 				}
 			}
 			// 判断士兵的怨灵、怨灵、哈蒙将军的怨灵离开墓园范围时传送回墓园！
-			if ((getNpcTemplate().get_npcId() >= 45912)
-					&& (getNpcTemplate().get_npcId() <= 45916)) {
-				if (!((getX() >= 32591) && (getX() <= 32644)
-						&& (getY() >= 32643) && (getY() <= 32688) && (getMapId() == 4))) {
+			if ((getNpcTemplate().get_npcId() >= 45912) && (getNpcTemplate().get_npcId() <= 45916)) {
+				if (!((getX() >= 32591) && (getX() <= 32644) && (getY() >= 32643) && (getY() <= 32688) && (getMapId() == 4))) {
 					teleport(getHomeX(), getHomeY(), getHeading());
 				}
 			}
@@ -1553,8 +1460,7 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	public int moveDirection(int x, int y) { // 目标点Ｘ 目标点Ｙ
-		return moveDirection(x, y,
-				getLocation().getLineDistance(new Point(x, y)));
+		return moveDirection(x, y, getLocation().getLineDistance(new Point(x, y)));
 	}
 
 	// 目标までの距离に应じて最适と思われるルーチンで进む方向を返す
@@ -1586,12 +1492,10 @@ public class L1NpcInstance extends L1Character {
 		if (_target == null) { // ターゲットがいない场合
 			return false;
 		}
-
 		int locX = getX();
 		int locY = getY();
 		int targetX = locX;
 		int targetY = locY;
-
 		if (dir == 1) {
 			targetX = locX + 1;
 			targetY = locY - 1;
@@ -1613,16 +1517,12 @@ public class L1NpcInstance extends L1Character {
 		} else if (dir == 0) {
 			targetY = locY - 1;
 		}
-
 		for (L1Object object : L1World.getInstance().getVisibleObjects(this, 1)) {
 			// PC, Summon, Petがいる场合
-			if ((object instanceof L1PcInstance)
-					|| (object instanceof L1SummonInstance)
-					|| (object instanceof L1PetInstance)) {
+			if ((object instanceof L1PcInstance) || (object instanceof L1SummonInstance) || (object instanceof L1PetInstance)) {
 				L1Character cha = (L1Character) object;
 				// 进行方向に立ちふさがっている场合、ターゲットリストに加える
-				if ((cha.getX() == targetX) && (cha.getY() == targetY)
-						&& (cha.getMapId() == getMapId())) {
+				if ((cha.getX() == targetX) && (cha.getY() == targetY) && (cha.getMapId() == getMapId())) {
 					if (object instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) object;
 						if (pc.isGhost()) { // UB观战中のPCは除く
@@ -1738,7 +1638,6 @@ public class L1NpcInstance extends L1Character {
 		int[] dirFront = new int[5];
 		boolean serchMap[][] = new boolean[locCenter * 2 + 1][locCenter * 2 + 1];
 		LinkedList<int[]> queueSerch = new LinkedList<int[]>();
-
 		// 探索用マップの设定
 		for (int j = courceRange * 2 + 1; j > 0; j--) {
 			for (i = courceRange - Math.abs(locCenter - j); i >= 0; i--) {
@@ -1746,7 +1645,6 @@ public class L1NpcInstance extends L1Character {
 				serchMap[j][locCenter - i] = true;
 			}
 		}
-
 		// 初期方向の设置
 		int[] firstCource = { 2, 4, 6, 0, 1, 3, 5, 7 };
 		for (i = 0; i < 8; i++) {
@@ -1789,7 +1687,6 @@ public class L1NpcInstance extends L1Character {
 			}
 		}
 		locBace = null;
-
 		// 最短经路を探索
 		while (queueSerch.size() > 0) {
 			locBace = queueSerch.removeFirst();
@@ -1797,8 +1694,7 @@ public class L1NpcInstance extends L1Character {
 			for (i = 4; i >= 0; i--) {
 				System.arraycopy(locBace, 0, locNext, 0, 4);
 				_moveLocation(locNext, dirFront[i]);
-				if ((locNext[0] - locCenter == 0)
-						&& (locNext[1] - locCenter == 0)) {
+				if ((locNext[0] - locCenter == 0) && (locNext[1] - locCenter == 0)) {
 					return locNext[3];
 				}
 				if (serchMap[locNext[0]][locNext[1]]) {
@@ -1909,7 +1805,6 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	// ■■■■■■■■■■■■ アイテム关连 ■■■■■■■■■■
-
 	private void useHealPotion(int healHp, int effectId) {
 		broadcastPacket(new S_SkillSound(getId(), effectId));
 		if (hasSkillEffect(POLLUTE_WATER)) { // ポルートウォーター中は回复量1/2倍
@@ -1933,25 +1828,17 @@ public class L1NpcInstance extends L1Character {
 
 	// アイテムの使用判定及び使用
 	public static final int USEITEM_HEAL = 0;
-
 	public static final int USEITEM_HASTE = 1;
-
-	public static int[] healPotions = { POTION_OF_GREATER_HEALING,
-			POTION_OF_EXTRA_HEALING, POTION_OF_HEALING };
-
-	public static int[] haestPotions = { B_POTION_OF_GREATER_HASTE_SELF,
-			POTION_OF_GREATER_HASTE_SELF, B_POTION_OF_HASTE_SELF,
-			POTION_OF_HASTE_SELF };
+	public static int[] healPotions = { POTION_OF_GREATER_HEALING, POTION_OF_EXTRA_HEALING, POTION_OF_HEALING };
+	public static int[] haestPotions = { B_POTION_OF_GREATER_HASTE_SELF, POTION_OF_GREATER_HASTE_SELF, B_POTION_OF_HASTE_SELF, POTION_OF_HASTE_SELF };
 
 	public void useItem(int type, int chance) { // 使用する种类 使用する可能性(％)
 		if (hasSkillEffect(71)) {
 			return; // ディケイ ポーション状态かチェック
 		}
-
 		if (Random.nextInt(100) > chance) {
 			return; // 使用する可能性
 		}
-
 		if (type == USEITEM_HEAL) { // 回复系ポーション
 			// 回复量の大きい顺
 			if (getInventory().consumeItem(POTION_OF_GREATER_HEALING, 1)) {
@@ -1965,12 +1852,10 @@ public class L1NpcInstance extends L1Character {
 			if (hasSkillEffect(1001)) {
 				return; // ヘイスト状态チェック
 			}
-
 			// 效果の长い顺
 			if (getInventory().consumeItem(B_POTION_OF_GREATER_HASTE_SELF, 1)) {
 				useHastePotion(2100);
-			} else if (getInventory().consumeItem(POTION_OF_GREATER_HASTE_SELF,
-					1)) {
+			} else if (getInventory().consumeItem(POTION_OF_GREATER_HASTE_SELF, 1)) {
 				useHastePotion(1800);
 			} else if (getInventory().consumeItem(B_POTION_OF_HASTE_SELF, 1)) {
 				useHastePotion(350);
@@ -1981,7 +1866,6 @@ public class L1NpcInstance extends L1Character {
 	}
 
 	// ■■■■■■■■■■■■■ スキル关连(npcskillsテーブル实装されたら消すかも) ■■■■■■■■■■■
-
 	// 目标の邻へテレポート
 	public boolean nearTeleport(int nx, int ny) {
 		int rdir = Random.nextInt(8);
@@ -2237,7 +2121,6 @@ public class L1NpcInstance extends L1Character {
 	public boolean _destroyed = false; // このインスタンスが破弃されているか
 
 	// ※破弃后に动かないよう强制的にＡＩ等のスレッド处理中止（念のため）
-
 	// NPCが别のNPCに变わる场合の处理
 	protected void transform(int transformId) {
 		stopHpRegeneration();
@@ -2248,12 +2131,10 @@ public class L1NpcInstance extends L1Character {
 		}
 		L1Npc npcTemplate = NpcTable.getInstance().getTemplate(transformId);
 		setting_template(npcTemplate);
-
 		broadcastPacket(new S_NpcChangeShape(getId(), getTempCharGfx(), getLawful(), getStatus()));
 		for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(this)) {
 			onPerceive(pc);
 		}
-
 	}
 
 	public void setRest(boolean _rest) {
@@ -2274,7 +2155,7 @@ public class L1NpcInstance extends L1Character {
 		_isResurrect = flag;
 	}
 
-	/** 妖精森林 物品掉落*/
+	/** 妖精森林 物品掉落 */
 	private boolean _isDropitems = false;
 
 	public boolean isDropitems() {
@@ -2308,17 +2189,14 @@ public class L1NpcInstance extends L1Character {
 			_future = null;
 		}
 		super.resurrect(hp);
-
 		// キャンセレーションをエフェクトなしでかける
 		// 本来は死亡时に行うべきだが、负荷が大きくなるため复活时に行う
 		L1SkillUse skill = new L1SkillUse();
-		skill.handleCommands(null, CANCELLATION, getId(), getX(), getY(), null,
-				0, L1SkillUse.TYPE_LOGIN, this);
+		skill.handleCommands(null, CANCELLATION, getId(), getX(), getY(), null, 0, L1SkillUse.TYPE_LOGIN, this);
 	}
 
 	// 死んでから消えるまでの时间计测用
 	private DeleteTimer _deleteTask;
-
 	private ScheduledFuture<?> _future = null;
 
 	protected synchronized void startDeleteTimer() {
@@ -2326,8 +2204,7 @@ public class L1NpcInstance extends L1Character {
 			return;
 		}
 		_deleteTask = new DeleteTimer(getId());
-		_future = GeneralThreadPool.getInstance().schedule(_deleteTask,
-				Config.NPC_DELETION_TIME * 1000);
+		_future = GeneralThreadPool.getInstance().schedule(_deleteTask, Config.NPC_DELETION_TIME * 1000);
 	}
 
 	protected static class DeleteTimer extends TimerTask {
@@ -2342,8 +2219,7 @@ public class L1NpcInstance extends L1Character {
 
 		@Override
 		public void run() {
-			L1NpcInstance npc = (L1NpcInstance) L1World.getInstance()
-					.findObject(_id);
+			L1NpcInstance npc = (L1NpcInstance) L1World.getInstance().findObject(_id);
 			if ((npc == null) || !npc.isDead() || npc._destroyed) {
 				return; // 复活してるか、既に破弃济みだったら拔け
 			}
@@ -2393,7 +2269,6 @@ public class L1NpcInstance extends L1Character {
 		if ((chatTiming == CHAT_TIMING_GAME_TIME) && isDead()) {
 			return;
 		}
-
 		int npcId = getNpcTemplate().get_npcId();
 		L1NpcChat npcChat = null;
 		if (chatTiming == CHAT_TIMING_APPEARANCE) {
@@ -2408,14 +2283,12 @@ public class L1NpcInstance extends L1Character {
 		if (npcChat == null) {
 			return;
 		}
-
 		Timer timer = new Timer(true);
 		L1NpcChatTimer npcChatTimer = new L1NpcChatTimer(this, npcChat);
 		if (!npcChat.isRepeat()) {
 			timer.schedule(npcChatTimer, npcChat.getStartDelayTime());
 		} else {
-			timer.scheduleAtFixedRate(npcChatTimer,
-					npcChat.getStartDelayTime(), npcChat.getRepeatInterval());
+			timer.scheduleAtFixedRate(npcChatTimer, npcChat.getStartDelayTime(), npcChat.getRepeatInterval());
 		}
 	}
 
@@ -2445,5 +2318,4 @@ public class L1NpcInstance extends L1Character {
 	public void setPolyArrowGfx(int i) {
 		_polyArrowGfx = i;
 	}
-
 }
