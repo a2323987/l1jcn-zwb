@@ -1011,6 +1011,12 @@ public class L1Attack {
 		if(dmg >= _targetPc.getCurrentHp()){//PK获胜全体公告。//玩家扣除声望
 			ShowMessage showMeaagae = new ShowMessage();
 			int point = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(134)).intValue();
+			if(_pc.getMapId() == 803){
+				int item = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(143)).intValue();
+				int count = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(144)).intValue();
+				_pc.getInventory().storeItem(item,count);
+				showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】在角斗场杀死了玩家【").append(_targetPc.getName()).append("】获得了奖励。").toString());
+			}
 			if(_targetPc.getFamePoint()>point){
 				int rnd = Random.nextInt(point);
 				_targetPc.setFamePoint((short)(_targetPc.getFamePoint()-rnd));

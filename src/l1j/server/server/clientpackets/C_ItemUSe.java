@@ -110,6 +110,7 @@ import l1j.server.server.serverpackets.S_OwnCharStatus;
 import l1j.server.server.serverpackets.S_OwnCharStatus2;
 import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.serverpackets.S_Paralysis;
+import l1j.server.server.serverpackets.S_PinkName;
 import l1j.server.server.serverpackets.S_SPMR;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_ShowPolyList;
@@ -3031,6 +3032,22 @@ public class C_ItemUSe extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(79));
 					}
 				// TODO 自订道具区
+					//角斗场入场卷
+				} else if (itemId == 61002) {
+					int item = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(141)).intValue();
+					int count = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(142)).intValue();
+					if(pc.getInventory().checkItem(item, count)){
+						pc.getInventory().consumeItem(item, count);	
+						L1Teleport.teleport(pc, 32700, 32895, (short) 803, pc.getHeading(), true);
+						pc.broadcastPacket(new S_SystemMessage("玩家【"+pc.getName()+"】进入了角斗场，有仇的报仇，有怨的报怨！"));
+						if(!pc.isPinkName()){							
+							pc.setPinkName(true);
+							//pc.sendPackets(new S_PinkName(pc.getId(), 7200));
+							pc.broadcastPacket(new S_PinkName(pc.getId(), 7200));
+						}
+					}else {
+						pc.sendPackets(new S_SystemMessage(l1j.william.L1WilliamSystemMessage.ShowMessage(145)));
+					}
 					// SosoDEmoN add william 传送卷轴DB化、召唤道具、魔法道具 start
 				} else if (itemId == L1WilliamItemMagic.checkItemId(itemId)) {
 					L1WilliamItemMagic Item_Magic = ItemMagic.getInstance().getTemplate(itemId);

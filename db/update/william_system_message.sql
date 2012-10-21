@@ -53,3 +53,8 @@ INSERT INTO `william_system_message` VALUES ('139', '20', '木头人最高等级
 
 INSERT INTO `william_system_message` VALUES ('140', 'true', '是否开启只在说话岛才能获取在线物品');
 
+INSERT INTO `william_system_message` VALUES ('141', '40308', '角斗场入场道具');
+INSERT INTO `william_system_message` VALUES ('142', '1000000', '角斗场入场道具数量');
+INSERT INTO `william_system_message` VALUES ('143', '40308', '角斗场杀人奖励道具');
+INSERT INTO `william_system_message` VALUES ('144', '1000000', '角斗场杀人奖励道具数量');
+INSERT INTO `william_system_message` VALUES ('145', '请携带足够的入场道具', '入场道具不足提醒');
