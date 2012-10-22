@@ -1131,8 +1131,21 @@ public class L1Attack {
 			_isHit = false;
 			_drainHp = 0; // ダメージ无しの场合は吸收による回复はしない
 		}
-		
-
+		if (_targetNpc.getNpcId() == 93000) {//假玩家怪
+			int hp = _targetNpc.getCurrentHp() * 100 / _targetNpc.getMaxHp();
+			if (hp < 20) {
+				_targetNpc.useItem(0, 100);
+				int nx = _targetNpc.getX() + 10;
+				int ny = _targetNpc.getY() + 10;
+				_targetNpc.teleport(nx, ny, 1);
+				if (!_targetNpc.isDead()) {
+					_targetNpc.setDead(true);
+					_targetNpc.setStatus(ActionCodes.ACTION_Die);
+					_targetNpc.setCurrentHpDirect(0);
+					_targetNpc.deleteMe();
+				}
+			}
+		}
 		return (int) dmg;
 	}
 

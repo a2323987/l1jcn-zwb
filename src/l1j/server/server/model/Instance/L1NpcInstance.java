@@ -21,6 +21,7 @@ import static l1j.server.server.model.identity.L1ItemId.POTION_OF_GREATER_HASTE_
 import static l1j.server.server.model.identity.L1ItemId.POTION_OF_GREATER_HEALING;
 import static l1j.server.server.model.identity.L1ItemId.POTION_OF_HASTE_SELF;
 import static l1j.server.server.model.identity.L1ItemId.POTION_OF_HEALING;
+import static l1j.server.server.model.identity.L1ItemId.CONDENSED_POTION_OF_GREATER_HEALING;
 import static l1j.server.server.model.skill.L1SkillId.CANCELLATION;
 import static l1j.server.server.model.skill.L1SkillId.COUNTER_BARRIER;
 import static l1j.server.server.model.skill.L1SkillId.POLLUTE_WATER;
@@ -1847,6 +1848,8 @@ public class L1NpcInstance extends L1Character {
 				useHealPotion(45, 194);
 			} else if (getInventory().consumeItem(POTION_OF_HEALING, 1)) {
 				useHealPotion(15, 189);
+			} else if (getInventory().consumeItem(CONDENSED_POTION_OF_GREATER_HEALING, 1)) {
+				useHealPotion(200, 197);
 			}
 		} else if (type == USEITEM_HASTE) { // ヘイスト系ポーション
 			if (hasSkillEffect(1001)) {
