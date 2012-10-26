@@ -639,7 +639,7 @@ class L1SkillStop {
 					L1ItemInstance item = ItemTable.getInstance().createItem(
 							Config.O_L_A_T_Item);
 					item.setCount(1);
-					if (pc.getMapId() == 0 || !l1j.william.L1WilliamSystemMessage.ShowMessage(1).equals("true")) {
+					if (pc.getMapId() == 0 || !l1j.william.L1WilliamSystemMessage.ShowMessage(140).equals("true")) {
 						if (item != null) {
 							if (pc.getInventory().checkAddItem(item, 1) == L1Inventory.OK) {
 								pc.getInventory().storeItem(item);
