@@ -4082,7 +4082,7 @@ public class C_ItemUSe extends ClientBasePacket {
 			itemAttr = 2;
 		}
 		// ロウフルテンプル
-		if (((pcX > 33116) && (pcX < 33128) && (pcY > 32930) && (pcY < 32942) && (mapId == 4))
+/*		if (((pcX > 33116) && (pcX < 33128) && (pcY > 32930) && (pcY < 32942) && (mapId == 4))
 				|| ((pcX > 33135) && (pcX < 33147) && (pcY > 32235)
 						&& (pcY < 32247) && (mapId == 4))
 				|| ((pcX >= 32783) && (pcX <= 32803) && (pcY >= 32831)
@@ -4096,10 +4096,10 @@ public class C_ItemUSe extends ClientBasePacket {
 						&& (pcY < 32309) && (mapId == 4))) {
 			locAttr = 2;
 			isLawful = false;
-		}
+		}*/
 		if (pc.isGm()) {
 			SpellBook(pc, item, isLawful);
-		} else if (((itemAttr == locAttr) || (itemAttr == 0)) && (locAttr != 0)) {
+		} else //if (((itemAttr == locAttr) || (itemAttr == 0)) && (locAttr != 0)) {
 			if (pc.isKnight()) {
 				if ((itemId >= 45000) && (itemId <= 45007) && (level >= 50)) {
 					SpellBook(pc, item, isLawful);
@@ -4178,7 +4178,7 @@ public class C_ItemUSe extends ClientBasePacket {
 					pc.sendPackets(new S_ServerMessage(312)); // レベルが低くてその魔法を觉えることができません。
 				}
 			}
-		} else if ((itemAttr != locAttr) && (itemAttr != 0) && (locAttr != 0)) {
+		/*} else if ((itemAttr != locAttr) && (itemAttr != 0) && (locAttr != 0)) {
 			// 间违ったテンプルで读んだ场合雷が落ちる
 			pc.sendPackets(new S_ServerMessage(79)); // \f1没有任何事情发生。
 			S_SkillSound effect = new S_SkillSound(pc.getId(), 10);
@@ -4192,7 +4192,7 @@ public class C_ItemUSe extends ClientBasePacket {
 			pc.getInventory().removeItem(item, 1);
 		} else {
 			pc.sendPackets(new S_ServerMessage(79)); // \f1没有任何事情发生。
-		}
+		}*/
 	}
 
 	private void useElfSpellBook(L1PcInstance pc, L1ItemInstance item,
