@@ -32,6 +32,7 @@ public final class ResolventTable {
 	private static ResolventTable _instance;
 
 	private final Map<Integer, Integer> _resolvent = Maps.newMap();
+	private final Map<Integer, Integer> _resolvent_item = Maps.newMap();
 
 	public static ResolventTable getInstance() {
 		if (_instance == null) {
@@ -54,9 +55,11 @@ public final class ResolventTable {
 
 			for (rs = pstm.executeQuery(); rs.next();) {
 				int itemId = rs.getInt("item_id");
+				int crystalItem = rs.getInt("crystal_item");
 				int crystalCount = rs.getInt("crystal_count");
 
 				_resolvent.put(new Integer(itemId), crystalCount);
+				_resolvent_item.put(new Integer(itemId), crystalItem);
 			}
 
 			_log.config("resolvent " + _resolvent.size());
@@ -78,5 +81,12 @@ public final class ResolventTable {
 		}
 		return crystalCount;
 	}
-
+	
+	public int getCrystalItem(int itemId) {
+		int crystalItem = 0;
+		if (_resolvent_item.containsKey(itemId)) {
+			crystalItem = _resolvent_item.get(itemId);
+		}
+		return crystalItem;
+	}
 }

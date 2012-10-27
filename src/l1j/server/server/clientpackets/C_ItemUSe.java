@@ -5846,7 +5846,8 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 		if ((item.getItem().getType2() == 1)
 				|| (item.getItem().getType2() == 2)) { // 武器・防具
-			if (item.getEnchantLevel() != 0) { // 强化济み
+			//if (item.getEnchantLevel() != 0) { // 强化济み
+			if (item.getEnchantLevel() > 6) { // 强化济み
 				pc.sendPackets(new S_ServerMessage(1161)); // 溶解できません。
 				return;
 			}
@@ -5873,7 +5874,9 @@ public class C_ItemUSe extends ClientBasePacket {
 			pc.getInventory().storeItem(41246, (int) (crystalCount * 1.5));
 		}
 		if (crystalCount != 0) {
-			L1ItemInstance crystal = ItemTable.getInstance().createItem(41246);
+			int itemId = ResolventTable.getInstance().getCrystalItem(
+					item.getItem().getItemId());
+			L1ItemInstance crystal = ItemTable.getInstance().createItem(itemId);
 			crystal.setCount(crystalCount);
 			if (pc.getInventory().checkAddItem(crystal, 1) == L1Inventory.OK) {
 				pc.getInventory().storeItem(crystal);
