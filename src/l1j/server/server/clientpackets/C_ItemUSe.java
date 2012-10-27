@@ -3225,14 +3225,14 @@ public class C_ItemUSe extends ClientBasePacket {
 						pc.getInventory().removeItem(l1iteminstance, 1);
 						pc.sendPackets(new S_ServerMessage(822, ""));
 						pc.save();
+						pc.getInventory().removeItem(l1iteminstance, 1);
 						// 增加全伺服器广播 BY psnnwe参照旧版本修改start
 						l1j.plugin.ShowMessage showMessage = new ShowMessage();
 						showMessage.broadcastToAll("\\fX◎玩家【" + (pc.getName() + "】喝下自杀药水了!◎").toString());
 						// 增加全伺服器广播 BY psnnwe参照旧版本修改end (psnnwe提供)
 					} else {
-						pc.sendPackets(new S_SystemMessage("你还不够资格哦!!"));
+						pc.sendPackets(new S_SystemMessage("你还不够资格哦，需要65级以上!!"));
 					}
-					pc.getInventory().removeItem(l1iteminstance, 1);
 					// TODO 自杀药水 psnnwe参照旧版本修改end else if (itemId ==
 					// L1ItemId.B_POTION_OF_HEALING) {
 				} else if (itemId == 60003) { // 性别转换香水
