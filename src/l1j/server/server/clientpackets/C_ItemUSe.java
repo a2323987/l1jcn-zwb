@@ -2210,6 +2210,51 @@ public class C_ItemUSe extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(79)); // \f1没有任何事情发生。
 						}
 					}
+				} else if (itemId == 42039) {//声望传送卷
+					if(pc.getInventory().checkItem(60012,5)){
+						pc.getInventory().removeItem(l1iteminstance,1);
+						pc.getInventory().consumeItem(60012, 5);
+						L1Teleport.teleport(pc, l1iteminstance.getItem().get_locx(), l1iteminstance.getItem()
+								.get_locy(), l1iteminstance.getItem().get_mapid(), 5, true);
+					}else {
+						pc.sendPackets(new S_SystemMessage("请检查背包是否有5个声望【5】。"));
+					}
+				} else if (itemId == 42038) {//声望传送卷
+					if(pc.getInventory().checkItem(60012,10)){
+						pc.getInventory().removeItem(l1iteminstance,1);
+						pc.getInventory().consumeItem(60012, 10);
+						L1Teleport.teleport(pc, l1iteminstance.getItem().get_locx(), l1iteminstance.getItem()
+								.get_locy(), l1iteminstance.getItem().get_mapid(), 5, true);
+					}else {
+						pc.sendPackets(new S_SystemMessage("请检查背包是否有10个声望【5】。"));
+					}
+				} else if (itemId == 42037) {//声望传送卷
+					if(pc.getInventory().checkItem(60012,15)){
+						pc.getInventory().removeItem(l1iteminstance,1);
+						pc.getInventory().consumeItem(60012, 15);
+						L1Teleport.teleport(pc, l1iteminstance.getItem().get_locx(), l1iteminstance.getItem()
+								.get_locy(), l1iteminstance.getItem().get_mapid(), 5, true);
+					}else {
+						pc.sendPackets(new S_SystemMessage("请检查背包是否有15个声望【5】。"));
+					}
+				} else if (itemId == 42036) {//声望传送卷
+					if(pc.getInventory().checkItem(60012,20)){
+						pc.getInventory().removeItem(l1iteminstance,1);
+						pc.getInventory().consumeItem(60012, 20);
+						L1Teleport.teleport(pc, l1iteminstance.getItem().get_locx(), l1iteminstance.getItem()
+								.get_locy(), l1iteminstance.getItem().get_mapid(), 5, true);
+					}else {
+						pc.sendPackets(new S_SystemMessage("请检查背包是否有20个声望【5】。"));
+					}
+				} else if (itemId == 42035) {//声望传送卷
+					if(pc.getInventory().checkItem(60012,25)){
+						pc.getInventory().removeItem(l1iteminstance,1);
+						pc.getInventory().consumeItem(60012, 25);
+						L1Teleport.teleport(pc, l1iteminstance.getItem().get_locx(), l1iteminstance.getItem()
+								.get_locy(), l1iteminstance.getItem().get_mapid(), 5, true);
+					}else {
+						pc.sendPackets(new S_SystemMessage("请检查背包是否有25个声望【5】。"));
+					}
 				} else if ((itemId >= 40289) && (itemId <= 40297)) { // 傲慢の塔11~91阶テレポートアミュレット
 					useToiTeleportAmulet(pc, itemId, l1iteminstance);
 				} else if ((itemId >= 40280) && (itemId <= 40288)) {
