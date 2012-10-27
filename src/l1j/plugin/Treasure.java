@@ -26,6 +26,7 @@ import java.util.TimeZone;
 import l1j.server.Config;
 import l1j.server.server.GeneralThreadPool;
 import l1j.server.server.model.L1Teleport;
+import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_BlueMessage;
 import l1j.server.server.serverpackets.S_SystemMessage;
@@ -55,6 +56,8 @@ public class Treasure {
 		if (!_members.contains(pc)) {
 			_members.add(pc);
 		}
+		// 删掉物品
+		pc.getInventory().consumeItem(60021, 1);
 		L1Teleport.teleport(pc, 32767, 32830, (short) 610, pc.getHeading(), true);
 		//L1Teleport.teleport(pc, 32481, 32929, (short) 0, pc.getHeading(), true);
 		if (getTreasureStatus() == STATUS_NONE) {

@@ -2310,7 +2310,8 @@ public class C_ItemUSe extends ClientBasePacket {
 					}
 					pc.sendPackets(new S_SystemMessage("此账号内的所有角色已移到安全的村庄，请重新登录！"));
 				} else if (itemId == 60021) { // 限时活动地图
-					Treasure.getInstance().enterTreasure(pc);				
+					Treasure.getInstance().enterTreasure(pc);	
+					//pc.getInventory().removeItem(l1iteminstance, 1);
 				} else if (itemId == 40070) { // 进化果实
 					pc.sendPackets(new S_ServerMessage(76, l1iteminstance
 							.getLogName()));
