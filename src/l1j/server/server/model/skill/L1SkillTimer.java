@@ -32,6 +32,7 @@ import l1j.server.server.model.Instance.L1PetInstance;
 import l1j.server.server.model.Instance.L1SummonInstance;
 import l1j.server.server.serverpackets.S_CurseBlind;
 import l1j.server.server.serverpackets.S_Dexup;
+import l1j.server.server.serverpackets.S_Disconnect;
 import l1j.server.server.serverpackets.S_HPUpdate;
 import l1j.server.server.serverpackets.S_Liquor;
 import l1j.server.server.serverpackets.S_MPUpdate;
@@ -50,8 +51,11 @@ import l1j.server.server.serverpackets.S_SkillIconBloodstain;
 import l1j.server.server.serverpackets.S_SkillIconShield;
 import l1j.server.server.serverpackets.S_SkillIconWindShackle;
 import l1j.server.server.serverpackets.S_SkillIconWisdomPotion;
+import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_Strup;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Skills;
+import l1j.server.server.utils.Random;
 // 在线一段时间后给予道具  by 丫杰
 import l1j.server.Config;
 import l1j.server.server.datatables.ItemTable;
@@ -655,7 +659,29 @@ class L1SkillStop {
 			}
 		}
 		// end
-
+		else if (skillId == 7902) { // 外挂检测
+			L1PcInstance pc = (L1PcInstance) cha;
+			if ((cha instanceof L1PcInstance) && (!pc.isPrivateShop())) {
+				pc.sendPackets(new S_SkillSound(pc.getId(), 5763));
+				pc.sendPackets(new S_SystemMessage("AI外挂检测程序启动！"));
+				pc.sendPackets(new S_SystemMessage("请您在1分钟之内完成答题！"));
+				pc.sendPackets(new S_SystemMessage("超过1分钟将会被系统判定为挂机T下线！"));
+				pc.sendPackets(new S_SystemMessage("请点击《在线答题卷》获得题目！"));
+				pc.setSkillEffect(7903, 60 * 1000);// 暂定1分钟测试用
+				int num1 = Random.nextInt(100)+1;
+				int num2 = Random.nextInt(100)+1;
+				int rndo = num1 + num2;
+				pc.setSuper(rndo);
+				pc.sendPackets(new S_SystemMessage("请输入答案< "+num1+" > + < "+num2+" > = ? 并按下回车确认"));
+			} else {
+				pc.setSkillEffect(7902, (Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(146)).intValue()) * 1000);// 暂定1分钟测试用
+			}
+		} else if (skillId == 7903) { // 外挂检测
+			L1PcInstance pc = (L1PcInstance) cha;
+			if (cha instanceof L1PcInstance) {
+				pc.sendPackets(new S_Disconnect());// 断线 return;
+			}
+		}
 		// ****** 料理关系
 		else if ((skillId == COOKING_1_0_N) || (skillId == COOKING_1_0_S)) { // フローティングアイステーキ
 			if (cha instanceof L1PcInstance) {

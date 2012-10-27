@@ -181,6 +181,9 @@ public class C_Shop extends ClientBasePacket {
 						ActionCodes.ACTION_Idle));
 				pc.broadcastPacket(new S_DoActionGFX(pc.getId(),
 						ActionCodes.ACTION_Idle));
+				pc.killSkillEffectTimer(7903);
+				pc.killSkillEffectTimer(7902);
+				pc.setSkillEffect(7902,5*1000);//商店关闭后马上检测外挂
 				return;
 			}
 			byte[] chat = readByte();
@@ -198,6 +201,9 @@ public class C_Shop extends ClientBasePacket {
 					ActionCodes.ACTION_Idle));
 			pc.broadcastPacket(new S_DoActionGFX(pc.getId(),
 					ActionCodes.ACTION_Idle));
+			pc.killSkillEffectTimer(7903);
+			pc.killSkillEffectTimer(7902);
+			pc.setSkillEffect(7902,5*1000);//商店关闭后马上检测外挂
 		}
 	}
 

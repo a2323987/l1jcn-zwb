@@ -402,6 +402,11 @@ public class C_LoginToServer extends ClientBasePacket {
 			}
 		}
 		// end
+		//外挂检测
+		if (!pc.hasSkillEffect(7902)){
+		pc.setSkillEffect(7902,(Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(146)).intValue())*1000);//暂定1分钟测试，可按自己的需求修改
+		}
+		//end
 		// 玩家上线是否通知在线ＧＭ by xxyyzzxyz & 夜猫子 5/5
 		if (Config.WHO_ONLINE_MSG_ON) {
 			Collection<L1PcInstance> allGM = L1World.getInstance()

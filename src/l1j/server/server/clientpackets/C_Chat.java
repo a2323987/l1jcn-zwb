@@ -30,9 +30,11 @@ import l1j.server.server.model.L1World;
 import l1j.server.server.model.Instance.L1MonsterInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_ChatPacket;
+import l1j.server.server.serverpackets.S_Disconnect;
 import l1j.server.server.serverpackets.S_NpcChatPacket;
 import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SystemMessage;
 
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
@@ -90,6 +92,17 @@ public class C_Chat extends ClientBasePacket {
 				GMCommands.getInstance().handleCommands(pc, cmd);
 				return;
 			}
+			//外挂检测
+			if (chatText.startsWith(String.valueOf(pc.getSuper())) && pc.hasSkillEffect(7903)) {//外挂判断
+				pc.sendPackets(new S_SystemMessage("恭喜你答对了！获得一个藏宝箱。"));
+				pc.killSkillEffectTimer(7903);
+				pc.getInventory().storeItem(40737,1);//获得一个藏宝箱
+				pc.setSkillEffect(7902,(Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(146)).intValue())*1000);//测试暂定1分钟测试，可按自己的需求修改
+				}else if (pc.hasSkillEffect(7903)){//修复判断
+				pc.killSkillEffectTimer(7903);
+				pc.sendPackets(new S_Disconnect());// 断线 return;
+				return;
+				}
 
 			// 交易频道
 			// 本来はchatType==12になるはずだが、行头の$が送信されない

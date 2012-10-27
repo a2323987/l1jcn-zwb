@@ -4985,4 +4985,16 @@ public class L1PcInstance extends L1Character {
 		SustainEffect.cancel();
 		SustainEffect = null;
 	}
+	
+	// 外挂检测
+	private int _super;
+
+	public int getSuper() {
+		return _super;
+	}
+
+	public void setSuper(int i) {
+		_super = i;
+	}
+	// end
 }

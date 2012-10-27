@@ -3032,7 +3032,22 @@ public class C_ItemUSe extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(79));
 					}
 				// TODO 自订道具区
-					//角斗场入场卷
+					/*//外挂药水
+				} else if (itemId == 61003){
+					if (pc.hasSkillEffect(7902)) {//外挂药水
+						pc.sendPackets(new S_SystemMessage("还没到时间呢！请再等等。"));
+					return;
+					}
+					//pc.getInventory().removeItem(l1iteminstance, 1);
+					int num1 = Random.nextInt(1000)+1;
+					int num2 = Random.nextInt(2000)+1;
+					int rndo = num1 + num2;
+					pc.setSuper(rndo);
+					//String R = String.valueOf(pc.getSuper());					
+					pc.sendPackets(new S_SystemMessage("如果回答错误就会被T下线"));
+					pc.sendPackets(new S_SystemMessage("请输入答案< "+num1+" > + < "+num2+" > = ? 并按下回车确认"));
+*/
+				//角斗场入场卷
 				} else if (itemId == 61002) {
 					int item = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(141)).intValue();
 					int count = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(142)).intValue();
