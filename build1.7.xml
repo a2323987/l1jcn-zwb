@@ -57,6 +57,7 @@
     <!-- 清除既有的编译档案 -->
     <target name="clean">
         <delete dir="${class.dir}" />
+    	<delete file="l1jserver.jar" />
     </target>
 
     <!-- Server 完整编译(包含除错讯息) -->
