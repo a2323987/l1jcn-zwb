@@ -5910,15 +5910,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		int rnd = Random.nextInt(100) + 1;
-		if ((rnd >= 1) && (rnd <= 50)) {
+		if ((rnd >= 1) && (rnd <= 70)) {
 			crystalCount = 0;
 			pc.sendPackets(new S_ServerMessage(158, item.getName())); // \f1%0が蒸発してなくなりました。
-		} else if ((rnd >= 51) && (rnd <= 90)) {
+		} else if ((rnd >= 71) && (rnd <= 100)) {
 			crystalCount *= 1;
-		} else if ((rnd >= 91) && (rnd <= 100)) {
+		} /*else if ((rnd >= 91) && (rnd <= 100)) {
 			crystalCount *= 1.5;
 			pc.getInventory().storeItem(41246, (int) (crystalCount * 1.5));
-		}
+		}*/
 		if (crystalCount != 0) {
 			int itemId = ResolventTable.getInstance().getCrystalItem(
 					item.getItem().getItemId());
