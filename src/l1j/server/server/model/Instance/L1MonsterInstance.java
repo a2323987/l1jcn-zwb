@@ -92,41 +92,37 @@ public class L1MonsterInstance extends L1NpcInstance {
 	public void onDoppel(boolean isChangeShape) {
 		if (getNpcTemplate().is_doppel()) {
 			boolean updateObject = false;
-			if (getNpcId() == 93000) {
+			if (!isChangeShape) { // 复原
 				updateObject = true;
-				ArrayList<String> names = new ArrayList<String>();
-				for (L1PcInstance listner : L1World.getInstance().getAllPlayers()) {
-					names.add(listner.getName());
-				}
-				int i = _random.nextInt(names.size());// 在列表里面随机取一个玩家的名字作为怪物的名字。
-				setName(names.get(i));
-				setNameId(names.get(i));
-				// setTempLawful(getNpcTemplate().get_lawful());
-				// setGfxId(getNpcTemplate().get_gfxid());
-				// setTempCharGfx(getNpcTemplate().get_gfxid());
-			} else {
-				if (!isChangeShape) { // 复原
-					updateObject = true;
-					// setName(getNpcTemplate().get_name());
-					// setNameId(getNpcTemplate().get_nameid());
-					setTempLawful(getNpcTemplate().get_lawful());
-					setGfxId(getNpcTemplate().get_gfxid());
-					setTempCharGfx(getNpcTemplate().get_gfxid());
-				} else if (!isDoppel && (_target instanceof L1PcInstance)) { // 未变形
-					setSleepTime(300);
-					L1PcInstance targetPc = (L1PcInstance) _target;
-					isDoppel = true;
-					updateObject = true;
-					setName(targetPc.getName());
-					setNameId(targetPc.getName());
-					setTempLawful(targetPc.getLawful());
-					setGfxId(targetPc.getClassId());
-					setTempCharGfx(targetPc.getClassId());
-					if (targetPc.getClassId() != 6671) { // 非幻术师拿剑
-						setStatus(4);
-					} else { // 幻术师拿斧头
-						setStatus(11);
+				setName(getNpcTemplate().get_name());
+				setNameId(getNpcTemplate().get_nameid());
+				setTempLawful(getNpcTemplate().get_lawful());
+				setGfxId(getNpcTemplate().get_gfxid());
+				setTempCharGfx(getNpcTemplate().get_gfxid());
+			} else if (!isDoppel && (_target instanceof L1PcInstance)) { // 未变形
+				setSleepTime(300);
+				L1PcInstance targetPc = (L1PcInstance) _target;
+				isDoppel = true;
+				updateObject = true;
+				if (getNpcId() == 93000) {
+					ArrayList<String> names = new ArrayList<String>();
+					for (L1PcInstance listner : L1World.getInstance().getAllPlayers()) {
+						names.add(listner.getName());
 					}
+					int i = _random.nextInt(names.size());// 在列表里面随机取一个玩家的名字作为怪物的名字。
+					setName(names.get(i));
+					setNameId(names.get(i));
+				} else {
+					setName(_target.getName());
+					setNameId(_target.getName());
+				}
+				setTempLawful(targetPc.getLawful());
+				setGfxId(targetPc.getClassId());
+				setTempCharGfx(targetPc.getClassId());
+				if (targetPc.getClassId() != 6671) { // 非幻术师拿剑
+					setStatus(4);
+				} else { // 幻术师拿斧头
+					setStatus(11);
 				}
 			}
 			// 移动、攻击速度
