@@ -115,10 +115,8 @@ public class L1MonsterInstance extends L1NpcInstance {
 				} else {
 					setName(_target.getName());
 					setNameId(_target.getName());
-				}
-				setTempLawful(targetPc.getLawful());
-				// 变怪可直接攻击
-				switch(targetPc.getClassId()) {
+					// 变怪可直接攻击
+					switch(targetPc.getClassId()) {
 					case 0: {
 						setTempCharGfx(5853);
 						setGfxId(5853);
@@ -169,8 +167,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 						setGfxId(5862);
 					}
 					break;
+					}
+					// 变怪可直接攻击 end
 				}
-				// 变怪可直接攻击 end
+				setTempLawful(targetPc.getLawful());
 				//setGfxId(targetPc.getClassId());
 				//setTempCharGfx(targetPc.getClassId());
 				if (targetPc.getClassId() != 6671) { // 非幻术师拿剑
