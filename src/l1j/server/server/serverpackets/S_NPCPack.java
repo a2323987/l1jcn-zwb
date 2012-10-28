@@ -76,12 +76,12 @@ public class S_NPCPack extends ServerBasePacket {
 				status |= STATUS_POISON;
 			}
 		}
-		if (npc.getNpcTemplate().is_doppel()) {
+/*		if (npc.getNpcTemplate().is_doppel()) {
 			// 变形怪需强制攻击判断
 			if (npc.getGfxId() != 31 && npc.getNpcTemplate().get_npcId() != 81069) {
 				status |= STATUS_PC;
 			}
-		}
+		}*/
 		// 二段加速状态
 		status |= npc.getBraveSpeed() * 16;
 

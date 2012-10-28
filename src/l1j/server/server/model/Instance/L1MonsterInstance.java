@@ -117,8 +117,62 @@ public class L1MonsterInstance extends L1NpcInstance {
 					setNameId(_target.getName());
 				}
 				setTempLawful(targetPc.getLawful());
-				setGfxId(targetPc.getClassId());
-				setTempCharGfx(targetPc.getClassId());
+				// 变怪可直接攻击
+				switch(targetPc.getClassId()) {
+					case 0: {
+						setTempCharGfx(5853);
+						setGfxId(5853);
+					}
+					break;
+					case 1: {
+						setTempCharGfx(5854);
+						setGfxId(5854);
+					}
+					break;
+					case 61: {
+						setTempCharGfx(5855);
+						setGfxId(5855);
+					}
+					break;
+					case 48: {
+						setTempCharGfx(5856);
+						setGfxId(5856);
+					}
+					break;
+					case 138: {
+						setTempCharGfx(5857);
+						setGfxId(5857);
+					}
+					break;
+					case 37: {
+						setTempCharGfx(5858);
+						setGfxId(5858);
+					}
+					break;
+					case 734: {
+						setTempCharGfx(5859);
+						setGfxId(5859);
+					}
+					break;
+					case 1186: {
+						setTempCharGfx(5860);
+						setGfxId(5860);
+					}
+					break;
+					case 2786: {
+						setTempCharGfx(5861);
+						setGfxId(5861);
+					}
+					break;
+					case 2796: {
+						setTempCharGfx(5862);
+						setGfxId(5862);
+					}
+					break;
+				}
+				// 变怪可直接攻击 end
+				//setGfxId(targetPc.getClassId());
+				//setTempCharGfx(targetPc.getClassId());
 				if (targetPc.getClassId() != 6671) { // 非幻术师拿剑
 					setStatus(4);
 				} else { // 幻术师拿斧头
