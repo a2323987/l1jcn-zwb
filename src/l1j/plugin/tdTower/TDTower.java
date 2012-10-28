@@ -131,25 +131,25 @@ public class TDTower {
 				if (checkPlayerCount()) {
 					setBossRoomStatus(STATUS_PLAYING);
 					spawnBoss(_bossId1, "1", "2");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId2, "2", "3");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId3, "3", "4");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId4, "4", "5");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId5, "5", "6");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId6, "6", "7");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId7, "7", "8");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId8, "8", "9");
-					Thread.sleep(2 * 60000);
+					Thread.sleep(1 * 60000);
 					spawnBoss(_bossId9, "9", "10");
-					Thread.sleep(5 * 60000);
+					Thread.sleep(2 * 60000);
 					spawnBoss(_bossId10, "10", null);
-					Thread.sleep(10 * 60000);
+					Thread.sleep(5 * 60000);
 					endBossRoom();
 				}
 				Thread.sleep(_cleartime);
