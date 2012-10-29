@@ -60,3 +60,9 @@ INSERT INTO `william_system_message` VALUES ('144', '1000000', '角斗场杀人�
 INSERT INTO `william_system_message` VALUES ('145', '请携带足够的入场道具', '入场道具不足提醒');
 
 INSERT INTO `william_system_message` VALUES ('146', '60', '在线外挂提问检测时间多少秒');
+
+INSERT INTO `william_system_message` VALUES ('147', '6000', '组队PK进入道具');
+INSERT INTO `william_system_message` VALUES ('148', '1', '组队PK进入道具数量');
+INSERT INTO `william_system_message` VALUES ('149', '2', '组队PK队员人数限制');
+INSERT INTO `william_system_message` VALUES ('150', '6000', '组队PK获胜道具');
+INSERT INTO `william_system_message` VALUES ('151', '1', '组队PK获胜道具数量');

@@ -34,6 +34,7 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import l1j.plugin.PartyPK;
 import l1j.plugin.ZhuduiPK;
 import l1j.plugin.tdTower.TDTower;
 import l1j.server.Config;
@@ -448,6 +449,11 @@ public class C_NPCAction extends ClientBasePacket {
 			if (s.equalsIgnoreCase("tdTower"))
 				htmlid = TDTower.getInstance().enterTDTower(pc);
 			// TDtower塔防end
+			// 组队PK
+		} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 102405) {
+			if (s.equalsIgnoreCase("partyPk"))
+				htmlid = PartyPK.enterPartyPK(pc);
+			//  组队PKend
 		} else if (s.equalsIgnoreCase("room")) { // 租房间
 			L1NpcInstance npc = (L1NpcInstance) obj;
 			int npcId = npc.getNpcTemplate().get_npcId();

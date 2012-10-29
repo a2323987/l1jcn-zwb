@@ -15,6 +15,7 @@
 package l1j.server.server.model;
 
 import l1j.plugin.ShowMessage;
+import l1j.plugin.PartyPK;
 import l1j.server.Config;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.WarTimeController;
@@ -35,6 +36,7 @@ import l1j.server.server.serverpackets.S_DoActionGFX;
 import l1j.server.server.serverpackets.S_EffectLocation;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_SkillIconGFX;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.S_UseArrowSkill;
 import l1j.server.server.serverpackets.S_UseAttackSkill;
 import l1j.server.server.templates.L1MagicDoll;
@@ -1026,11 +1028,35 @@ public class L1Attack {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_targetPc.getName()).append("】在决斗中丢失了"+rnd+"点声望").toString());
+					showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_targetPc.getName()).append("】在决斗中丢失了" + rnd + "点声望").toString());
+				}
+			if (_pc.getMapId() != 803) {
+				showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】Ｐ贏了玩家【").append(_targetPc.getName()).append("】").toString());
 			}
-			showMeaagae.broadcastToAll((new StringBuilder()).append("玩家【").append(_pc.getName()).append("】Ｐ贏了玩家【").append(_targetPc.getName()).append("】").toString());
+			//组队PK副本
+			if(_pc.getMapId() == 5113){
+				if(_pc.getParty().getMembers().length == PartyPK._menberCount){
+					PartyPK.callPartyPlayers(_pc,32766,32838,(short)5114,false);
+				}else {
+					_pc.sendPackets(new S_SystemMessage("请确保所有队员都还在人世间，否则进不了下一个地图"));
+				}
+			}
+			if(_pc.getMapId() == 5114){
+				if(_pc.getParty().getMembers().length == PartyPK._menberCount){
+					PartyPK.callPartyPlayers(_pc,32766,32838,(short)5115,false);
+				}else {
+					_pc.sendPackets(new S_SystemMessage("请确保所有队员都还在人世间，否则进不了下一个地图"));
+				}
+			}
+			if(_pc.getMapId() == 5115){
+				if(_pc.getParty().getMembers().length == PartyPK._menberCount){
+					PartyPK.rewardPartyPlayers(_pc);
+					PartyPK.callPartyPlayers(_pc,32581,32929,(short)0,false);
+				}else {
+					_pc.sendPackets(new S_SystemMessage("请确保所有队员都还在人世间，否则进不了下一个地图"));
+				}
+			}
 		}
-
 		return (int) dmg;
 	}
 
