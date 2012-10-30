@@ -1,4 +1,4 @@
-ï»¿/*
+/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2012-10-27 14:34:27
+Date: 2012-10-30 21:32:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,10 +24,75 @@ CREATE TABLE `resolvent` (
   `note` varchar(45) NOT NULL,
   `crystal_item` int(10) NOT NULL DEFAULT '41246',
   `crystal_count` int(10) NOT NULL DEFAULT '0',
+  `crystal_chance` int(10) NOT NULL DEFAULT '50',
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 -- ----------------------------
 -- Records of resolvent
 -- ----------------------------
-INSERT INTO `resolvent` VALUES ('20129', 'ç¥å®˜æ³•è¢', '41246', '5');
+INSERT INTO `resolvent` VALUES ('20140', '±»ÒÅÍüµÄÆ¤¿ø¼×', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20141', '±»ÒÅÍüµÄ³¤ÅÛ', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20142', '±»ÒÅÍüµÄÁÛ¼×', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20143', '±»ÒÅÍüµÄ½ğÊô¿ø¼×', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20172', 'Ë®ÁéÊÖÌ×', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20177', 'µØÁéÊÖÌ×', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20181', '»ğÁéÊÖÌ×', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20189', '·çÁéÊÖÌ×', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20266', 'ÖÇÁ¦ÏîÁ´', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20284', 'ÕÙ»½¿ØÖÆ½äÖ¸', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20306', 'Ğ¡ĞÍÉíÌåÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20307', 'Ğ¡ĞÍÁé»êÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20308', 'Ğ¡ĞÍ¾«ÉñÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20312', 'ÉíÌåÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20316', 'Áé»êÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20319', '¾«ÉñÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('20321', '¶àÂŞÆ¤´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40014', 'ÓÂ¸ÒÒ©Ë®', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40044', '×êÊ¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40045', 'ºì±¦Ê¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40046', 'À¶±¦Ê¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40047', 'ÂÌ±¦Ê¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40048', 'Æ·ÖÊ×êÊ¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40049', 'Æ·ÖÊºì±¦Ê¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40050', 'Æ·ÖÊÀ¶±¦Ê¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40051', 'Æ·ÖÊÂÌ±¦Ê¯', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40090', '¿ÕµÄÄ§·¨¾íÖá(µÈ¼¶1)', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40091', '¿ÕµÄÄ§·¨¾íÖá(µÈ¼¶2)', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40092', '¿ÕµÄÄ§·¨¾íÖá(µÈ¼¶3)', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40093', '¿ÕµÄÄ§·¨¾íÖá(µÈ¼¶4)', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('40094', '¿ÕµÄÄ§·¨¾íÖá(µÈ¼¶5)', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120266', 'ÖÇÁ¦ÏîÁ´', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120306', 'Ğ¡ĞÍÉíÌåÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120307', 'Ğ¡ĞÍÁé»êÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120308', 'Ğ¡ĞÍ¾«ÉñÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120312', 'ÉíÌåÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120316', 'Áé»êÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120319', '¾«ÉñÑü´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120321', '¶àÂŞÆ¤´ø', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('61', 'Õæ£®Ú¤»ÊÖ´ĞĞ½£', '60653', '50', '50');
+INSERT INTO `resolvent` VALUES ('84', '°µºÚË«µ¶', '60653', '50', '50');
+INSERT INTO `resolvent` VALUES ('134', 'Ê¥¾§Ä§ÕÈ', '60653', '50', '50');
+INSERT INTO `resolvent` VALUES ('189', '°µºÚÊ®×Ö¹­', '60653', '50', '50');
+INSERT INTO `resolvent` VALUES ('20058', 'Îä¹Ù¶·Åñ', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20233', 'Éñ¹ÙÄ§·¨Êé', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20113', 'Îä¹Ù»¤îø', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20129', 'Éñ¹Ù·¨ÅÛ', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20067', 'Éñ¹Ù¶·Åñ', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20070', 'ºÚ°µ¶·Åñ', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20176', 'Éñ¹ÙÊÖÌ×', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20168', 'Îä¹ÙÊÖÌ×', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20264', 'Á¦Á¿ÏîÁ´', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20280', 'ÃğÄ§½äÖ¸', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20201', 'Îä¹Ù³¤Ñ¥', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20210', 'ºÚ°µ³¤Ñ¥', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20032', 'ºÚ°µÍ·ÊÎ', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20208', 'Éñ¹Ù³¤Ñ¥', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20098', 'ºÚ°µÆÜÁÖÕß¿ø¼×', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20030', 'Éñ¹ÙÍ·ÊÎ', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20020', 'Îä¹ÙÍ·¿ø', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20137', '¾«ÁéÁ´¼×', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20132', 'ºÚ°µÅû¼ç', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20228', 'Îä¹ÙÖ®¶Ü', '60653', '10', '50');
+INSERT INTO `resolvent` VALUES ('20267', '¾«ÉñÏîÁ´', '41246', '10', '50');
+INSERT INTO `resolvent` VALUES ('120267', '¾«ÉñÏîÁ´', '41246', '10', '50');

@@ -6331,18 +6331,20 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 		int crystalCount = ResolventTable.getInstance().getCrystalCount(
 				item.getItem().getItemId());
+		int crystalChance = ResolventTable.getInstance().getCrystalChance(
+				item.getItem().getItemId());
 		if (crystalCount == 0) {
 			pc.sendPackets(new S_ServerMessage(1161)); // 溶解できません。
 			return;
 		}
 
-		int rnd = Random.nextInt(100) + 1;
-		if ((rnd >= 1) && (rnd <= 70)) {
+		int rnd = Random.nextInt(100);
+		if (rnd > crystalChance) {
 			crystalCount = 0;
 			pc.sendPackets(new S_ServerMessage(158, item.getName())); // \f1%0が蒸発してなくなりました。
-		} else if ((rnd >= 71) && (rnd <= 100)) {
+		} /*else if ((rnd >= 71) && (rnd <= 100)) {
 			crystalCount *= 1;
-		} /*else if ((rnd >= 91) && (rnd <= 100)) {
+		} else if ((rnd >= 91) && (rnd <= 100)) {
 			crystalCount *= 1.5;
 			pc.getInventory().storeItem(41246, (int) (crystalCount * 1.5));
 		}*/
