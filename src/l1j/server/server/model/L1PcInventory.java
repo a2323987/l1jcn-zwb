@@ -218,6 +218,14 @@ public class L1PcInventory extends L1Inventory {
 							item.setUpdateStr(item_update.getAddStr());
 							item.setUpdateDex(item_update.getAddDex());
 							item.setUpdateInt(item_update.getAddInt());
+							item.setUpdateSp(item_update.getAddSp());
+							item.setUpdateFreeze(item_update.getAddFreeze());
+							item.setUpdateStone(item_update.getAddStone());
+							item.setUpdateSleep(item_update.getAddSleep());
+							item.setUpdateBlind(item_update.getAddBlind());
+							item.setUpdateStun(item_update.getAddStun());
+							item.setUpdateSuStain(item_update.getAddSuStain());
+							item.setUpdateMr(item_update.getAddMr());
 						}
 					}
 				}

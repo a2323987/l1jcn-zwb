@@ -64,7 +64,14 @@ public class ItemUpdate {
 				itemUpdate.setAddCon(rs.getInt(9));
 				itemUpdate.setAddCha(rs.getInt(10));
 				itemUpdate.setAddWis(rs.getInt(11));
-
+				itemUpdate.setAddSp(rs.getInt(12));
+				itemUpdate.setAddFreeze(rs.getInt(13));
+				itemUpdate.setAddStone(rs.getInt(14));
+				itemUpdate.setAddSleep(rs.getInt(15));
+				itemUpdate.setAddBlind(rs.getInt(16));
+				itemUpdate.setAddStun(rs.getInt(17));
+				itemUpdate.setAddSuStain(rs.getInt(18));
+				itemUpdate.setAddMr(rs.getInt(19));
 				_itemUpdate.put(itemUpdate.getId(), itemUpdate);
 			}
 		} catch (SQLException e) {
@@ -88,7 +95,7 @@ public class ItemUpdate {
 		PreparedStatement pstm = null;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("INSERT INTO william_item_update SET item_id=?, count=?, add_dmg=?, add_dmgmodifier=?, add_hitmodifier=?, add_str=?, add_dex=?, add_int=?, add_con=?, add_cha=?, add_wis=?");
+			pstm = con.prepareStatement("INSERT INTO william_item_update SET item_id=?, count=?, add_dmg=?, add_dmgmodifier=?, add_hitmodifier=?, add_str=?, add_dex=?, add_int=?, add_con=?, add_cha=?, add_wis=?,add_sp=?,add_freeze=?,add_stone=?,add_sleep=?,add_blind=?,add_stun=?,add_sustain=?,add_mr=?");
 			pstm.setInt(1, item.getId());
 			pstm.setInt(2, item.getUpdateCount());
 			pstm.setInt(3, item.getUpdateDmg());
@@ -100,7 +107,14 @@ public class ItemUpdate {
 			pstm.setInt(9, item.getUpdateCon());
 			pstm.setInt(10, item.getUpdateCha());
 			pstm.setInt(11, item.getUpdateWis());
-
+			pstm.setInt(12, item.getUpdateSp());
+			pstm.setInt(13, item.getUpdateFreeze());
+			pstm.setInt(14, item.getUpdateStone());
+			pstm.setInt(15, item.getUpdateSleep());
+			pstm.setInt(16, item.getUpdateBlind());
+			pstm.setInt(17, item.getUpdateStun());
+			pstm.setInt(18, item.getUpdateSuStain());
+			pstm.setInt(19, item.getUpdateMr());
 			pstm.execute();
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
@@ -115,7 +129,7 @@ public class ItemUpdate {
 		PreparedStatement pstm = null;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("UPDATE william_item_update SET count=?, add_dmg=?, add_dmgmodifier=?, add_hitmodifier=?, add_str=?, add_dex=?, add_int=?, add_con=?, add_cha=?, add_wis=? WHERE item_id=?");
+			pstm = con.prepareStatement("UPDATE william_item_update SET count=?, add_dmg=?, add_dmgmodifier=?, add_hitmodifier=?, add_str=?, add_dex=?, add_int=?, add_con=?, add_cha=?, add_wis=? ,add_sp=?,add_freeze=?,add_stone=?,add_sleep=?,add_blind=?,add_stun=?,add_sustain=?,add_mr=? WHERE item_id=?");
 			pstm.setInt(1, item.getUpdateCount());
 			pstm.setInt(2, item.getUpdateDmg());
 			pstm.setInt(3, item.getUpdateDmgModifier());
@@ -126,8 +140,16 @@ public class ItemUpdate {
 			pstm.setInt(8, item.getUpdateCon());
 			pstm.setInt(9, item.getUpdateCha());
 			pstm.setInt(10, item.getUpdateWis());
-
-			pstm.setInt(11, item.getId());
+			pstm.setInt(11, item.getUpdateSp());
+			pstm.setInt(12, item.getUpdateFreeze());
+			pstm.setInt(13, item.getUpdateStone());
+			pstm.setInt(14, item.getUpdateSleep());
+			pstm.setInt(15, item.getUpdateBlind());
+			pstm.setInt(16, item.getUpdateStun());
+			pstm.setInt(17, item.getUpdateSuStain());
+			pstm.setInt(18, item.getUpdateMr());
+			
+			pstm.setInt(19, item.getId());
 
 			pstm.execute();
 		} catch (SQLException e) {

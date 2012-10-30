@@ -115,4 +115,76 @@ public class L1WilliamItemUpdate {
 	public void setAddHitModifier(int i) {
 		_addHitModifier = i;
 	}
+	private int _addFreeze;
+
+	public int getAddFreeze() {
+		return _addFreeze;
+	}
+
+	public void setAddFreeze(int _addFreeze) {
+		this._addFreeze = _addFreeze;
+	}
+	private int _addStone;
+
+	public int getAddStone() {
+		return _addStone;
+	}
+
+	public void setAddStone(int _addStone) {
+		this._addStone = _addStone;
+	}
+	private int _addSleep;
+
+	public int getAddSleep() {
+		return _addSleep;
+	}
+
+	public void setAddSleep(int _addSleep) {
+		this._addSleep = _addSleep;
+	}
+	private int _addBlind;
+
+	public int getAddBlind() {
+		return _addBlind;
+	}
+
+	public void setAddBlind(int _addBlind) {
+		this._addBlind = _addBlind;
+	}
+	private int _addStun;
+
+	public int getAddStun() {
+		return _addStun;
+	}
+
+	public void setAddStun(int _addStun) {
+		this._addStun = _addStun;
+	}
+	private int _addSuStain;
+
+	public int getAddSuStain() {
+		return _addSuStain;
+	}
+
+	public void setAddSuStain(int _addSuStain) {
+		this._addSuStain = _addSuStain;
+	}
+	private int _addSp;
+
+	public int getAddSp() {
+		return _addSp;
+	}
+
+	public void setAddSp(int _addSp) {
+		this._addSp = _addSp;
+	}
+	private int _addMr;
+
+	public int getAddMr() {
+		return _addMr;
+	}
+
+	public void setAddMr(int _addMr) {
+		this._addMr = _addMr;
+	}
 }

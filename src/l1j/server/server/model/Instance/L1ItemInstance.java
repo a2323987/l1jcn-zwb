@@ -583,7 +583,7 @@ public class L1ItemInstance extends L1Object {
 			}
 //			 武器攻击卷轴 by 丫杰
 			if (isIdentified() && getItem().getType2() == 1 && getUpdateCount()>0) {
-				name.append(" 【" + getUpdateCount() + "】");
+				name.append(" 已合成【" + getUpdateCount() + "】次");
 			}
 			// 武器攻击卷轴 by 丫杰 end
 		}
@@ -966,10 +966,10 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(32);
 				os.writeC(getItem().get_addmp() + getaddMp());
 			}
-			// SP(魔力)
-			if (getItem().get_addsp() != 0 || getaddSp() != 0) {
+			// SP(增加魔法攻击)
+			if (getItem().get_addsp() != 0 || getaddSp() != 0 || getUpdateSp() != 0) {
 				os.writeC(17);
-				os.writeC(getItem().get_addsp() + getaddSp());
+				os.writeC(getItem().get_addsp() + getaddSp() + getUpdateSp());
 			}
 			// ヘイスト
 			if (getItem().isHasteItem()) {
@@ -996,51 +996,51 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(getItem().get_defense_earth() + getEarthMr());
 			}
 			// 冻结耐性
-			if (getItem().get_regist_freeze() != 0) {
+			if (getItem().get_regist_freeze() != 0 || getUpdateFreeze() != 0) {
 				os.writeC(15);
-				os.writeH(getItem().get_regist_freeze());
+				os.writeH(getItem().get_regist_freeze() + getUpdateFreeze());
 				os.writeC(33);
 				os.writeC(1);
 			}
 			// 石化耐性
-			if (getItem().get_regist_stone() != 0) {
+			if (getItem().get_regist_stone() != 0 || getUpdateStone() != 0) {
 				os.writeC(15);
-				os.writeH(getItem().get_regist_stone());
+				os.writeH(getItem().get_regist_stone() + getUpdateStone());
 				os.writeC(33);
 				os.writeC(2);
 			}
 			// 睡眠耐性
-			if (getItem().get_regist_sleep() != 0) {
+			if (getItem().get_regist_sleep() != 0 || getUpdateSleep() != 0) {
 				os.writeC(15);
-				os.writeH(getItem().get_regist_sleep());
+				os.writeH(getItem().get_regist_sleep() + getUpdateSleep());
 				os.writeC(33);
 				os.writeC(3);
 			}
 			// 暗闇耐性
-			if (getItem().get_regist_blind() != 0) {
+			if (getItem().get_regist_blind() != 0 || getUpdateBlind() != 0) {
 				os.writeC(15);
-				os.writeH(getItem().get_regist_blind());
+				os.writeH(getItem().get_regist_blind() + getUpdateBlind());
 				os.writeC(33);
 				os.writeC(4);
 			}
-			// スタン耐性
-			if (getItem().get_regist_stun() != 0) {
+			// 抗昏迷耐性
+			if (getItem().get_regist_stun() != 0 || getUpdateStun() != 0) {
 				os.writeC(15);
-				os.writeH(getItem().get_regist_stun());
+				os.writeH(getItem().get_regist_stun() + getUpdateStun());
 				os.writeC(33);
 				os.writeC(5);
 			}
-			// ホールド耐性
-			if (getItem().get_regist_sustain() != 0) {
+			// 抗支撑耐性
+			if (getItem().get_regist_sustain() != 0 || getUpdateSuStain() != 0) {
 				os.writeC(15);
-				os.writeH(getItem().get_regist_sustain());
+				os.writeH(getItem().get_regist_sustain() + getUpdateSuStain());
 				os.writeC(33);
 				os.writeC(6);
 			}
-			// MR
-			if (getMr() != 0) {
+			// MR魔法防御
+			if (getMr() != 0 || getUpdateMr() != 0) {
 				os.writeC(15);
-				os.writeH(getMr());
+				os.writeH(getMr() + getUpdateMr());
 			}
 			// 体力回复率
 			if (getItem().get_addhpr() != 0 || getHpr() != 0) {
@@ -1337,6 +1337,78 @@ public class L1ItemInstance extends L1Object {
     public void setUpdateWis(int i) {
         _updateWis = i;
     }
+    private int _UpdateFreeze;
+
+	public int getUpdateFreeze() {
+		return _UpdateFreeze;
+	}
+
+	public void setUpdateFreeze(int _addFreeze) {
+		this._UpdateFreeze = _addFreeze;
+	}
+	private int _UpdateStone;
+
+	public int getUpdateStone() {
+		return _UpdateStone;
+	}
+
+	public void setUpdateStone(int _addStone) {
+		this._UpdateStone = _addStone;
+	}
+	private int _UpdateSleep;
+
+	public int getUpdateSleep() {
+		return _UpdateSleep;
+	}
+
+	public void setUpdateSleep(int _addSleep) {
+		this._UpdateSleep = _addSleep;
+	}
+	private int _UpdateBlind;
+
+	public int getUpdateBlind() {
+		return _UpdateBlind;
+	}
+
+	public void setUpdateBlind(int _addBlind) {
+		this._UpdateBlind = _addBlind;
+	}
+	private int _UpdateStun;
+
+	public int getUpdateStun() {
+		return _UpdateStun;
+	}
+
+	public void setUpdateStun(int _addStun) {
+		this._UpdateStun = _addStun;
+	}
+	private int _UpdateSuStain;
+
+	public int getUpdateSuStain() {
+		return _UpdateSuStain;
+	}
+
+	public void setUpdateSuStain(int _addSuStain) {
+		this._UpdateSuStain = _addSuStain;
+	}
+	private int _UpdateSp;
+
+	public int getUpdateSp() {
+		return _UpdateSp;
+	}
+
+	public void setUpdateSp(int _addSp) {
+		this._UpdateSp = _addSp;
+	}
+	private int _UpdateMr;
+
+	public int getUpdateMr() {
+		return _UpdateMr;
+	}
+
+	public void setUpdateMr(int _addMr) {
+		this._UpdateMr = _addMr;
+	}
     //sosodemon add enx
     
 	public void setSkillArmorEnchant(L1PcInstance pc, int skillId, int skillTime) {

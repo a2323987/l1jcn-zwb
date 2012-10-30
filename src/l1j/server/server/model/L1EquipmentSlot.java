@@ -90,12 +90,12 @@ public class L1EquipmentSlot {
 		_owner.addDmgModifierByArmor(item.getDmgModifierByArmor());
 		_owner.addBowHitModifierByArmor(item.getBowHitModifierByArmor());
 		_owner.addBowDmgModifierByArmor(item.getBowDmgModifierByArmor());
-		_owner.addRegistStun(item.get_regist_stun());
-		_owner.addRegistStone(item.get_regist_stone());
-		_owner.addRegistSleep(item.get_regist_sleep());
-		_owner.add_regist_freeze(item.get_regist_freeze());
-		_owner.addRegistSustain(item.get_regist_sustain());
-		_owner.addRegistBlind(item.get_regist_blind());
+		_owner.addRegistStun(item.get_regist_stun()+armor.getUpdateStun());
+		_owner.addRegistStone(item.get_regist_stone()+armor.getUpdateStone());
+		_owner.addRegistSleep(item.get_regist_sleep()+armor.getUpdateSleep());
+		_owner.add_regist_freeze(item.get_regist_freeze()+armor.getUpdateFreeze());
+		_owner.addRegistSustain(item.get_regist_sustain()+armor.getUpdateSuStain());
+		_owner.addRegistBlind(item.get_regist_blind()+armor.getUpdateBlind());
 		// 饰品强化 Scroll of Enchant Accessory
 		_owner.addEarth(item.get_defense_earth() + armor.getEarthMr());
 		_owner.addWind(item.get_defense_wind() + armor.getWindMr());
@@ -173,12 +173,12 @@ public class L1EquipmentSlot {
 		_owner.addDmgModifierByArmor(-item.getDmgModifierByArmor());
 		_owner.addBowHitModifierByArmor(-item.getBowHitModifierByArmor());
 		_owner.addBowDmgModifierByArmor(-item.getBowDmgModifierByArmor());
-		_owner.addRegistStun(-item.get_regist_stun());
-		_owner.addRegistStone(-item.get_regist_stone());
-		_owner.addRegistSleep(-item.get_regist_sleep());
-		_owner.add_regist_freeze(-item.get_regist_freeze());
-		_owner.addRegistSustain(-item.get_regist_sustain());
-		_owner.addRegistBlind(-item.get_regist_blind());
+		_owner.addRegistStun(-(item.get_regist_stun()+armor.getUpdateStun()));
+		_owner.addRegistStone(-(item.get_regist_stone()+armor.getUpdateStone()));
+		_owner.addRegistSleep(-(item.get_regist_sleep()+armor.getUpdateSleep()));
+		_owner.add_regist_freeze(-(item.get_regist_freeze()+armor.getUpdateFreeze()));
+		_owner.addRegistSustain(-(item.get_regist_sustain()+armor.getUpdateSuStain()));
+		_owner.addRegistBlind(-(item.get_regist_blind()+armor.getUpdateBlind()));
 		// 饰品强化 Scroll of Enchant Accessory
 		_owner.addEarth(-item.get_defense_earth() - armor.getEarthMr());
 		_owner.addWind(-item.get_defense_wind() - armor.getWindMr());
@@ -235,6 +235,9 @@ public class L1EquipmentSlot {
 
 		int addMr = 0;
 		addMr += equipment.getMr();
+		if (equipment.getUpdateMr() != 0) {
+			addMr += equipment.getUpdateMr();//增加魔防
+		}
 		if ((item.getItemId() == 20236) && _owner.isElf()) {
 			addMr += 5;
 		}
@@ -242,8 +245,8 @@ public class L1EquipmentSlot {
 			_owner.addMr(addMr);
 			_owner.sendPackets(new S_SPMR(_owner));
 		}
-		if (item.get_addsp() != 0 || equipment.getaddSp() != 0) {
-			_owner.addSp(item.get_addsp() + equipment.getaddSp());
+		if (item.get_addsp() != 0 || equipment.getaddSp() != 0 || equipment.getUpdateSp() != 0) {
+			_owner.addSp(item.get_addsp() + equipment.getaddSp() + equipment.getUpdateSp() );//增加魔法攻击
 			_owner.sendPackets(new S_SPMR(_owner));
 		}
 		if (item.isHasteItem()) {
@@ -306,6 +309,9 @@ public class L1EquipmentSlot {
 
 		int addMr = 0;
 		addMr -= equipment.getMr();
+		if (equipment.getUpdateMr() != 0) {
+			addMr -= equipment.getUpdateMr();//增加魔防
+		}
 		if ((item.getItemId() == 20236) && _owner.isElf()) {
 			addMr -= 5;
 		}
@@ -313,8 +319,8 @@ public class L1EquipmentSlot {
 			_owner.addMr(addMr);
 			_owner.sendPackets(new S_SPMR(_owner));
 		}
-		if (item.get_addsp() != 0 || equipment.getaddSp() != 0) {
-			_owner.addSp(-(item.get_addsp() + equipment.getaddSp()));
+		if (item.get_addsp() != 0 || equipment.getaddSp() != 0 || equipment.getUpdateSp() != 0) {
+			_owner.addSp(-(item.get_addsp() + equipment.getaddSp() + equipment.getUpdateSp()));
 			_owner.sendPackets(new S_SPMR(_owner));
 		}
 		if (item.isHasteItem()) {
