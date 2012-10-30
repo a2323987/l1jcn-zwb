@@ -18,10 +18,13 @@
  */
 package l1j.plugin;
 
+import java.util.ArrayList;
 
-
+import l1j.server.server.GeneralThreadPool;
+import l1j.server.server.model.L1PinkName;
 import l1j.server.server.model.L1Teleport;
 import l1j.server.server.model.Instance.L1PcInstance;
+import l1j.server.server.serverpackets.S_PinkName;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
 
@@ -37,7 +40,15 @@ public class PartyPK {
 
 	public static final int _menberCount = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(149)).intValue(); // 队员数量
 
-	public static String enterPartyPK(L1PcInstance pc) {		
+	private final ArrayList<L1PcInstance> _members = new ArrayList<L1PcInstance>();
+	private static PartyPK _instance;
+	public static PartyPK getInstance() {
+		if (_instance == null) {
+			_instance = new PartyPK();
+		}
+		return _instance;
+	}
+	public String enterPartyPK(L1PcInstance pc) {		
 		if(!pc.isInParty()){
 			pc.sendPackets(new S_SystemMessage("请先组队，再让队长来报名。"));
 			return "";
@@ -54,30 +65,31 @@ public class PartyPK {
 		return "";
 	}
 
-	public static void rewardPartyPlayers(L1PcInstance pc) {
+	public void rewardPartyPlayers(L1PcInstance pc) {
 		L1PcInstance[] players = pc.getParty().getMembers();
 		for (L1PcInstance pc1 : players) {
 			pc1.getInventory().storeItem(_itemWin1, _countWin1);
 			pc1.sendPackets(new S_SystemMessage("恭喜您获得了组队PK奖励，请查看背包。"));
 		}
 	}
-	public static void callPartyPlayers(L1PcInstance pc, int locx, int locy, short mapid, boolean checkItem) {
+
+	public void callPartyPlayers(L1PcInstance pc, int locx, int locy, short mapid, boolean checkItem) {
 		L1PcInstance[] players = pc.getParty().getMembers();
 		if (players != null) {
 			for (L1PcInstance pc1 : players) {
 				if (!pc1.getInventory().checkItem(_item, _count)) {
 					for (L1PcInstance pc3 : players) {
-						pc1.sendPackets(new S_SystemMessage("请所有队员带够所需物品再说。")); // 金币不足
+						pc3.sendPackets(new S_SystemMessage("请所有队员带够所需物品再说。")); // 金币不足
 					}
 					return;
 				}
 			}
 			for (L1PcInstance pc2 : players) {
-				if (!pc2.getParty().isLeader(pc2)) {
-					L1Teleport.teleport(pc2, locx, locy, mapid, 5, true);
-					pc2.sendPackets(new S_SystemMessage("您被传唤到指定的地点。"));
-				}
+				L1Teleport.teleport(pc2, locx, locy, mapid, 5, true);
+				pc2.getInventory().consumeItem(_item, _count);
+				pc2.sendPackets(new S_SystemMessage("您被传唤到指定的地点。"));
+				L1PinkName.onActionAll(pc2);
 			}
 		}
-	}
+	}	
 }

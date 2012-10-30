@@ -72,6 +72,7 @@ import l1j.server.server.model.L1ItemDelay;
 import l1j.server.server.model.L1Location;
 import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1PcInventory;
+import l1j.server.server.model.L1PinkName;
 import l1j.server.server.model.L1PolyMorph;
 import l1j.server.server.model.L1Quest;
 import l1j.server.server.model.L1Teleport;
@@ -3102,9 +3103,7 @@ public class C_ItemUSe extends ClientBasePacket {
 						L1Teleport.teleport(pc, 32700, 32895, (short) 803, pc.getHeading(), true);
 						pc.broadcastPacket(new S_SystemMessage("玩家【"+pc.getName()+"】进入了角斗场，有仇的报仇，有怨的报怨！"));
 						if(!pc.isPinkName()){							
-							pc.setPinkName(true);
-							//pc.sendPackets(new S_PinkName(pc.getId(), 7200));
-							pc.broadcastPacket(new S_PinkName(pc.getId(), 7200));
+							L1PinkName.onActionAll(pc);
 						}
 					}else {
 						pc.sendPackets(new S_SystemMessage(l1j.william.L1WilliamSystemMessage.ShowMessage(145)));

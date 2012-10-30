@@ -1036,27 +1036,30 @@ public class L1Attack {
 			//组队PK副本
 			if(_pc.getMapId() == 5113){
 				if(_pc.getParty().getMembers().length == PartyPK._menberCount){
-					PartyPK.callPartyPlayers(_pc,32766,32838,(short)5114,false);
+					PartyPK.getInstance().callPartyPlayers(_pc,32766,32838,(short)5114,false);
 				}else {
 					_pc.sendPackets(new S_SystemMessage("请确保所有队员都还在人世间，否则进不了下一个地图"));
 				}
 			}
 			if(_pc.getMapId() == 5114){
 				if(_pc.getParty().getMembers().length == PartyPK._menberCount){
-					PartyPK.callPartyPlayers(_pc,32766,32838,(short)5115,false);
+					PartyPK.getInstance().callPartyPlayers(_pc,32766,32838,(short)5115,false);
 				}else {
 					_pc.sendPackets(new S_SystemMessage("请确保所有队员都还在人世间，否则进不了下一个地图"));
 				}
 			}
 			if(_pc.getMapId() == 5115){
 				if(_pc.getParty().getMembers().length == PartyPK._menberCount){
-					PartyPK.rewardPartyPlayers(_pc);
-					PartyPK.callPartyPlayers(_pc,32581,32929,(short)0,false);
+					PartyPK.getInstance().rewardPartyPlayers(_pc);
+					PartyPK.getInstance().callPartyPlayers(_pc,32581,32929,(short)0,false);
 				}else {
 					_pc.sendPackets(new S_SystemMessage("请确保所有队员都还在人世间，否则进不了下一个地图"));
 				}
 			}
 		}
+		if(_pc.getMapId()== 803 || _pc.getMapId() == 5113 || _pc.getMapId() == 5114 || _pc.getMapId() == 5115){
+			L1PinkName.onActionAll(_pc);
+		}//以上地图所有人都紫色名。
 		return (int) dmg;
 	}
 

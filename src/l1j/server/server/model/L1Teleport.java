@@ -78,8 +78,8 @@ public class L1Teleport {
 			}
 			catch (Exception e) {}
 		}
-		int rndx = Random.nextInt(4);
-		int rndy = Random.nextInt(4);
+		int rndx = Random.nextInt(2);
+		int rndy = Random.nextInt(2);
 		int locx = x + rndx;
 		int locy = y + rndy;//传送会在一定范围内
 		pc.setTeleportX(locx);

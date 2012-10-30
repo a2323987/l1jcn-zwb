@@ -18,6 +18,7 @@ import l1j.server.server.GeneralThreadPool;
 import l1j.server.server.WarTimeController;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_PinkName;
+import l1j.server.server.serverpackets.S_SystemMessage;
 
 // Referenced classes of package l1j.server.server.model:
 // L1PinkName
@@ -36,23 +37,22 @@ public class L1PinkName {
 		@Override
 		public void run() {
 			for (int i = 0; i < 180; i++) {
-				try {
-					Thread.sleep(1000);
+					try {
+						Thread.sleep(1000);
+					} catch (Exception exception) {
+						break;
+					}
+					// 死亡、または、相手を倒して赤ネームになったら终了
+					if (_attacker.isDead()) {
+						// setPinkName(false);はL1PcInstance#death()で行う
+						break;
+					}
+					if (_attacker.getLawful() < 0) {
+						_attacker.setPinkName(false);
+						break;
+					}
 				}
-				catch (Exception exception) {
-					break;
-				}
-				// 死亡、または、相手を倒して赤ネームになったら终了
-				if (_attacker.isDead()) {
-					// setPinkName(false);はL1PcInstance#death()で行う
-					break;
-				}
-				if (_attacker.getLawful() < 0) {
-					_attacker.setPinkName(false);
-					break;
-				}
-			}
-			stopPinkName(_attacker);
+				stopPinkName(_attacker);
 		}
 
 		private void stopPinkName(L1PcInstance attacker) {
@@ -96,6 +96,17 @@ public class L1PinkName {
 				PinkNameTimer pink = new PinkNameTimer(attacker);
 				GeneralThreadPool.getInstance().execute(pink);
 			}
+		}
+	}
+
+	public static void onActionAll(L1PcInstance pc) {
+		if (pc == null) {
+			return;
+		}
+		pc.setPinkName(true);
+		pc.sendPackets(new S_PinkName(pc.getId(), 180));
+		if (!pc.isGmInvis()) {
+			pc.broadcastPacket(new S_PinkName(pc.getId(), 180));
 		}
 	}
 }

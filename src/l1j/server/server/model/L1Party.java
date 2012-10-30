@@ -63,6 +63,10 @@ public class L1Party {
 		if (!_membersList.isEmpty()) {
 			deleteMiniHp(pc);
 		}
+		//组队pk判断离开队伍就飞出pk地图。
+		if (pc.getMapId() == 5113 || pc.getMapId() == 5114 || pc.getMapId() == 5115 ) {
+			L1Teleport.teleport(pc, 32581, 32929, (short) 0, pc.getHeading(), true);
+		}
 	}
 
 	public boolean isVacancy() {

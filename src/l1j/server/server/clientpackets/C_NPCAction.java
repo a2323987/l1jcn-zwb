@@ -452,7 +452,7 @@ public class C_NPCAction extends ClientBasePacket {
 			// 组队PK
 		} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 102405) {
 			if (s.equalsIgnoreCase("partyPk"))
-				htmlid = PartyPK.enterPartyPK(pc);
+				htmlid = PartyPK.getInstance().enterPartyPK(pc);
 			//  组队PKend
 		} else if (s.equalsIgnoreCase("room")) { // 租房间
 			L1NpcInstance npc = (L1NpcInstance) obj;
