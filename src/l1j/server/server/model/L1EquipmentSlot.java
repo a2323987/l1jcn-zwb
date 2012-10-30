@@ -223,10 +223,10 @@ public class L1EquipmentSlot {
 		if (equipment.getaddMp() != 0) {
 			_owner.addMaxMp(equipment.getaddMp());
 		}
-		_owner.addStr(item.get_addstr());
+		_owner.addStr(item.get_addstr() + equipment.getUpdateStr()); //力量卷轴
 		_owner.addCon(item.get_addcon());
-		_owner.addDex(item.get_adddex());
-		_owner.addInt(item.get_addint());
+		_owner.addDex(item.get_adddex() + equipment.getUpdateDex()); //敏捷卷轴
+		_owner.addInt(item.get_addint() + equipment.getUpdateInt()); //智力卷轴
 		_owner.addWis(item.get_addwis());
 		if (item.get_addwis() != 0) {
 			_owner.resetBaseMr();
@@ -294,10 +294,10 @@ public class L1EquipmentSlot {
 		if (equipment.getaddMp() != 0) {
 			_owner.addMaxMp(-equipment.getaddMp());
 		}
-		_owner.addStr((byte) -item.get_addstr());
+		_owner.addStr((byte) -(item.get_addstr() + equipment.getUpdateStr())); //力量卷轴
 		_owner.addCon((byte) -item.get_addcon());
-		_owner.addDex((byte) -item.get_adddex());
-		_owner.addInt((byte) -item.get_addint());
+		_owner.addDex((byte) -(item.get_adddex() + equipment.getUpdateDex())); //敏捷卷轴
+		_owner.addInt((byte) -(item.get_addint() + equipment.getUpdateInt()));//智力卷轴
 		_owner.addWis((byte) -item.get_addwis());
 		if (item.get_addwis() != 0) {
 			_owner.resetBaseMr();

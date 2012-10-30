@@ -306,8 +306,10 @@ public class L1Attack {
 						+ weapon.getHitByMagic();
 				_weaponAddDmg = weapon.getItem().getDmgModifier()
 						+ weapon.getDmgByMagic();
-				_weaponSmall = weapon.getItem().getDmgSmall();
-				_weaponLarge = weapon.getItem().getDmgLarge();
+				_weaponSmall = weapon.getItem().getDmgSmall()
+						+ weapon.getUpdateDmg();
+				_weaponLarge = weapon.getItem().getDmgLarge()
+						+ weapon.getUpdateDmg();
 				_weaponRange = weapon.getItem().getRange();
 				_weaponBless = weapon.getItem().getBless();
 				_weaponEnchant = weapon.getEnchantLevel();

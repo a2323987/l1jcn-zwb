@@ -581,6 +581,11 @@ public class L1ItemInstance extends L1Object {
 					name.append(" ($11)");
 				}
 			}
+//			 武器攻击卷轴 by 丫杰
+			if (isIdentified() && getItem().getType2() == 1 && getUpdateCount()>0) {
+				name.append(" 【" + getUpdateCount() + "】");
+			}
+			// 武器攻击卷轴 by 丫杰 end
 		}
 
 		if (isEquipped()) {
@@ -831,8 +836,8 @@ public class L1ItemInstance extends L1Object {
 			if (itemType2 == 1) { // weapon
 				// 打击值
 				os.writeC(1);
-				os.writeC(getItem().getDmgSmall());
-				os.writeC(getItem().getDmgLarge());
+				os.writeC(getItem().getDmgSmall()+ getUpdateDmg());//武器攻击卷轴by阿杰
+				os.writeC(getItem().getDmgLarge()+ getUpdateDmg());//武器攻击卷轴by阿杰
 				os.writeC(getItem().getMaterial());
 				os.writeD(getWeight());
 			} else if (itemType2 == 2) { // armor
@@ -868,24 +873,28 @@ public class L1ItemInstance extends L1Object {
 			if (getItem().isTwohandedWeapon()) {
 				os.writeC(4);
 			}
+			//武器攻击卷轴by阿杰
 			// 攻击成功
 			if (itemType2 == 1) { // weapon
-				if (getItem().getHitModifier() != 0) {
+				if (getItem().getHitModifier() != 0 || getUpdateHitModifier() != 0) {
 					os.writeC(5);
-					os.writeC(getItem().getHitModifier());
+					os.writeC(getItem().getHitModifier() + getUpdateHitModifier());
 				}
+//				武器攻击卷轴by阿杰end
 			} else if (itemType2 == 2) { // armor
 				if (getItem().getHitModifierByArmor() != 0) {
 					os.writeC(5);
 					os.writeC(getItem().getHitModifierByArmor());
 				}
 			}
+			// 武器攻击卷轴by阿杰
 			// 追加打击
 			if (itemType2 == 1) { // weapon
-				if (getItem().getDmgModifier() != 0) {
+				if (getItem().getDmgModifier() != 0 || getUpdateDmgModifier() != 0) {
 					os.writeC(6);
-					os.writeC(getItem().getDmgModifier());
+					os.writeC(getItem().getDmgModifier() + getUpdateDmgModifier());
 				}
+				// 武器攻击卷轴by阿杰end
 			} else if (itemType2 == 2) { // armor
 				if (getItem().getDmgModifierByArmor() != 0) {
 					os.writeC(6);
@@ -923,13 +932,14 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(34);
 			}
 			// STR~CHA
-			if (getItem().get_addstr() != 0) {
+
+			if (getItem().get_addstr() != 0 || getUpdateStr() != 0) { //力量卷轴
 				os.writeC(8);
-				os.writeC(getItem().get_addstr());
+				os.writeC(getItem().get_addstr() + getUpdateStr()); //力量卷轴
 			}
-			if (getItem().get_adddex() != 0) {
+			if (getItem().get_adddex() != 0 || getUpdateDex() != 0) { //敏捷卷轴
 				os.writeC(9);
-				os.writeC(getItem().get_adddex());
+				os.writeC(getItem().get_adddex() + getUpdateDex()); //敏捷卷轴
 			}
 			if (getItem().get_addcon() != 0) {
 				os.writeC(10);
@@ -939,9 +949,9 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(11);
 				os.writeC(getItem().get_addwis());
 			}
-			if (getItem().get_addint() != 0) {
+			if (getItem().get_addint() != 0 || getUpdateInt() != 0) { //智力卷轴
 				os.writeC(12);
-				os.writeC(getItem().get_addint());
+				os.writeC(getItem().get_addint() + getUpdateInt()); //智力卷轴
 			}
 			if (getItem().get_addcha() != 0) {
 				os.writeC(13);

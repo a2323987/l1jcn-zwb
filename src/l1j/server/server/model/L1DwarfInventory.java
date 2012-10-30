@@ -30,6 +30,8 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.templates.L1Item;
 import l1j.server.server.utils.SQLUtil;
 import l1j.server.server.utils.collections.Lists;
+import l1j.william.ItemUpdate;
+import l1j.william.L1WilliamItemUpdate;
 
 public class L1DwarfInventory extends L1Inventory {
 	/**
@@ -86,6 +88,22 @@ public class L1DwarfInventory extends L1Inventory {
 				if (item.getItem().getItemId() == 40312) {
 					InnKeyTable.checkey(item);
 				}
+				// 武器攻击卷轴by阿杰
+				if (ItemUpdate.getInstance().checkItem(item.getId()) != 0) {
+					ItemUpdate itemUpdate = new ItemUpdate();
+					for (L1WilliamItemUpdate item_update : itemUpdate.getItemUpdateList()) {
+						if (item_update.getId() == item.getId()) {
+							item.setUpdateCount(item_update.getCount()); // 可用卷轴次数
+							item.setUpdateDmg(item_update.getAddDmg()); // 攻击力
+							item.setUpdateDmgModifier(item_update.getAddDmgModifier()); // 额外攻击点数
+							item.setUpdateHitModifier(item_update.getAddHitModifier()); // 攻击成功
+							item.setUpdateStr(item_update.getAddStr());
+							item.setUpdateDex(item_update.getAddDex());
+							item.setUpdateInt(item_update.getAddInt());
+						}
+					}
+				}
+				// 武器攻击卷轴by阿杰 end
 				_items.add(item);
 				L1World.getInstance().storeObject(item);
 			}

@@ -102,6 +102,7 @@ import l1j.server.server.serverpackets.S_DragonGate;
 import l1j.server.server.serverpackets.S_Fishing;
 import l1j.server.server.serverpackets.S_IdentifyDesc;
 import l1j.server.server.serverpackets.S_ItemName;
+import l1j.server.server.serverpackets.S_ItemStatus;
 import l1j.server.server.serverpackets.S_Letter;
 import l1j.server.server.serverpackets.S_Liquor;
 import l1j.server.server.serverpackets.S_Message_YN;
@@ -134,6 +135,7 @@ import l1j.server.server.utils.L1SpawnUtil;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.collections.Maps;
 import l1j.william.ItemMagic;
+import l1j.william.ItemUpdate;
 import l1j.william.L1WilliamItemMagic;
 import l1j.william.L1WilliamItemSummon;
 import l1j.william.L1WilliamTeleportScroll; // DB道具传送卷轴(符) by 丫杰
@@ -150,7 +152,6 @@ import l1j.william.L1WilliamSystemMessage; // sosodemon add 声望系统 BY.Soso
 public class C_ItemUSe extends ClientBasePacket {
 
 	private static final String C_ITEM_USE = "[C] C_ItemUSe";
-
 	private static Logger _log = Logger.getLogger(C_ItemUSe.class.getName());
 
 	public C_ItemUSe(byte abyte0[], ClientThread client) throws Exception {
@@ -308,6 +309,12 @@ public class C_ItemUSe extends ClientBasePacket {
 		case 47052:
 		case 49198:
 		case 49199:
+		case 300001: //武器攻擊捲軸 BY阿傑
+		case 300002: //武器攻擊捲軸 BY阿傑
+		case 300003:
+		case 300004: //武器力量捲軸 
+		case 300005: //武器敏捷捲軸 
+		case 300006://武器智力捲軸
 		case 60014: // 物品过滤器
 			l = readD();
 			break;
@@ -455,6 +462,7 @@ public class C_ItemUSe extends ClientBasePacket {
 					pc.sendPackets(new S_ServerMessage(264)); // \f1你的职业无法使用此道具。
 					return;
 				}
+
 
 				if (l1iteminstance.getItem().getType() == 0) { // アロー
 					pc.getInventory().setArrow(
@@ -3079,6 +3087,174 @@ public class C_ItemUSe extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(79));
 					}
 				// TODO 自订道具区
+				} else if (itemId == 300001) { // 50%武器攻擊力卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						if (l1iteminstance1.getUpdateDmg() >= 20) { // 攻击力最高20
+							pc.sendPackets(new S_ServerMessage(79));
+							return;
+						}
+						if (Random.nextInt(100) > 50) {
+							l1iteminstance1.setUpdateDmg(l1iteminstance1.getUpdateDmg() + 1); // 攻擊力 +1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功,攻击力+1"));
+						} else {
+							l1iteminstance1.setUpdateDmg(l1iteminstance1.getUpdateDmg() - 1); // 攻擊力 -1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失败,攻击力-1"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300002) { // 武器額外攻擊力卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						if (l1iteminstance1.getUpdateDmgModifier() >= 20) { // 額外攻擊力
+							pc.sendPackets(new S_ServerMessage(79));
+							return;
+						}
+						if (Random.nextInt(100) > 50) {
+							l1iteminstance1.setUpdateDmgModifier(l1iteminstance1.getUpdateDmgModifier() + 1); // 額外攻擊力
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功,额外攻击力+1"));
+						} else {
+							l1iteminstance1.setUpdateDmgModifier(l1iteminstance1.getUpdateDmgModifier() - 1); // 額外攻擊力
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失败,额外攻击力-1"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300003) { // 100%武器攻擊成功卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						if (l1iteminstance1.getUpdateHitModifier() >= 20) { // 額外攻擊力
+							pc.sendPackets(new S_ServerMessage(79));
+							return;
+						}
+						if (Random.nextInt(100) > 50) {
+							l1iteminstance1.setUpdateHitModifier(l1iteminstance1.getUpdateHitModifier() + 1); // 攻击成功
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功,攻击成功率+1"));
+						} else {
+							l1iteminstance1.setUpdateHitModifier(l1iteminstance1.getUpdateHitModifier() - 1); // 額外攻擊力
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失败,攻击成功率-1"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300004) { // 武器力量卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						if (l1iteminstance1.getUpdateStr() > 10) { // 次數為0
+							pc.sendPackets(new S_ServerMessage(79));
+							return;
+						}
+						if (Random.nextInt(100) > 50) {
+							l1iteminstance1.setUpdateStr(l1iteminstance1.getUpdateStr() + 1); // 力 +1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addStr(1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+						} else {
+							l1iteminstance1.setUpdateStr(l1iteminstance1.getUpdateStr() - 1); // 力 +1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addStr(-1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300005) { // 50%武器敏捷卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						if (l1iteminstance1.getUpdateDex() > 10) { // 次數為0
+							pc.sendPackets(new S_ServerMessage(79));
+							return;
+						}
+						if (Random.nextInt(100) > 50) {
+							l1iteminstance1.setUpdateDex(l1iteminstance1.getUpdateDex() + 1); // 敏 +1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addDex(1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+						} else {
+							l1iteminstance1.setUpdateDex(l1iteminstance1.getUpdateDex() - 1); // 敏 +1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addDex(-1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300006) { // 武器智力卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						if (l1iteminstance1.getUpdateInt() > 10) { // 次數為0
+							pc.sendPackets(new S_ServerMessage(79));
+							return;
+						}
+						if (Random.nextInt(100) > 50) {
+							l1iteminstance1.setUpdateInt(l1iteminstance1.getUpdateInt() + 1); // 智+1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addInt(1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+						} else {
+							l1iteminstance1.setUpdateInt(l1iteminstance1.getUpdateInt() - 1); // 智+1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addInt(-1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
 					/*//外挂药水
 				} else if (itemId == 61003){
 					if (pc.hasSkillEffect(7902)) {//外挂药水
