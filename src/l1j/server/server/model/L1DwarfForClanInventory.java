@@ -113,6 +113,15 @@ public class L1DwarfForClanInventory extends L1Inventory {
 							item.setUpdateStun(item_update.getAddStun());
 							item.setUpdateSuStain(item_update.getAddSuStain());
 							item.setUpdateMr(item_update.getAddMr());
+							item.setUpdateHp(item_update.getAddHp());
+							item.setUpdateMp(item_update.getAddMp());
+							item.setUpdateHpr(item_update.getAddHpr());
+							item.setUpdateMpr(item_update.getAddMpr());
+							item.setUpdateMana(item_update.getAddMana());
+							item.setUpdateDestruction(item_update.getAddDestruction());
+							item.setUpdateCha(item_update.getAddCha());
+							item.setUpdateCon(item_update.getAddCon());
+							item.setUpdateWis(item_update.getAddWis());
 						}
 					}
 				}

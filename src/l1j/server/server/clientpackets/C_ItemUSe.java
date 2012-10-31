@@ -323,6 +323,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		case 300012://防昏迷耐性头盔卷轴
 		case 300013://防支撑耐性手套卷轴
 		case 300014://魔法防御防具卷轴
+		case 300015://+HP防具卷轴
+		case 300016://+MP防具卷轴
+		case 300017://回HP防具卷轴
+		case 300018://回MP防具卷轴
+		case 300019://吸魔武器卷轴
+		case 300020://吸血武器卷轴
+		case 300021://武器体质卷轴
+		case 300022://武器精神卷轴
+		case 300023://防具魅力卷轴
 		case 60014: // 物品过滤器
 			l = readD();
 			break;
@@ -3098,14 +3107,10 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300001) { // 50%武器攻擊力卷軸
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
-						if (l1iteminstance1.getUpdateDmg() > 20) { // 攻击力最高20
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateDmg() <= 10) {
 							l1iteminstance1.setUpdateDmg(l1iteminstance1.getUpdateDmg() + 1); // 攻擊力 +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功,攻击力+1"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功,攻击力+1"));
 						} else {
 							if (l1iteminstance1.getUpdateDmg() > 0) { 
 							l1iteminstance1.setUpdateDmg(l1iteminstance1.getUpdateDmg() - 1); // 攻擊力 -1
@@ -3125,14 +3130,10 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300002) { // 武器額外攻擊力卷軸
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
-						if (l1iteminstance1.getUpdateDmgModifier() > 20) { // 額外攻擊力
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateDmgModifier() <= 10) {
 							l1iteminstance1.setUpdateDmgModifier(l1iteminstance1.getUpdateDmgModifier() + 1); // 額外攻擊力
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功,额外攻击力+1"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功,额外攻击力+1"));
 						} else {
 							if (l1iteminstance1.getUpdateDmgModifier() > 0) { 
 							l1iteminstance1.setUpdateDmgModifier(l1iteminstance1.getUpdateDmgModifier() - 1); // 額外攻擊力
@@ -3152,14 +3153,10 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300003) { // 100%武器攻擊成功卷軸
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
-						if (l1iteminstance1.getUpdateHitModifier() > 20) { // 額外攻擊力
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateHitModifier() <= 10) {
 							l1iteminstance1.setUpdateHitModifier(l1iteminstance1.getUpdateHitModifier() + 1); // 攻击成功
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功,攻击成功率+1"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功,攻击成功率+1"));
 						} else {
 							if (l1iteminstance1.getUpdateHitModifier() > 0) {
 							l1iteminstance1.setUpdateHitModifier(l1iteminstance1.getUpdateHitModifier() - 1); // 額外攻擊力
@@ -3179,18 +3176,14 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300004) { // 武器力量卷軸
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
-						if (l1iteminstance1.getUpdateStr() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateStr() <= 10) {
 							l1iteminstance1.setUpdateStr(l1iteminstance1.getUpdateStr() + 1); // 力 +1
 							if (l1iteminstance1.isEquipped()) {
 								pc.addStr(1);
 								pc.sendPackets(new S_OwnCharStatus(pc));
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1力量"));
 						} else {
 							if (l1iteminstance1.getUpdateStr() > 0) {
 								l1iteminstance1.setUpdateStr(l1iteminstance1.getUpdateStr() - 1); // 力
@@ -3200,7 +3193,7 @@ public class C_ItemUSe extends ClientBasePacket {
 									pc.sendPackets(new S_OwnCharStatus(pc));
 								}
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1力量"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3215,18 +3208,14 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300005) { // 50%武器敏捷卷軸
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
-						if (l1iteminstance1.getUpdateDex() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateDex() <= 10) {
 							l1iteminstance1.setUpdateDex(l1iteminstance1.getUpdateDex() + 1); // 敏 +1
 							if (l1iteminstance1.isEquipped()) {
 								pc.addDex(1);
 								pc.sendPackets(new S_OwnCharStatus(pc));
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1敏捷"));
 						} else {
 							if (l1iteminstance1.getUpdateDex() > 0) {
 								l1iteminstance1.setUpdateDex(l1iteminstance1.getUpdateDex() - 1); // 敏
@@ -3236,7 +3225,7 @@ public class C_ItemUSe extends ClientBasePacket {
 									pc.sendPackets(new S_OwnCharStatus(pc));
 								}
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1敏捷"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3251,18 +3240,14 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300006) { // 武器智力卷軸
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
-						if (l1iteminstance1.getUpdateInt() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateInt() <= 10) {
 							l1iteminstance1.setUpdateInt(l1iteminstance1.getUpdateInt() + 1); // 智+1
 							if (l1iteminstance1.isEquipped()) {
 								pc.addInt(1);
 								pc.sendPackets(new S_OwnCharStatus(pc));
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1智力"));
 						} else {
 							if (l1iteminstance1.getUpdateInt() > 0) {
 								l1iteminstance1.setUpdateInt(l1iteminstance1.getUpdateInt() - 1); // 智+1
@@ -3271,7 +3256,7 @@ public class C_ItemUSe extends ClientBasePacket {
 									pc.sendPackets(new S_OwnCharStatus(pc));
 								}
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1智力"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3286,18 +3271,14 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300007) { // 魔法攻击力卷軸
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 1 ) { // 武器類
-						if (l1iteminstance1.getUpdateSp() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateSp() <= 10) {
 							l1iteminstance1.setUpdateSp(l1iteminstance1.getUpdateSp() + 1); // 智+1
 							if (l1iteminstance1.isEquipped()) {
 								pc.addSp(1);
 								pc.sendPackets(new S_OwnCharStatus(pc));
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1魔法攻击力"));
 						} else {
 							if (l1iteminstance1.getUpdateSp() > 0) {
 								l1iteminstance1.setUpdateSp(l1iteminstance1.getUpdateSp() - 1); // 智+1
@@ -3306,7 +3287,7 @@ public class C_ItemUSe extends ClientBasePacket {
 									pc.sendPackets(new S_OwnCharStatus(pc));
 								}
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1魔法攻击力"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3321,19 +3302,15 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300008) { // 防冻结耐性卷轴
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() == 4 ) { // 斗篷
-						if (l1iteminstance1.getUpdateFreeze() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateFreeze() <= 10) {
 							l1iteminstance1.setUpdateFreeze(l1iteminstance1.getUpdateFreeze() + 1); // +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1冻结耐性"));
 						} else {
 							if (l1iteminstance1.getUpdateFreeze() > 0) {
 								l1iteminstance1.setUpdateFreeze(l1iteminstance1.getUpdateFreeze() - 1); // -1
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1冻结耐性"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3348,19 +3325,15 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300009) { // 防石化耐性卷轴
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() == 2 ) { // 盔甲
-						if (l1iteminstance1.getUpdateStone() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateStone() <= 10) {
 							l1iteminstance1.setUpdateStone(l1iteminstance1.getUpdateStone() + 1); // +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1石化耐性"));
 						} else {
 							if (l1iteminstance1.getUpdateStone() > 0) {
 								l1iteminstance1.setUpdateStone(l1iteminstance1.getUpdateStone() - 1); // -1
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1 石化耐性"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3375,19 +3348,15 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300010) { // 防睡眠耐性卷轴
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() == 3 ) { //TX
-						if (l1iteminstance1.getUpdateSleep() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateSleep() <= 10) {
 							l1iteminstance1.setUpdateSleep(l1iteminstance1.getUpdateSleep() + 1); // +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1睡眠耐性"));
 						} else {
 							if (l1iteminstance1.getUpdateSleep() > 0) {
 								l1iteminstance1.setUpdateSleep(l1iteminstance1.getUpdateSleep() - 1); // -1
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1睡眠耐性"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3402,19 +3371,15 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300011) { // 防黑暗耐性卷轴
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() == 6 ) { // 鞋子
-						if (l1iteminstance1.getUpdateBlind() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateBlind() <= 10) {
 							l1iteminstance1.setUpdateBlind(l1iteminstance1.getUpdateBlind() + 1); // +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1黑暗耐性"));
 						} else {
 							if (l1iteminstance1.getUpdateBlind() > 0) {
 								l1iteminstance1.setUpdateBlind(l1iteminstance1.getUpdateBlind() - 1); // -1
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1黑暗耐性"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3429,19 +3394,15 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300012) { // 防昏迷耐性卷轴
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() == 1 ) { //头盔
-						if (l1iteminstance1.getUpdateStun() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateStun() <= 10) {
 							l1iteminstance1.setUpdateStun(l1iteminstance1.getUpdateStun() + 1); // +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1昏迷耐性"));
 						} else {
 							if (l1iteminstance1.getUpdateStun() > 0) {
 								l1iteminstance1.setUpdateStun(l1iteminstance1.getUpdateStun() - 1); // -1
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1昏迷耐性"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3456,19 +3417,15 @@ public class C_ItemUSe extends ClientBasePacket {
 				} else if (itemId == 300013) { // 防支撑耐性卷轴
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
 					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() == 5 ) { // 手套
-						if (l1iteminstance1.getUpdateStun() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateStun() <= 10) {
 							l1iteminstance1.setUpdateStun(l1iteminstance1.getUpdateStun() + 1); // +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1支撑耐性"));
 						} else {
 							if (l1iteminstance1.getUpdateStun() > 0) {
 								l1iteminstance1.setUpdateStun(l1iteminstance1.getUpdateStun() - 1); // -1
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1支撑耐性"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);
@@ -3482,20 +3439,257 @@ public class C_ItemUSe extends ClientBasePacket {
 					}
 				} else if (itemId == 300014) { // 魔法防御卷轴
 					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
-					if (check_item != null && check_item.getItem().getType2() == 2 ) { // 防具
-						if (l1iteminstance1.getUpdateMr() > 10) { // 次數為0
-							pc.sendPackets(new S_ServerMessage(79));
-							return;
-						}
+					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() < 8 ) { // 防具
 						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
-						if (Random.nextInt(100) > 50) {
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateMr() <= 10) {
 							l1iteminstance1.setUpdateMr(l1iteminstance1.getUpdateMr() + 1); // +1
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化成功"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1魔法防御"));
 						} else {
 							if (l1iteminstance1.getUpdateMr() > 0) {
 								l1iteminstance1.setUpdateMr(l1iteminstance1.getUpdateMr() - 1); // -1
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 強化失敗"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1魔法防御"));
+						}
+						pc.sendPackets(new S_SystemMessage("当前魔法防御属性值为"+l1iteminstance1.getUpdateMr()));
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300015) { // +HP防具卷轴
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() < 8) { // 防具
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateHp() <= 10) {
+							l1iteminstance1.setUpdateHp(l1iteminstance1.getUpdateHp() + 1); // +1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1HP"));
+						} else {
+							if (l1iteminstance1.getUpdateHp() > 0) {
+								l1iteminstance1.setUpdateHp(l1iteminstance1.getUpdateHp() - 1); // -1
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1HP"));
+						}
+						pc.sendPackets(new S_SystemMessage("当前+HP属性值为"+l1iteminstance1.getUpdateHp()));
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300016) { // +MP防具卷轴
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() < 8) { // 防具
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateMp() <= 10) {
+							l1iteminstance1.setUpdateMp(l1iteminstance1.getUpdateMp() + 1); // +1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1MP"));
+						} else {
+							if (l1iteminstance1.getUpdateMp() > 0) {
+								l1iteminstance1.setUpdateMp(l1iteminstance1.getUpdateMp() - 1); // -1
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1MP"));
+						}
+						pc.sendPackets(new S_SystemMessage("当前+MP属性值为"+l1iteminstance1.getUpdateMp()));
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300017) { // 回HP防具卷轴
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() < 8) { // 防具
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateHpr() <= 10) {
+							l1iteminstance1.setUpdateHpr(l1iteminstance1.getUpdateHpr() + 1); // +1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 每次回HP+1"));
+						} else {
+							if (l1iteminstance1.getUpdateHpr() > 0) {
+								l1iteminstance1.setUpdateHpr(l1iteminstance1.getUpdateHpr() - 1); // -1
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 每次回HP-1"));
+						}
+						pc.sendPackets(new S_SystemMessage("当前每次回HP属性值为"+l1iteminstance1.getUpdateHpr()));
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300018) { // 回MP防具卷轴
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() < 8) { // 防具
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateMpr() <= 10) {
+							l1iteminstance1.setUpdateMpr(l1iteminstance1.getUpdateMpr() + 1); // +1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 每次回MP+1"));
+						} else {
+							if (l1iteminstance1.getUpdateMpr() > 0) {
+								l1iteminstance1.setUpdateMpr(l1iteminstance1.getUpdateMpr() - 1); // -1
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 每次回MP-1"));
+						}
+						pc.sendPackets(new S_SystemMessage("当前每次回MP属性值为"+l1iteminstance1.getUpdateMpr()));
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300019) { // 吸魔武器卷轴
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1 ) { // 武器
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateMana() <= 10) {
+							l1iteminstance1.setUpdateMana(l1iteminstance1.getUpdateMana() + 1); // +1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 吸魔+1"));
+						} else {
+							if (l1iteminstance1.getUpdateMana() > 0) {
+								l1iteminstance1.setUpdateMana(l1iteminstance1.getUpdateMana() - 1); // -1
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 吸魔-1"));
+						}
+						pc.sendPackets(new S_SystemMessage("当前武器吸魔属性值为"+l1iteminstance1.getUpdateMana()));
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300020) { // 吸血武器卷轴
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1 ) { // 武器
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateDestruction() <= 10) {
+							l1iteminstance1.setUpdateDestruction(l1iteminstance1.getUpdateDestruction() + 1); // +1
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功  吸血+1"));
+						} else {
+							if (l1iteminstance1.getUpdateDestruction() > 0) {
+								l1iteminstance1.setUpdateDestruction(l1iteminstance1.getUpdateDestruction() - 1); // -1
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 吸血-1"));
+						}
+						pc.sendPackets(new S_SystemMessage("当前武器吸血属性值为"+l1iteminstance1.getUpdateDestruction()));
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300021) { // 武器体质卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateCon() <= 10) {
+							l1iteminstance1.setUpdateCon(l1iteminstance1.getUpdateStr() + 1); // 力 +1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addCon(1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1体质"));
+						} else {
+							if (l1iteminstance1.getUpdateCon() > 0) {
+								l1iteminstance1.setUpdateCon(l1iteminstance1.getUpdateCon() - 1); // 力
+																									// +1
+								if (l1iteminstance1.isEquipped()) {
+									pc.addCon(-1);
+									pc.sendPackets(new S_OwnCharStatus(pc));
+								}
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1体质"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300022) { // 武器精神卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 1) { // 武器類
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateWis() <= 10) {
+							l1iteminstance1.setUpdateWis(l1iteminstance1.getUpdateWis() + 1); // 力 +1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addWis(1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1体质"));
+						} else {
+							if (l1iteminstance1.getUpdateWis() > 0) {
+								l1iteminstance1.setUpdateWis(l1iteminstance1.getUpdateWis() - 1); // 力
+																									// +1
+								if (l1iteminstance1.isEquipped()) {
+									pc.addWis(-1);
+									pc.sendPackets(new S_OwnCharStatus(pc));
+								}
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1体质"));
+						}
+						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
+							ItemUpdate.getInstance().storeItem(l1iteminstance1);
+						} else {
+							ItemUpdate.getInstance().updateItem(l1iteminstance1);
+						}
+						pc.sendPackets(new S_ItemStatus(l1iteminstance1));
+						pc.getInventory().removeItem(l1iteminstance, 1);
+					} else {
+						pc.sendPackets(new S_ServerMessage(79));
+					}
+				} else if (itemId == 300023) { // 防具魅力卷軸
+					L1ItemInstance check_item = pc.getInventory().getItem(l1iteminstance1.getId());
+					if (check_item != null && check_item.getItem().getType2() == 2 && check_item.getItem().getType() < 8) { // 防具類
+						l1iteminstance1.setUpdateCount(l1iteminstance1.getUpdateCount() + 1);
+						if (Random.nextInt(100) > 50 && l1iteminstance1.getUpdateCha() <= 10) {
+							l1iteminstance1.setUpdateCha(l1iteminstance1.getUpdateCha() + 1); // 力 +1
+							if (l1iteminstance1.isEquipped()) {
+								pc.addCha(1);
+								pc.sendPackets(new S_OwnCharStatus(pc));
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1魅力"));
+						} else {
+							if (l1iteminstance1.getUpdateCha() > 0) {
+								l1iteminstance1.setUpdateCha(l1iteminstance1.getUpdateCha() - 1); // 力
+																									// +1
+								if (l1iteminstance1.isEquipped()) {
+									pc.addCha(-1);
+									pc.sendPackets(new S_OwnCharStatus(pc));
+								}
+							}
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1魅力"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);

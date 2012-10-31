@@ -187,4 +187,58 @@ public class L1WilliamItemUpdate {
 	public void setAddMr(int _addMr) {
 		this._addMr = _addMr;
 	}
+	private int _addHp;
+
+	public int getAddHp() {
+		return _addHp;
+	}
+
+	public void setAddHp(int addHp) {
+		this._addHp = addHp;
+	}
+	private int _addMp;
+
+	public int getAddMp() {
+		return _addMp;
+	}
+
+	public void setAddMp(int _addMp) {
+		this._addMp = _addMp;
+	}
+	private int _addHpr;
+
+	public int getAddHpr() {
+		return _addHpr;
+	}
+
+	public void setAddHpr(int _addHpr) {
+		this._addHpr = _addHpr;
+	}
+	private int _addMpr;
+
+	public int getAddMpr() {
+		return _addMpr;
+	}
+
+	public void setAddMpr(int _addMpr) {
+		this._addMpr = _addMpr;
+	}
+	private int _addMana;
+
+	public int getAddMana() {
+		return _addMana;
+	}
+
+	public void setAddMana(int _addMana) {
+		this._addMana = _addMana;
+	}
+	private int _addDestruction;
+
+	public int getAddDestruction() {
+		return _addDestruction;
+	}
+
+	public void setAddDestruction(int _addDestruction) {
+		this._addDestruction = _addDestruction;
+	}
 }

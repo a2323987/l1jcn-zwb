@@ -900,7 +900,7 @@ public class L1Attack {
 		// 计算武器总伤害
 		int weaponTotalDamage = calcWeponDamage(_weaponSmall);
 
-		if ((_weaponId == 262) && (Random.nextInt(100) + 1 <= 75)) { // ディストラクション装备かつ成功确率(暂定)75%
+		if ((_weaponId == 262) && (Random.nextInt(100) + 1 <= 75) || weapon.getUpdateDestruction()!= 0) { // ディストラクション装备かつ成功确率(暂定)75%
 			weaponTotalDamage += calcDestruction(weaponTotalDamage);
 		}
 
@@ -1080,7 +1080,7 @@ public class L1Attack {
 		// 计算武器总伤害
 		int weaponTotalDamage = calcWeponDamage(weaponMaxDamage) ;
 		
-		if ((_weaponId == 262) && (Random.nextInt(100) + 1 <= 75)) { // ディストラクション装备かつ成功确率(暂定)75%
+		if ((_weaponId == 262) && (Random.nextInt(100) + 1 <= 75) || weapon.getUpdateDestruction()!= 0) { // ディストラクション装备かつ成功确率(暂定)75%
 			weaponTotalDamage += calcDestruction(weaponTotalDamage);
 		}
 
@@ -1505,8 +1505,8 @@ public class L1Attack {
 
 	// ■■■■ マナスタッフ、钢铁のマナスタッフ、マナバーラードのMP吸收量算出 ■■■■
 	public void calcStaffOfMana() {
-		if ((_weaponId == 126) || (_weaponId == 127)) { // SOMまたは钢铁のSOM
-			int som_lvl = _weaponEnchant + 3; // 最大MP吸收量を设定
+		if ((_weaponId == 126) || (_weaponId == 127) || weapon.getUpdateMana() != 0) { // SOMまたは钢铁のSOM
+			int som_lvl = _weaponEnchant + 3 + weapon.getUpdateMana(); // 最大MP吸收量を设定
 			if (som_lvl < 0) {
 				som_lvl = 0;
 			}
@@ -1531,7 +1531,7 @@ public class L1Attack {
 
 	// ■■■■ ディストラクションのHP吸收量算出 ■■■■
 	private int calcDestruction(int dmg) {
-		_drainHp = (dmg / 8) + 1;
+		_drainHp = (dmg / 8) + 1 + weapon.getUpdateDestruction();
 		return _drainHp > 0 ? _drainHp : 1;
 	}
 

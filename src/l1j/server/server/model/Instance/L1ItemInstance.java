@@ -582,7 +582,7 @@ public class L1ItemInstance extends L1Object {
 				}
 			}
 //			 武器攻击卷轴 by 丫杰
-			if (isIdentified() && getItem().getType2() == 1 && getUpdateCount()>0) {
+			if (isIdentified() && (getItem().getType2() == 1 || getItem().getType2() == 2)&& getUpdateCount()>0) {
 				name.append(" 已合成【" + getUpdateCount() + "】次");
 			}
 			// 武器攻击卷轴 by 丫杰 end
@@ -1307,9 +1307,57 @@ public class L1ItemInstance extends L1Object {
     public void setUpdateHitModifier(int i) {
         _updateHitModifier = i;
     }
-//  武器攻击卷轴by阿杰end
     
-    //sosodemon add strat
+    private int _updateHp=0;
+    public int getUpdateHp() {
+    	return _updateHp;
+    }
+    
+    public void setUpdateHp(int _updateHp) {
+    	this._updateHp = _updateHp;
+    }
+    private int _updateMp=0;  
+	public int getUpdateMp() {
+		return _updateMp;
+	}
+
+	public void setUpdateMp(int _updateMp) {
+		this._updateMp = _updateMp;
+	}
+	private int _updateHpr=0;
+	public int getUpdateHpr() {
+		return _updateHpr;
+	}
+
+	public void setUpdateHpr(int _updateHpr) {
+		this._updateHpr = _updateHpr;
+	}
+	private int _updateMpr=0;
+	public int getUpdateMpr() {
+		return _updateMpr;
+	}
+
+	public void setUpdateMpr(int _updateMpr) {
+		this._updateMpr = _updateMpr;
+	}
+	private int _updateMana=0;	
+	public int getUpdateMana() {
+		return _updateMana;
+	}
+	public void setUpdateMana(int _updateMana) {
+		this._updateMana = _updateMana;
+	}
+	private int _updateDestruction=0;
+	public int getUpdateDestruction() {
+		return _updateDestruction;
+	}
+
+	public void setUpdateDestruction(int _updateDestruction) {
+		this._updateDestruction = _updateDestruction;
+	}
+
+	//  武器攻击卷轴by阿杰end
+	//sosodemon add strat
     private int _updateCon = 0;
 	
 	public int getUpdateCon() {

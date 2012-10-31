@@ -226,6 +226,12 @@ public class L1PcInventory extends L1Inventory {
 							item.setUpdateStun(item_update.getAddStun());
 							item.setUpdateSuStain(item_update.getAddSuStain());
 							item.setUpdateMr(item_update.getAddMr());
+							item.setUpdateHp(item_update.getAddHp());
+							item.setUpdateMp(item_update.getAddMp());
+							item.setUpdateHpr(item_update.getAddHpr());
+							item.setUpdateMpr(item_update.getAddMpr());
+							item.setUpdateMana(item_update.getAddMana());
+							item.setUpdateDestruction(item_update.getAddDestruction());
 						}
 					}
 				}
@@ -798,7 +804,7 @@ public class L1PcInventory extends L1Inventory {
 		for (Object itemObject : _items) {
 			L1ItemInstance item = (L1ItemInstance) itemObject;
 			if (item.isEquipped()) {
-				hpr += item.getItem().get_addhpr() + item.getHpr();
+				hpr += item.getItem().get_addhpr() + item.getHpr() + item.getUpdateHpr();
 			}
 		}
 		return hpr;
@@ -810,7 +816,7 @@ public class L1PcInventory extends L1Inventory {
 		for (Object itemObject : _items) {
 			L1ItemInstance item = (L1ItemInstance) itemObject;
 			if (item.isEquipped()) {
-				mpr += item.getItem().get_addmpr() + item.getMpr();
+				mpr += item.getItem().get_addmpr() + item.getMpr()+item.getUpdateMpr();
 			}
 		}
 		return mpr;
