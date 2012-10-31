@@ -232,6 +232,9 @@ public class L1PcInventory extends L1Inventory {
 							item.setUpdateMpr(item_update.getAddMpr());
 							item.setUpdateMana(item_update.getAddMana());
 							item.setUpdateDestruction(item_update.getAddDestruction());
+							item.setUpdateCha(item_update.getAddCha());
+							item.setUpdateCon(item_update.getAddCon());
+							item.setUpdateWis(item_update.getAddWis());
 						}
 					}
 				}

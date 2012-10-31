@@ -582,11 +582,6 @@ public class L1ItemInstance extends L1Object {
 				}
 			}
 		}
-//			 武器攻击卷轴 by 丫杰
-		if (isIdentified() && (getItem().getType2() == 1 || getItem().getType2() == 2)&& getUpdateCount()>0) {
-			name.append(" 已合成【" + getUpdateCount() + "】次");
-		}
-		// 武器攻击卷轴 by 丫杰 end
 
 		if (isEquipped()) {
 			if (itemType2 == 1) {
@@ -681,6 +676,17 @@ public class L1ItemInstance extends L1Object {
 				} else if (getEnchantLevel() < 0) {
 					name.append(String.valueOf(getEnchantLevel()) + " ");
 				}
+			}
+		}
+		if(getUpdateCount() >0){
+			if(getUpdateCount() < 10){
+				name.append("初级的 ");
+			}else if (getUpdateCount() >= 10 && getUpdateCount() < 20) {
+				name.append("中级的 ");
+			}else if(getUpdateCount() >= 20 && getUpdateCount() < 50){
+				name.append("高级的 ");
+			}else {
+				name.append("终极的 ");
 			}
 		}
 		if (isIdentified()) {
