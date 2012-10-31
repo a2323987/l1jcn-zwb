@@ -3647,7 +3647,7 @@ public class C_ItemUSe extends ClientBasePacket {
 								pc.addWis(1);
 								pc.sendPackets(new S_OwnCharStatus(pc));
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1体质"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化成功 +1精神"));
 						} else {
 							if (l1iteminstance1.getUpdateWis() > 0) {
 								l1iteminstance1.setUpdateWis(l1iteminstance1.getUpdateWis() - 1); // 力
@@ -3657,7 +3657,7 @@ public class C_ItemUSe extends ClientBasePacket {
 									pc.sendPackets(new S_OwnCharStatus(pc));
 								}
 							}
-							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1体质"));
+							pc.sendPackets(new S_ServerMessage(166, l1iteminstance1.getLogName() + " 强化失败 -1精神"));
 						}
 						if (ItemUpdate.getInstance().checkItem(l1iteminstance1.getId()) == 0) {
 							ItemUpdate.getInstance().storeItem(l1iteminstance1);

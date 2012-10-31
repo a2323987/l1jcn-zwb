@@ -581,12 +581,12 @@ public class L1ItemInstance extends L1Object {
 					name.append(" ($11)");
 				}
 			}
-//			 武器攻击卷轴 by 丫杰
-			if (isIdentified() && (getItem().getType2() == 1 || getItem().getType2() == 2)&& getUpdateCount()>0) {
-				name.append(" 已合成【" + getUpdateCount() + "】次");
-			}
-			// 武器攻击卷轴 by 丫杰 end
 		}
+//			 武器攻击卷轴 by 丫杰
+		if (isIdentified() && (getItem().getType2() == 1 || getItem().getType2() == 2)&& getUpdateCount()>0) {
+			name.append(" 已合成【" + getUpdateCount() + "】次");
+		}
+		// 武器攻击卷轴 by 丫杰 end
 
 		if (isEquipped()) {
 			if (itemType2 == 1) {
@@ -924,11 +924,11 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(getItem().getBowDmgModifierByArmor());
 			}
 			// MP吸收
-			if ((itemId == 126) || (itemId == 127)) { // マナスタッフ、钢铁のマナスタッフ
+			if ((itemId == 126) || (itemId == 127) || getUpdateMana() !=0) { // マナスタッフ、钢铁のマナスタッフ
 				os.writeC(16);
 			}
 			// HP吸收
-			if (itemId == 262) { // ディストラクション
+			if (itemId == 262 || getUpdateDestruction() != 0) { // ディストラクション
 				os.writeC(34);
 			}
 			// STR~CHA
@@ -943,28 +943,28 @@ public class L1ItemInstance extends L1Object {
 			}
 			if (getItem().get_addcon() != 0) {
 				os.writeC(10);
-				os.writeC(getItem().get_addcon());
+				os.writeC(getItem().get_addcon() + getUpdateCon());
 			}
-			if (getItem().get_addwis() != 0) {
+			if (getItem().get_addwis() != 0 || getUpdateWis() != 0) {
 				os.writeC(11);
-				os.writeC(getItem().get_addwis());
+				os.writeC(getItem().get_addwis()+getUpdateWis());
 			}
 			if (getItem().get_addint() != 0 || getUpdateInt() != 0) { //智力卷轴
 				os.writeC(12);
 				os.writeC(getItem().get_addint() + getUpdateInt()); //智力卷轴
 			}
-			if (getItem().get_addcha() != 0) {
+			if (getItem().get_addcha() != 0 || getUpdateCha() != 0) {
 				os.writeC(13);
-				os.writeC(getItem().get_addcha());
+				os.writeC(getItem().get_addcha() + getUpdateCha());
 			}
 			// HP, MP
-			if (getItem().get_addhp() != 0 || getaddHp() != 0) {
+			if (getItem().get_addhp() != 0 || getaddHp() != 0 || getUpdateHp() != 0) {
 				os.writeC(14);
-				os.writeH(getItem().get_addhp() + getaddHp());
+				os.writeH(getItem().get_addhp() + getaddHp() + getUpdateHp());
 			}
-			if (getItem().get_addmp() != 0 || getaddMp() != 0) {
+			if (getItem().get_addmp() != 0 || getaddMp() != 0 || getUpdateMp() != 0) {
 				os.writeC(32);
-				os.writeC(getItem().get_addmp() + getaddMp());
+				os.writeC(getItem().get_addmp() + getaddMp() + getUpdateMp());
 			}
 			// SP(增加魔法攻击)
 			if (getItem().get_addsp() != 0 || getaddSp() != 0 || getUpdateSp() != 0) {
@@ -1043,14 +1043,14 @@ public class L1ItemInstance extends L1Object {
 				os.writeH(getMr() + getUpdateMr());
 			}
 			// 体力回复率
-			if (getItem().get_addhpr() != 0 || getHpr() != 0) {
+			if (getItem().get_addhpr() != 0 || getHpr() != 0 || getUpdateHpr() != 0) {
 				os.writeC(37);
-				os.writeC(getItem().get_addhpr() + getHpr());
+				os.writeC(getItem().get_addhpr() + getHpr() + getUpdateHpr());
 			}
 			// 魔力回复率
-			if (getItem().get_addmpr() != 0 || getMpr() != 0) {
+			if (getItem().get_addmpr() != 0 || getMpr() != 0 || getUpdateMpr() != 0) {
 				os.writeC(38);
-				os.writeC(getItem().get_addmpr() + getMpr());
+				os.writeC(getItem().get_addmpr() + getMpr() + getUpdateMpr());
 			}
 			// 幸运
 			// if (getItem.getLuck() != 0) {
