@@ -4949,7 +4949,8 @@ public class C_ItemUSe extends ClientBasePacket {
 	private void useElfSpellBook(L1PcInstance pc, L1ItemInstance item,
 			int itemId) {
 		int level = pc.getLevel();
-		if ((pc.isElf() || pc.isGm()) && isLearnElfMagic(pc)) {
+		//if ((pc.isElf() || pc.isGm()) && isLearnElfMagic(pc)) { //取消妖精魔法学习的地点限制
+		if ((pc.isElf() || pc.isGm())) {
 			if ((itemId >= 40232) && (itemId <= 40234) && (level >= 10)) {
 				SpellBook2(pc, item);
 			} else if ((itemId >= 40235) && (itemId <= 40236) && (level >= 20)) {
