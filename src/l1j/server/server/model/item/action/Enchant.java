@@ -91,13 +91,17 @@ public class Enchant {
 
 			int rnd = Random.nextInt(100) + 1;
 			int enchant_chance_wepon;
-			if (enchant_level >= 9) {
+			int max_enchant =  Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(154)).intValue();
+			
+			if(enchant_level >= max_enchant){
+				enchant_chance_wepon = 0 ;
+			}else if (enchant_level >= 9 && enchant_level < max_enchant) {
 				enchant_chance_wepon = (100 + 3 * Config.ENCHANT_CHANCE_WEAPON) / 6;
 			}
 			else {
 				enchant_chance_wepon = (100 + 3 * Config.ENCHANT_CHANCE_WEAPON) / 3;
 			}
-
+			
 			if (rnd < enchant_chance_wepon) {
 				int randomEnchantLevel = RandomELevel(l1iteminstance1, itemId);
 				SuccessEnchant(pc, l1iteminstance1, client, randomEnchantLevel);
@@ -164,7 +168,10 @@ public class Enchant {
 			} else {
 				enchant_level_tmp = enchant_level;
 			}
-			if (enchant_level >= 9) {
+			int max_enchant =  Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(155)).intValue();		
+			if(enchant_level >= max_enchant){
+				enchant_chance_armor = 0 ;
+			}else if (enchant_level >= 9 && enchant_level < max_enchant) {
 				enchant_chance_armor = (100 + enchant_level_tmp * Config.ENCHANT_CHANCE_ARMOR) / (enchant_level_tmp * 2);
 			} else {
 				enchant_chance_armor = (100 + enchant_level_tmp * Config.ENCHANT_CHANCE_ARMOR) / enchant_level_tmp;

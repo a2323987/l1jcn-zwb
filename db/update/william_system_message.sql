@@ -70,3 +70,7 @@ INSERT INTO `william_system_message` VALUES ('151', '1', '组队PK获胜道具�
 INSERT INTO `william_system_message` VALUES ('152', '65', '目前服务器设定人物最高等级');
 INSERT INTO `william_system_message` VALUES ('153', 'true', '武卷，防卷冲爆装备不消失只是降低一个等级');
 
+INSERT INTO `william_system_message` VALUES ('154', '15', '武器最高能冲到的等级');
+INSERT INTO `william_system_message` VALUES ('155', '10', '防具最高能冲到的等级');
+
+
