@@ -66,3 +66,7 @@ INSERT INTO `william_system_message` VALUES ('148', '1', '组队PK进入道具�
 INSERT INTO `william_system_message` VALUES ('149', '2', '组队PK队员人数限制');
 INSERT INTO `william_system_message` VALUES ('150', '6000', '组队PK获胜道具');
 INSERT INTO `william_system_message` VALUES ('151', '1', '组队PK获胜道具数量');
+
+INSERT INTO `william_system_message` VALUES ('152', '65', '目前服务器设定人物最高等级');
+
+
