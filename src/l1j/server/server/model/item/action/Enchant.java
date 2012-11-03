@@ -25,6 +25,7 @@ import l1j.server.server.serverpackets.S_ItemStatus;
 import l1j.server.server.serverpackets.S_OwnCharAttrDef;
 import l1j.server.server.serverpackets.S_SPMR;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Armor;
 import l1j.server.server.utils.Random;
 
@@ -485,8 +486,20 @@ public class Enchant {
 		if (item.getEnchantLevel() < 0) { // 强化等级为负值
 			 sa[itemType2] = "$246"; // 黑色的
 		}
-		pc.sendPackets(new S_ServerMessage(164, item.getLogName(), sa[itemType2])); // \f1%0%s 强烈的发出%1光芒就消失了。
-		pc.getInventory().removeItem(item, item.getCount());
+		if (l1j.william.L1WilliamSystemMessage.ShowMessage(153).equals("true") && (itemType2 == 1 || itemType2 == 2)) {
+			if (item.getEnchantLevel() > 0) {
+				item.setEnchantLevel(item.getEnchantLevel() - 1);
+				// pc.getInventory().updateItem(item);
+				pc.sendPackets(new S_ItemStatus(item));
+				pc.sendPackets(new S_SystemMessage("+" + item.getEnchantLevel() + " " + item.getName() + " 强烈的发出银色光芒，但是没有消失，只是降低了一个等级"));
+			} else {
+				pc.sendPackets(new S_SystemMessage(item.getName() + " 强烈的发出银色光芒，但是没有消失"));
+			}
+		} else {
+			pc.getInventory().removeItem(item, item.getCount());
+			pc.sendPackets(new S_ServerMessage(164, item.getLogName(), sa[itemType2])); // \f1%0%s
+																						// 强烈的发出%1光芒就消失了。
+		}
 	}
 
 	// 随机强化等级
