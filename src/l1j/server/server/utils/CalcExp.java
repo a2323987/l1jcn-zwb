@@ -413,8 +413,10 @@ public class CalcExp {
 		int add_exp = (int) (exp * _nExpRate * Config.RATE_XP);
 		// end
 		//db控制人物最高等级
-		if(Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(152)).intValue() <= pc.getLevel()){
-			add_exp = 0;
+		int maxLevel = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(152)).intValue()+1;
+		int totalExp = (int) (add_exp + pc.getExp()); // 人物即将获得经验
+		if (totalExp >= ExpTable.getExpByLevel(maxLevel)) { // 宠物最高等级
+			add_exp = ExpTable.getExpByLevel(maxLevel) - pc.getExp()-1; // 宠物最高等级
 		}
 		pc.addExp(add_exp);
 		// 大小GM显示取得总经验值
