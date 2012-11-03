@@ -412,7 +412,10 @@ public class CalcExp {
 		}
 		int add_exp = (int) (exp * _nExpRate * Config.RATE_XP);
 		// end
-
+		//db控制人物最高等级
+		if(Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(152)).intValue() <= pc.getLevel()){
+			add_exp = 0;
+		}
 		pc.addExp(add_exp);
 		// 大小GM显示取得总经验值
 		if (pc.getAccessLevel()== 200 || pc.getAccessLevel()== 100) {

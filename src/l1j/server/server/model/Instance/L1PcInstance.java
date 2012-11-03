@@ -414,7 +414,6 @@ public class L1PcInstance extends L1Character {
 		int level = ExpTable.getLevelByExp(getExp());
 		int char_level = getLevel();
 		int gap = level - char_level;
-		int maxLevel = Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(152)).intValue();
 		if (gap == 0) {
 			// sendPackets(new S_OwnCharStatus(this));
 			sendPackets(new S_Exp(this));
@@ -423,15 +422,7 @@ public class L1PcInstance extends L1Character {
 
 		// レベルが变化した场合
 		if (gap > 0) {
-			if (char_level < maxLevel) {
-				if(gap <= maxLevel - char_level){
-				levelUp(gap);
-				}else {
-					levelUp(maxLevel - char_level);
-				}
-			} else {
-				sendPackets(new S_SystemMessage("恭喜您已经达到最高等级。"));
-			}
+			levelUp(gap);
 		} else if (gap < 0) {
 			levelDown(gap);
 		}
