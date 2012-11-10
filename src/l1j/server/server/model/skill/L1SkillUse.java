@@ -1996,7 +1996,7 @@ public class L1SkillUse {
 						break;
 					// 冲击之晕
 					case SHOCK_STUN:
-						int[] stunTimeArray = { 500, 1000, 1500, 2000, 2500, 3000 };
+						int[] stunTimeArray = { 2500, 3000, 3500, 4000, 5000, 6000 };
 						int rnd = Random.nextInt(stunTimeArray.length);
 						_shockStunDuration = stunTimeArray[rnd];
 						if ((cha instanceof L1PcInstance)
