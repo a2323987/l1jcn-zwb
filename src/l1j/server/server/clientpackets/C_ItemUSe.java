@@ -2236,7 +2236,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(79)); // \f1没有任何事情发生。
 						}
 					}
-				} else if (itemId == 42039) {//声望传送卷
+				/*} else if (itemId == 42039) {//声望传送卷
 					if(pc.getInventory().checkItem(60012,5)){
 						pc.getInventory().removeItem(l1iteminstance,1);
 						pc.getInventory().consumeItem(60012, 5);
@@ -2280,7 +2280,7 @@ public class C_ItemUSe extends ClientBasePacket {
 								.get_locy(), l1iteminstance.getItem().get_mapid(), 5, true);
 					}else {
 						pc.sendPackets(new S_SystemMessage("请检查背包是否有25个声望【5】。"));
-					}
+					}*/
 				} else if ((itemId >= 40289) && (itemId <= 40297)) { // 傲慢の塔11~91阶テレポートアミュレット
 					useToiTeleportAmulet(pc, itemId, l1iteminstance);
 				} else if ((itemId >= 40280) && (itemId <= 40288)) {
