@@ -98,7 +98,9 @@ public class ShopTable {
 			if (0 <= purchasingPrice && 0 >= gashPrice) { // GASH币商城[提供:liumy]
 				//L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate); // 道具天数删除系统
 				L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate,EnchantLevel,selling_count,selling_max); // 道具等级+几系统
-				purchasingList.add(item);
+				if(!checkSellPrice(itemId,purchasingPrice)){					
+					purchasingList.add(item);
+				}
 			}
 			// GASH币商城[提供:liumy]
 			if (0 <= gashPrice && 0 >= sellingPrice && 0 >= purchasingPrice) {
@@ -107,10 +109,36 @@ public class ShopTable {
 				sellingList.add(item);
 			}
 			// end
+			
 		}
 		return new L1Shop(npcId, sellingList, purchasingList);
 	}
-
+	private boolean checkSellPrice(int itemId, int purchasingPrice) {
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		boolean checkOK = false;
+		try {
+			con = L1DatabaseFactory.getInstance().getConnection();
+			pstm = con.prepareStatement("SELECT * FROM shop WHERE item_id=?");
+			pstm.setInt(1, itemId);
+			rs = pstm.executeQuery();
+			while(rs.next()){
+				if(rs.getInt("selling_price") > 0 && rs.getInt("selling_price") < purchasingPrice ){
+					checkOK = true;
+					System.out.println("NpcId="+rs.getInt("npc_id")+", ItemID="+itemId+", PriceError!!!");
+				}
+			}		
+			rs.close();
+		}
+		catch (SQLException e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		}
+		finally {
+			SQLUtil.close(rs, pstm, con);
+		}
+		return checkOK;
+	}
 	private void loadShops() {
 		Connection con = null;
 		PreparedStatement pstm = null;

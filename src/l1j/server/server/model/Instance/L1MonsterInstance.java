@@ -18,6 +18,8 @@ import static l1j.server.server.model.skill.L1SkillId.EFFECT_BLOODSTAIN_OF_ANTHA
 import static l1j.server.server.model.skill.L1SkillId.FOG_OF_SLEEPING;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -425,6 +427,16 @@ public class L1MonsterInstance extends L1NpcInstance {
 		}
 	}
 
+	// ************* 打怪才顯示血條 by fysmloves 1/5 *************
+
+	Timer cancel_broadcast = null;
+
+	L1PcInstance pc = null;
+
+	L1PcInstance pc_party[] = null;
+
+	// ************************ End 1/5 ************************
+
 	@Override
 	public void receiveDamage(L1Character attacker, int damage) { // 攻击でＨＰを减らすときはここを使用
 		if ((getCurrentHp() > 0) && !isDead()) {
@@ -449,7 +461,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 			}
 			// 怪物血条判断功能 语法来源99NETS网游模拟娱乐社区
 			if (Config.Attack_Mob_HP_Bar) {
-				if (attacker instanceof L1PcInstance) {
+				/*if (attacker instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) attacker;
 					pc.sendPackets(new S_HPMeter(this, true));
 					L1Character MobHPBar = pc.getMobHPBar();
@@ -457,7 +469,28 @@ public class L1MonsterInstance extends L1NpcInstance {
 						pc.sendPackets(new S_HPMeter(MobHPBar, false));
 					}
 					pc.setMobHPBar(this);
-				}
+				}*/
+				// ************* 打怪才顯示血條 by fysmloves 2/5 *************
+
+				if (L1World.getInstance().getPlayer(attacker.getName()) != null)
+
+					pc = L1World.getInstance().getPlayer(attacker.getName());
+
+				else {
+
+					L1NpcInstance pet = (L1NpcInstance) L1World.getInstance()
+							.findObject(attacker.getId());
+
+					pc = L1World.getInstance().getPlayer(
+							pet.getMaster().getName());
+
+				} // else
+
+				if (pc.getParty() != null)
+					pc_party = pc.getParty().getMembers();
+
+				// ************************ End 2/5 ************************
+
 			}
 			// 怪物血条判断功能 end
 
@@ -478,6 +511,23 @@ public class L1MonsterInstance extends L1NpcInstance {
 			if ((newHp <= 0) && !isDead()) {
 				int transformId = getNpcTemplate().getTransformId();
 				int chance = getNpcTemplate().getTransChance();
+				// ************* 打怪才顯示血條 by fysmloves 3/5 *************
+				if (Config.Attack_Mob_HP_Bar) {
+				pc.sendPackets(new S_HPMeter(this.getId(), 0xFF)); // 關閉血條
+
+				if (pc.getParty() != null) {
+
+					for (int i = 0; i < pc_party.length; i++) {
+
+						pc_party[i].sendPackets(new S_HPMeter(this.getId(),
+								0xFF));
+
+					} // for
+
+				} // if
+				}
+				// ************************ End 3/5 ************************
+
 				// 变身しないモンスター
 				if (transformId == -1) {
 					if (getPortalNumber() != -1) {
@@ -541,7 +591,63 @@ public class L1MonsterInstance extends L1NpcInstance {
 			if (newHp > 0) {
 				setCurrentHp(newHp);
 				hide();
+				// ************* 打怪才顯示血條 by fysmloves 4/5 *************
+				if (Config.Attack_Mob_HP_Bar) {
+				pc.sendPackets(new S_HPMeter(this));
+
+				if (pc.getParty() != null) {
+
+					for (int i = 0; i < pc_party.length; i++) {
+
+						pc_party[i].sendPackets(new S_HPMeter(this));
+
+					} // for
+
+				} // if
+
+				if (cancel_broadcast != null) {
+
+					cancel_broadcast.cancel();
+
+					cancel_broadcast = null;
+
+				} // if
+				}
+				// ************************ End 4/5 ************************
+
 			}
+			// ************* 打怪才顯示血條 by fysmloves 5/5 *************
+			if (Config.Attack_Mob_HP_Bar) {
+            cancel_broadcast = new Timer();
+
+            final L1Object broadcastMonster = this;
+
+			cancel_broadcast.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+
+					pc.sendPackets(new S_HPMeter(broadcastMonster.getId(), 0xFF)); // 關閉血條
+
+					if (pc.getParty() != null) {
+
+						for (int i = 0; i < pc_party.length; i++) {
+
+							pc_party[i].sendPackets(new S_HPMeter(
+									broadcastMonster.getId(), 0xFF));
+
+						} // for
+
+					} // if
+
+					cancel_broadcast.cancel();
+
+				}
+
+			}, 10000); // 10秒沒繼續打怪就關閉血條
+			}
+			// ************************ End 5/5 ************************
+
 		} else if (!isDead()) { // 念のため
 			setDead(true);
 			setStatus(ActionCodes.ACTION_Die);
