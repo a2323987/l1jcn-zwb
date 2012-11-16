@@ -145,7 +145,15 @@ public class C_CreateChar extends ClientBasePacket {
 			client.sendPacket(s_charcreatestatus3);
 			return;
 		}
-
+		if (l1j.william.L1WilliamSystemMessage.ShowMessage(156).equals("true")) {
+			//System.out.println("pc.getType() = " + pc.getType() + "");
+			if ((pc.getType() == 5)	|| (pc.getType() == 6)){
+				S_CharCreateStatus s_charcreatestatus3 = new S_CharCreateStatus(
+						S_CharCreateStatus.REASON_ALREADY_EXSISTS);
+				client.sendPacket(s_charcreatestatus3);
+				return;
+			}
+		}
 		_log.fine("角色名称: " + pc.getName() + " classId: " + pc.getClassId());
 		S_CharCreateStatus s_charcreatestatus2 = new S_CharCreateStatus(S_CharCreateStatus.REASON_OK);
 		client.sendPacket(s_charcreatestatus2);

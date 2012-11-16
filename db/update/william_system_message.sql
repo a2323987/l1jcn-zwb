@@ -73,4 +73,5 @@ INSERT INTO `william_system_message` VALUES ('153', 'true', '武卷，防卷冲�
 INSERT INTO `william_system_message` VALUES ('154', '15', '武器最高能冲到的等级');
 INSERT INTO `william_system_message` VALUES ('155', '10', '防具最高能冲到的等级');
 
+INSERT INTO `william_system_message` VALUES ('156', 'true', '取消幻术师和龙骑');
 
