@@ -183,7 +183,7 @@ public class C_Shop extends ClientBasePacket {
 						ActionCodes.ACTION_Idle));
 				pc.killSkillEffectTimer(7903);
 				pc.killSkillEffectTimer(7902);
-				pc.setSkillEffect(7902,5*1000);//商店关闭后马上检测外挂
+				pc.setSkillEffect(7902,(Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(146)).intValue())*1000);//商店关闭后马上检测外挂
 				return;
 			}
 			byte[] chat = readByte();
@@ -203,7 +203,7 @@ public class C_Shop extends ClientBasePacket {
 					ActionCodes.ACTION_Idle));
 			pc.killSkillEffectTimer(7903);
 			pc.killSkillEffectTimer(7902);
-			pc.setSkillEffect(7902,5*1000);//商店关闭后马上检测外挂
+			pc.setSkillEffect(7902,(Integer.valueOf(l1j.william.L1WilliamSystemMessage.ShowMessage(146)).intValue())*1000);//商店关闭后马上检测外挂
 		}
 	}
 

