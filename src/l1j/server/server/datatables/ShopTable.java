@@ -98,7 +98,7 @@ public class ShopTable {
 			if (0 <= purchasingPrice && 0 >= gashPrice) { // GASH币商城[提供:liumy]
 				//L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate); // 道具天数删除系统
 				L1ShopItem item = new L1ShopItem(itemId, purchasingPrice,packCount, deleteDay, deleteDate,EnchantLevel,selling_count,selling_max); // 道具等级+几系统
-				if(!checkSellPrice(itemId,purchasingPrice)){					
+				if(!checkSellPrice(itemId,purchasingPrice*packCount)){					
 					purchasingList.add(item);
 				}
 			}
@@ -124,7 +124,7 @@ public class ShopTable {
 			pstm.setInt(1, itemId);
 			rs = pstm.executeQuery();
 			while(rs.next()){
-				if(rs.getInt("selling_price") > 0 && rs.getInt("selling_price") < purchasingPrice ){
+				if(rs.getInt("selling_price") > 0 && rs.getInt("selling_price")*rs.getInt("pack_count") < purchasingPrice ){
 					checkOK = true;
 					System.out.println("NpcId="+rs.getInt("npc_id")+", ItemID="+itemId+", PriceError!!!");
 				}
